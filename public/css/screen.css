@@ -1,0 +1,239 @@
+ /*
+ ================================================
+ Created by James Dempsey
+ Last updated on 7/16/2012
+ ================================================
+ Contents:
+   01 Defaults
+   02 Typography
+		- Font Families
+		- Headings
+		- Links
+		- Others
+		- Overall Font Size
+   03 Basic Layout
+   04 Resume Section
+   05 About Section
+   06 Contact Section
+		- Social
+		- Mail Form
+   07 Footer
+   08 Media queries
+ ================================================
+ */
+
+
+ /* 01 Defaults 
+  --------------------------------------------- */
+ @import "reset.css";
+ @import "forms.css";
+
+ .header_wrapper{width:100%; padding: 12px 0}
+ .header_container{overflow: hidden; max-width: 1024px; margin: 0 auto}
+ .container{max-width: 1024px; margin:0 auto; padding: 0 10px}
+ .wrapper{width: 100%; margin: 0 auto;}
+ .left{float: left;}
+ .right{float: right;}
+ .clear{clear: both;}
+ .hidden{display: none;}
+ .noshow{visibility:hidden;}
+ .one_half{width:48%; float:left;}
+ .half{width:48%; float:left;}
+ .shadow{text-shadow: 0 0 5px #999}
+
+
+ /* 02 Typography 
+  --------------------------------------------- */
+
+  /*
+  14 / 16 =     0.875em     (14px equivalent)
+  16 / 16 =     1em         (16px equivalent)
+  18 / 16 =     1.125em     (18px equivalent)
+  21 / 16 =     1.3125em    (21px equivalent)
+  24 / 16 =     1.5em       (24px equivalent)
+  30 / 16 =     1.875em     (30px equivalent)
+  72 / 16 =     4.5em       (72px equivalent)
+  */
+
+  /* Font Families */
+  body, 
+  input, 
+  textarea{ color:#333; font:200 1em/1.875em  serif; }
+
+  h2 { letter-spacing:-0.025em; }
+
+  strong,
+  h3,
+  h4 { font: 1.3125em 'Arvo', Georgia, Times, serif;}
+
+  em, 
+  em strong, 
+  strong em h1, 
+  cite,
+  label,
+  figcaption,
+  nav ul li, 
+  div.post p:first-child, 
+  a.about, 
+  p.note { font-family: font-style:italic; }
+
+  h1 a { font:300 1.875em 'Raleway', Helvetica, Arial, sans-serif; }
+
+  /* Headings */
+	h1{font-size:1.125em; text-align: center}
+  	h1 a { color:#393939; display:block; }
+  	h1 a:hover { color:#1D93C1; }
+  	h2 { font-size:1.875em; line-height:1.125em; }
+  	h3,h4 { font-size:1.125em; padding:2em 0 0.5em 0;text-align: center; border-bottom: 2px solid rgba(29, 147, 193, 0.2)}
+  	h4{  text-align:left;font-size:1.15em;margin:1em;}
+  	p + h3,
+  	li + h3 { padding-top:1.5em; } /* Only an h3 that follows a p or an li */
+
+ /* Links */
+  a{ 
+   color:#393939;
+   text-decoration:none; 
+   -webkit-transition:color 0.2s ease-in-out; 
+   -moz-transition:color 0.2s ease-in-out; 
+   -o-transition:color 0.2s ease-in-out; 
+    transition:color 0.2s ease-in-out; 
+  }
+
+  h3 a:hover,
+  p a:hover,
+  li a:hover{ color:#1D93C1; border-bottom:1px dashed #1D93C1;background: #3A3C37}
+
+  h3 a,
+  p a,
+  li a{ }
+
+  nav#menu ul li a:hover{background: #3A3C37}
+
+/* Others */
+ p,	
+ li,
+ aside img,
+ aside a img{ font-family: 'PT Sans', Helvetica, Arial, sans-serif; padding:0.5em 0;}
+ li { list-style:none; }
+ div.col li,
+ div.post li,
+ footer li { list-style-type:disc; }
+ blockquote { border-left:10px solid #e1e1e1; color:#7f7f7f; padding-left:5%; }
+ blockquote p {  }
+ div.post p:first-child + p  { font-size:1.875em; line-height:1.5em; }
+ code, 
+ pre { background:rgba(0,0,0,0.1); font-size:0.875em; }
+ pre { margin:0.5em 0; padding-left:1em; }
+ pre code { background:none; }
+ p.note { color:rgba(0,0,0,0.3); font-size:0.875em; padding-bottom:1em; }
+
+
+/* Overall Font Size */
+ body { font-size:85%; /* mobile-first*/}
+
+
+/* 04 Basic Layout
+  --------------------------------------------- */
+	body{background: white ; color: #222;font-family: 'PT Sans', Helvetica, Arial, sans-serif; font-size:1em;}
+	header.global{ text-align: center; padding: 0 20px}
+
+	.header_wrapper{background:#1D93C1; margin-bottom: 10px}
+	a h1{color: white}
+	nav {width: 100%; float: none; margin: 0 auto; padding: 0 20px; background: #edeae3 url("../assets/media/images/nav_gradient.jpg") repeat left; }
+	nav ul li{display:block; margin:0 auto; width: 100%; text-align: center; background: #221e1f; padding: 0}
+	nav ul li a{padding: 7px 15px; padding-top: 8px; font-size:13px; display: block; text-align: center; color: white; border-bottom:1px solid #3A3C37}
+	.filler{height: 300px}
+	.shell{background:#dbdddf; padding: 3px; background: rgba(0,0,0,0.1); position: relative;top: 12px; border-radius: 5px}
+	.second{top: 24px}
+	.main_column{}
+	.content{background-color: #fff; border: solid 1px #a6a196;border-radius: 4px; padding: 45px}
+
+/* Trial Page Layout 
+   --------------------------------------------- */
+div#trialContainer.wrapper{width:100%;background:#393939; height: auto}
+header#trialHeader h2 a{color:white;margin-top:10px; display: inline-block}
+header#trialHeader ul{display: inline-block; float: none; margin: 8px}
+header#trialHeader a#back{
+background: white;
+color: #1D93C1;
+padding: 8px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0 1px 0 white inset, 0 1px 3px #999;
+-webkit-box-shadow: 0 1px 0 white inset, 0 1px 3px #999;
+box-shadow:0 1px 0 white inset, 0 1px 3px #999;
+-webkit-appearance: none;
+border: 1px solid white;
+}
+
+header#trialHeader a#back:hover{-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0 1px 0 #5DCDF9 inset, 0 1px 3px #999;
+-webkit-box-shadow: 0 1px 0 #5DCDF9 inset, 0 1px 3px #999;
+box-shadow:0 1px 0 #5DCDF9 inset, 0 1px 3px #999;
+-webkit-appearance: none;
+border: 1px solid #016c96;
+color: white;
+background:#1D93C1;
+}
+	
+	
+/* 07 Footer 
+--------------------------------------------- */
+
+footer { padding: 5px; text-align: center;}
+footer section p{color:#333;border-top: 10px solid rgba(29, 147, 193, 0.2);}
+	
+	
+ /* 08 Media queries 
+ --------------------------------------------- */
+
+/* 320 and up -- iPhone Vertical*/
+
+@media screen and (min-width: 320px) {
+    
+}
+
+/* 480 and up -- iPhone Horizontal*/
+
+@media screen and (min-width: 740px) {
+
+
+}
+
+/* 768 and up -- iPad Vertical*/
+
+@media screen and (min-width:780px){
+	.header_container{overflow: hidden; max-width: 1024px; margin: 0}
+	div.header_wrapper{padding: 12px 20px}
+	h1{text-align: left}
+	nav{float: left; margin-right: 1%; position: absolute;height: 100%; padding: 0}
+	nav ul{position: fixed; width: 14%; display: inline-block; margin: 0 auto}
+	nav ul li{width:100%;background: #221e1f; margin-top: 10px; text-align: center}
+	.container{max-width: 1200px; margin:0 auto; width: 96%; }
+	.bodyContainer{max-width:84%; float: right; margin-left: 1%; padding:0; display: block}
+	.side_column{width: 33%; float: left; margin: 20px}
+	.main_column{width:53%; float: right; margin: 20px}
+}
+
+/* 800 and up */
+@media screen and (min-width:800px){
+	body{font-size:100%}
+	
+}
+
+@media screen and (min-width:1000px){
+	.side_column{width: 35% }
+	.main_column{width:54%  }
+}
+/* 1200 and up */
+@media screen and (min-width:1200px) {
+	body{font-size:110%}
+	.side_column{width: 35%}
+	.main_column{width:56%}
+
+	
+	
+}

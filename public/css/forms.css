@@ -1,0 +1,201 @@
+
+
+.field{
+	background: #edeae3;
+	padding: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-top: 12px;
+}
+
+
+
+#loginForm label{
+}
+
+#loginForm #login_submit{
+	float: none;
+}
+
+#loginForm fieldset{
+	margin: 0px;
+	padding: 0px;
+}
+
+form fieldset {
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	font-size: 14px;
+	border: none;
+	}
+form fieldset.form-actions{
+	margin: 0 0 0 20%;
+	padding: 0;
+	border: none;
+	}
+form fieldset.check,  {
+	}
+	
+form fieldset.check a{
+	font-size: 13px;
+	color: #34373e;
+}
+
+#signup-form form fieldset label {
+	float: left;
+	width: 100%;
+	margin: 4px 0 5px 0;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 25px;
+	}
+form fieldset.check label{
+	display: inline;
+	float: none;
+	width: auto;
+	font-weight: normal;
+	}
+	
+form fieldset.check [type="checkbox"]{
+	margin-right: 8px;
+}
+form fieldset.radio ul li label {
+	display: inline;
+	float: none;
+	width: auto;
+	font-weight: normal;
+	}
+form fieldset input.form-text,
+form fieldset textarea {
+	display: block;
+	width: 100%;
+	padding: 5px;
+	font-size: 14px;
+	border: solid 1px #a6a196;
+	background: #ffffff;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+	float: right;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	transition: all 0.3s ease-out;
+	
+	}
+form fieldset input.form-text:focus, 
+form#loginForm fieldset input.form-text:focus {
+	background: #fefefe;
+	}
+form fieldset textarea, 
+form#loginForm fieldset textarea {
+	height: 150px;
+	}
+form fieldset select, 
+form#loginForm fieldset select {
+	min-width: 25%;
+	margin: 0;
+	}
+form fieldset.radio ul {
+	margin: 5px 0 0 20%;
+	}
+form#loginForm fieldset.radio ul li {
+	margin: 0 0 5px 0;
+	}
+form fieldset.radio ul li:last-child {
+	margin: 0;
+	}
+form fieldset p.form-help {
+	margin: 5px 0 0 20%;
+	font-size: 12px;
+	color: #999;
+	}
+#signup-form form input[type="submit"] {
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 12px;	
+	font-weight: bold;
+	border: 1px solid #ccc;
+	transition: all 0.3s ease-out;
+	background: #eee;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	width: 45%;
+	}
+form input[type="submit"]:hover,
+form input[type="submit"]:focus {
+	border: 1px solid #bbb;
+	background: #e5e5e5;
+	}
+form input[type="submit"]:active {
+	border: 1px solid #ccc;
+	background: #eee;
+	}
+	
+span{
+
+	display: block;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-top: 12px;
+}
+
+label#check_error{
+	margin-left: 0px;
+	display: block;
+	color:rgba(225, 0, 0, 0.68);
+}
+
+
+label.error {float: left; color: rgba(225, 0, 0, 0.68); padding-left: .5em; vertical-align: top; width: 60%}
+fieldset input.required.form-text.error,
+textarea.required.error{border: 2px solid rgba(225, 0, 0, 0.38);}
+fieldset input.required.form-text.valid,
+textarea.required.valid{border:2px solid rgba(0, 128, 0, 0.38);}
+
+
+@media screen and (min-width: 770px){
+
+	
+}
+@media screen and (min-width: 600px) {
+	label.error{margin-left: 0px;}
+
+}
+@media screen and (max-width: 600px) {
+	#signup-content{
+		padding: 24px;
+	}
+	form fieldset label {
+		display: block;
+		float: none;
+		width: auto;
+		margin: 0 0 5px 0;
+		}
+	form fieldset.form-actions,
+	form fieldset.check,
+	form fieldset.radio ul,
+	form fieldset p.form-help {
+		margin-left: 0;
+		padding-left: 0;
+		}
+	form fieldset input.form-text,
+	form fieldset textarea {
+		width: 100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		}
+	#signup-form form input[type="submit"] {
+		width: 98%;
+	}
+
+}
+@media screen and (min-width:770px){
+	form input[type="submit"]{
+		width: 48%;
+	}
+

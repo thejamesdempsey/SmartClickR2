@@ -1,0 +1,152 @@
+
+extends layout
+
+block content
+	// Header Content //
+	header
+		section#wrapper
+			#header-container
+				.row
+					.nav-wrapper.twelve.columns
+						header.row
+							nav.top-bar
+								ul
+									li.name
+										h1: a(id='title', href='/') SmartClickR
+									li.toggle-topbar
+										a(href='#')
+								section
+									ul.right
+										li: a(id='home', class='small', href='index') Home
+										li: a(id='features', href='features') Features
+										li: a(id='signup', href='user') Sign Up
+										li: a(id='log', class='fancybox', href='login') Log In
+					//end nav-wrapper
+					.clear
+			//end header container
+			#feature-container.pad
+				#feature-wrapper.row
+
+					// Hero //
+					#hero.twelve.columns
+						#hero_content.twelve.columns
+							h2.eight.columns Tagline and Lorem Ipsum
+							a(class='button large three columns', href='signup') Create an Account
+						//end hero_content
+						p.twelve.columns Lorem ipsum dolor sit amet, 
+							| consectetur adipisicing elit, sed do eiusmod tempor incididunt 
+							| ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. 
+						#session_code.twelve.columns
+							h3.three.columns Enter Session Code: 
+							form#session
+								fieldset.six.columns
+									span
+										input(id='sessionCode', type='text', name='sessionCode', class='form-text', title='Session Code', placeholder='', autocomplete='off')
+										#clear.clear
+								fieldset.form-action.three.columns
+									input(type='submit', value='Submit')
+					.clear
+	//end section
+	hr
+
+	// Main Content //
+	#main_info.row.pad
+		section#usage.twelve.columns
+			#usage_main.six.columns
+				h3 How it works: 
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+					| incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					| exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+					| irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					| pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+			#interactive.six.columns
+				h3 Interactive Example
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+					| incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					| exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	hr
+
+	#info_container.row.pad
+		#info
+			section#questions.six.columns
+				h3 Question Types
+				ol
+					li: a(href='#') Free Response Example
+					li: a(href='#') Multiple Choice Example
+					li: a(href='#') True/False Example
+
+			section#interaction.six.columns
+				h3 Audience interaction
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+					| incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					| exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+					| irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					| pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+			section#classrooms.six.columns
+				h3 Use it in Your Classroom
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+					| incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					| exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+					| irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					| pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+			section#conferences.six.columns
+				h3 Perfect for conferences
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+					| incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					| exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+					| irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					| pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			hr
+	//end info container
+
+	hr
+
+	#mobile.row.pad
+		section#mobile_usage.twelve.column.bottom_space
+			h3 It works on mobile devices
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+				| incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+				| exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+	hr
+
+	// Footer Content //
+	footer
+		#footer_container.row.pad
+			#footer_content.twelve.columns
+				ul.four.columns
+					li: a(href='#') Home
+					li: a(href='#') Features
+					li: a(href='#') Sample Questions
+
+				ul.four.columns
+					li: a(href='#') About The Team
+					li: a(href='#') Blog
+					li: a(href='#') Contact
+
+				ul.four.columns
+					li: a(href='#') Privacy
+					li: a(href='#') Terms Of Service
+		hr
+		#legal.row.pad
+			span
+				| ©
+				| SmartClickR Inc, All Rights Reserved
+
+
+	// Popup Login //			
+	//include modals/login
+
+	script
+		$(document).foundationTopBar(); 
+
+	script
+		$(document).ready(function() {
+				$("a.fancybox").fancybox();
+			});
+
+
+
