@@ -14,20 +14,20 @@ block content
 					nav#user_nav.top-bar
 						ul
 							li.name
-								h1: a(id='title', href='/') SmartClickR
+								h1: a(id='title', href='/user/#{locals.User_ID}') SmartClickR
 							li.toggle-topbar
 								a(href='#')
 						section
 							ul.right
-								li: a(id='account', href='account') Account Settings
+								li: a(id='account', href='/user/#{locals.User_ID}/account') Account Settings
 								li: a(id='help', href='help-center') Help Center
-								li: a(id='logout', href='logout') Log Out
+								li: a(id='logout', href='/logout') Log Out
 			
 				article#user_hero.row
 					.twelve.columns
 						section#user_greeting
 
-							h1#user_hello Hello, Bradleye 
+							h1#user_hello Hello, #{locals.FirstName} #{locals.LastName}
 							// this type of call gets the desired info about the user
 							//#{locals.udata.FirstName} 
 							h3#custom_greeting Did you get a haircut? It looks great
@@ -125,4 +125,6 @@ block content
 				.clear
 
 	script(src="/javascript/userActions.js")
+	script
+
 			

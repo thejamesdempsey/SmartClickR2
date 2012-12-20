@@ -18,6 +18,8 @@ app.configure(function(){
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
+  app.use(express.cookieParser('the-secret-is-at-klines'));
+  app.use(express.session());
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
@@ -29,12 +31,14 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/features', routes.features);
 app.get('/user', user.signup);
 app.post('/user', user.createUser);
 app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
-app.get('/home/:User_ID', user.getHome);
+app.get('/user/:User_ID', user.getHome);
+app.get('/user/:User_ID/account', user.getAccount);
+app.get('/logout', user.logout);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
