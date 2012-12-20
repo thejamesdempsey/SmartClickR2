@@ -37,7 +37,7 @@ exports.getLogin = function(request, response) {
 // POST /login //
 exports.postLogin = function(request, response) {
 	AM.manualLogin(request.param('email'), request.param('password'), function(err, o) {
-		if(err) {
+		if(!o) {
 			response.send(err, 400);
 		} else {
 			// the user information/session is stored in this variable 

@@ -33,7 +33,7 @@ block content
 							h3#custom_greeting Did you get a haircut? It looks great
 						aside#actions_container.twelve.columns
 							div#user_actions.seven.columns
-								a(id="create_button",href="/create-poll", class="big button red") Create a Poll
+								a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
 								ul#hidden_actions
 									li#edit_poll
 										a(href="#", class="red") Edit
@@ -78,7 +78,7 @@ block content
 						else
 							article#no_polls
 								h1 You have not created any polls yet 
-								a(href="/create-poll", id="sub_create", class="red button") Start Your First Poll
+								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="red button") Start Your First Poll
 								span or read our 
 									a(href="#") getting started guide
 			.clear

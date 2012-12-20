@@ -1,59 +1,62 @@
-body#create_poll_body
-	header#create_poll_header
-		.row
-			.twelve.columns
-				nav#user_nav.top-bar
-					ul
-						li.name
-							h1: a(id='title', href='/') SmartClickR
-						li.toggle-topbar
-							a(href='#')
-					section
-						ul.right
-							li: a(id='account', href='account') Account Settings
-							li: a(id='help', href='help-center') Help Center
-							li: a(id='logout', href='logout') Log Out
-		
-				hr
-			article#user_hero.row
+extends layout
+
+block content
+	body#create_poll_body
+		header#create_poll_header
+			.row
 				.twelve.columns
-					section#create_title
-						h1 Build your poll
-					//section.create_actions
-					//	input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-					//	input(type="button", id="finishBtn", class="red button", value='Finish') 
-					//	input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
-					.clear
-
-			hr
-	section#content_container
-		.row
-			.twelve.columns	
-				section#create_content.twelve.columns.dropshadow
-					section#poll_info
-						fieldset.twelve.columns
-							label(for="pollName") Poll Title
-							input(type="text", id="pollName", name="pollName")
-						fieldset.twelve.columns
-							label(for="pollDescription") Poll Description 
-							textarea(id="pollDescription", name="pollDescription")
-						hr
-					section#question_container.animated.fadeInDown
-					include modals/poll-types
-
-					section.create_actions
-						input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-						input(type="button", id="finishBtn", class="red button", value='Finish') 
-						input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
-					.clear
-		hr
-	footer#create_footer
-		.row
-			.twelve.columns
-				section(style='height:200px')
-		hr
-script(src="/javascript/views/create-poll.js")
-script(src="/vendor/jquery.ui.effect-blind.js")
-script(src="/vendor/jquery-ui-1.9.2.custom.min.js")
-
+					nav#user_nav.top-bar
+						ul
+							li.name
+								h1: a(id='title', href='/user/#{locals.udata.User_ID}') SmartClickR
+							li.toggle-topbar
+								a(href='#')
+						section
+							ul.right
+								li: a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account Settings
+								li: a(id='help', href='help-center') Help Center
+								li: a(id='logout', href='/logout') Log Out
 			
+					hr
+				article#user_hero.row
+					.twelve.columns
+						section#create_title
+							h1 Build your poll
+						//section.create_actions
+						//	input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+						//	input(type="button", id="finishBtn", class="red button", value='Finish') 
+						//	input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
+						.clear
+
+				hr
+		section#content_container
+			.row
+				.twelve.columns	
+					section#create_content.twelve.columns.dropshadow
+						section#poll_info
+							fieldset.twelve.columns
+								label(for="pollName") Poll Title
+								input(type="text", id="pollName", name="pollName")
+							fieldset.twelve.columns
+								label(for="pollDescription") Poll Description 
+								textarea(id="pollDescription", name="pollDescription")
+							hr
+						section#question_container.animated.fadeInDown
+						include modals/poll-types
+
+						section.create_actions
+							input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+							input(type="button", id="finishBtn", class="red button", value='Finish') 
+							input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
+						.clear
+			hr
+		footer#create_footer
+			.row
+				.twelve.columns
+					section(style='height:200px')
+			hr
+	script(src="/javascript/views/create-poll.js")
+	script(src="/vendor/jquery.ui.effect-blind.js")
+	script(src="/vendor/jquery-ui-1.9.2.custom.min.js")
+
+				

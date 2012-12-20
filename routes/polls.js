@@ -1,1 +1,0 @@
-var PM = require('./modules/poll-manager');
