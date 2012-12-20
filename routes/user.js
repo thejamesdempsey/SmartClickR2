@@ -1,4 +1,5 @@
 var AM = require('./modules/account-manager');
+var PM = require('./modules/poll-manager');
 /*
  * GET users listing.
  */
@@ -56,11 +57,21 @@ exports.postLogin = function(request, response) {
 // GET /user/:User_ID //
 exports.getHome = function(request, response) {
 	var user = request.session.user;
-	console.log(user);
-	if(request.param('User_ID') == user.User_ID)
-		response.render('userhome.jade', { title: 'SmartClickR | Home', locals: user });
-	else
+	
+	if(request.param('User_ID') == user.User_ID) {
+		PM.getUsersPolls(user.User_ID, function(results) {
+			var polls = results;
+			//console.log(polls);
+			for(var i = 0; i < results.length; i++) {
+				var date = polls[i].CreateDate.toDateString().split(" ");
+				var formatDate = date[1] + " " + date[2] + ", " + date[3];
+				polls[i].CreateDate = formatDate;
+			}
+			response.render('userhome.jade', { title: 'SmartClickR | Home', locals: {udata: user, pdata: polls} });
+		});
+	} else {
 		response.redirect('/');
+	}
 }
 
 

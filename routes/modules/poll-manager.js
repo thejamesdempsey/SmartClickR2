@@ -65,10 +65,11 @@ PM.getPollId = function(sessionCode, callback) {
 
 PM.getUsersPolls = function(userId, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Owner_ID = ?', [userId], function(err, results) {
-		if(results.length > 0)
-			callback(results);
-		else
-			callback('no-polls-found');
+		callback(results);
+		// if(results.length > 0)
+		// 	callback(results);
+		// else
+		// 	callback('no-polls-found');
 	});
 }
 

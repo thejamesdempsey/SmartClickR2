@@ -14,12 +14,12 @@ block content
 					nav#user_nav.top-bar
 						ul
 							li.name
-								h1: a(id='title', href='/user/#{locals.User_ID}') SmartClickR
+								h1: a(id='title', href='/user/#{locals.udata.User_ID}') SmartClickR
 							li.toggle-topbar
 								a(href='#')
 						section
 							ul.right
-								li: a(id='account', href='/user/#{locals.User_ID}/account') Account Settings
+								li: a(id='account', href='/user/#{locals.udata.User_ID}/account') Account Settings
 								li: a(id='help', href='help-center') Help Center
 								li: a(id='logout', href='/logout') Log Out
 			
@@ -27,7 +27,7 @@ block content
 					.twelve.columns
 						section#user_greeting
 
-							h1#user_hello Hello, #{locals.FirstName} #{locals.LastName}
+							h1#user_hello Hello, #{locals.udata.FirstName} #{locals.udata.LastName}
 							// this type of call gets the desired info about the user
 							//#{locals.udata.FirstName} 
 							h3#custom_greeting Did you get a haircut? It looks great
@@ -51,72 +51,36 @@ block content
 			.row
 				.twelve.columns					
 					section#user_content.twelve.columns.dropshadow
-						article#no_polls
-							h1 You have not created any polls yet 
-							a(href="/create-poll", id="sub_create", class="red button") Start Your First Poll
-							span or read our 
-								a(href="#") getting started guide
-						div#poll_container
-							article#poll_brief.ten.columns
-								aside#sub_info
-									a(href="#")
+
+						if locals.pdata.length > 0
+							each poll in locals.pdata
+								div#poll_container
+									article#poll_brief.ten.columns
+										aside#sub_info
+											a(href="#")
+												span
+												a(href="#")
+													h1#poll_title #{poll.PollName}
+													#date-time #{poll.CreateDate}
+												.clear	
 										span
-										a(href="#")
-											h1#poll_title Poll Title
-											#date-time MM/DD/YY
-										.clear	
-								span
-									aside#sub_content
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-							ul#alt-actions.two.columns
-								li#edit_poll
-									a(href="#", class="button") Edit
-								li#delete_poll
-									a(href="#", class="button") Delete
-								li#start_poll
-									a(href="#", class="button") Start
-									
-							hr
-						div#poll_container.clear
-							article#poll_brief.ten.columns
-								aside#sub_info
-									a(href="#")
-										span
-										a(href="#")
-											h1#poll_title Poll Title
-											#date-time MM/DD/YY
-										.clear	
-								span
-									aside#sub_content
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-							ul#alt-actions.two.columns
-								li#edit_poll
-									a(href="#", class="button") Edit
-								li#delete_poll
-									a(href="#", class="button") Delete
-								li#start_poll
-									a(href="#", class="button") Start
-							hr
-						div#poll_container
-							article#poll_brief.ten.columns
-								aside#sub_info
-									a(href="#")
-										span
-										a(href="#")
-											h1#poll_title Poll Title
-											#date-time MM/DD/YY
-										.clear	
-								span
-									aside#sub_content
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-							ul#alt-actions.two.columns
-								li#edit_poll
-									a(href="#", class="button") Edit
-								li#delete_poll
-									a(href="#", class="button") Delete
-								li#start_poll
-									a(href="#", class="button") Start
-							hr
+											aside#sub_content
+												p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+									ul#alt-actions.two.columns
+										li#edit_poll
+											a(href="#", class="button") Edit
+										li#delete_poll
+											a(href="#", class="button") Delete
+										li#start_poll
+											a(href="#", class="button") Start
+										
+								hr
+						else
+							article#no_polls
+								h1 You have not created any polls yet 
+								a(href="/create-poll", id="sub_create", class="red button") Start Your First Poll
+								span or read our 
+									a(href="#") getting started guide
 			.clear
 		footer
 			.row
