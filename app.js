@@ -41,7 +41,8 @@ app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.get('/logout', user.logout);
 
-app.get('/user/:User_ID/poll/create', poll.createPoll);
+app.get('/user/:User_ID/poll/create', poll.getCreatePoll);
+app.post('/user/:User_ID/poll/create', poll.postCreatePoll);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

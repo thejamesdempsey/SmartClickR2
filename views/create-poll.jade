@@ -1,6 +1,10 @@
 extends layout
 
 block content
+
+	- user = typeof(locals.udata) != 'undefined' ? locals.udata : {}
+	input(type = 'hidden',value = user.User_ID)#userId
+
 	body#create_poll_body
 		header#create_poll_header
 			.row

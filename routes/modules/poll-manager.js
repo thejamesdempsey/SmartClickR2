@@ -46,7 +46,7 @@ PM.createNewPoll = function(newData, callback) {
 				if(err)
 					console.log(err);
 				else
-					callback(null);
+					callback(code);
 			});
 		});
 	});
@@ -64,7 +64,7 @@ PM.getPollId = function(sessionCode, callback) {
 // Get User's Polls //
 
 PM.getUsersPolls = function(userId, callback) {
-	connection.query('SELECT * FROM ' + TABLE + ' WHERE Owner_ID = ?', [userId], function(err, results) {
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Owner_ID = ? Order By CreateDate DESC', [userId], function(err, results) {
 		callback(results);
 		// if(results.length > 0)
 		// 	callback(results);
@@ -90,7 +90,7 @@ PM.changePollName = function(sessionCode, newName, callback) {
 // Edit/Update Poll Description //
 
 PM.updatePollDescription = function(sessionCode, description, callback) {
-	connection.query('UPATE ' + TABLE + ' SET PollDescription = ? WHERE SessionCode = ?', [description, sessionCode], function(err, results) {
+	connection.query('UPDATE ' + TABLE + ' SET PollDescription = ? WHERE SessionCode = ?', [description, sessionCode], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();

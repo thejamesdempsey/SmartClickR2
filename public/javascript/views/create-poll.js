@@ -24,6 +24,18 @@ $(document).ready(function() {
 		
 		$('#createPollBtn').click(function() {
 			$('ol.poll-grid').show("blind");
+			var userID = $('#userId').val();
+			var pollName = $('#pollName').val();
+			var pollDescription = $('#pollDescription').val();
+			$('#createPollBtn').hide();
+			$.ajax({
+				type:"POST",
+				url:"/user/" + userID + "/poll/create",
+				data: {"id": userID, "pollName": pollName, "pollDescription": pollDescription},
+				success: function(msg) {
+					console.log(msg + ' User_ID Sent!');
+				}
+			});
 		});
 
 	
