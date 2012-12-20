@@ -76,7 +76,7 @@ PM.getUsersPolls = function(userId, callback) {
 // Edit Poll Name //
 
 PM.changePollName = function(sessionCode, newName, callback) {
-	connection.query('UPDATE ' + TABLE + ' SET PollName = ? WHERE sessionCode = ?', [newName, sessionCode], function(err, results) {
+	connection.query('UPDATE ' + TABLE + ' SET PollName = ? WHERE SessionCode = ?', [newName, sessionCode], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
@@ -87,6 +87,19 @@ PM.changePollName = function(sessionCode, newName, callback) {
 	});
 }
 
+// Edit/Update Poll Description //
+
+PM.updatePollDescription = function(sessionCode, description, callback) {
+	connection.query('UPATE ' + TABLE + ' SET PollDescription = ? WHERE SessionCode = ?', [description, sessionCode], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection closed');
+		} else {
+			callback(null);
+		}
+	});
+}
 
 // Set Start Time //
 
