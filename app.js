@@ -43,6 +43,7 @@ app.get('/logout', user.logout);
 
 app.get('/user/:User_ID/poll/create', poll.getCreatePoll);
 app.post('/user/:User_ID/poll/create', poll.postCreatePoll);
+app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

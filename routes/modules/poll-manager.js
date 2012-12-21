@@ -124,8 +124,8 @@ PM.updateOrder = function(sessionCode, int, callback) {
 
 // Delete Poll //
 //should really be SessionCode
-PM.delete = function(userID, pollName, callback) {
-	connection.query('DELETE FROM ' + TABLE + ' WHERE Owner_ID = ? and PollName = ?', [userID, pollName], function(err, results) {
+PM.delete = function(pollID, callback) {
+	connection.query('DELETE FROM ' + TABLE + ' WHERE Poll_ID = ?', [pollID], function(err, results) {
 		if (err) {
 			console.log('Error: ', err);
 			connection.destroy();

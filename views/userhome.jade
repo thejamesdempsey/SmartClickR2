@@ -55,7 +55,7 @@ block content
 						if locals.pdata.length > 0
 							each poll in locals.pdata
 								div#poll_container
-									form(id='pollActions#{poll.Poll_ID}', class='pollActions', method='post', action='')
+									form(class='pollActions', method='post')
 										article#poll_brief.ten.columns
 											aside#sub_info
 												a(href="#")
@@ -69,11 +69,11 @@ block content
 													p #{poll.PollDescription}
 											h3 Session Code: #{poll.SessionCode}
 										ul#alt-actions.two.columns
-											li#edit_poll
+											li(id='edit_poll'+poll.Poll_ID)
 												a(href="#", class="button") Edit
-											li#delete_poll
-												a(href="#", class="button") Delete
-											li#start_poll
+											li(id='delete_poll'+poll.Poll_ID)
+												button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='button') Delete
+											li(id='start_poll'+poll.Poll_ID)
 												a(href="#", class="button") Start
 										
 								hr
