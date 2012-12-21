@@ -36,7 +36,7 @@ $(document).ready(function() {
 			success: function(msg) {
 				console.log('New Poll Created... Session Code:' + msg);
 				sessionCode = msg;
-				$.('#sessionCode').val(msg);
+				$('#sessionCode').val(msg);
 			}
 		});
 	});
