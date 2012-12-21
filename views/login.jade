@@ -29,11 +29,12 @@ block content
 									
 
 							.twelve.columns.no_pad
-							input(id='login_submit', type='submit', tabindex='3', value="Log In", onsubmit="Please Wait...")
-							label(id='termsLabel')
-								input#termsCheckBox(name='remember-me', type='checkbox')
-								| Remember Me
-								.clear
+							input(id='login_submit', type='submit', tabindex='3', value="Log In")
+							
+							label Remember Me
+								input(id='remember-me', type='checkbox', checked='true', name='remember-me')
+
+							.clear
 							p
 								a(id='needSignup', href='/user/create') Need to Signup? 
 							hr
