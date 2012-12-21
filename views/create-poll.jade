@@ -4,6 +4,7 @@ block content
 
 	- user = typeof(locals.udata) != 'undefined' ? locals.udata : {}
 	input(type = 'hidden',value = user.User_ID)#userId
+	input(type = 'hidden',value = '')#sessionCode
 
 	body#create_poll_body
 		header#create_poll_header

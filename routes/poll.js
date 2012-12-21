@@ -12,7 +12,7 @@ exports.postCreatePoll = function(request, response) {
 	PM.createNewPoll({ User_ID :request.param('id'),
 					   PollName: request.param('pollName') }, function(results) {
 		PM.updatePollDescription(results, request.param('pollDescription'), function(o) {
-			response.send('ok', 200);
+			response.send(results, 200);
 		});
 	});
 }
