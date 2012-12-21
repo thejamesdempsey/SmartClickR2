@@ -2,6 +2,8 @@ $(document).ready(function() {
 	var counter = 1;
 	var sesionCode = '';
 	$('#save_quitBtn').hide();
+	$("#pollName").focus();
+	
 	
 /*	
 	var autosaveOn = false;
@@ -40,7 +42,7 @@ saveAndQuit = function($form) {
 	
 	if( pollName == '' ) {
 		$('#poll_info').find(".error").hide();
-		$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		$('#pollNameLabel').after('<label class="error"> Your poll needs a name. If it doesnt have a name all the other polls will make fun of it on the playground. They might call it something like no-name loser.... </label>');
 		$('#pollName').addClass('errorBorder');
 		isValid = false;
 	}
@@ -63,14 +65,6 @@ saveAndQuit = function($form) {
 	});*/
 	
 		
-	$('#save_quitBtn').click(function() {
-		var pollName = $('#pollName').val().trim();
-		
-		if( pollName == '' ) {
-			$('#poll_info').find(".error").hide();
-			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
-		}
-	});
 		
 	$('#createPollBtn').click(function() {
 		var userID = $('#userId').val();
@@ -79,7 +73,7 @@ saveAndQuit = function($form) {
 		
 		if( pollName == '' ) {
 			$('#poll_info').find(".error").hide();
-			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+			$('#pollNameLabel').after('<label class="error"> Your poll needs a name.  </label>');
 		} else {
 			$('#poll_info').find(".error").hide();
 			$('ol.poll-grid').show("blind");
@@ -98,8 +92,7 @@ saveAndQuit = function($form) {
 		}
 		
 	});
-
-	
+		
 	
 	$('#multipleChoiceBtn').click(function() {
 		$('ol.poll-grid').hide("blind", "slow");

@@ -1,3 +1,5 @@
+$("#email").focus();
+
 $("#loginForm").ready(function() {
 	$(this).submit(function() {
 		if (false == validateLogin($(this))) {

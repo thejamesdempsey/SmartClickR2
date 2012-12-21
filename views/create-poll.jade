@@ -37,7 +37,7 @@ block content
 		section#content_container
 			.row
 				.twelve.columns	
-					form#create_content.twelve.columns.dropshadow
+					section#create_content.twelve.columns.dropshadow
 						section#poll_info
 							fieldset.twelve.columns
 								label(id="pollNameLabel",for="pollName") Poll Title  (required)
@@ -47,11 +47,12 @@ block content
 								textarea(id="pollDescription", name="pollDescription")
 							hr
 						section#question_container.animated.fadeInDown
-						include modals/poll-types
+						form
+							include modals/poll-types
 
-						section.create_actions
-							input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-							input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
+							section.create_actions
+								input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+								input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
 						.clear
 			hr
 		footer#create_footer
