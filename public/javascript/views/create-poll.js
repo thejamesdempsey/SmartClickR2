@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	var counter = 1;
 	var sesionCode = '';
+	$('#save_quitBtn').hide();
+	
 /*	
 	var autosaveOn = false;
 	function myAutosavedTextbox_onTextChanged()
@@ -21,52 +23,80 @@ $(document).ready(function() {
 	    }
 	}
 */	
-validateLogin = function($form) {
-	$form.find(".error").removeClass().hide();
+
+$('#create_content').ready(function() {
+	$(this).submit(function() {
+		if (false == saveAndQuit($(this))) {
+			return false;
+		}
+	});
+});
+
+saveAndQuit = function($form) {
+	var pollName = $('#pollName').val().trim();
 	isValid = true;
+	
+	$('#poll_info').find(".error").hide();
+	
+	if( pollName == '' ) {
+		$('#poll_info').find(".error").hide();
+		$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		$('#pollName').addClass('errorBorder');
+		isValid = false;
+	}
 		
-	var emailVal = $("#email").val();
-	var passwordVal = $('#password').val();
-	
-	if ( emailVal == '' && passwordVal == '') {
-		$("#login-container h1").after('<label class="error animated fadeInDown">No email or password? Thats silly.</label>');
-		isValid = false;
-	} else if(emailVal == '') {
-			$("#login-container h1").after('<label class="error animated fadeInDown">Yikes! You entered a password but no email address</label>');
-			isValid = false;
-	} else if( passwordVal == '' ) {
-		$("#login-container h1").after('<label class="error animated fadeInDown">Looks like you forgot your password, ' + emailVal + '.</label>');
-		isValid = false;
-	} 
-	
 	return isValid;
 	
 }
-
-	requiredTitle = function($('#poll_info') {
+/*	requiredTitle = function($('#poll_info') {
 		$('#poll_info').find(".error").removeClass().hide();
 		isFilled = true;
 		
 		var titleVal = $("#pollName").val();
+		
+		if ( titleVal == '' ) {
+			$('label #pollName').after('<label class="error animated fadeInDown"> Your poll needs a name. </label>');
+			isFilled = false;
+		}
+		
+		return isFilled;
+	});*/
+	
+		
+	$('#save_quitBtn').click(function() {
+		var pollName = $('#pollName').val().trim();
+		
+		if( pollName == '' ) {
+			$('#poll_info').find(".error").hide();
+			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		}
 	});
-	
-	
+		
 	$('#createPollBtn').click(function() {
-		$('ol.poll-grid').show("blind");
 		var userID = $('#userId').val();
-		var pollName = $('#pollName').val();
-		var pollDescription = $('#pollDescription').val();
-		$('#createPollBtn').hide();
-		$.ajax({
-			type:"POST",
-			url:"/user/" + userID + "/poll/create",
-			data: {"id": userID, "pollName": pollName, "pollDescription": pollDescription},
-			success: function(msg) {
-				console.log('New Poll Created... Session Code:' + msg);
-				sessionCode = msg;
-				$('#sessionCode').val(msg);
-			}
-		});
+		var pollName = $('#pollName').val().trim();
+		var pollDescription = $('#pollDescription').val();		
+		
+		if( pollName == '' ) {
+			$('#poll_info').find(".error").hide();
+			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		} else {
+			$('#poll_info').find(".error").hide();
+			$('ol.poll-grid').show("blind");
+			$('#createPollBtn').hide();
+			$('#save_quitBtn').show("blind");
+			$.ajax({
+				type:"POST",
+				url:"/user/" + userID + "/poll/create",
+				data: {"id": userID, "pollName": pollName, "pollDescription": pollDescription},
+				success: function(msg) {
+					console.log('New Poll Created... Session Code:' + msg);
+					sessionCode = msg;
+					$('#sessionCode').val(msg);
+				}
+			});
+		}
+		
 	});
 
 	

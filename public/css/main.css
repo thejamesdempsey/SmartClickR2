@@ -75,6 +75,14 @@ h3{
 	padding: 0;
 }
 
+#poll_info .error{
+	padding: 10px 0;
+}
+
+.errorBorder{
+	border: 1px solid red;
+}
+
 hr { 
 	border: solid #ddd; 
 	border-width: 1px 0 0; 
