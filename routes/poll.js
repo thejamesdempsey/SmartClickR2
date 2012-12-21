@@ -25,8 +25,9 @@ exports.updatePollDescription = function(request, response) {
 // POST /user/:User_ID/poll/delete/:Poll_ID
 exports.deletePoll = function(request, response) {
 
-	console.log(request.params.Poll_ID);
+	console.log('Poll ID', request.params.Poll_ID);
+	console.log('User ID', request.params.User_ID);
 	PM.delete(request.params.Poll_ID, function(results) {
-		response.redirect('/user/' + request.param.User_ID);
+		response.redirect('/user/' + request.params.User_ID);
 	});
 }

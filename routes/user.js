@@ -42,10 +42,10 @@ exports.postLogin = function(request, response) {
 		} else {
 			// the user information/session is stored in this variable 
 			// and passed to the userhome.jade page
-			request.session.user = o[0];
-			if(request.param('remember-me') == 'true'){
-				response.cookie('email', o.email, { maxAge: 900000 });
-				response.cookie('pass', o.password, { maxAge: 900000 });
+			request.session.user = o;
+			if(request.param('remember-me') == 'on') {
+				response.cookie('email', o[0].Email, { maxAge: 900000 });
+				response.cookie('pass', o[0].Password, { maxAge: 900000});
 			}
 			
 			//console.log(o);
@@ -56,8 +56,7 @@ exports.postLogin = function(request, response) {
 
 // GET /user/:User_ID //
 exports.getHome = function(request, response) {
-	var user = request.session.user;
-	//request.param('User_ID') == user.User_ID
+	var user = request.session.user[0];
 	if(request.session.user != null) {
 		PM.getUsersPolls(user.User_ID, function(results) {
 			var polls = results;
@@ -90,6 +89,9 @@ exports.updateAccount = function(request, response) {
 exports.logout = function(request, response) {
 	if(request.session.user) {
 		request.session.destroy();
+		response.clearCookie('email');
+		response.clearCookie('pass');
+		console.log(request.cookies.email, request.cookies.pass);
 	}
 	response.redirect('/');
 }
