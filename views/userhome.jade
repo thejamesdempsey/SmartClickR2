@@ -55,25 +55,26 @@ block content
 						if locals.pdata.length > 0
 							each poll in locals.pdata
 								div#poll_container
-									article#poll_brief.ten.columns
-										aside#sub_info
-											a(href="#")
-												span
+									form(id='pollActions#{poll.Poll_ID}', class='pollActions', method='post', action='')
+										article#poll_brief.ten.columns
+											aside#sub_info
 												a(href="#")
-													h1#poll_title #{poll.PollName}
-													#date-time #{poll.CreateDate}
-												.clear	
-										span
-											aside#sub_content
-												p #{poll.PollDescription}
-										h3 Session Code: #{poll.SessionCode}
-									ul#alt-actions.two.columns
-										li#edit_poll
-											a(href="#", class="button") Edit
-										li#delete_poll
-											a(href="#", class="button") Delete
-										li#start_poll
-											a(href="#", class="button") Start
+													span
+													a(href="#")
+														h1#poll_title #{poll.PollName}
+														#date-time #{poll.CreateDate}
+													.clear	
+											span
+												aside#sub_content
+													p #{poll.PollDescription}
+											h3 Session Code: #{poll.SessionCode}
+										ul#alt-actions.two.columns
+											li#edit_poll
+												a(href="#", class="button") Edit
+											li#delete_poll
+												a(href="#", class="button") Delete
+											li#start_poll
+												a(href="#", class="button") Start
 										
 								hr
 						else
