@@ -53,7 +53,7 @@ AM.manualLogin = function(email, pass, callback) {
 		if (results == undefined || results.length === 0) {
 			callback('user-not-found');
 		} else {
-			console.log(results);
+			//console.log(results);
 			bcrypt.compare(pass, results[0].Password, function(err, o) {
 				//console.log(o);
 				if (o){

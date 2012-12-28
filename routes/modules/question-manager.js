@@ -1,7 +1,7 @@
 /*
 * SmartClickR Question-Manager Module
 * Used for handling user accounts
-* Version: 0.0.1
+* Version: 0.5
 */
 
 
@@ -52,7 +52,7 @@ QM.newQuestion = function(questionData, callback) {
 					console.log('Connection is closed');
 				} else {
 					callback(results.insertId);
-					console.log('added new question');
+					//console.log('added new question');
 				}
 			});
 		});
@@ -84,7 +84,7 @@ QM.getQuestion = function(questionId, callback) {
 // Delete Question //
 QM.delete = function(questionData, callback) {
 // questionData = questionID, and pollId for now Use Order
-	connection.query('DELETE from ' + TABLE + ' WHERE QuestionsOrder = ? AND Poll_ID = ?', [questionData.Order, questionData.Poll_ID], function(err, results) {
+	connection.query('DELETE from ' + TABLE + ' WHERE Question_ID = ? AND Poll_ID = ?', [questionData.Question_ID, questionData.Poll_ID], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
@@ -96,12 +96,12 @@ QM.delete = function(questionData, callback) {
 	
 }
 
-/****** Ajax Updating! ******/
+/****** Updating Questions ******/
 
 // Update the stem //
 QM.updateStem = function(questionData, callback) {
-// questionData = question stem, order, pollId
-	connection.query('UPDATE ' + TABLE + ' SET Stem = ? WHERE QuestionsOrder = ? AND Poll_ID = ?', [questionData.Stem, questionData.Order, questionData.Poll_ID], function(err, results) {
+// questionData = question stem, questionID
+	connection.query('UPDATE ' + TABLE + ' SET Stem = ? WHERE Question_ID = ?', [questionData.Stem, questionData.Question_ID], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();

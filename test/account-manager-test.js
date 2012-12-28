@@ -3,10 +3,10 @@
 *  0.5.0
 */
 
-var AM = require('../app/server/modules/account-manager');
+var AM = require('../routes/modules/account-manager');
 var should = require('should');
 var mysql = require('mysql');
-var MC = require('../app/server/modules/my-info-config');
+var MC = require('../routes/modules/my-info-config'); 
 var bcrypt = require('bcrypt');
 
 var HOST = 'localhost';
