@@ -60,7 +60,8 @@ exports.getHome = function(request, response) {
 	if(request.session.user != null) {
 		PM.getUsersPolls(user.User_ID, function(results) {
 			var polls = results;
-			//console.log(polls);
+			
+			//format the date of each poll to display on the User's page
 			for(var i = 0; i < results.length; i++) {
 				var date = polls[i].CreateDate.toDateString().split(" ");
 				var formatDate = date[1] + " " + date[2] + ", " + date[3];

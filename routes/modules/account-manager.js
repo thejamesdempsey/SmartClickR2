@@ -50,7 +50,7 @@ AM.autoLogin = function(email, hashPass, callback) {
 
 AM.manualLogin = function(email, pass, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Email = ?', [email], function(error, results){
-		if (results.length === 0 || results == undefined) {
+		if (results == undefined || results.length === 0) {
 			callback('user-not-found');
 		} else {
 			console.log(results);

@@ -39,7 +39,8 @@ module.exports = QM;
 
 
 // Make a new Question //
-//pollid, order, questionType,
+//pollid, questionType
+//should return question id
 QM.newQuestion = function(questionData, callback) {
 	
 	QM.questionCount(questionData.Poll_ID, function(count) {
@@ -50,7 +51,7 @@ QM.newQuestion = function(questionData, callback) {
 					connection.destroy();
 					console.log('Connection is closed');
 				} else {
-					callback(null);
+					callback(results.insertId);
 					console.log('added new question');
 				}
 			});
