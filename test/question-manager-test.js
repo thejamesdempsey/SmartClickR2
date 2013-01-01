@@ -105,6 +105,18 @@ describe("The Question Manager Module", function() {
 			});
 		});
 
+		it("should return the specified question", function(done) {
+			QM.updateStem({ Stem 		: 'Dwight Shrute Loves Beets', 
+							Question_ID : questionID }, function(o) {
+
+				QM.getQuestion(questionID, function(result) {
+					result[0].Stem.should.equal('Dwight Shrute Loves Beets');
+					result[0].Question_ID.should.equal(questionID);
+					done();
+				});
+			});
+		})
+
 		it("should return all questions for a poll", function(done) {
 			QM.getQuestions(pollID, function(o) {
 				console.log(o);

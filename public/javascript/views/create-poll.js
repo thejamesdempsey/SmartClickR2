@@ -72,12 +72,12 @@ $(document).ready(function() {
 		var qTypes = [];
 
 		//validate that a poll name is there
-		// var pollName = $('#pollName').val().trim();
+		var pollName = $('#pollName').val().trim();
 		
-		// if( pollName == '' ) {
-		// 	$('#poll_info').find(".error").hide();
-		// 	$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
-		// }
+		if( pollName == '' ) {
+			$('#poll_info').find(".error").hide();
+			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		}
 
 		$('.question_wrap').each(function(index) {
 
@@ -87,13 +87,11 @@ $(document).ready(function() {
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
 				type = 'MC';
-				//qTypes.push(type);
 
 			} else if ($(this).children('h3').text() == 'True/False') {
 				
 				var tfQuestion = [];
 				type = 'TF';
-				//qTypes.push(type);
 				stem = $(this).children('textarea').val(); 
 				answer = $('input[name=tf_response]:checked').val();
 				tfQuestion.push(stem);
@@ -104,7 +102,6 @@ $(document).ready(function() {
 				
 				var frQuestion = [];
 				type = 'FR';
-				//qTypes.push(type);
 				stem = $(this).children('textarea').val();
 				frQuestion.push(stem);
 				questions.push(frQuestion);
@@ -113,33 +110,25 @@ $(document).ready(function() {
 
 				var nQuestion = [];
 				type = 'N';
-				//qTypes.push(type);
 				stem = $(this).children('textarea').val();
 				nQuestion.push(stem);
 				questions.push(nQuestion);
 
 			}
+			
 			$.ajax({
-			type:"POST",
-			url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-			data: {"questionType": type, "stem": stem, "answer": answer}
-			success: function() {
-				console.log('questions created');
-			}
-		});
+				type:"POST",
+				url:"/user/" + userID + "/poll/" + pollID + "/question/create",
+				data: {"questionTypes": qTypes, "questions": questions},
+				success: function() {
+					console.log('questions created');
+				}
+			});
 
 		});
 		
-		// $.ajax({
-		// 	type:"POST",
-		// 	url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-		// 	data: {"questionTypes": qTypes, "questions": questions}
-		// 	success: function() {
-		// 		console.log('questions created');
-		// 	}
-		// });
 
-		console.log($('.question_wrap').length);
+
 	});
 		
 	$('#createPollBtn').click(function() {

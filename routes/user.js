@@ -57,6 +57,7 @@ exports.postLogin = function(request, response) {
 // GET /user/:User_ID //
 exports.getHome = function(request, response) {
 	var user = request.session.user[0];
+	console.log(user);
 	if(request.session.user != null) {
 		PM.getUsersPolls(user.User_ID, function(results) {
 			var polls = results;
@@ -77,7 +78,8 @@ exports.getHome = function(request, response) {
 
 // GET /user/edit/:User_ID //
 exports.getAccount = function(request, response) {
-	var user = request.session.user;
+	var user = request.session.user[0];
+	console.log(user);
 	response.render('account.jade', { title: 'SmartClick | Account', locals: user });
 }
 
