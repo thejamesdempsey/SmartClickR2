@@ -67,22 +67,22 @@ $(document).ready(function() {
 		
 		var userID = $('#userId').val();
 		var pollID = $('#pollId').val();
-		var stem, content, answer, type;
-		var questions = [];
-		var qTypes = [];
+		var stem, content, answer, type, question;
 
 		//validate that a poll name is there
-		var pollName = $('#pollName').val().trim();
+		// var pollName = $('#pollName').val().trim();
 		
-		if( pollName == '' ) {
-			$('#poll_info').find(".error").hide();
-			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
-		}
+		// if( pollName == '' ) {
+		// 	$('#poll_info').find(".error").hide();
+		// 	$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		// }
 
 		$('.question_wrap').each(function(index) {
 
 			answer = '';
 			content = '';
+			question = [];
+
 			//console.log(index + 1, $(this).children('h3').text());
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
@@ -90,44 +90,35 @@ $(document).ready(function() {
 
 			} else if ($(this).children('h3').text() == 'True/False') {
 				
-				var tfQuestion = [];
 				type = 'TF';
 				stem = $(this).children('textarea').val(); 
 				answer = $('input[name=tf_response]:checked').val();
-				tfQuestion.push(stem);
-				tfQuestion.push(answer);
-				questions.push(tfQuestion);
+				question.push(stem);
+				question.push(answer);
 
 			} else if ($(this).children('h3').text() == 'Free Response') {
 				
-				var frQuestion = [];
 				type = 'FR';
 				stem = $(this).children('textarea').val();
-				frQuestion.push(stem);
-				questions.push(frQuestion);
+
 
 			} else {
 
-				var nQuestion = [];
 				type = 'N';
 				stem = $(this).children('textarea').val();
-				nQuestion.push(stem);
-				questions.push(nQuestion);
 
 			}
-			
+		
 			$.ajax({
 				type:"POST",
 				url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-				data: {"questionTypes": qTypes, "questions": questions},
-				success: function() {
-					console.log('questions created');
-				}
+				data: {"questionType": type, "questions": question}
 			});
 
 		});
 		
-
+		// redirect back to user's page after saving all questions
+		window.location = '/user/' + userID;
 
 	});
 		
@@ -150,7 +141,6 @@ $(document).ready(function() {
 				url:"/user/" + userID + "/poll/create",
 				data: {"id": userID, "pollName": pollName, "pollDescription": pollDescription},
 				success: function(msg) {
-					console.log('New Poll Created... Session Code:' + msg);
 					$('#sessionCode').val(msg.sessionCode);
 					$('#pollId').val(msg.pollID);
 				}

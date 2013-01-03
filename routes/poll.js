@@ -9,12 +9,12 @@ exports.getCreatePoll = function(request, response) {
 
 // POST /user/:User_ID/poll/create //
 exports.postCreatePoll = function(request, response) {
-	console.log("client sent.... " + request.param('id'));
-	PM.createNewPoll({ User_ID :request.param('id'),
+	console.log("client sent.... " + request.param('User_ID'));
+	PM.createNewPoll({ User_ID :request.param('User_ID'),
 					   PollName: request.param('pollName') }, function(code) {
 		PM.updatePollDescription(code, request.param('pollDescription'), function(o) {
 			PM.getPollId(code, function(pollId) {
-				response.send(200, {sessionCode: code, pollID : pollId});
+				response.send({sessionCode: code, pollID : pollId});
 			});
 		});
 	});
@@ -31,6 +31,8 @@ exports.deletePoll = function(request, response) {
 	console.log('Poll ID', request.params.Poll_ID);
 	console.log('User ID', request.params.User_ID);
 	PM.delete(request.params.Poll_ID, function(results) {
+
+		//must also delete all the corresponding questions and choices!!!
 		response.redirect('/user/' + request.params.User_ID);
 	});
 }

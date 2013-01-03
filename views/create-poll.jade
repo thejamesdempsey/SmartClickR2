@@ -38,7 +38,7 @@ block content
 		section#content_container
 			.row
 				.twelve.columns	
-					form(method='post')#create_content.twelve.columns.dropshadow
+					#create_content.twelve.columns.dropshadow
 						section#poll_info
 							fieldset.twelve.columns
 								label(id="pollNameLabel",for="pollName") Poll Title  (required)
@@ -52,7 +52,7 @@ block content
 
 						section.create_actions
 							input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-							input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...")
+							input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit')
 						.clear
 			hr
 		footer#create_footer
