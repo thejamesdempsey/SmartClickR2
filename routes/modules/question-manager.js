@@ -1,6 +1,6 @@
 /*
 * SmartClickR Question-Manager Module
-* Used for handling user accounts
+* Used for handling handling question resources
 * Version: 0.5
 */
 
@@ -81,10 +81,11 @@ QM.getQuestion = function(questionId, callback) {
 
 }
 
-// Delete Question //
-QM.delete = function(questionData, callback) {
-// questionData = questionID, and pollId for now Use Order
-	connection.query('DELETE from ' + TABLE + ' WHERE Question_ID = ? AND Poll_ID = ?', [questionData.Question_ID, questionData.Poll_ID], function(err, results) {
+
+// Delete All Questions from a Poll //
+// *** NEED TO TEST!!!! *** //
+QM.deleteAll = function(pollID, callback) {
+	connection.query('DELETE FROM ' + TABLE + ' WHERE POLL_ID = ?', [pollID], function(err, result) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
@@ -93,7 +94,6 @@ QM.delete = function(questionData, callback) {
 			callback(null);
 		}
 	});
-	
 }
 
 /****** Updating Questions ******/
@@ -114,7 +114,9 @@ QM.updateStem = function(questionData, callback) {
 }
 
 // Update question order //
-// * Only updates the specified questionId, not the whole thing //
+// *** NEED TO TEST!!!! *** //
+
+// * Only updates the specified questionId, not the whole thing yet//
 QM.updateOrder = function(questionData, callback) {
 // questionData = order, quesitonID, and pollID
 	connection.query('UPDATE ' + TABLE + ' SET QuestionsOrder = ? WHERE Poll_ID = ? AND Question_ID = ?', [questionData.Order, questionData.Poll_ID, questionData.Question_ID], function(err, results) {
@@ -128,6 +130,21 @@ QM.updateOrder = function(questionData, callback) {
 	});
 
 }
+
+// Delete Question //
+QM.delete = function(questionData, callback) {
+// questionData = questionID, and pollId for now Use Order
+	connection.query('DELETE from ' + TABLE + ' WHERE Question_ID = ? AND Poll_ID = ?', [questionData.Question_ID, questionData.Poll_ID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(null);
+		}
+	});	
+}
+
 
 
 /*****  Helper Methods  ******/
@@ -161,11 +178,6 @@ QM.getAnswerType = function(type, callback) {
 	callback(result);
 }
 
-
-
-QM.getQuestionID = function(questionData, callback) {
-	//questionData = order and pollID
-}
 
 QM.getNumberIfString = function(item, callback) {
 	var result;

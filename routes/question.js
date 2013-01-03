@@ -21,7 +21,3 @@ exports.postNewQuestion = function(request, response) {
 		}
 	});
 }
-
-// postMultipleChoice = function(a,b,c) {
-
-// }
