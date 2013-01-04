@@ -61,8 +61,18 @@ describe("The Choice Manager Module", function() {
 							   Content   : 'Jim Halpert' }, function(o) {
 
 				connection.query('SELECT * FROM ' + TABLE + ' WHERE Choice_ID = ?', [choiceID], function(err, results) {
-
 					results[0].Content.should.equal('Jim Halpert');
+					done();
+				});
+			});
+		});
+
+		it("should update the choice status to be Y", function(done) {
+			CM.updateChoiceStatus({ Choice_ID 	   : choiceID, 
+								   IsCorrectChoice : 'Y' }, function(o) {
+
+				connection.query('SELECT * FROM ' + TABLE + ' WHERE Choice_ID = ?', [choiceID], function(err, results) {
+					results[0].IsCorrectChoice.should.equal('Y');
 					done();
 				});
 			});
@@ -70,6 +80,24 @@ describe("The Choice Manager Module", function() {
 
 		after(function(done) {
 			CM.delete(choiceID, function(o) {
+				done();
+			});
+		});
+	});
+
+	describe("Choices for certain Question Types", function() {
+
+		var tfQuestionID;
+
+		before(function(done) {
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF'}, function(o) {
+				tfQuestionID = o;
+				done();
+			});
+		});
+
+		it("should create two choices for a TF question", function(done) {
+			CM.createTFChoices({ Question_ID : tfQuestionID, Answer : 'False' }, function(o) {
 				done();
 			});
 		});

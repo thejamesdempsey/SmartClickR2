@@ -26,11 +26,38 @@ var connection = mysql.createConnection({
 	database: DATABASE,
 });
 
+
 var CM = {};
 module.exports = CM;
 
 // Choices for True/False //
+// choiceData = questionID and answer 
+CM.createTFChoices = function(choiceData, callback) {
 
+	CM.createChoice(choiceData.Question_ID, function(one) {
+		CM.updateContent({ Choice_ID : one, Content : 'True' }, function(o) {
+			if(choiceData.Answer == 'True') {
+				CM.updateChoiceStatus({ Choice_ID : one, IsCorrectChoice : 'Y' }, function(out) { });
+			} else {
+				CM.updateChoiceStatus({ Choice_ID : one, IsCorrectChoice : 'N' }, function(out) { });
+			}
+			console.log('added true choice');
+
+			CM.createChoice(choiceData.Question_ID, function(two) {
+				CM.updateContent({ Choice_ID : two, Content : 'False' }, function(o) {
+					if(choiceData.Answer == 'False') {
+						CM.updateChoiceStatus({ Choice_ID : two, IsCorrectChoice : 'Y' }, function(out) { });
+					} else {
+						CM.updateChoiceStatus({ Choice_ID : two, IsCorrectChoice : 'N' }, function(out) { });
+					}
+					console.log('added false choice');
+					callback(null);
+				});
+			});
+		});
+	});
+	
+}
 
 // Choices for Multiple Choice //
 
@@ -44,9 +71,20 @@ module.exports = CM;
 
 
 // Delete All Choices for a Question //
+CM.deleteChoices = function(questionID, callback) {
+	connection.query('DELETE FROM ' + TABLE + ' WHERE Question_ID = ?', [questionID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(null);
+			console.log('all choices deleted from question ', questionID);
+		}
+	});
+}
 
-
-// Update Choice //
+/****** Update Choice *******/
 
 // Update Content //
 CM.updateContent = function(choiceData, callback) {
@@ -62,6 +100,19 @@ CM.updateContent = function(choiceData, callback) {
 }
 
 // Update Correct //
+// isCorrect must be either 'Y' or 'N'
+CM.updateChoiceStatus = function(choiceData, callback) {
+	connection.query('UPDATE ' + TABLE + ' SET IsCorrectChoice = ? WHERE Choice_ID = ?', [choiceData.IsCorrectChoice, choiceData.Choice_ID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(null);
+		}
+	});
+}
+
 
 /****** Helper Methods ******/
 

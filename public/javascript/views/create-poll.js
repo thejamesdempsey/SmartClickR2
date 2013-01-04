@@ -100,19 +100,21 @@ $(document).ready(function() {
 				
 				type = 'FR';
 				stem = $(this).children('textarea').val();
+				question.push(stem);
 
 
 			} else {
 
 				type = 'N';
 				stem = $(this).children('textarea').val();
+				question.push(stem);
 
 			}
 		
 			$.ajax({
 				type:"POST",
 				url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-				data: {"questionType": type, "questions": question}
+				data: {"questionType": type, "question": question}
 			});
 
 		});
