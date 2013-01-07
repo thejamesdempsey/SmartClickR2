@@ -83,8 +83,7 @@ QM.getQuestion = function(questionId, callback) {
 
 
 // Delete All Questions from a Poll //
-// *** NEED TO TEST!!!! *** //
-QM.deleteAll = function(pollID, callback) {
+QM.deleteQuestions = function(pollID, callback) {
 	connection.query('DELETE FROM ' + TABLE + ' WHERE POLL_ID = ?', [pollID], function(err, result) {
 		if(err) {
 			console.log('Error: ', err);

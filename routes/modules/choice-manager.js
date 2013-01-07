@@ -34,29 +34,25 @@ module.exports = CM;
 // choiceData = questionID and answer 
 CM.createTFChoices = function(choiceData, callback) {
 
-	CM.createChoice(choiceData.Question_ID, function(one) {
-		CM.updateContent({ Choice_ID : one, Content : 'True' }, function(o) {
-			if(choiceData.Answer == 'True') {
-				CM.updateChoiceStatus({ Choice_ID : one, IsCorrectChoice : 'Y' }, function(out) { });
-			} else {
-				CM.updateChoiceStatus({ Choice_ID : one, IsCorrectChoice : 'N' }, function(out) { });
-			}
-			console.log('added true choice');
-
-			CM.createChoice(choiceData.Question_ID, function(two) {
-				CM.updateContent({ Choice_ID : two, Content : 'False' }, function(o) {
-					if(choiceData.Answer == 'False') {
-						CM.updateChoiceStatus({ Choice_ID : two, IsCorrectChoice : 'Y' }, function(out) { });
-					} else {
-						CM.updateChoiceStatus({ Choice_ID : two, IsCorrectChoice : 'N' }, function(out) { });
-					}
-					console.log('added false choice');
-					callback(null);
-				});
+	CM.choiceCount(choiceData.Question_ID, function(count) {
+		var isCorrect1 = (choiceData.Answer == 'True' ? 'Y' : 'N');
+		
+		connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, count, isCorrect1, 'True'], function(err, results) {
+			
+			var isCorrect2 = (choiceData.Answer == 'False' ? 'Y' : 'N');
+			connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, count + 1, isCorrect2, 'False'], function(err, o) {
+				if(err) {
+					console.log('Error: ', err);
+					connection.destroy();
+					console.log('Connection is closed');
+				} else {
+					callback({ idTrue  : results.insertId,
+							   idFalse : o.insertId });
+				}
 			});
 		});
-	});
-	
+		
+	});	
 }
 
 // Choices for Multiple Choice //
@@ -79,7 +75,7 @@ CM.deleteChoices = function(questionID, callback) {
 			console.log('Connection is closed');
 		} else {
 			callback(null);
-			console.log('all choices deleted from question ', questionID);
+			//console.log('all choices deleted from question ', questionID);
 		}
 	});
 }
@@ -136,9 +132,9 @@ CM.createChoice = function(questionID, callback) {
 CM.choiceCount = function(questionID, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [questionID], function(err, results) {
 		if(results.length > 0)
-			callback(results.length);
+			callback(results.length + 1);
 		else
-			callback(0);
+			callback(1);
 	});
 }
 

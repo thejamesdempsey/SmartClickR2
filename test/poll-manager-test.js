@@ -97,7 +97,7 @@ describe("The Poll Manager Module", function() {
 			});
 		});
 
-		it("should return the 2 Polls that belong to user 47", function(done) {
+		it("should return the 3 Polls that belong to user 47", function(done) {
 			PM.getUsersPolls(47, function(o) {
 				console.log(o);
 				o.length.should.equal(2);
@@ -131,5 +131,4 @@ describe("The Poll Manager Module", function() {
 			});
 		});
 	});
-
 });
