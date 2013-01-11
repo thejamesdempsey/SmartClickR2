@@ -33,29 +33,31 @@ module.exports = CM;
 // Choices for True/False //
 // choiceData = questionID and answer 
 CM.createTFChoices = function(choiceData, callback) {
+		
+	var answer, content;
 
-	CM.choiceCount(choiceData.Question_ID, function(count) {
-		var isCorrect1 = (choiceData.Answer == 'True' ? 'Y' : 'N');
+	if(choiceData.Answer == 'True') {
+		content = 'True'
+		answer = 'T';
+	} else if(choiceData.Answer == 'False') {
+		answer = 'F';
+		content = 'False';
+	} 
+	
+	connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, 1, answer, content], function(err, results) {
 		
-		connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, count, isCorrect1, 'True'], function(err, results) {
-			
-			var isCorrect2 = (choiceData.Answer == 'False' ? 'Y' : 'N');
-			connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, count + 1, isCorrect2, 'False'], function(err, o) {
-				if(err) {
-					console.log('Error: ', err);
-					connection.destroy();
-					console.log('Connection is closed');
-				} else {
-					callback({ idTrue  : results.insertId,
-							   idFalse : o.insertId });
-				}
-			});
-		});
-		
-	});	
+	});
 }
 
 // Choices for Multiple Choice //
+
+CM.createMCChoices = function(choiceData, callback) {
+
+	var answer;
+	connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, choiceData.Order, answer, choiceData.Content], function(err, results) {
+
+	});
+}
 
 // Choices for Numeric //
 

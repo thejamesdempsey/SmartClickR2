@@ -18,22 +18,25 @@ exports.postNewQuestion = function(request, response) {
 			var choices = request.param('question')[1];
 			console.log('Stem ',request.param('question')[0]);
 			
-			for(var i = 0; i < choices.length; i++)
+			for(var i = 0; i < choices.length; i++) {
+					
+			}
 				console.log('Choice ' + i + ': ' + choices[i]);
 
 		} else if (request.param('questionType') == 'TF') {
 
 			stem = request.body.question[0];
+			console.log(stem);
+			console.log(request.body.question[1]);
 
 			QM.updateStem({ Stem : stem,
 			 				Question_ID : qid }, function(o) {
-
-				//if the post body has 2 things, then there is an answer
-				var answer = (request.body.question.length == 2 ? request.body.question[1] : '');
-				console.log(answer);
-				CM.createTFChoices({ Question_ID : qid, Answer : answer }, function(o) {
-					// create choices for TF
-				});
+				
+				if(request.body.question.length == 2) {
+					CM.createTFChoices({ Question_ID : qid, Answer : request.body.question[1] }, function(o) {
+						// create choices for TF
+					});
+				}
 			});				
 
 		} else if (request.param('questionType') == 'FR') {
