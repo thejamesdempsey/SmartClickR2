@@ -140,6 +140,9 @@ saveAndQuit = function($form) {
 		format += "<span>False</span>";
 		format += "<input type='radio' class='tf_response' name='question-"+counter+"_response-false' placeholder='I am false'/>";
 		format += "</fieldset>";
+		format += "<fieldset>";
+		format += "<input type='checkbox' class='no_correct' name='no_correct'>No correct answer</input>"	
+		format += "</fieldset>";
 		format += "<hr>";
 		
 		$(format).appendTo(('#question_container')).fadeIn("blind");
