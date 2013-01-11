@@ -26,30 +26,37 @@ $(document).ready(function() {
 	}
 */	
 
-$('#create_content').ready(function() {
-	$(this).submit(function() {
-		if (false == saveAndQuit($(this))) {
-			return false;
-		}
+	$('#create_content').ready(function() {
+		$(this).submit(function() {
+			if (false == saveAndQuit($(this))) {
+				return false;
+			}
+		});
 	});
-});
 
-saveAndQuit = function($form) {
-	var pollName = $('#pollName').val().trim();
-	isValid = true;
-	
-	$('#poll_info').find(".error").hide();
-	
-	if( pollName == '' ) {
+	saveAndQuit = function($form) {
+		var pollName = $('#pollName').val().trim();
+		isValid = true;
+		
 		$('#poll_info').find(".error").hide();
+<<<<<<< HEAD
 		$('#pollNameLabel').after('<label class="error"> Your poll needs a name. If it doesnt have a name all the other polls will make fun of it on the playground. They might call it something like no-name loser.... </label>');
 		$('#pollName').addClass('errorBorder');
 		isValid = false;
 	}
+=======
+>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
 		
-	return isValid;
-	
-}
+		if( pollName == '' ) {
+			$('#poll_info').find(".error").hide();
+			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+			$('#pollName').addClass('errorBorder');
+			isValid = false;
+		}
+			
+		return isValid;
+		
+	}
 /*	requiredTitle = function($('#poll_info') {
 		$('#poll_info').find(".error").removeClass().hide();
 		isFilled = true;
@@ -65,11 +72,85 @@ saveAndQuit = function($form) {
 	});*/
 	
 		
+<<<<<<< HEAD
+=======
+	$('#save_quitBtn').click(function() {
+		
+		var userID = $('#userId').val();
+		var pollID = $('#pollId').val();
+		var stem, answer, type, question, mChoices;
+
+		//validate that a poll name is there
+		// var pollName = $('#pollName').val().trim();
+		
+		// if( pollName == '' ) {
+		// 	$('#poll_info').find(".error").hide();
+		// 	$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+		// }
+
+
+		$('.question_wrap').each(function(index) {
+
+			answer = '';
+			stem = '';
+			question = [];
+			mChoices = [];
+
+			//console.log(index + 1, $(this).children('h3').text());
+			if($(this).children('h3').text() == 'Multiple Choice') {
+				
+				type = 'MC';
+				stem = $(this).children('textarea').val();
+				$('.mc_response', this).each(function(index) {
+					mChoices.push($(this).val());
+					//console.log('Amount of N choices ', index);
+				});
+				question.push(stem);
+				question.push(mChoices);
+
+			} else if ($(this).children('h3').text() == 'True/False') {
+				
+				type = 'TF';
+				stem = $(this).children('textarea').val(); 
+				answer = $('input[name=tf_response]:checked').val();
+				question.push(stem);
+				question.push(answer);
+
+			} else if ($(this).children('h3').text() == 'Free Response') {
+				
+				type = 'FR';
+				stem = $(this).children('fieldset').children('textarea').val();
+				question.push(stem);
+
+
+			} else {
+
+				type = 'N';
+				stem = $(this).children('fieldset').children('textarea').val();
+				question.push(stem);
+
+			}
+		
+			$.ajax({
+				type:"POST",
+				url:"/user/" + userID + "/poll/" + pollID + "/question/create",
+				data: {"questionType": type, "question": question}
+			});
+
+			// redirect back to user's page after saving all questions
+			if($('.question_wrap').length == (index + 1))
+				window.location = '/user/' + userID;
+				//alert('good job!');
+		});
+
+	});
+>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
 		
 	$('#createPollBtn').click(function() {
 		var userID = $('#userId').val();
 		var pollName = $('#pollName').val().trim();
 		var pollDescription = $('#pollDescription').val();		
+
 		
 		if( pollName == '' ) {
 			$('#poll_info').find(".error").hide();
@@ -84,9 +165,8 @@ saveAndQuit = function($form) {
 				url:"/user/" + userID + "/poll/create",
 				data: {"id": userID, "pollName": pollName, "pollDescription": pollDescription},
 				success: function(msg) {
-					console.log('New Poll Created... Session Code:' + msg);
-					sessionCode = msg;
-					$('#sessionCode').val(msg);
+					$('#sessionCode').val(msg.sessionCode);
+					$('#pollId').val(msg.pollID);
 				}
 			});
 		}
@@ -95,7 +175,7 @@ saveAndQuit = function($form) {
 		
 	
 	$('#multipleChoiceBtn').click(function() {
-		$('ol.poll-grid').hide("blind", "slow");
+		//$('ol.poll-grid').hide("blind", "slow");
 		
 		var format = "<article class='question_wrap' id='multipleChoice_question" + counter + "'>";
 		
@@ -126,7 +206,7 @@ saveAndQuit = function($form) {
 	});	
 		
 	$('#trueFalseBtn').click(function() {
-		$('ol.poll-grid').hide("blind", "slow");
+		//$('ol.poll-grid').hide("blind", "slow");
 		
 		var format = "<article class='question_wrap' id='trueFalse_question" + counter + "'>";
 		
@@ -134,11 +214,11 @@ saveAndQuit = function($form) {
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
 		format += "<fieldset class='six columns'>";
 		format += "<span>True</span>";
-		format += "<input type='radio' class='tf_response' name='question-"+counter+"_response-true' placeholder='I am true, or am I?'/>";
+		format += "<input type='radio' class='tf_response' value='True' name='tf_response' placeholder='I am true, or am I?'/>";
 		format += "</fieldset>"
 		format += "<fieldset class='six columns'>";
 		format += "<span>False</span>";
-		format += "<input type='radio' class='tf_response' name='question-"+counter+"_response-false' placeholder='I am false'/>";
+		format += "<input type='radio' class='tf_response' value='False' name='tf_response' placeholder='I am false'/>";
 		format += "</fieldset>";
 		format += "<fieldset>";
 		format += "<input type='checkbox' class='no_correct' name='no_correct'>No correct answer</input>"	
@@ -152,7 +232,7 @@ saveAndQuit = function($form) {
 	});
 	
 	$('#freeResponseBtn').click(function() {
-		$('ol.poll-grid').hide("blind", "slow");
+		//$('ol.poll-grid').hide("blind", "slow");
 		
 		var format = "<article class='question_wrap' id='freeResponse_question" + counter + "'>";
 		
@@ -169,7 +249,7 @@ saveAndQuit = function($form) {
 	});
 	
 	$('#freeResponseNumericBtn').click(function() {
-		$('ol.poll-grid').hide("blind", "slow");
+		//$('ol.poll-grid').hide("blind", "slow");
 		
 		var format = "<article class='question_wrap' id='freeResponseNumeric_question" + counter + "'>";
 
@@ -184,6 +264,7 @@ saveAndQuit = function($form) {
 		
 		counter++;
 	});
+
 	
 });
 

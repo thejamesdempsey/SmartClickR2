@@ -3,10 +3,10 @@
 *	Version 0.0.1
 */
 
-var PM = require('../app/server/modules/poll-manager');
+var PM = require('../routes/modules/poll-manager');
 var should = require('should');
 var mysql = require('mysql');
-var MC = require('../app/server/modules/my-info-config');
+var MC = require('../routes/modules/my-info-config');
 
 var HOST = 'localhost';
 var PORT = 3306;
@@ -74,26 +74,32 @@ describe("The Poll Manager Module", function() {
 	
 	describe("Creating and Updating Polls", function() {
 		
+		var sessionCode1 = '';
+		var sessionCode2 = '';
+
 		before(function(done) {
 			PM.createNewPoll({
 				User_ID  : 47,
 				PollName : 'Test Poll 1'
 			}, function(o) {
+				sessionCode1 = o;
 				done();
 			});
 		});
 
-		it("should create a new poll given the user_id and pollname", function(done) {
+		it("should create a new poll given the user_id and pollname and return a the sesioncode", function(done) {
 			PM.createNewPoll({
 				User_ID  : 47,
 				PollName : 'Test Poll 2' 
-			}, function(err, o) {
+			}, function(o) {
+				sessionCode2 = o;
 				done();
 			});
 		});
 
-		it("should return the 2 Polls that belong to user 47", function(done) {
+		it("should return the 3 Polls that belong to user 47", function(done) {
 			PM.getUsersPolls(47, function(o) {
+				console.log(o);
 				o.length.should.equal(2);
 				done();
 			});
@@ -111,17 +117,18 @@ describe("The Poll Manager Module", function() {
 			});
 		});
 
-		// it("should return an array with all the User's polls", function(done) {
-		// 	PM.
-		// });
-
 		after(function(done) {
-			PM.delete(47, 'Test Poll 2', function(o) {
-				PM.delete(47, 'Test Awesome!', function(o) {
-					done();
+			console.log(sessionCode1, sessionCode2);
+			PM.getPollId(sessionCode1, function(id1) {
+				PM.getPollId(sessionCode2, function(id2) {
+					console.log(id1, id2);
+					PM.delete(id2, function(delete2) {
+						PM.delete(id1, function(delete1) {
+							done();
+						});						
+					});
 				});
 			});
 		});
 	});
-
 });

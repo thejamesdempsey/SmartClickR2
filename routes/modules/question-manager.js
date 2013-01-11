@@ -1,7 +1,7 @@
 /*
 * SmartClickR Question-Manager Module
-* Used for handling user accounts
-* Version: 0.0.1
+* Used for handling handling question resources
+* Version: 0.5
 */
 
 
@@ -39,7 +39,8 @@ module.exports = QM;
 
 
 // Make a new Question //
-//pollid, order, questionType,
+//pollid, questionType
+//should return question id
 QM.newQuestion = function(questionData, callback) {
 	
 	QM.questionCount(questionData.Poll_ID, function(count) {
@@ -50,8 +51,8 @@ QM.newQuestion = function(questionData, callback) {
 					connection.destroy();
 					console.log('Connection is closed');
 				} else {
-					callback(null);
-					console.log('added new question');
+					callback(results.insertId);
+					//console.log('added new question');
 				}
 			});
 		});
@@ -80,10 +81,10 @@ QM.getQuestion = function(questionId, callback) {
 
 }
 
-// Delete Question //
-QM.delete = function(questionData, callback) {
-// questionData = questionID, and pollId for now Use Order
-	connection.query('DELETE from ' + TABLE + ' WHERE QuestionsOrder = ? AND Poll_ID = ?', [questionData.Order, questionData.Poll_ID], function(err, results) {
+
+// Delete All Questions from a Poll //
+QM.deleteQuestions = function(pollID, callback) {
+	connection.query('DELETE FROM ' + TABLE + ' WHERE POLL_ID = ?', [pollID], function(err, result) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
@@ -92,15 +93,14 @@ QM.delete = function(questionData, callback) {
 			callback(null);
 		}
 	});
-	
 }
 
-/****** Ajax Updating! ******/
+/****** Updating Questions ******/
 
 // Update the stem //
 QM.updateStem = function(questionData, callback) {
-// questionData = question stem, order, pollId
-	connection.query('UPDATE ' + TABLE + ' SET Stem = ? WHERE QuestionsOrder = ? AND Poll_ID = ?', [questionData.Stem, questionData.Order, questionData.Poll_ID], function(err, results) {
+// questionData = question stem, questionID
+	connection.query('UPDATE ' + TABLE + ' SET Stem = ? WHERE Question_ID = ?', [questionData.Stem, questionData.Question_ID], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
@@ -113,7 +113,9 @@ QM.updateStem = function(questionData, callback) {
 }
 
 // Update question order //
-// * Only updates the specified questionId, not the whole thing //
+// *** NEED TO TEST!!!! *** //
+
+// * Only updates the specified questionId, not the whole thing yet//
 QM.updateOrder = function(questionData, callback) {
 // questionData = order, quesitonID, and pollID
 	connection.query('UPDATE ' + TABLE + ' SET QuestionsOrder = ? WHERE Poll_ID = ? AND Question_ID = ?', [questionData.Order, questionData.Poll_ID, questionData.Question_ID], function(err, results) {
@@ -127,6 +129,21 @@ QM.updateOrder = function(questionData, callback) {
 	});
 
 }
+
+// Delete Question //
+QM.delete = function(questionData, callback) {
+// questionData = questionID, and pollId for now Use Order
+	connection.query('DELETE from ' + TABLE + ' WHERE Question_ID = ? AND Poll_ID = ?', [questionData.Question_ID, questionData.Poll_ID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(null);
+		}
+	});	
+}
+
 
 
 /*****  Helper Methods  ******/
@@ -160,11 +177,6 @@ QM.getAnswerType = function(type, callback) {
 	callback(result);
 }
 
-
-
-QM.getQuestionID = function(questionData, callback) {
-	//questionData = order and pollID
-}
 
 QM.getNumberIfString = function(item, callback) {
 	var result;

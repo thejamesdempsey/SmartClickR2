@@ -1,0 +1,32 @@
+{
+	"question1" : {
+		"type" : "FR",
+		"stem" : "What is your favorite color?",
+		"answer" : ""
+	}
+}
+
+{
+	"question2" : {
+		"type" : "TF",
+		"stem" : "I like engineering/manufacturing",
+		"answer" : "False"
+	}
+}
+
+{
+	"question3" : {
+		"type" : "MC", 
+		"stem" : "What color is the sky?",
+		"answer" : "C",
+		"choices" : ["blue", "green", "purple", "orange"]
+	}
+}
+
+{
+	"question4" : {
+		"type" : "N",
+		"stem" : "What is 3 + 3?", 
+		"answer" : "6"
+	}
+}

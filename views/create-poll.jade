@@ -5,6 +5,7 @@ block content
 	- user = typeof(locals.udata) != 'undefined' ? locals.udata : {}
 	input(type = 'hidden',value = user.User_ID)#userId
 	input(type = 'hidden',value = '')#sessionCode
+	input(type = 'hidden',value = '')#pollId
 
 	body#create_poll_body
 		header#create_poll_header
@@ -37,7 +38,11 @@ block content
 		section#content_container
 			.row
 				.twelve.columns	
+<<<<<<< HEAD
 					section#create_content.twelve.columns.dropshadow
+=======
+					#create_content.twelve.columns.dropshadow
+>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
 						section#poll_info
 							fieldset.twelve.columns
 								label(id="pollNameLabel",for="pollName") Poll Title  (required)
@@ -50,9 +55,15 @@ block content
 						form
 							include modals/poll-types
 
+<<<<<<< HEAD
 							section.create_actions
 								input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
 								input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
+=======
+						section.create_actions
+							input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+							input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit')
+>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
 						.clear
 			hr
 		footer#create_footer
