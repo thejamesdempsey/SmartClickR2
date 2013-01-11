@@ -1,5 +1,5 @@
-$(document).ready(function() {
-	$('#login_submit').click(function() {
+$("#loginForm").ready(function() {
+	$(this).submit(function() {
 		
 		var email = $('#email').val().trim();
 		var pass = $('#password').val().trim();
@@ -7,16 +7,16 @@ $(document).ready(function() {
 		console.log('Errrybody was Kung Fu fighting');
 		console.log(email, pass);
 		
-		$('#loginForm').ajaxForm({
+		$(this).ajaxForm({
 			type 	: 'POST',
 			data 	: {"email": email, "password": pass},
 			url  	: '/login',
 		   	error 	: function(jqHRX, textStatus, errorThrown){
-							console.log(
-								"the following error occured:" +
-								textStatus, errorThrown
-								);
-						}
+					if (textStatus == 'error'){
+						$("#login-container h1").after('<label class="error"> <p>Your username or password was incorrect</label>');
+					}						
+						console.log(jqHRX.status, textStatus, errorThrown);
+					}
 						//if ( error == 'user-not-found') {
 						// 	$(body).after('<div class="top-error"> <p>Your username was not found</p></div>')
 						// }
