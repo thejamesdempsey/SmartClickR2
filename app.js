@@ -1,7 +1,8 @@
-
-/**
- * Module dependencies.
- */
+/***********
+*  SmartClickR
+*  Version 0.4.7
+*  Authors: Daniel To, Jimmy Dempsey, Brad Fischer, Billy Godfrey
+**/
 
 var express = require('express')
   , routes = require('./routes')

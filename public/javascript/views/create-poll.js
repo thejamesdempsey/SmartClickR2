@@ -67,7 +67,7 @@ $(document).ready(function() {
 		
 		var userID = $('#userId').val();
 		var pollID = $('#pollId').val();
-		var stem, content, answer, type, question;
+		var stem, answer, type, question, mChoices;
 
 		//validate that a poll name is there
 		// var pollName = $('#pollName').val().trim();
@@ -77,16 +77,25 @@ $(document).ready(function() {
 		// 	$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
 		// }
 
+
 		$('.question_wrap').each(function(index) {
 
 			answer = '';
-			content = '';
+			stem = '';
 			question = [];
+			mChoices = [];
 
 			//console.log(index + 1, $(this).children('h3').text());
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
 				type = 'MC';
+				stem = $(this).children('textarea').val();
+				$('.mc_response', this).each(function(index) {
+					mChoices.push($(this).val());
+					//console.log('Amount of N choices ', index);
+				});
+				question.push(stem);
+				question.push(mChoices);
 
 			} else if ($(this).children('h3').text() == 'True/False') {
 				
@@ -99,14 +108,14 @@ $(document).ready(function() {
 			} else if ($(this).children('h3').text() == 'Free Response') {
 				
 				type = 'FR';
-				stem = $(this).children('textarea').val();
+				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
 
 
 			} else {
 
 				type = 'N';
-				stem = $(this).children('textarea').val();
+				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
 
 			}
@@ -117,10 +126,11 @@ $(document).ready(function() {
 				data: {"questionType": type, "question": question}
 			});
 
+			// redirect back to user's page after saving all questions
+			if($('.question_wrap').length == (index + 1))
+				window.location = '/user/' + userID;
+				//alert('good job!');
 		});
-		
-		// redirect back to user's page after saving all questions
-		window.location = '/user/' + userID;
 
 	});
 		

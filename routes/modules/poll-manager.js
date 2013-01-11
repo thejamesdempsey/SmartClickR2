@@ -8,6 +8,8 @@
 // Required Modules //
 var MC = require('./my-info-config'); 
 var mysql = require('mysql');
+var QM = require('./question-manager');
+var CM = require('./choice-manager');
 
 // DB Credentials //
 var HOST = 'localhost';
@@ -121,6 +123,7 @@ PM.updateOrder = function(sessionCode, int, callback) {
 // Delete Poll //
 //should really be SessionCode
 PM.delete = function(pollID, callback) {
+
 	connection.query('DELETE FROM ' + TABLE + ' WHERE Poll_ID = ?', [pollID], function(err, results) {
 		if (err) {
 			console.log('Error: ', err);
