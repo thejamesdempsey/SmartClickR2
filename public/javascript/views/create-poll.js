@@ -38,15 +38,6 @@ $(document).ready(function() {
 		var pollName = $('#pollName').val().trim();
 		isValid = true;
 		
-		$('#poll_info').find(".error").hide();
-<<<<<<< HEAD
-		$('#pollNameLabel').after('<label class="error"> Your poll needs a name. If it doesnt have a name all the other polls will make fun of it on the playground. They might call it something like no-name loser.... </label>');
-		$('#pollName').addClass('errorBorder');
-		isValid = false;
-	}
-=======
->>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
-		
 		if( pollName == '' ) {
 			$('#poll_info').find(".error").hide();
 			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
@@ -72,8 +63,6 @@ $(document).ready(function() {
 	});*/
 	
 		
-<<<<<<< HEAD
-=======
 	$('#save_quitBtn').click(function() {
 		
 		var userID = $('#userId').val();
@@ -144,7 +133,7 @@ $(document).ready(function() {
 		});
 
 	});
->>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
+//>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
 		
 	$('#createPollBtn').click(function() {
 		var userID = $('#userId').val();
@@ -184,18 +173,26 @@ $(document).ready(function() {
 		format += "<fieldset class='six columns'>";
 		format += "<span>a)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-1' placeholder='I am a possible answer'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>b)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-2' placeholder='I am another possible answer'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>c)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-3' placeholder='Yet another possible answer'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>d)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-4' placeholder='Im just like all the others...'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<hr>";
 		

@@ -36,6 +36,7 @@ block content
 								a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
 								ul#hidden_actions
 									li#edit_poll
+										///user/#{locals.udata.User_ID}/poll/edit/#{locals.}
 										a(href="#", class="red") Edit
 									li#delete_poll
 										a(href="#", class="red") Delete
@@ -70,7 +71,7 @@ block content
 											h3 Session Code: #{poll.SessionCode}
 										ul#alt-actions.two.columns
 											li(id='edit_poll'+poll.Poll_ID)
-												a(href="#", class="button") Edit
+												a(href="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", class="button") Edit
 											li(id='delete_poll'+poll.Poll_ID)
 												button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='button') Delete
 											li(id='start_poll'+poll.Poll_ID)

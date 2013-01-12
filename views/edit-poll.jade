@@ -42,7 +42,7 @@ block content
 						section#poll_info
 							fieldset.twelve.columns
 								label(id="pollNameLabel",for="pollName") Poll Title  (required)
-								input(type="text", id="pollName", name="pollName")
+								input(type="text", id="pollName", name="pollName" value="#{locals.poll.Poll_Name}")
 							fieldset.twelve.columns
 								label(for="pollDescription") Poll Description
 								textarea(id="pollDescription", name="pollDescription")
@@ -63,5 +63,3 @@ block content
 	script(src="/javascript/views/create-poll.js")
 	script(src="/jquery.ui.effect-blind.js")
 	script(src="/jquery-ui-1.9.2.custom.min.js")
-
-				
