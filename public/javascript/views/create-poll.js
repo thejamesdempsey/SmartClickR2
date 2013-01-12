@@ -68,6 +68,7 @@ $(document).ready(function() {
 		var userID = $('#userId').val();
 		var pollID = $('#pollId').val();
 		var stem, answer, type, question, mChoices;
+		var count = 0;
 
 		//validate that a poll name is there
 		// var pollName = $('#pollName').val().trim();
@@ -84,6 +85,8 @@ $(document).ready(function() {
 			stem = '';
 			question = [];
 			mChoices = [];
+			count++;
+
 
 			//console.log(index + 1, $(this).children('h3').text());
 			if($(this).children('h3').text() == 'Multiple Choice') {
@@ -101,9 +104,14 @@ $(document).ready(function() {
 				
 				type = 'TF';
 				stem = $(this).children('textarea').val(); 
-				answer = $('input[name=tf_response]:checked').val();
+
 				question.push(stem);
-				question.push(answer);
+				answer = $('input[name=tf_response' + count.toString() + ']:checked').val();
+				alert(answer + ' ' + count);
+				
+				if(answer == 'True' || answer == 'False') {
+					question.push(answer);
+				}
 
 			} else if ($(this).children('h3').text() == 'Free Response') {
 				
@@ -211,11 +219,11 @@ $(document).ready(function() {
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
 		format += "<fieldset class='six columns'>";
 		format += "<span>True</span>";
-		format += "<input type='radio' class='tf_response' value='True' name='tf_response' placeholder='I am true, or am I?'/>";
+		format += "<input type='radio' class='tf_response' value='True' name='tf_response" + counter + "' placeholder='I am true, or am I?'/>";
 		format += "</fieldset>"
 		format += "<fieldset class='six columns'>";
 		format += "<span>False</span>";
-		format += "<input type='radio' class='tf_response' value='False' name='tf_response' placeholder='I am false'/>";
+		format += "<input type='radio' class='tf_response' value='False' name='tf_response" + counter + "' placeholder='I am false'/>";
 		format += "</fieldset>";
 		format += "<fieldset>";
 		format += "<input type='checkbox' class='no_correct' name='no_correct'>No correct answer</input>"	
