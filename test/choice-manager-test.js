@@ -28,10 +28,18 @@ describe("The Choice Manager Module", function() {
 
 	describe("The Helper Methods", function() {
 
-		var choiceID = ''
+		var choiceID = '';
+		var helpQID = '';
+
+		before(function(done) {
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF' }, function(qid) {
+				helpQID = qid;
+				done();
+			});
+		});
 
 		it("should create a new choice for a TF question", function(done) {
-			CM.createChoice(49, function(o) {
+			CM.createChoice(helpQID, function(o) {
 				console.log('added choice ', o);
 				choiceID = o;
 				done();
@@ -43,6 +51,12 @@ describe("The Choice Manager Module", function() {
 				done();
 			});
 		});
+
+		after(function(done) {
+			QM.delete(helpQID, function(o) { 
+				done();
+			});
+		})
 	});
 
 	describe("Updating the choices", function() {
@@ -50,9 +64,11 @@ describe("The Choice Manager Module", function() {
 		var choiceID = '';
 
 		before(function(done) {
-			CM.createChoice(49, function(o) {
-				choiceID = o;
-				done();
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF' }, function(qid) {
+				CM.createChoice(qid, function(o) {
+					choiceID = o;
+					done();
+				});
 			});
 		});
 	
@@ -88,27 +104,33 @@ describe("The Choice Manager Module", function() {
 	describe("Choices for certain Question Types", function() {
 
 		var tfQuestionID,
-			tfQuestionID2;
+			tfQuestionID2,
+			mcQuestionID,
+			mcQuestionID2;
 
 		before(function(done) {
-			QM.newQuestion({ Poll_ID : 8, AType : 'TF'}, function(o) {
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF'}, function(o) {
 				tfQuestionID = o;
-				
-				QM.newQuestion({ Poll_ID : 8, AType : 'TF'}, function(o) {
+				QM.newQuestion({ Poll_ID : 1, AType : 'TF'}, function(o) {
 					tfQuestionID2 = o;
-					done();
+					QM.newQuestion({ Poll_ID : 1, AType : 'MC' }, function(o) {
+						mcQuestionID = o;
+						QM.newQuestion({ Poll_ID : 1, AType : 'MC' }, function(o) {
+							mcQuestionID2 = o;
+							done();
+						});
+					});
 				});
 			});
 
 
 		});
 
-		it("should create two choices for a TF question", function(done) {
+		it("should create a choice with IsCorrectChoice when answer is False", function(done) {
 			CM.createTFChoices({ Question_ID : tfQuestionID, Answer : 'False' }, function(o) {
 				connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [tfQuestionID], function(err, results) {
-					results.length.should.equal(2);
-					results[0].IsCorrectChoice.should.equal('N');
-					results[1].IsCorrectChoice.should.equal('Y');
+					console.log(results[0].IsCorrectChoice);
+					//results[0].IsCorrectChoice.should.equal('F');
 					done();
 				});
 			});
@@ -123,22 +145,53 @@ describe("The Choice Manager Module", function() {
 			});
 		});
 
-		it("should create two choices with nothing correct when given an empty Answer", function(done) {
-			CM.createTFChoices({ Question_ID : tfQuestionID2, Answer : '' }, function(o) {
+		it("should create a choice with IsCorrectChoice being T when answer is True", function(done) {
+			CM.createTFChoices({ Question_ID : tfQuestionID2, Answer : 'True' }, function(o) {
 				connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [tfQuestionID2], function(err, results) {
-					console.log(results);
-					results[0].IsCorrectChoice.should.equal('N');
-					results[1].IsCorrectChoice.should.equal('N');
+					console.log(results[0].IsCorrectChoice); //.should.equal('T');			
 					done();
 				});
 			});
 		});
 
+		it("should create 4 choices for each multiple choice question", function(done) {
 
+			var mc = { "choices" : ["blue", "green", "purple", "orange"],
+					   "answer" : "purple" };
+			var mc2 = { "choices" : ["dog", "ostrich", "deer", "bear"],
+					   "answer" : "ostrich" };
+
+
+			console.log(mc.choices);
+			console.log(mc.choices.length);
+			for(var i = 0; i < mc.choices.length; i++) {
+				CM.createMCChoices({ Question_ID : mcQuestionID , Answer : mc.answer, Order : i + 1, Content : mc.choices[i] }, function(o) {
+					console.log('Create choice: ', o);
+				});				
+			}
+
+			for(var i = 0; i < mc2.choices.length; i++) {
+				CM.createMCChoices({ Question_ID : mcQuestionID2 , Answer : mc2.answer, Order : i + 1, Content : mc2.choices[i] }, function(o) {
+					console.log('Create choice: ', o);
+				});		
+			}
+
+			setTimeout(function() {
+				connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [mcQuestionID], function(err, results) {
+					console.log(results);
+					results[2].IsCorrectChoice.should.equal('T');
+					connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [mcQuestionID2], function(err, result) {
+						console.log(result);
+						done();
+					});
+				});
+			}, 25); 
+			
+		});
 
 		after(function(done) {
 			CM.deleteChoices(tfQuestionID2, function(o) {
-				QM.deleteQuestions(8, function(result) {
+				QM.deleteQuestions(1, function(result) {
 					done();
 				});
 			});

@@ -95,7 +95,6 @@ $(document).ready(function() {
 				stem = $(this).children('textarea').val();
 				$('.mc_response', this).each(function(index) {
 					mChoices.push($(this).val());
-					//console.log('Amount of N choices ', index);
 				});
 				question.push(stem);
 				question.push(mChoices);

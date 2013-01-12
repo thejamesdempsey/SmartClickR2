@@ -16,10 +16,14 @@ exports.postNewQuestion = function(request, response) {
 		if(request.param('questionType') == 'MC') {
 
 			var choices = request.param('question')[1];
+			var answer = '';
 			console.log('Stem ',request.param('question')[0]);
 			
 			for(var i = 0; i < choices.length; i++) {
-					
+
+				CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
+					// create choices for MC
+				});
 			}
 				console.log('Choice ' + i + ': ' + choices[i]);
 

@@ -45,7 +45,7 @@ CM.createTFChoices = function(choiceData, callback) {
 	} 
 	
 	connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, 1, answer, content], function(err, results) {
-		
+		callback(results.insertId);
 	});
 }
 
@@ -54,8 +54,13 @@ CM.createTFChoices = function(choiceData, callback) {
 CM.createMCChoices = function(choiceData, callback) {
 
 	var answer;
-	connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, choiceData.Order, answer, choiceData.Content], function(err, results) {
 
+	if(choiceData.Answer == choiceData.Content)
+		answer = 'T';
+	else
+		answer = 'N';
+	connection.query('INSERT INTO ' + TABLE + ' (Question_ID, ChoiceOrder, IsCorrectChoice, Content) VALUES (?, ?, ?, ?)', [choiceData.Question_ID, choiceData.Order, answer, choiceData.Content], function(err, results) {
+		callback(results.insertId);
 	});
 }
 

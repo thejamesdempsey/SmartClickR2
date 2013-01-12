@@ -131,9 +131,8 @@ QM.updateOrder = function(questionData, callback) {
 }
 
 // Delete Question //
-QM.delete = function(questionData, callback) {
-// questionData = questionID, and pollId for now Use Order
-	connection.query('DELETE from ' + TABLE + ' WHERE Question_ID = ? AND Poll_ID = ?', [questionData.Question_ID, questionData.Poll_ID], function(err, results) {
+QM.delete = function(questionID, callback) {
+	connection.query('DELETE from ' + TABLE + ' WHERE Question_ID = ?', [questionID], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
