@@ -144,7 +144,7 @@ $(document).ready(function() {
 		});
 
 	});
-//>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
+
 		
 	$('#createPollBtn').click(function() {
 		var userID = $('#userId').val();
@@ -226,13 +226,10 @@ $(document).ready(function() {
 		format += "</fieldset>"
 		format += "<fieldset class='six columns'>";
 		format += "<span>False</span>";
-		format += "<input type='radio' class='tf_response' value='False' name='tf_response" + counter + "' placeholder='I am false'/>";
-<<<<<<< HEAD
+		format += "<input type='radio' class='tf_response' value='False' name='tf_response" + counter + "' placeholder='I am false'/>"
 		format += "</fieldset>";
 		format += "<fieldset>";
 		format += "<input type='checkbox' class='no_correct' name='no_correct'>No correct answer</input>"	
-=======
->>>>>>> c934da963057a76e6210de98485d9879bb186aa1
 		format += "</fieldset>";
 		format += "<hr>";
 		

@@ -48,11 +48,11 @@ block content
 								textarea(id="pollDescription", name="pollDescription")
 							hr
 						section#question_container.animated.fadeInDown
-						form
-							include modals/poll-types
-							section.create_actions
-								input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-								input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
+
+						include modals/poll-types
+						section.create_actions
+							input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+							input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
 						.clear
 			hr
 		footer#create_footer
