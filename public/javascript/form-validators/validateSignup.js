@@ -1,3 +1,5 @@
+$('#firstName').focus();
+
 $("#signupForm").ready(function() {
 	$(this).submit(function() {
 		if (false == validateSignup($(this))) {

@@ -20,6 +20,15 @@ exports.postCreatePoll = function(request, response) {
 	});
 }
 
+
+
+// GET /user/:User_ID/poll/edit/:Poll_ID //
+exports.getEditPoll = function(request, response) {
+	var user = request.session.user[0];
+	console.log(user);
+	response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user }});t
+}
+
 // POST /user/:User_ID/poll/update/:Poll_ID //
 exports.updatePollDescription = function(request, response) {
 

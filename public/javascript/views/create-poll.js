@@ -2,6 +2,8 @@ $(document).ready(function() {
 	var counter = 1;
 	var sesionCode = '';
 	$('#save_quitBtn').hide();
+	$("#pollName").focus();
+	
 	
 /*	
 	var autosaveOn = false;
@@ -35,8 +37,6 @@ $(document).ready(function() {
 	saveAndQuit = function($form) {
 		var pollName = $('#pollName').val().trim();
 		isValid = true;
-		
-		$('#poll_info').find(".error").hide();
 		
 		if( pollName == '' ) {
 			$('#poll_info').find(".error").hide();
@@ -144,6 +144,7 @@ $(document).ready(function() {
 		});
 
 	});
+//>>>>>>> 9520b3d9f4885486e2413ea899b117371e9a8acf
 		
 	$('#createPollBtn').click(function() {
 		var userID = $('#userId').val();
@@ -153,7 +154,7 @@ $(document).ready(function() {
 		
 		if( pollName == '' ) {
 			$('#poll_info').find(".error").hide();
-			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
+			$('#pollNameLabel').after('<label class="error"> Your poll needs a name.  </label>');
 		} else {
 			$('#poll_info').find(".error").hide();
 			$('ol.poll-grid').show("blind");
@@ -171,8 +172,7 @@ $(document).ready(function() {
 		}
 		
 	});
-
-	
+		
 	
 	$('#multipleChoiceBtn').click(function() {
 		//$('ol.poll-grid').hide("blind", "slow");
@@ -184,18 +184,26 @@ $(document).ready(function() {
 		format += "<fieldset class='six columns'>";
 		format += "<span>a)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-1' placeholder='I am a possible answer'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>b)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-2' placeholder='I am another possible answer'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>c)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-3' placeholder='Yet another possible answer'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>d)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-4' placeholder='Im just like all the others...'/>"
+		format += "<span>Correct Answer</span>"
+		format += "<input type='radio' name='correct_answer' />"
 		format += "</fieldset>";
 		format += "<hr>";
 		
@@ -219,6 +227,12 @@ $(document).ready(function() {
 		format += "<fieldset class='six columns'>";
 		format += "<span>False</span>";
 		format += "<input type='radio' class='tf_response' value='False' name='tf_response" + counter + "' placeholder='I am false'/>";
+<<<<<<< HEAD
+		format += "</fieldset>";
+		format += "<fieldset>";
+		format += "<input type='checkbox' class='no_correct' name='no_correct'>No correct answer</input>"	
+=======
+>>>>>>> c934da963057a76e6210de98485d9879bb186aa1
 		format += "</fieldset>";
 		format += "<hr>";
 		
