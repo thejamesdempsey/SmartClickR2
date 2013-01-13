@@ -43,21 +43,18 @@ module.exports = QM;
 //should return question id
 QM.newQuestion = function(questionData, callback) {
 	
-	QM.questionCount(questionData.Poll_ID, function(count) {
-		QM.getAnswerType(questionData.AType, function(type) {
-			connection.query('INSERT INTO ' + TABLE + ' (Poll_ID, AnswerType, QuestionsOrder) VALUES(?, ?, ?)', [questionData.Poll_ID, type, count + 1], function(err, results) {
-				if(err) {
-					console.log('Error: ', err);
-					connection.destroy();
-					console.log('Connection is closed');
-				} else {
-					callback(results.insertId);
-					//console.log('added new question');
-				}
-			});
+	QM.getAnswerType(questionData.AType, function(type) {
+		connection.query('INSERT INTO ' + TABLE + ' (Poll_ID, AnswerType, QuestionsOrder) VALUES(?, ?, ?)', [questionData.Poll_ID, type, questionData.Order], function(err, results) {
+			if(err) {
+				console.log('Error: ', err);
+				connection.destroy();
+				console.log('Connection is closed');
+			} else {
+				callback(results.insertId);
+				//console.log('added new question');
+			}
 		});
 	});
-
 }
 
 // Get all questions of the polls //

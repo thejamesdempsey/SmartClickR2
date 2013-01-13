@@ -96,6 +96,7 @@ $(document).ready(function() {
 				$('.mc_response', this).each(function(index) {
 					mChoices.push($(this).val());
 				});
+
 				question.push(stem);
 				question.push(mChoices);
 
@@ -106,7 +107,6 @@ $(document).ready(function() {
 
 				question.push(stem);
 				answer = $('input[name=tf_response' + count.toString() + ']:checked').val();
-				alert(answer + ' ' + count);
 				
 				if(answer == 'True' || answer == 'False') {
 					question.push(answer);
@@ -130,13 +130,17 @@ $(document).ready(function() {
 			$.ajax({
 				type:"POST",
 				url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-				data: {"questionType": type, "question": question}
+				data: {"questionType": type, "question": question, "count" : count}
 			});
 
 			// redirect back to user's page after saving all questions
-			if($('.question_wrap').length == (index + 1))
-				window.location = '/user/' + userID;
-				//alert('good job!');
+			//alert('Index is....' + index);
+			if($('.question_wrap').length == (index + 1)) {
+				setTimeout(function() {
+					window.location = '/user/' + userID;
+				}, 25);
+			}
+
 		});
 
 	});

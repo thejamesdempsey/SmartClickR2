@@ -5,8 +5,9 @@ var CM = require('./modules/choice-manager');
 // create each question //
 exports.postNewQuestion = function(request, response) {
 
-	QM.newQuestion({Poll_ID : request.param('Poll_ID'),
-					AType   : request.param('questionType')}, function(qid) {
+	QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
+					 AType   : request.param('questionType'),
+					 Order   : request.param('count') }, function(qid) {
 		
 		console.log("Question ID", qid);
 		console.log('Posting Question type....', request.body.questionType);
@@ -15,17 +16,19 @@ exports.postNewQuestion = function(request, response) {
 
 		if(request.param('questionType') == 'MC') {
 
-			var choices = request.param('question')[1];
 			var answer = '';
+			var choices = request.param('question')[1];
+			stem = request.param('question')[0];
 			console.log('Stem ',request.param('question')[0]);
 			
-			for(var i = 0; i < choices.length; i++) {
+			QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
+				for(var i = 0; i < choices.length; i++) {
 
-				CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
-					// create choices for MC
-				});
-			}
-				console.log('Choice ' + i + ': ' + choices[i]);
+					CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
+						// create choices for MC
+					});
+				}
+			});
 
 		} else if (request.param('questionType') == 'TF') {
 
