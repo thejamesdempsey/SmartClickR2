@@ -272,8 +272,6 @@ $(document).ready(function() {
 		
 		counter++;
 	});
-
-	
 });
 
 

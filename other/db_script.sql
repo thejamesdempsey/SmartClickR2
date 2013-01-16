@@ -61,3 +61,8 @@ CREATE TABLE Responses(
 	foreign key(User_ID) references Users(User_ID)
 );
 
+
+SELECT * FROM Questions 
+left outer join Choices on Questions.Question_ID = Choices.Question_ID
+WHERE Question.Poll_ID = 51 
+Order By Questions.QuestionsOrder;

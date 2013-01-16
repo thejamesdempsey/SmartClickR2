@@ -1,4 +1,6 @@
 var PM = require('./modules/poll-manager');
+var QM = require('./modules/question-manager');
+var CM = require('./modules/choice-manager');
 
 // GET /user/:User_ID/poll/create //
 exports.getCreatePoll = function(request, response) {
@@ -25,8 +27,15 @@ exports.postCreatePoll = function(request, response) {
 // GET /user/:User_ID/poll/edit/:Poll_ID //
 exports.getEditPoll = function(request, response) {
 	var user = request.session.user[0];
-	console.log(user);
-	response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user }});t
+	var choices = [];
+	//console.log(request.param('Poll_ID'));
+
+	QM.getQuestions(request.param('Poll_ID'), function(questions) {
+
+		console.log(questions);
+
+	});
+	//response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user }});t
 }
 
 // POST /user/:User_ID/poll/update/:Poll_ID //
