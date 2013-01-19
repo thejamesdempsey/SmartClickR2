@@ -30,7 +30,7 @@ exports.createUser = function(request, response) {
 
 // GET /login //
 exports.getLogin = function(request, response) {
-	response.render('login.jade', { title: 'SmartClickR | Login'});
+	response.render('login.jade', { title: 'SmartClickR | Login', layout:'layout_login.jade'});
 	console.log(request.protocol);
 }
 

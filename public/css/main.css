@@ -2,14 +2,96 @@
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+.navbar-inner, .navbar-inverse{
+	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	-webkit-border-radius: 0 !important;
+	-o-border-radius: 0 !important;	
+	background:#1b1b1b url('/img/bg.png');
+}
+
+.navbar{
+	margin-bottom: 0px !important;
+}
+
+.container{
+	/*width: 1170px !important;*/
+}
+
+.img-contain{
+	margin: 0 auto;
+	text-align: center;
+}
+
+#footer_content ul{
+	margin: 0px !important;
+}
+
+footer{
+	padding: 20px 0px;
+	margin-top: -44px;
+}
+
+
+#session-code{
+/*	background:rgba(76, 138, 176, 0.6);*/
+	background: rgba(56,118,156,.6);
+	border-radius: 10px;
+	position: relative;
+	padding: 20px 40px;
+	margin-bottom: 30px;
+}
+
+#session-code input[type="text"]{
+	width: 60%;
+	font-size: 18px;
+	padding: 18px;
+}
+
+#session-code button{
+	margin-left: 20px;
+	padding: 8px;
+}
+
+#search_polls{
+	padding: 18px;
+}
+
+#user_hello{
+	color: #fff;
+	font-size: 2.8rem;
+}
+
+#user_hero{
+	background: #4c8ab0;
+	padding-top: 70px;
+}
+
+#create_title{
+	padding-bottom: 80px;
+	padding-top: 20px;
+}
+
+#poll_info input, #poll_info textarea{
+	padding: 18px;
+}
+
+#pollDescription{
+	height: 200px !important;
+}
+
+h2{
+	font-weight: 300 !important;
+}
 
 body{
 	font-family:"Helvetica Neue", Helvetica, Arial, Veranda,sans-serif; 
 	padding: 0;
 	margin: 0 auto;
 	font-size:62.5%;
-	background: #eee;
+	background: #eee url('/img/noise.png');
 	min-width: 0;
+	
 }
 
 ::selection {
@@ -22,7 +104,6 @@ body{
 
 a{
 	text-decoration: none;
-	font-size: 1.4em;
 }
 
 p{
@@ -63,11 +144,12 @@ p{
 h3{
 	color:#34373e;
 	margin: 0;
-	padding-top: 28px;
-	padding-bottom: 28px;
-	border-bottom: 1px solid #9c6;
 	font-size: 2.8em;
 	font-weight: 100;
+}
+
+h4{
+	color: #fff !important;
 }
 
 #user_body h3{
@@ -142,22 +224,23 @@ hr {
 	margin-bottom: 40px;
 }
 #header-container, #feature-container{
-	background:#4eadc3;
+	background:#4c8ab0;
 	color: white;
+	padding-top: 30px;
 }
 
 #header-container{
 	padding: 20px 0;
 }
 
-#feature-container{
-	padding-bottom:10px;
-	padding-left: 10px;
-	padding-right: 10px;
+
+
+
+#feature-sidebar{
+	padding-top: 20px;
 }
 
 .pad{
-	padding: 0 10px;
 
 }
 
@@ -191,9 +274,7 @@ a:hover {
 	margin-top: -16px;
 }
 
-#features,#signup{
-	border-right: 1px solid #999;
-}
+
 
 
 header{
@@ -254,7 +335,8 @@ h2{
 }
 
 #hero_content{
-	margin-bottom: 6px;
+	margin-bottom: 46px;
+	padding-top: 34px;
 }
 
 #hero h2{
@@ -264,9 +346,8 @@ h2{
 }
 
 #hero p{
-	border-top: 1px solid #444751;
-	font: 2.3em/33px "Vollkorn", Georgia, Times, serif;
 	font-style: normal;
+	font-size: 16px;
 	font-weight: normal;
 	margin-bottom: 40px;
 	padding: 24px 0 0 0;
@@ -274,12 +355,11 @@ h2{
 }
 
 #hero a{
-	color:#444;
+	color:#fff;
 }
 
 #session_code{
 	border-top:5px solid #e0e0e0;
-	
 }
 
 /* Main Content Styling */
@@ -300,7 +380,6 @@ h2{
 }
 
 #usage, #info, #mobile_usage, #bottom_signup{
-	border-top:5px solid #444751;
 	padding-bottom:50px;
 	
 }
@@ -722,7 +801,8 @@ input#email:focus, input#password:focus{
 /* User Home Page */
 
 #user_header{
-	background: #72c1b0;      /*green*/
+	/*background: #4c8ab0;*/
+	/*background: #72c1b0;      /*green*/
 	/*background: #46bcd2;*/  /*blue*/
 	/*background:#fedd84;*/   /*yellow*/
 	padding-bottom: 50px;
@@ -743,14 +823,12 @@ input#email:focus, input#password:focus{
 
 #user_greeting{
 	margin-top: 35px;
-	border-top: 1px solid #333;
-	border-bottom: 1px solid #333;
-	padding: 30px 0;
 	margin: 0 5px;
 }
 
 #user_greeting h1{
-	font-size: 3.8em;
+	color: #fff;
+	font-size: 2.4rem;
 	font-weight: 300;
 	margin: 0;
 }
@@ -763,7 +841,7 @@ input#email:focus, input#password:focus{
 }
 
 #actions_container{
-	padding: 40px 0px;
+	padding: 40px 0px 10px 0px;
 	margin: 0 5px;
 	margin-top: 20px;
 }
@@ -781,7 +859,7 @@ input#email:focus, input#password:focus{
 
 #no_polls{
 	text-align: center;
-	padding-bottom: 20px;
+	padding-bottom: 80px;
 }
 
 article#no_polls h1{
@@ -797,6 +875,7 @@ article#no_polls h1{
 #no_polls span a{
 	font-size: 1em;
 	color: #e95c41;
+	line-height: 36px;
 }
 
 #no_polls span a:hover{
@@ -806,7 +885,7 @@ article#no_polls h1{
 
 #sub_create{
 	font-weight: 400;
-	font-size: 2.2em;
+	font-size: 1.6rem;
 	background:#46bcd2;
 	color: #fff;
 	border: 1px solid #558f83;
@@ -1121,12 +1200,13 @@ a.red:hover{
 	color: white;
 	margin-bottom: 10px;
 	font-size: 2.8rem;
+	font-weight: 300;
 }
 
 #create_content{
 	border-top: 1px solid #fff;
 	position: relative;
-	top: -45px;
+	top: -90px;
 	background: #fff;
 	border-radius: 12px 12px 0px 0px;
 	margin: 0 3px;
@@ -1255,8 +1335,7 @@ ol.poll-grid li:nth-child(4sn) {
 }
 
 #create_footer{
-	margin-top: 300px;
-}
+d}
 
 
 
@@ -1278,7 +1357,6 @@ ol.poll-grid li:nth-child(4sn) {
 	}
 
 	#features,#signup,#log{
-		color: #000;
 	}
 }
 @media screen and (min-width:490px){
@@ -1328,9 +1406,7 @@ ol.poll-grid li:nth-child(4sn) {
 	.twelve, .row .twelve { width: 100%; }
 	
 	#hero{
-		margin-top: 30px;
-		padding: 40px 0 0 0;
-		border-top:5px solid #e0e0e0;
+
 	}
 
 	.right{
@@ -1389,7 +1465,7 @@ ol.poll-grid li:nth-child(4sn) {
 
 
 		#session_code{
-			padding: 45px;
+			padding: 25px;
 		}
 		
 		#hero_content a{
@@ -1673,3 +1749,18 @@ input[type="submit"]:active {
 		width: 98%;
 	}
 }
+
+@media screen and (max-width: 767px) {
+	body{
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+	.container{
+		padding-right: 20px !important;
+		padding-left: 20px !important;
+	}
+	#main-create{
+		text-align: center;
+	}
+}
+

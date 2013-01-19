@@ -11,7 +11,8 @@
     "bcrypt": "*",
     "mocha": "*",
     "mysql": "*",
-    "should": "*"
+    "should": "*",
+	"less": "*"
   }
 
 }

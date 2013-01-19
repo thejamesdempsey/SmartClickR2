@@ -248,6 +248,9 @@ $(document).ready(function() {
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-"+counter+"' cols='30' rows='5' placeholder='What would you like to ask?' />";
 		format += "</fieldset>";
+		format += "<fieldset>";
+		format += "<input type='checkbox' class='add_correct' name='add_correct'>Add the correct answer</input>"	
+		format += "</fieldset>";
 		format += "<hr>";
 		
 		$(format).hide().appendTo(('#question_container')).fadeIn("blind");
@@ -263,7 +266,10 @@ $(document).ready(function() {
 
 		format += "<h3>Numeric Free Response</h3>";
 		format += "<fieldset>";
-		format += "<textarea class='frn_response' name='question-"+counter+"' cols='30' rows='5' placeholder='What would you like to ask?' />";
+		format += "<textarea class='fr_response' name='question-" + counter + "' cols='30' rows='5' placeholder='What would you like to ask?' />";
+		format += "</fieldset>";
+		format += "<fieldset>";
+		format += "<input type='checkbox' class='add_correct' id='add_correct-" + counter + "' name='add_correct-" + counter + "'>Add the correct answer</input>"	
 		format += "</fieldset>";
 		format += "<hr>";
 
@@ -271,6 +277,25 @@ $(document).ready(function() {
 		$("#freeResponseNumeric_question" + counter +" textarea").focus();
 		
 		counter++;
+	});
+	
+	//$('#add_correct-"+ counter + "').click(function() {
+	$('.add_correct').click(function() {
+	
+		var thisCheck = $(this);
+		if(thisCheck.is (':checked')){
+			//var format = "<fieldset>";
+
+			//format += "<textarea class='fr_correct-"+ counter +"' name='fr_correct' cols='30' rows='5' placeholder='What is the correct answer?' />";
+			//format += "<fieldset/>";
+
+			//$(format).appendTo((".fr_response")).fadeIn();
+			//$("#fr_correct" + counter).focus();
+			$("#add_correct-" + counter).hide();
+
+			counter++;
+		}
+
 	});
 
 	

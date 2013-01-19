@@ -1,4 +1,4 @@
-extends layout
+extends layout_login
 
 block content
 
@@ -24,19 +24,18 @@ block content
 								div(class='above-below login-field')
 									label(for='password', class='form-text', class='placeholder') Password
 									input(id='password', type='password', name='password', class='required form-text', title='Password',tabindex='2', autocomplete='off')
-									.clear
-									a(id='reset', href='#') Forgot Your Password?
-									
-
+									.clear	
 							.twelve.columns.no_pad
 							input(id='login_submit', type='submit', tabindex='3', value="Log In")
 							
-							label Remember Me
+							p(id="remember")
 								input(id='remember-me', type='checkbox', checked='true', name='remember-me')
+								label(id='rem-label', for='remember-me') Remember Me
 
 							.clear
 							p
-								a(id='needSignup', href='/user/create') Need to Signup? 
+								a(id='needSignup', href='/user/create') Need to Signup? |
+								a(id='reset', href='#')   Forgot Your Password?	
 							hr
 		hr
 
