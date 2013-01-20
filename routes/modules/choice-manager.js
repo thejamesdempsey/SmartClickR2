@@ -83,7 +83,7 @@ CM.getChoices = function(questionID, callback) {
 			if(results.length > 0)
 				callback(results);
 			else
-				callback('no-choices');
+				callback([]);
 		}
 	});
 }

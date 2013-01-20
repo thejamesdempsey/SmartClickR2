@@ -1,6 +1,7 @@
 var PM = require('./modules/poll-manager');
 var QM = require('./modules/question-manager');
 var CM = require('./modules/choice-manager');
+var FM = require('./modules/format-manager');
 
 // GET /user/:User_ID/poll/create //
 exports.getCreatePoll = function(request, response) {
@@ -27,12 +28,16 @@ exports.postCreatePoll = function(request, response) {
 // GET /user/:User_ID/poll/edit/:Poll_ID //
 exports.getEditPoll = function(request, response) {
 	var user = request.session.user[0];
-	QM.getQuestions(request.param('Poll_ID'), function(results) {
+	FM.getQuestions(request.param('Poll_ID'), function(results) {
+		var questions = results;
 
-		response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user, qdata: questions }});
-
+		PM.getPollFromID(request.param('Poll_ID'), function(result) {
+			console.log(result);
+			var poll = result[0];
+			response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user, pdata: poll,  qdata: questions }});
+		});
+		
 	});
-	
 }
 
 // POST /user/:User_ID/poll/update/:Poll_ID //
@@ -61,11 +66,11 @@ var groupQuestions = function(results) {
 
 	for(var i = 1; i < results.length; i++) {
 		if(results[i].Question_ID == results[i-1].Question_ID) {
-			console.log('Match with i and i-1!!!!');
+			//console.log('Match with i and i-1!!!!');
 			matches.push(results[i-1]);
 			temp = results[i-1].Question_ID;
 		} else if(results[i-1].Question_ID == temp) { 
-			console.log('Secondary Match!');
+			//console.log('Secondary Match!');
 			matches.push(results[i-1]);
 			questions.push(matches);
 			matches = [];
@@ -73,7 +78,7 @@ var groupQuestions = function(results) {
 			questions.push(results[i]);
 			temp = results[i-1].Question_ID;
 		} else {
-			console.log('No match :(');
+			//console.log('No match :(');
 			questions.push(results[i]);
 			temp = results[i-1].Question_ID;
 		}

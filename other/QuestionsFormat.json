@@ -1,33 +1,27 @@
-{
-	"question1" : {
-		"type" : "FR",
-		"stem" : "What is your favorite color?",
-		"answer" : ""
+[
+	{ 
+	  	"Question_ID"    : 227, 
+	  	"Poll_ID"        : 53,
+      	"QuestionsOrder" : 1,
+      	"AnswerType"	 : "MultipleChoice",
+      	"Stem"		     : "Who is your favorite actor?",
+      	"Choices"		 : [{ "Choice_ID" : 382, "ChoiceOrder" : 1, "IsCorrectChoice" : "N", "Content" : "Leonardo DiCaprio"},
+      					  { "Choice_ID" : 383, "ChoiceOrder" : 2, "IsCorrectChoice" : "N", "Content" : "Tom Hanks"}]
+	},
+	{
+		"Question_ID"    : 228, 
+	  	"Poll_ID"        : 53,
+      	"QuestionsOrder" : 2,
+      	"AnswerType"	 : "FreeResponse",
+      	"Stem"		     : "What's your favorite class?",
+      	"Choices"		 : []
+	}, 
+	{
+		"Question_ID"    : 229, 
+	  	"Poll_ID"        : 53,
+      	"QuestionsOrder" : 3,
+      	"AnswerType"	 : "Numeric",
+      	"Stem"		     : "What's 1+1?",
+      	"Choices"		 : []
 	}
-}
-
-{
-	"question2" : {
-		"type" : "TF",
-		"stem" : "I like engineering/manufacturing",
-		"answer" : "False"
-	}
-}
-
-{
-	"question3" : {
-		"type" : "MC", 
-		"stem" : "What color is the sky?",
-		"answer" : "C",
-		"choices" : ["blue", "green", "purple", "orange"]
-	}
-}
-
-{
-	"question4" : {
-		"type" : "N",
-		"stem" : "What is 3 + 3?", 
-		"answer" : "6"
-	}
-}
-
+]

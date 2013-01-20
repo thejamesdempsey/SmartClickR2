@@ -60,11 +60,15 @@ QM.newQuestion = function(questionData, callback) {
 
 // Get all questions of the polls //
 QM.getQuestions = function(pollId, callback) {
-	connection.query('SELECT * FROM ' + TABLE2 + ' Right OUTER JOIN Questions on Questions.Question_ID = Choices.Question_ID WHERE Questions.Poll_ID = ? ORDER BY Questions.QuestionsOrder', [pollId], function(err, results) {
-		if(results.length > 0) {
-			callback(results);
+	// Outer join query
+	// 'SELECT * FROM ' + TABLE2 + ' Right OUTER JOIN Questions on Questions.Question_ID = Choices.Question_ID WHERE Questions.Poll_ID = ? ORDER BY Questions.QuestionsOrder
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Poll_ID = ? Order By QuestionsOrder', [pollId], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
 		} else {
-			callback(0);
+			callback(results);
 		}
 	});
 }
