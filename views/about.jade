@@ -1,5 +1,5 @@
 
-extends layout
+extends layout_about
 
 block content
 	// Header Content //
@@ -22,28 +22,52 @@ block content
 						li
 							a(id='log', class='fancybox', href='login') Log In
 
-	#feature-container
+	#main-content
+	article#user_hero
 		.container
-			.row-fluid
-				.span12
-					#hero
-						#hero_content
-							.span7.img-contain
-								img(src="http://placehold.it/600x400")
-							.span5#tag
-								h1 Audience participation made easy
-								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
-								span#main-create
-									a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
-							.clear
-						//end hero_content
-						section#session-code
-							h3 Have a session code?
-							form.form-inline
-								input(type="text", placeholder="Enter it here")
-								button(type="submit", class="btn btn-info") Find it &rarr;
-					.clear
-					//end section
+			.span12
+				h2 Meet the Team
+		hr
+	section#content_container
+		.container
+			.row
+				.span12					
+					section#user_content
+						div#content.pad
+							#sub-title
+								h3 The folks behind SmartClickR
+								p#blurb We are a team of 4 humans who go to school at James Madison University in Virginia. We are on a mission to make the world a better place by creating a service that makes real time audience interation easy and afforable 
+								ul#about-team
+									li.span5
+										.thumb
+											img(src="http://placehold.it/400x250")
+										h3 Brad Fischer
+										p Lead Server Engineer and Product Manager
+										p 
+											a(href="#")@bradfisher
+									li.span5
+										.thumb
+											img(src="http://placehold.it/400x250")
+										h3 Billy Godfrey
+										p Lead Infrastructure Engineer
+										p 
+											a(href="#")@billygodfrey
+									li.span5
+										.thumb
+											img(src="http://placehold.it/400x250")
+										h3 Daniel To
+										p Lead Programmer
+										p
+											a(href="#")@danielto
+									li.span5
+										.thumb
+											img(src="http://placehold.it/400x250")
+										h3 Jimmy Dempsey
+										p Lead Front-End Developer
+										p
+											a(href="#")@thejamesdempsey
+									hr
+						
 
 	// Footer Content //
 	footer

@@ -1,5 +1,5 @@
 
-extends layout
+extends layout_data
 
 block content
 	// Header Content //
@@ -11,40 +11,36 @@ block content
 					span(class="icon-bar")
 					span(class="icon-bar")
 				a(class="brand", href="/") SmartClickR
-				div(class="nav-collapse", style="height:auto;")
+				div(class="nav-collapse in collapse", style="height:auto;")
 					ul(class="nav pull-right")
-						li(class="active")
-							a(id="home", href="/") Home
 						li
+							a(id="home", href="/") Home
+						li(class="active")
 							a(id='features', href='features') Features
 						li
 							a(id='signup', href='user/create') Sign Up
 						li
 							a(id='log', class='fancybox', href='login') Log In
-
-	#feature-container
-		.container
-			.row-fluid
+	#main-content
+		article#user_hero
+			.container
 				.span12
-					#hero
-						#hero_content
-							.span7.img-contain
-								img(src="http://placehold.it/600x400")
-							.span5#tag
-								h1 Audience participation made easy
-								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
-								span#main-create
-									a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
-							.clear
-						//end hero_content
-						section#session-code
-							h3 Have a session code?
-							form.form-inline
-								input(type="text", placeholder="Enter it here")
-								button(type="submit", class="btn btn-info") Find it &rarr;
+					h2 Yikes im not finished
+			hr
+		section#content_container
+			.container
+				.row
+					.span12					
+						section#user_content
+							div#content.pad
+								#sub-title
+										p We are working on creating a center where we can show general data we have gathered. This will not violate your privacy but mearly show trends about usage of our service 
+
+		.clear
+	//end hero_content
+
 					.clear
 					//end section
-
 	// Footer Content //
 	footer
 		#footer_container.container
@@ -61,7 +57,7 @@ block content
 						h5 Connect
 						ul
 							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
+							li: a(href='/') Blog
 							li: a(href='/contact') Contact
 							li: a(href='/data') Data Center
 					div.span2
@@ -79,7 +75,3 @@ block content
 			span
 				| ©
 				| SmartClickR Inc, All Rights Reserved
-
-
-
-

@@ -4,6 +4,8 @@
 @bg-main:#eee url('/img/noise.png');
 @offwhite: #f0f0f0;
 @blue: #4c8ab0;
+@top-round: 12px 12px 0 0;
+@drop:0 2px 5px #b4b4b4;
 
 
 /* Feature Styling */
@@ -69,19 +71,26 @@ h2{
 
 .top-matter{
 	background-color: @offwhite;
-	border-radius:12px 12px 0 0;	
+	border-radius: @top-round;
+	-moz-border-radius: @top-round;
+	-webkit-border-radius: @top-round;
+	-o-border-radius: @top-round;	
 }
 
 .top-content{
 	background-color: @offwhite;
 	padding-top: 20px;
-	border-radius:12px 12px 0 0;	
+	border-radius: @top-round;
+	-moz-border-radius: @top-round;
+	-webkit-border-radius: @top-round;
+	-o-border-radius: @top-round;	
 }
 
 .dropshadow{
-	-webkit-box-shadow: 0 2px 5px #b4b4b4;
-	-moz-box-shadow: 0 2px 5px #b4b4b4;
-	box-shadow: 0 2px 5px #b4b4b4;
+	-webkit-box-shadow: @drop;
+	-moz-box-shadow: @drop;
+	box-shadow: @drop;
+	o-box-shadow:@drop;
 }
 
 .page-title{
@@ -174,8 +183,7 @@ h2{
 }
 
 #features-container header {
-	padding-left: 22px;
-	padding-right: 22px;
+	padding: 0 22px 0 22px;
 }
 
 #header-container{
@@ -190,7 +198,7 @@ h2{
 	background: #fefefe;
 	position: relative;
 	top: -64px;
-	border-radius: 12px 12px 0px 0px;
+	border-radius: @top-round;
 	padding: 0px;
 	margin: 0 3px;
 }
@@ -206,16 +214,14 @@ footer{
 	margin: 0px !important;
 }
 
-
-
+/* Page Specific Media Queries */
 @media screen and (max-width: 767px) {
 	body{
 		padding-right: 0px !important;
 		padding-left: 0px !important;
 	}
 	.container{
-		padding-right: 20px !important;
-		padding-left: 20px !important;
+		padding:0 20px 0 20px !important;
 	}
 	#main-create{
 		text-align: center;
