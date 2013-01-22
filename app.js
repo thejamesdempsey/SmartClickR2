@@ -63,9 +63,7 @@ app.get('/logout', user.logout);
 // poll pages //
 app.get('/user/:User_ID/poll/create', poll.getCreatePoll);
 app.post('/user/:User_ID/poll/create', poll.postCreatePoll);
-
 app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
-
 app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 
 // question pages //

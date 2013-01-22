@@ -80,7 +80,7 @@ exports.getHome = function(request, response) {
 exports.getAccount = function(request, response) {
 	var user = request.session.user[0];
 	console.log(user);
-	response.render('account.jade', { title: 'SmartClick | Account', locals: user });
+	response.render('account.jade', { title: 'SmartClick | Account', locals: { udata : user }});
 }
 
 // POST /user/:User_ID/account //

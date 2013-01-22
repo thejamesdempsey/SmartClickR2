@@ -123,7 +123,7 @@ PM.updateOrder = function(sessionCode, int, callback) {
 // Delete Poll //
 //should really be SessionCode
 PM.delete = function(pollID, callback) {
-
+	
 	connection.query('DELETE FROM ' + TABLE + ' WHERE Poll_ID = ?', [pollID], function(err, results) {
 		if (err) {
 			console.log('Error: ', err);
@@ -135,6 +135,15 @@ PM.delete = function(pollID, callback) {
 
 PM.getPoll = function(sessionCode, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE SessionCode = ?', [sessionCode], function(err, results) {
+		if (results.length === 1)
+			callback(results);
+		else 
+			callback('poll-not-found');
+	});
+}
+
+PM.getPollFromID = function(pollID, callback) {
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Poll_ID = ?', [pollID], function(err, results) {
 		if (results.length === 1)
 			callback(results);
 		else 

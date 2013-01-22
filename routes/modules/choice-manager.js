@@ -73,6 +73,21 @@ CM.createMCChoices = function(choiceData, callback) {
 	/** If there was a correct answer(s) for Free Response **/
 
 
+CM.getChoices = function(questionID, callback) {
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ? ORDER BY ChoiceOrder', [questionID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			if(results.length > 0)
+				callback(results);
+			else
+				callback([]);
+		}
+	});
+}
+
 // Delete All Choices for a Question //
 CM.deleteChoices = function(questionID, callback) {
 	connection.query('DELETE FROM ' + TABLE + ' WHERE Question_ID = ?', [questionID], function(err, results) {

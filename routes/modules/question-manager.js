@@ -16,6 +16,7 @@ var MYSQL_USER = MC.user;
 var MYSQL_PASS = MC.pass;
 var DATABASE = 'SmartClickR';
 var TABLE = 'Questions';
+var TABLE2 = 'Choices';
 
 // Connect to the DB //
 var connection = mysql.createConnection({
@@ -59,11 +60,16 @@ QM.newQuestion = function(questionData, callback) {
 
 // Get all questions of the polls //
 QM.getQuestions = function(pollId, callback) {
-	connection.query('SELECT * FROM ' + TABLE + ' WHERE Poll_ID = ?', [pollId], function(err, results) {
-		if(results.length > 0)
+	// Outer join query
+	// 'SELECT * FROM ' + TABLE2 + ' Right OUTER JOIN Questions on Questions.Question_ID = Choices.Question_ID WHERE Questions.Poll_ID = ? ORDER BY Questions.QuestionsOrder
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Poll_ID = ? Order By QuestionsOrder', [pollId], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
 			callback(results);
-		else
-			callback('no-questions');
+		}
 	});
 }
 

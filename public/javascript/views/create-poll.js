@@ -297,8 +297,6 @@ $(document).ready(function() {
 		}
 
 	});
-
-	
 });
 
 
