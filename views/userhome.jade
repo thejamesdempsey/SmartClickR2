@@ -6,58 +6,54 @@ extends layout
 input(type = 'hidden',value = user._id)#userId
 
 block content
-
-	body#user_body
-		header#user_header
-			.row
-				.twelve.columns
-					nav#user_nav.top-bar
-						ul
-							li.name
-								h1: a(id='title', href='/user/#{locals.udata.User_ID}') SmartClickR
-							li.toggle-topbar
-								a(href='#')
-						section
-							ul.right
-								li: a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account Settings
-								li: a(id='help', href='help-center') Help Center
-								li: a(id='logout', href='/logout') Log Out
-			
-				article#user_hero.row
-					.twelve.columns
-						section#user_greeting
-
-							h1#user_hello Hello, #{locals.udata.FirstName} #{locals.udata.LastName}
-							// this type of call gets the desired info about the user
-							//#{locals.udata.FirstName} 
-							h3#custom_greeting Did you get a haircut? It looks great
-						aside#actions_container.twelve.columns
-							div#user_actions.seven.columns
-								a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
-								ul#hidden_actions
-									li#edit_poll
-										///user/#{locals.udata.User_ID}/poll/edit/#{locals.}
-										a(href="#", class="red") Edit
-									li#delete_poll
-										a(href="#", class="red") Delete
-									li#start_poll
-										a(href="#", class="red") Start
-								.clear
-							div#user_search.five.columns
-								input(id='search_polls', type='text', name='password', class='required form-text', title='search your polls', placeholder="Search your Polls")
+	// Header Content //
+	header(class="navbar navbar-inverse navbar-fixed-top")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/user/#{locals.udata.User_ID}") SmartClickR
+				div(class="nav-collapse in collapse", style="height:auto;")
+					ul(class="nav pull-right")
+						li(class="active")
+							a(id="home", href="/user/#{locals.udata.User_ID}") Home
+						li
+							a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account
+						li
+							a(id='help', href='help-center') Help Center
+						li
+							a(id='logout',href='/logout') Log Out
+	#main-content
+	article#user_hero
+		.container
+			.span12
+				section#user_greeting
+					h2#user_hello Hi, #{locals.udata.FirstName}
+					// this type of call gets the desired info about the user
+					//#{locals.udata.FirstName} 
+					h4#custom_greeting Did you get a haircut? It looks great
+					aside#actions_container.span12
+						div#user_actions.span5
+							a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
+							.clear
+						div#user_search.span6
+							form.form-search
+								input(id='search_polls', type='text', name='password', class='input-medium search-query', title='search your polls', placeholder="Search your Polls")
 								input(id="search_polls_submit",class="green", type="submit", name="seach_polls_submit", value="Go")
-						.clear
-				hr
-		section#content_container
+								.clear
+		hr
+	section#content_container
+		.container
 			.row
-				.twelve.columns					
-					section#user_content.twelve.columns.dropshadow
-
+				.span12					
+					section#user_content
 						if locals.pdata.length > 0
 							each poll in locals.pdata
 								div#poll_container
 									form(class='pollActions', method='post')
-										article#poll_brief.ten.columns
+										article#poll_brief.span9
 											aside#sub_info
 												a(href="#")
 													span
@@ -69,27 +65,49 @@ block content
 												aside#sub_content
 													p #{poll.PollDescription}
 											h3 Session Code: #{poll.SessionCode}
-										ul#alt-actions.two.columns
+										ul#alt-actions.span1
 											li(id='edit_poll'+poll.Poll_ID)
-												a(href="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", class="button") Edit
+												a(href="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", class="btn btn-medium btn-info") Edit
 											li(id='delete_poll'+poll.Poll_ID)
-												button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='button') Delete
+												button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='btn btn-medium btn-info') Delete
 											li(id='start_poll'+poll.Poll_ID)
-												a(href="#", class="button") Start
-										
+												a(href="#", class="btn btn-medium btn-info") Start
+								
 								hr
 						else
 							article#no_polls
-								h1 You have not created any polls yet 
-								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="red button") Start Your First Poll
+								h2 You have not created any polls yet 
+								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="btn btn-info btn-large") Start Your First Poll
 								span or read our 
 									a(href="#") getting started guide
+	// Footer Content //
+	footer
+		#footer_container.container
+			.row-fluid
+				#footer_content
+					div.span3
+						h5 About Us
+						ul
+							li: a(href='#') Home
+							li: a(href='#') Features
+							li: a(href='#') Sample Questions
+					div.span3
+						h5 Contact Us
+						ul
+							li: a(href='#') About The Team
+							li: a(href='#') Blog
+							li: a(href='#') Contact
+					div.span3
+						h5 Legal Stuff
+						ul
+							li: a(href='#') Privacy
+							li: a(href='#') Terms Of Service
 			.clear
-		footer
-			.row
-				.twelve.columns
-					p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				.clear
+		#legal
+			span
+				| ©
+				| SmartClickR Inc, All Rights Reserved
+
 
 	script(src="/javascript/userActions.js")
 	script

@@ -1,68 +1,68 @@
 extends layout
 
+- user = typeof(udata) != 'undefined' ? udata : {}
+input(type = 'hidden',value = user._id)#userId
+
 block content
-
-	- user = typeof(udata) != 'undefined' ? udata : {}
-	input(type = 'hidden',value = user._id)#userId
-
-
-	body#settings_body
-		header#user_header
-			.row
-				.twelve.columns
-					nav#user_nav.top-bar
-						ul
-							li.name
-								h1: a(id='title', href='/user/#{locals.User_ID}') SmartClickR
-							li.toggle-topbar
-								a(href='#')
-						section
-							ul.right
-								li: a(id='account', href='/user/edit/#{locals.User_ID}') Account Settings
-								li: a(id='help', href='help-center') Help Center
-								li: a(id='logout', href='/logout') Log Out
-					h1#settings_title.page-title Your Account
+	// Header Content //
+	header(class="navbar navbar-inverse navbar-fixed-top")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/user/#{locals.udata.User_ID}") SmartClickR
+				div(class="nav-collapse in collapse", style="height:auto;")
+					ul(class="nav pull-right")
+						li(class="active")
+							a(id="home", href="/user/#{locals.udata.User_ID}") Home
+						li
+							a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account
+						li
+							a(id='help', href='help-center') Help Center
+						li
+							a(id='logout',href='/logout') Log Out
+			hr
+	section#settings_container
+		.row
+			.twelve.columns
+				section#settings_content.twelve.columns.dropshadow
+					article#settings_main
+						form(id='accountEmailForm', method='post')
+							fieldset
+								span.field
+									label(id="currentEmailLabel", for='currentEmail', class='form-text') Email Address
+									input( id='currentEmail', type='text', class='required form-text', name='currentEmail', title='Current Email Address', value='Current Email Address', autocomplete='off')
+									.clear
+							fieldset.form-action
+								input(id='changeEmailBtn', class="button", type='submit', value='Save')
+					
+						form(id='accountPasswordForm', method='post')
+							fieldset
+								span.field
+									label(id="passwordChangeLabel", for='currentPassword', class='form-text') Password
+									input(id='currentPassword', type='password', class='required form-text', name='currentPassword', title='Current Password', placeholder='Current Password',  autocomplete='off')
+									.clear
 						
-				hr
-		section#settings_container
-			.row
-				.twelve.columns
-					section#settings_content.twelve.columns.dropshadow
-						article#settings_main
-							form(id='accountEmailForm', method='post')
-								fieldset
-									span.field
-										label(id="currentEmailLabel", for='currentEmail', class='form-text') Email Address
-										input( id='currentEmail', type='text', class='required form-text', name='currentEmail', title='Current Email Address', value='Current Email Address', autocomplete='off')
-										.clear
-								fieldset.form-action
-									input(id='changeEmailBtn', class="button", type='submit', value='Save')
-						
-							form(id='accountPasswordForm', method='post')
-								fieldset
-									span.field
-										label(id="passwordChangeLabel", for='currentPassword', class='form-text') Password
-										input(id='currentPassword', type='password', class='required form-text', name='currentPassword', title='Current Password', placeholder='Current Password',  autocomplete='off')
-										.clear
-							
-										input(id='newPassword', type='password', class='required form-text', name='NewPassword', title='New Password', placeholder='New Password', autocomplete='off')
-										.clear
+									input(id='newPassword', type='password', class='required form-text', name='NewPassword', title='New Password', placeholder='New Password', autocomplete='off')
+									.clear
 
-										input(id='reNewPassword', type='password', name='reNewPassword', class='required form-text', title='Re-Enter New Password', placeholder='Re-Enter Password',  autocomplete='off')
-										.clear
-								hr
-								fieldset.form-action
-									input(id='changePasswordBtn', type='submit', class="button", value='Save')
+									input(id='reNewPassword', type='password', name='reNewPassword', class='required form-text', title='Re-Enter New Password', placeholder='Re-Enter Password',  autocomplete='off')
+									.clear
+							hr
+							fieldset.form-action
+								input(id='changePasswordBtn', type='submit', class="button", value='Save')
 
-								hr
-							form(id='deleteAccount', method='post')
-								fieldset
-									span.field
-										fieldset.form-action
-											input(id='deleteAccountBtn',type='submit', class="button red", value='Delete Your Account')
-											p This will delete your account and all the polls associated with your account. This action cannot be undone
-										
-				
+							hr
+						form(id='deleteAccount', method='post')
+							fieldset
+								span.field
+									fieldset.form-action
+										input(id='deleteAccountBtn',type='submit', class="button red", value='Delete Your Account')
+										p This will delete your account and all the polls associated with your account. This action cannot be undone
+									
+			
 
 
 

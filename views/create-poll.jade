@@ -8,58 +8,87 @@ block content
 	input(type = 'hidden',value = '')#pollId
 
 	body#create_poll_body
-		header#create_poll_header
-			.row
-				.twelve.columns
-					nav#user_nav.top-bar
-						ul
-							li.name
-								h1: a(id='title', href='/user/#{locals.udata.User_ID}') SmartClickR
-							li.toggle-topbar
-								a(href='#')
-						section
-							ul.right
-								li: a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account Settings
-								li: a(id='help', href='help-center') Help Center
-								li: a(id='logout', href='/logout') Log Out
-			
-					hr
-				article#user_hero.row
-					.twelve.columns
-						section#create_title
-							h1 Build your poll
-						//section.create_actions
-						//	input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-						//	input(type="button", id="finishBtn", class="red button", value='Finish') 
-						//	input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
-						.clear
+		// Header Content //
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/user/#{locals.udata.User_ID}") SmartClickR
+					div(class="nav-collapse in collapse", style="height:auto;")
+						ul(class="nav pull-right")
+							li(class="active")
+								a(id="home", href="/user/#{locals.udata.User_ID}") Home
+							li
+								a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account
+							li
+								a(id='help', href='help-center') Help Center
+							li
+								a(id='logout',href='/logout') Log Out
+		.clear
+		article#user_hero
+			.container
+				.row
+					section#create_title.span12
+						h1 Build your poll
+					//section.create_actions
+					//	input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+					//	input(type="button", id="finishBtn", class="red button", value='Finish') 
+					//	input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
+					.clear
 
-				hr
+		hr
 		section#content_container
-			.row
-				.twelve.columns	
-					section#create_content.twelve.columns.dropshadow
-						section#poll_info
-							fieldset.twelve.columns
-								label(id="pollNameLabel",for="pollName") Poll Title  (required)
-								input(type="text", id="pollName", name="pollName")
-							fieldset.twelve.columns
-								label(for="pollDescription") Poll Description
-								textarea(id="pollDescription", name="pollDescription")
-							hr
-						section#question_container.animated.fadeInDown
+			.container
+				.row
+					.span12
+						section#create_content.dropshadow
+							section#poll_info
+								fieldset
+									label(id="pollNameLabel",for="pollName") Poll Title  (required)
+									input(type="text", id="pollName", name="pollName")
+								fieldset
+									label(for="pollDescription") Poll Description
+									textarea(id="pollDescription", name="pollDescription")
+								hr
+							section#question_container.animated.fadeInDown
 
-						include modals/poll-types
-						section.create_actions
-							input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-							input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
-						.clear
+							include modals/poll-types
+							section.create_actions
+								input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
+								input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
+							.clear
 			hr
-		footer#create_footer
-			.row
-				.twelve.columns
-					section(style='height:200px')
-			hr
+			// Footer Content //
+			footer
+				#footer_container.container
+					.row-fluid
+						#footer_content
+							div.span3
+								h5 About Us
+								ul
+									li: a(href='#') Home
+									li: a(href='#') Features
+									li: a(href='#') Sample Questions
+							div.span3
+								h5 Contact Us
+								ul
+									li: a(href='#') About The Team
+									li: a(href='#') Blog
+									li: a(href='#') Contact
+							div.span3
+								h5 Legal Stuff
+								ul
+									li: a(href='#') Privacy
+									li: a(href='#') Terms Of Service
+					.clear
+				#legal
+					span
+						| ©
+						| SmartClickR Inc, All Rights Reserved
+		
 	script(src="/javascript/views/create-poll.js")
 	script(src="/jquery.ui.effect-blind.js")
 	script(src="/jquery-ui-1.9.2.custom.min.js")

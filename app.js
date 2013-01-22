@@ -10,12 +10,14 @@ var express = require('express')
   , poll = require('./routes/poll')
   , question = require('./routes/question')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , lessMiddleware = require('less-middleware')
+  , less = require('less');
 
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 8000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -25,8 +27,12 @@ app.configure(function(){
   app.use(express.session());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.static(path.join(__dirname, 'vendor')));
+  app.use(lessMiddleware({
+	src			: __dirname + "public",
+	compress	: true
+	}));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
@@ -54,6 +60,10 @@ app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 
 // question pages //
 app.post('/user/:User_ID/poll/:Poll_ID/question/create', question.postNewQuestion);
+
+less.render('.class { width: (1 + 1) }', function (e, css) {
+    console.log(css);
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

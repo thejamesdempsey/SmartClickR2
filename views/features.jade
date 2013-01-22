@@ -1,102 +1,99 @@
-extends layout
+extends layout_features
 block content
 
 	// Header Content //
-	section#wrapper
-		#header-container
-			.row
-				.nav-wrapper.twelve.columns
-
-					// Header //
-					header.row
-							nav.top-bar
-								ul
-									li.name
-										h1: a(id='title', href='/') SmartClickR
-									li.toggle-topbar
-										a(href='#')
-								section
-									ul.right
-										li: a(id='home', class='small', href='index') Home
-										li: a(id='features', href='features') Features
-										li: a(id='signup', href='/user/create') Sign Up
-										li: a(id='log', class='fancybox', href='/login') Log In
-								
-							.clear
+	header(class="navbar navbar-inverse navbar-fixed-top")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/") SmartClickR
+				div(class="nav-collapse in collapse", style="height:auto;")
+					ul(class="nav pull-right")
+						li
+							a(id="home", href="/") Home
+						li(class="active")
+							a(id='features', href='features') Features
+						li
+							a(id='signup', href='user/create') Sign Up
+						li
+							a(id='log', class='fancybox', href='login') Log In
 					// End Header //
-				.twelve.columns.hero
-					h1.page-title Features
-				.clear.dropshadow
+	#hero
+		.container
+			.row-fluid
+				h1.page-title Features
+			.clear.dropshadow
 				
 		// End Header-Container //
-		#features-content.row
-			#features-container.twelve.columns.dropshadow
-				section.top-matter
-					header.top-content
-						h1.sub-title.six.columns Overview
-						div.signup.columns.right
-							a(id='',class='signup medium button', href='/user/create') Signup Today
-						.clear
-					nav.nav-pills
-						ul#feature-pills
-							li: a(id='', class='pill', href='#') Feature 1
-							li: a(id='', class='pill', href='#') Feature 2
-							li: a(id='', class='pill', href='#') Feature 3
-							li: a(id='', class='pill', href='#') Feature 4
-						.clear
+	#features-content.container
+		#features-container.twelve.columns.dropshadow
+			section.top-matter
+				header.top-content
+					h1.sub-title.span4 Overview
+					a(id='',class='signup btn-medium btn-success btn span3', href='/user/create') Signup Today
 					.clear
-				section.overview-banner.page-overview
-					div.brief
-						header
-							h1 A Better Way to Ask Questions and Create Polls
-						section.sub-text
-							p Facilitate audience participation with ease and amaze audiences
-							p Take a quick tour of our features
-
-				section#features_usage.twelve.columns.section-pad
-						h1.four.columns Audience Interaction
-					p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-						| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-						| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-						| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-						| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-						| qui officia deserunt mollit anim id est laborum.
-
-				section#features_questions.twelve.columns.section-pad
-					h1.four.columns Available Questions:
-					p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-						| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-						| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-						| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-						| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-						| qui officia deserunt mollit anim id est laborum.
-
-					section#features_classroom.twelve.columns.section-pad
-						h1.four.columns In Your Classroom:
-						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-							| qui officia deserunt mollit anim id est laborum.
-
-					section#features_conferences.twelve.columns.section-pad
-						h1.four.columns At Your Conference:
-						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-							| qui officia deserunt mollit anim id est laborum.
-
-				section#features_mobile.twelve.columns.section-pad
-					h1.four.columns The Mobile Advantage:
-					p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-						| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-						| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-						| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-						| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-						| qui officia deserunt mollit anim id est laborum.
+				nav.nav-pills
+					ul#feature-pills.nav.nav-pills
+						li: a(id='', class='pill', href='#') Feature 1
+						li: a(id='', class='pill', href='#') Feature 2
+						li: a(id='', class='pill', href='#') Feature 3
+						li: a(id='', class='pill', href='#') Feature 4
+					.clear
 				.clear
-	script
-		$(document).foundationTopBar();
+			section.overview-banner.page-overview
+				div.brief
+					header
+						h1 A Better Way to Ask Questions and Create Polls
+					section.sub-text
+						p Facilitate audience participation with ease and amaze audiences
+						p Take a quick tour of our features
+				div.feature-descriptions
+					section#features_usage.section-pad
+							h1.four.columns Audience Interaction
+						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+							| qui officia deserunt mollit anim id est laborum.
+
+					section#features_questions.section-pad
+						h1.four.columns Available Questions:
+						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+							| qui officia deserunt mollit anim id est laborum.
+
+						section#features_classroom.section-pad
+							h1.four.columns In Your Classroom:
+							p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+								| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+								| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+								| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+								| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+								| qui officia deserunt mollit anim id est laborum.
+
+						section#features_conferences.section-pad
+							h1.four.columns At Your Conference:
+							p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+								| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+								| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+								| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+								| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+								| qui officia deserunt mollit anim id est laborum.
+
+					section#features_mobile.section-pad
+						h1.four.columns The Mobile Advantage:
+						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+							| qui officia deserunt mollit anim id est laborum.
+			.clear
+
