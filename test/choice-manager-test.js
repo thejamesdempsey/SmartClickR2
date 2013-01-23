@@ -32,7 +32,7 @@ describe("The Choice Manager Module", function() {
 		var helpQID = '';
 
 		before(function(done) {
-			QM.newQuestion({ Poll_ID : 1, AType : 'TF' }, function(qid) {
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF' , Order : 1 }, function(qid) {
 				helpQID = qid;
 				done();
 			});
@@ -64,7 +64,7 @@ describe("The Choice Manager Module", function() {
 		var choiceID = '';
 
 		before(function(done) {
-			QM.newQuestion({ Poll_ID : 1, AType : 'TF' }, function(qid) {
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF' , Order : 1}, function(qid) {
 				CM.createChoice(qid, function(o) {
 					choiceID = o;
 					done();
@@ -109,13 +109,13 @@ describe("The Choice Manager Module", function() {
 			mcQuestionID2;
 
 		before(function(done) {
-			QM.newQuestion({ Poll_ID : 1, AType : 'TF'}, function(o) {
+			QM.newQuestion({ Poll_ID : 1, AType : 'TF', Order : 1 }, function(o) {
 				tfQuestionID = o;
-				QM.newQuestion({ Poll_ID : 1, AType : 'TF'}, function(o) {
+				QM.newQuestion({ Poll_ID : 1, AType : 'TF', Order : 2 }, function(o) {
 					tfQuestionID2 = o;
-					QM.newQuestion({ Poll_ID : 1, AType : 'MC' }, function(o) {
+					QM.newQuestion({ Poll_ID : 1, AType : 'MC', Order : 3 }, function(o) {
 						mcQuestionID = o;
-						QM.newQuestion({ Poll_ID : 1, AType : 'MC' }, function(o) {
+						QM.newQuestion({ Poll_ID : 1, AType : 'MC', Order : 4 }, function(o) {
 							mcQuestionID2 = o;
 							done();
 						});

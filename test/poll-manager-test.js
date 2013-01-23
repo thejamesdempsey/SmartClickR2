@@ -28,15 +28,15 @@ describe("The Poll Manager Module", function() {
 	describe("The Helper Methods", function() {
 
 		it("should return a poll given a sessionCode", function(done) {
-			//known session code AeB3....
-			PM.getPoll('AeB3', function(o) {
+			//known session code 2J0t....
+			PM.getPoll('2J0t', function(o) {
 				o[0].Poll_ID.should.equal(1);
 				done();
 			});
 		});
 
 		it("should return true if the session code exists in the DB", function(done) {
-			PM.sessionCodeExist('AeB3', function(o) {
+			PM.sessionCodeExist('2J0t', function(o) {
 				o.should.be.true;
 				done();
 			});
@@ -50,7 +50,7 @@ describe("The Poll Manager Module", function() {
 		});
 
 		it("should return the Poll ID of the given session code", function(done) {
-			PM.getPollId('AeB3', function(o) {
+			PM.getPollId('2J0t', function(o) {
 				o.should.equal(1);
 				done();
 			});
@@ -59,13 +59,6 @@ describe("The Poll Manager Module", function() {
 		it("should generate a 4 digit session code", function(done) {
 			PM.generateSessionCode(function(o) {
 				o.length.should.equal(4);
-				done();
-			});
-		});
-
-		it("should return the amount of polls user 48 has", function(done) {
-			PM.pollCount(48, function(o) {
-				o.should.equal(1);
 				done();
 			});
 		});

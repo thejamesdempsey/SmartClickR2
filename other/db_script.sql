@@ -53,12 +53,12 @@ CREATE TABLE Choices(
 
 CREATE TABLE Responses(
 	Response_ID INT NOT NULL auto_increment,
-	Choice_ID INT NOT NULL,
-	User_ID INT NOT NULL,
+	Question_ID INT NOT NULL,
+	User_ID INT,
 	Content VARCHAR(500) NOT NULL,
 	primary key(Response_ID),
-	foreign key(Choice_ID) references Choices(Choice_ID),
-	foreign key(User_ID) references Users(User_ID)
+	foreign key(Question_ID) references Questions(Question_ID) on delete cascade,
+	foreign key(User_ID) references Users(User_ID) on delete cascade
 );
 
 

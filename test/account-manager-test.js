@@ -139,15 +139,6 @@ describe("The Account Manager Module", function() {
 			});
 		});
 		
-		/*
-		it("should delete the user with the given userid", function(done) {
-			AM.delete(13, function(result) {
-				//result returns null
-				done();
-			});
-		});
-		*/
-		
 		
 		it("should set a new password for Bradlye", function(done) {
 			AM.setpasword('corvettes@bfisch.com', 'cars', function(o) {

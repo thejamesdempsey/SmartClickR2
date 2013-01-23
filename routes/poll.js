@@ -57,32 +57,4 @@ exports.deletePoll = function(request, response) {
 	});
 }
 
-// Helper Method //
-var groupQuestions = function(results) {
 
-	var questions = [];
-	var matches = [];
-	var temp = results[0].Question_ID
-
-	for(var i = 1; i < results.length; i++) {
-		if(results[i].Question_ID == results[i-1].Question_ID) {
-			//console.log('Match with i and i-1!!!!');
-			matches.push(results[i-1]);
-			temp = results[i-1].Question_ID;
-		} else if(results[i-1].Question_ID == temp) { 
-			//console.log('Secondary Match!');
-			matches.push(results[i-1]);
-			questions.push(matches);
-			matches = [];
-
-			questions.push(results[i]);
-			temp = results[i-1].Question_ID;
-		} else {
-			//console.log('No match :(');
-			questions.push(results[i]);
-			temp = results[i-1].Question_ID;
-		}
-	}
-
-	return questions;
-}
