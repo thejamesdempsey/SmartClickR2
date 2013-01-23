@@ -63,6 +63,12 @@ PM.getPollId = function(sessionCode, callback) {
 	});
 }
 
+PM.pollTitleDescription = function(sessionCode, callback) {
+	connection.query('SELECT PollName, PollDescription FROM ' + TABLE + ' WHERE SessionCode = ?', [sessionCode], function(err, results) {
+		callback(results);
+	});
+}
+
 // Get User's Polls //
 
 PM.getUsersPolls = function(userId, callback) {

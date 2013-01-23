@@ -70,7 +70,7 @@ app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 app.post('/user/:User_ID/poll/:Poll_ID/question/create', question.postNewQuestion);
 
 // start poll //
-app.get('/poll/:SessionCode', question.getPollQuestions);
+app.get('/poll/:SessionCode', poll.getPollQuestions);
 app.get('/poll/:SessionCode/question/:Question_ID', question);
 app.post('/poll/:SessionCode/question/:Question_ID', question);
 

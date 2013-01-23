@@ -57,4 +57,24 @@ exports.deletePoll = function(request, response) {
 	});
 }
 
+// GET /poll/:SessionCode //
+// takes you to the poll landing page and returns question IDs and Poll Description //
+exports.getPollQuestions = function(request, response) {
+
+	var sessionCode = request.param('SessionCode');
+	
+	PM.getPoll(sessionCode, function(result) {
+		if(result != 'poll-not-found') {
+			QM.getPollQuestions(sessionCode, function(questionIDs) {
+				console.log(questionIDs);
+				PM.pollTitleDescription(sessionCode, function(pollData) {
+					console.log(pollData);
+				});
+			});
+		} else {
+			response.send('Does not exist');
+		}
+	});
+}
+
 

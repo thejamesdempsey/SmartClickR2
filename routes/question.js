@@ -67,20 +67,7 @@ exports.postNewQuestion = function(request, response) {
 }
 
 
-exports.getPollQuestions = function(request, response) {
 
-	PM.getPoll(request.param('SessionCode'), function(result) {
-		if(result != 'poll-not-found') {
-			QM.getPollQuestions(request.param('SessionCode'), function(questionIDs) {
-				console.log(questionIDs);
-				// send questionIDs to hidden field in response page
-				// get data for the first question and choices
-			});
-		} else {
-			response.send('Does not exist');
-		}
-	});
-}
 
 // var questionIDs = [277, 279, 278, 282, 281, 280];
 // console.log(questionIDs.indexOf(278) - 1);
