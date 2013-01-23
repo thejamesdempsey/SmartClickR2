@@ -18,10 +18,6 @@ var MYSQL_PASS = MC.pass;
 var DATABASE = 'SmartClickR';
 var TABLE = 'Users';
 
-console.log(MC.user);
-console.log(MC.pass);
-
-
 // Connect to the DB //
 var connection = mysql.createConnection({
 	host: HOST,
@@ -86,7 +82,7 @@ AM.signup = function(newData, callback) {
 						console.log("Error: " + error);
 					} else {
 						//console.log('Name: ' + newData.FirstName + ' ' + newData.LastName + ', Email: ' + newData.Email);
-						callback(null)
+						callback(info.insertId);
 					}
 				});
 			});
@@ -156,7 +152,7 @@ AM.validateLink = function(email, passHash, callback) {
 }
 
 AM.delete = function(id, callback) {
-	connection.query('DELETE FROM ' + TABLE + ' WHERE id = ?', [id], function(err, results) {
+	connection.query('DELETE FROM ' + TABLE + ' WHERE User_ID = ?', [id], function(err, results) {
 		if (err) {
 			console.log("Error: " + err);
 			connection.destroy();

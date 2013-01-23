@@ -69,13 +69,14 @@ describe("The Question Manager Module", function() {
 
 		before(function(done) {
 			PM.createNewPoll({ User_ID : 47,
-							   PollName: 'Testing Questions'}, function(code) {
+							   PollName: 'Testing Questions' }, function(code) {
 
 				PM.getPollId(code, function(pollId) {
 					pollID = pollId;
 
 					QM.newQuestion({ Poll_ID : pollID, 
-									 AType   : 'FR'}, function(qid) {
+									 AType   : 'FR',
+									 Order   : 1}, function(qid) {
 
 						questionID2 = qid;
 						done();
@@ -87,7 +88,8 @@ describe("The Question Manager Module", function() {
 
 		it("should create a new question", function(done) {
 			QM.newQuestion({ Poll_ID : pollID, 
-							 AType   : 'TF'}, function(qid) {
+							 AType   : 'TF',
+							 Order   : 2 }, function(qid) {
 
 				questionID = qid;
 				done();
@@ -125,26 +127,12 @@ describe("The Question Manager Module", function() {
 			});
 		});
 
-		it("should delete a question given the question id and poll id", function(done) {
-			QM.delete({ Poll_ID     : pollID, 
-						Question_ID : questionID }, function(o) {
 
-				QM.questionCount(pollID, function(count) {
-					count.should.equal(1);
-					done();
-				});
+		after(function(done) {		
+			PM.delete(pollID, function(out) {
+				done();
 			});
 		});
-
-		after(function(done) {
-			QM.delete({ Poll_ID     : pollID, 
-						Question_ID : questionID2 }, function(o) {
-
-				PM.delete(pollID, function(out) {
-					done();
-				});
-			});			
-		})
 	});
 
 });
