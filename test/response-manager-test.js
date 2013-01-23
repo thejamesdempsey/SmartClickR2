@@ -66,6 +66,20 @@ describe("The Response Manager Module", function() {
 			});
 		});
 
+		it("should update date a response when given the response id", function(done) {
+			RM.createResponse({ Question_ID : qid, User_ID : uid, Content : 'False' }, function(rid) {
+				connection.query('SELECT * FROM ' + TABLE + ' WHERE Response_ID = ?', [rid], function(err, results) {
+					results[0].Content.should.equal('False');
+					RM.updateResponse({ Content : 'True', Response_ID : rid}, function(nothing) {
+						connection.query('SELECT * FROM ' + TABLE + ' WHERE Response_ID = ?', [rid], function(err, o) {
+							o[0].Content.should.equal('True');
+							done();
+						});
+					});
+				});
+			});
+		});
+
 		after(function(done) {
 			AM.delete(uid, function(o) {
 				QM.delete(qid, function(nothing) {

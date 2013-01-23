@@ -60,9 +60,11 @@ app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 
 // question pages //
 app.post('/user/:User_ID/poll/:Poll_ID/question/create', question.postNewQuestion);
+
+// start poll //
+app.get('/poll/:SessionCode/question', question.getPollQuestions);
 app.get('/poll/:SessionCode/question/:Question_ID', question);
 app.post('/poll/:SessionCode/question/:Question_ID', question);
-
 
 
 less.render('.class { width: (1 + 1) }', function (e, css) {

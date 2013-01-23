@@ -1,5 +1,6 @@
 var QM = require('./modules/question-manager');
 var CM = require('./modules/choice-manager');
+var PM = require('./modules/poll-manager');
 
 // POST /user/:User_ID/poll/:Poll_ID/question/create //
 // create each question //
@@ -49,26 +50,28 @@ exports.postNewQuestion = function(request, response) {
 		} else if (request.param('questionType') == 'FR') {
 
 			stem = request.body.question[0];
-			
 			QM.updateStem({ Stem : stem,
-							Question_ID : qid }, function(o) { });
+							Question_ID : qid }, function(o) { 
+				//do nothing
+			});
 
 		} else if (request.param('questionType') == 'N') {
-			//numeric
+	
 			stem = request.body.question[0];
 			QM.updateStem({ Stem : stem,
-							Question_ID : qid }, function(o) { });
+							Question_ID : qid }, function(o) { 
+				//do nothing
+			});
 		}
 	});
 }
 
 
+exports.getPollQuestions = function(request, response) {
+	QM.getPollQuestions(request.Param('SessionCode'), function(questionIDs) {
+		console.log(questionIDs);
+	});
+}
 
-/*
 
 
-
-
-
-
-*/

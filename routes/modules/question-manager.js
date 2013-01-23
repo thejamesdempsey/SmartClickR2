@@ -73,6 +73,19 @@ QM.getQuestions = function(pollId, callback) {
 	});
 }
 
+// Get All Question ID of the Poll from sessionCode //
+QM.getPollQuestion = function(sessionCode, callback) {
+	connection.query('SELECT Question_ID FROM ' + TABLE + ' JOIN Polls on Polls.Poll_ID = Questions.Poll_ID WHERE Polls.SessionCode = ?', [sessionCode], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(results);
+		}
+	});
+}
+
 // Get a Question //
 QM.getQuestion = function(questionId, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [questionId], function(err, results) {
