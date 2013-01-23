@@ -3,25 +3,26 @@ $(document).ready(function() {
 });
 
 
-
 function getQuote(){
 	var quote = new Array();
 		quote[0] = "Did you get a haircut? It looks great";
-		quote[1] = "<a href='http://www.youtube.com/watch?v=5_sfnQDr1-o'>Baby monkeys gotta have their fun too!</a>";
-		quote[2] = "The only thing we have to fear is fear itself";
-		quote[3] = "G'day Mate!";
-		quote[4] = "Falling doesnt make you a failure, staying down does.";
-		quote[5] = "Great shirt! Where'd you get it?";
-		quote[6] = "Livin' la vida, SmartClickR style";
-		quote[7] = "Keep on <a href='http://www.youtube.com/watch?v=nDOPNLzEFH0'>poppin' and lockin</a> my friend";
-		quote[8] = "How do you stay in such good shape? <a href='http://www.youtube.com/watch?v=BE1Z-nI4CMI&feature=related'>Jazzercise!</a>"
-		quote[9] = "Its nice having you around :)";
-		quote[10] = "<a href='http://www.youtube.com/watch?v=2Qd_IsxgAf8'>Thundercats! Hoooooooooo!</a>";
-		quote[11] = "That's no fish. <a href='http://www.youtube.com/watch?v=IhJQp-q1Y1s'>This is a fish</a>";
-		quote[12] = "What if all of the Olympic events went like <a href='http://www.youtube.com/watch?NR=1&v=BzrI15uw92k'>this</a>?";
-		quote[13] = "<a href='http://www.youtube.com/watch?v=4JDt8JuCbeo'>Whaaaaaaaat!?</a>";
-		quote[14] = "<a href='http://www.youtube.com/watch?v=00vDFQ_d2mE'>Hey there, its time for a kitten break!</a>";
-		quote[15] = "Sometimes <a href='http://www.youtube.com/watch?v=FtX8nswnUKU'>kittens are just inspired by other kittens</a>";
+		quote[1] = "<a href='http://www.youtube.com/watch?v=5_sfnQDr1-o'>Baby monkeys just wanna have fun</a>";
+		quote[2] = "G'day Mate!";
+		quote[3] = "Great shirt! Where'd you get it?";
+		quote[4] = "Livin' la vida, SmartClickR style";
+		quote[5] = "Keep on <a href='http://www.youtube.com/watch?v=nDOPNLzEFH0'>poppin' and lockin</a> my friend";
+		quote[6] = "How do you stay in such good shape? <a href='http://www.youtube.com/watch?v=BE1Z-nI4CMI&feature=related'>Jazzercise!</a>"
+		quote[7] = "Its nice having you around :)";
+		quote[8] = "<a href='http://www.youtube.com/watch?v=2Qd_IsxgAf8'>Thundercats! Hoooooooooo!</a>";
+		quote[9] = "That's no fish. <a href='http://www.youtube.com/watch?v=IhJQp-q1Y1s'>This is a fish</a>";
+		quote[10] = "What if all <a href='http://www.youtube.com/watch?NR=1&v=BzrI15uw92k'>Olympic events went like this?</a>?";
+		quote[11] = "<a href='http://www.youtube.com/watch?v=4JDt8JuCbeo'>Whaaaaaaaat!?</a>";
+		quote[12] = "Hey there, <a href='http://www.youtube.com/watch?v=00vDFQ_d2mE'>its time for a kitten break!</a>";
+		quote[13] = "Sometimes <a href='http://www.youtube.com/watch?v=FtX8nswnUKU'>kittens are just inspired by other kittens</a>";
+		quote[14] = "Whens that last time you saw a <a href='http://www.youtube.com/watch?v=LNqeZVL_ZHE&feature=player_embedded'>dog bark this way</a>?";
+		quote[15] = "I think you could be a <a href='http://www.youtube.com/watch?v=lmDTSQtK20c'>part time model</a>";
+		quote[16] = "Talking animals? <a href='http://www.youtube.com/watch?v=f-Kt_kuYVtU'>That would be crazy</a>...";
+		quote[17] = "Oh the weather outside is frightful";
 	
 	var randomChoice = Math.floor(Math.random() * quote.length);
 	$('#greeting').append(quote[randomChoice]);

@@ -18,9 +18,14 @@
 	/*width: 1170px !important;*/
 }
 
+canvas{
+	display: block;
+}
+
 #greeting{
 	font-weight: 300 !important;
 	padding-top: 10px;
+	font-size: 1.2em;
 }
 
 #greeting a{
@@ -32,8 +37,13 @@
 #greeting a:hover{
 	color: #fff;
 	text-decoration: none;
-	border-bottom: 1px solid #fff;
-	
+	border-bottom: 1px solid #fff;	
+}
+
+@media screen and (max-width: 490px) {
+	#greeting{
+		display: none;
+	}
 }
 
 .bubble{

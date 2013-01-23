@@ -8,6 +8,8 @@ input(type = 'hidden',value = user._id)#userId
 
 block content
 	script(src="/javascript/randomGreeting.js")
+	script(src="/javascript/snake.js")
+
 	// Header Content //
 	header(class="navbar navbar-inverse navbar-fixed-top")
 		.navbar-inner
@@ -45,8 +47,11 @@ block content
 							.clear
 						div#user_search.span6
 							form.form-search
-								input(id='search_polls', type='text', name='password', class='input-medium search-query', title='search your polls', placeholder="Search your Polls")
-								input(id="search_polls_submit",class="green", type="submit", name="seach_polls_submit", value="Go")
+								input(id='search_polls', type='text', name='search', class='input-medium search-query', title='search your polls', placeholder="Search your Polls")
+								button(id="search_polls_submit",class=" btn green", value="Go", type="submit") Search
+
+
+							
 								.clear
 		hr
 	section#content_container
@@ -125,7 +130,6 @@ block content
 				| SmartClickR Inc, All Rights Reserved
 
 
-	script(src="/javascript/userActions.js")
 
 	
 			
