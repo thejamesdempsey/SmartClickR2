@@ -7,6 +7,7 @@ extends layout
 input(type = 'hidden',value = user._id)#userId
 
 block content
+	script(src="/javascript/randomGreeting.js")
 	// Header Content //
 	header(class="navbar navbar-inverse navbar-fixed-top")
 		.navbar-inner
@@ -31,10 +32,13 @@ block content
 		.container
 			.span12
 				section#user_greeting
-					h2#user_hello Hi, #{locals.udata.FirstName}
+					h2#user_hello.span5 
+						return Hi, #{locals.udata.FirstName}
 					// this type of call gets the desired info about the user
 					//#{locals.udata.FirstName} 
-					h4#custom_greeting Did you get a haircut? It looks great
+					div.span6
+						p#greeting.bubble
+						.clear
 					aside#actions_container.span12
 						div#user_actions.span5
 							a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
@@ -122,6 +126,6 @@ block content
 
 
 	script(src="/javascript/userActions.js")
-	script
 
+	
 			
