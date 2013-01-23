@@ -1,5 +1,6 @@
-
-extends layout
+ 
+ 
+extends layout_blog
 
 block content
 	// Header Content //
@@ -21,31 +22,24 @@ block content
 							a(id='signup', href='user/create') Sign Up
 						li
 							a(id='log', class='fancybox', href='login') Log In
-
-	#feature-container
-		.container
-			.row-fluid
+	#main-content
+		article#user_hero
+			.container
 				.span12
-					#hero
-						#hero_content
-							.span7.img-contain
-								img(src="http://placehold.it/600x400")
-							.span5#tag
-								h1 Audience participation made easy
-								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
-								span#main-create
-									a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
-							.clear
-						//end hero_content
-						section#session-code
-							h3 Have a session code?
-							form.form-inline
-								input(type="text", placeholder="Enter it here")
-								button(type="submit", class="btn btn-info") Find it &rarr;
-					.clear
-					//end section
+					h2 Im still being finished. 
+			hr
+		section#content_container
+			.container
+				.row
+					.span12					
+						section#user_content
+							div#content.pad
+								#sub-title
+										p We don't really have anything to write about yet but we are fans of xkcd so...
+										img( src="http://imgs.xkcd.com/comics/tags.png")	
 
-	// Footer Content //
+		.clear
+		// Footer Content //
 	footer
 		#footer_container.container
 			.row-fluid
@@ -79,7 +73,3 @@ block content
 			span
 				| ©
 				| SmartClickR Inc, All Rights Reserved
-
-
-
-

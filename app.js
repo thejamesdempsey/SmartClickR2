@@ -42,6 +42,14 @@ app.configure('development', function(){
 // main pages //
 app.get('/', routes.index);
 app.get('/features', routes.features);
+app.get('/help', routes.help);
+app.get('/samples', routes.samples);
+app.get('/about', routes.about);
+app.get('/blog', routes.blog);
+app.get('/contact', routes.contact);
+app.get('/data', routes.data);
+app.get('/privacy', routes.privacy);
+app.get('/terms', routes.terms);
 
 // user pages //
 app.get('/user/create', user.signup);

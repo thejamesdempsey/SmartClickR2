@@ -68,7 +68,7 @@ exports.getHome = function(request, response) {
 				var formatDate = date[1] + " " + date[2] + ", " + date[3];
 				polls[i].CreateDate = formatDate;
 			}
-			response.render('userhome.jade', { title: 'SmartClickR | Home', locals: {udata: user, pdata: polls} });
+			response.render('userhome.jade', { title: 'SmartClickR | Home', locals: {udata: user, pdata: polls}, layout: 'layout_userhome.jade' });
 		});
 	} else {
 		response.redirect('/');
