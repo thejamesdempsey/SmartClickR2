@@ -69,6 +69,7 @@ exports.getPollQuestions = function(request, response) {
 				console.log(questionIDs);
 				PM.pollTitleDescription(sessionCode, function(pollData) {
 					console.log(pollData);
+					response.render('landing.jade', { title: 'SmartClickR | Starting Poll', locals: { QuestionIDs : questionIDs, pdata : pollData }});
 				});
 			});
 		} else {

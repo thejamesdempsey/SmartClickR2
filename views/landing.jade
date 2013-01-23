@@ -1,7 +1,7 @@
 extends layout
 
-- qid = typeof(locals.question-ids) != 'undefined' ? locals.udata : {}
-input(type = 'hidden', value = qid.Question_ID)#qid
+- qid = typeof(locals.QuestionIDs) != 'undefined' ? locals.udata : {}
+input(type = 'hidden', value = qid)#qid
 
 block content
 	// Header Content //
