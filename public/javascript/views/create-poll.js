@@ -70,15 +70,6 @@ $(document).ready(function() {
 		var stem, answer, type, question, mChoices;
 		var count = 0;
 
-		//validate that a poll name is there
-		// var pollName = $('#pollName').val().trim();
-		
-		// if( pollName == '' ) {
-		// 	$('#poll_info').find(".error").hide();
-		// 	$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
-		// }
-
-
 		$('.question_wrap').each(function(index) {
 
 			answer = '';

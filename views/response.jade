@@ -1,0 +1,47 @@
+extends layout_landing
+
+
+block content
+	body#landing-page
+		// Header Content //
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/") SmartClickR
+					div(class="nav-collapse", style="height:auto;")
+						ul(class="nav pull-right")
+							li(class="active")
+								a(id="home", href="/") Home
+							li
+								a(id='signup', href='/user/create') Sign Up
+							li
+								a(id='log', href='/login') Log In
+		.clear
+		#landing-pad.hidden-phone
+		#landing-container
+			.container
+				.row-fluid
+					.span12
+						#hero
+							#hero_content.span6.offset3
+								h4#question-number Question #{locals.qdata[0].QuestionsOrder}
+								h3#question-content #{locals.qdata[0].Stem}
+								form(method='POST', action='#')
+									case locals.qdata[0].AnswerType
+										when "TrueFalse"
+											fieldset.span6
+												span True
+												input(type='radio', value='True', name='tf_response')
+											fieldset.span6
+												span False
+												input(type='radio', value='False', name='tf_response')
+										when "FreeResponse"
+											textarea(name='freeresponse',cols='80', rows='5', placeholder='Type in your response')#freeresponse 
+										when "Numeric"
+											textarea(name='numeric', cols='80', rows='5', placeholder='Type in your response')#numericresponse 
+							
+

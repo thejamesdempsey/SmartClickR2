@@ -78,6 +78,7 @@ exports.pollQuestion = function(request, response) {
 
 	FM.getQuestion(currentQID, function(questionData) {
 		console.log(questionData);
+		response.render('response.jade', { title: 'SmartClickR | Poll Response', locals: { QuestionIDs : questionIDs, qdata : questionData , session : sessionCode }})
 	});
 }
 
