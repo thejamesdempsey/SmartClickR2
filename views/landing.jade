@@ -1,23 +1,39 @@
-extends layout
+extends layout_landing
 
-- qid = typeof(locals.QuestionIDs) != 'undefined' ? locals.udata : {}
+- qid = typeof(locals.QuestionIDs) != 'undefined' ? locals.QuestionIDs : {}
+- pdata = typeof(locals.pdata) != 'undefined' ? locals.pdata
+input(type='hidden', value = pdata)#pdata
 input(type = 'hidden', value = qid)#qid
 
 block content
-	// Header Content //
-	header(class="navbar navbar-inverse navbar-fixed-top")
-		.navbar-inner
+	body#landing-page
+		// Header Content //
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/") SmartClickR
+					div(class="nav-collapse", style="height:auto;")
+						ul(class="nav pull-right")
+							li(class="active")
+								a(id="home", href="/") Home
+							li
+								a(id='signup', href='/user/create') Sign Up
+							li
+								a(id='log', href='/login') Log In
+		.clear
+		#landing-pad.hidden-phone
+		#landing-container
 			.container
-				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
-					span(class="icon-bar")
-					span(class="icon-bar")
-					span(class="icon-bar")
-				a(class="brand", href="/") SmartClickR
-				div(class="nav-collapse in collapse", style="height:auto;")
-					ul(class="nav pull-right")
-						li
-							a(id="home", href="/") Home
-						li
-							a(id='signup', href='user/create') Sign Up
-						li
-							a(id='log', class='fancybox', href='login') Log In
+				.row-fluid
+					.span12
+						#hero
+							#hero_content.span6.offset3
+								h3#poll-name #{locals.pdata[0].PollName}
+								p#poll-desc #{locals.pdata[0].PollDescription}
+								p#actions
+									button(id="start-poll", class="btn btn-success btn-large") Let's Go  &rarr;
+							

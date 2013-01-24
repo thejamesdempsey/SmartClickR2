@@ -73,7 +73,7 @@ exports.getPollQuestions = function(request, response) {
 				});
 			});
 		} else {
-			response.send('Does not exist');
+			response.render('landing.jade', { title: 'SmartClickR | Starting Poll'});
 		}
 	});
 }
