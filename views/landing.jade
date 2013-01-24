@@ -1,7 +1,7 @@
 extends layout
 
-- qid = typeof(locals.QuestionIDs) != 'undefined' ? locals.udata : {}
-input(type = 'hidden', value = qid)#qid
+- qid = typeof(locals.QuestionIDs) != 'undefined' ? locals.QuestionIDs : {}
+input(type = 'text', value = qid)#qid
 
 block content
 	// Header Content //
@@ -21,3 +21,7 @@ block content
 							a(id='signup', href='user/create') Sign Up
 						li
 							a(id='log', class='fancybox', href='login') Log In
+	input(type="text", value="", id="testing")
+
+	script
+		console.log(qid);
