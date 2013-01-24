@@ -36,7 +36,7 @@ module.exports = FM;
 // used for the edit page //
 FM.getQuestions = function(pollID, callback) {
 	QM.getQuestions(pollID, function(questions) {
-		var size = []
+		var size = [];
 		for(var i = 0; i < questions.length; i++) {
 			size.push(i);
 			CM.getChoices(questions[i].Question_ID, function(choices) {
@@ -49,4 +49,18 @@ FM.getQuestions = function(pollID, callback) {
 		}, 25);
 
 	});
+}
+
+FM.getQuestion = function(questionID, callback) {
+	QM.getQuestion(questionID, function(question) {
+		CM.getChoices(questionID, function(choices) {
+			question[0]["Choices"] = choices;
+		});
+		
+		setTimeout(function() {
+			callback(question);
+		}, 25);
+	});
+
+
 }

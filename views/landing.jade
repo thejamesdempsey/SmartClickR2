@@ -6,6 +6,7 @@ input(type='hidden', value = pdata)#pdata
 input(type = 'hidden', value = qid)#qid
 input(type="hidden", value = '')#session
 
+
 block content
 	body#landing-page
 		// Header Content //
@@ -38,3 +39,12 @@ block content
 								form(id="actions", action="question/#{locals.QuestionIDs[0].QuestionID}", method="GET")
 									button(id="start-poll", class="btn btn-success btn-large") Let's Go  &rarr;
 							
+				.row-fluid					
+					#hero_content.span6.offset3
+						h3#poll-name #{locals.pdata[0].PollName}
+						p#poll-desc #{locals.pdata[0].PollDescription}
+						p#action
+							a(id='starting-question', href='/poll/#{locals.session}/question/#{locals.QuestionIDs[0].Question_ID}') Let's Go  &rarr; 
+
+						
+

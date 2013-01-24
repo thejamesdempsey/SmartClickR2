@@ -1,6 +1,7 @@
 var QM = require('./modules/question-manager');
 var CM = require('./modules/choice-manager');
 var PM = require('./modules/poll-manager');
+var FM = require('./modules/format-manager');
 
 // POST /user/:User_ID/poll/:Poll_ID/question/create //
 // create each question //
@@ -66,8 +67,20 @@ exports.postNewQuestion = function(request, response) {
 	});
 }
 
+exports.pollQuestion = function(request, response) {
+	questionIDs = request.session.questionIDs;
+	currentQID = request.param('Question_ID');
+	sessionCode = request.param('SessionCode');
 
+	console.log('Current Question ID: ', currentQID);
+	console.log('QuestionIDs: ', questionIDs);
+	console.log('SessionCode: ', sessionCode);
 
+	FM.getQuestion(currentQID, function(questionData) {
+		console.log(questionData);
+		response.render('response.jade', { title: 'SmartClickR | Poll Response', locals: { QuestionIDs : questionIDs, qdata : questionData , session : sessionCode }})
+	});
+}
 
 // var questionIDs = [277, 279, 278, 282, 281, 280];
 // console.log(questionIDs.indexOf(278) - 1);

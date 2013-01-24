@@ -67,9 +67,10 @@ exports.getPollQuestions = function(request, response) {
 		if(result != 'poll-not-found') {
 			QM.getPollQuestions(sessionCode, function(questionIDs) {
 				console.log(questionIDs);
+				request.session.questionIDs = questionIDs;
 				PM.pollTitleDescription(sessionCode, function(pollData) {
 					console.log(pollData);
-					response.render('landing.jade', { title: 'SmartClickR | Starting Poll', locals: { QuestionIDs : questionIDs, pdata : pollData }});
+					response.render('landing.jade', { title: 'SmartClickR | Starting Poll', locals: { QuestionIDs : questionIDs, pdata : pollData , session : sessionCode }});
 				});
 			});
 		} else {
