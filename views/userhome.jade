@@ -74,7 +74,9 @@ block content
 											span
 												aside#sub_content
 													p #{poll.PollDescription}
-											h3 Session Code: #{poll.SessionCode}
+											p Session Code: #{poll.SessionCode}
+											p Url: 
+												a(href='/poll/'+poll.SessionCode, target="_blank") smartclickr.com/poll/#{poll.SessionCode}
 										ul#alt-actions.span1
 											li(id='edit_poll'+poll.Poll_ID)
 												a(href="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", class="btn btn-medium btn-info") Edit
