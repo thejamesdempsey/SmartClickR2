@@ -69,14 +69,18 @@ app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 // question pages //
 app.post('/user/:User_ID/poll/:Poll_ID/question/create', question.postNewQuestion);
 
-// start poll //
+// responding pages //
 app.get('/poll/:SessionCode', poll.getPollQuestions);
 app.get('/poll/:SessionCode/question/:Question_ID', question.pollQuestion);
 app.post('/poll/:SessionCode/question/:Question_ID', question.postResponse);
 
 // poll present pages //
-app.get('/user/:User_ID/poll/:Poll_ID', poll.presentLandingPage);
+
+// GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
+// GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
+app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
 app.get('/user/:User_ID/poll/:Poll_ID/present/question/:Question_ID', poll.getPresentPage);
+
 
 
 less.render('.class { width: (1 + 1) }', function (e, css) {
