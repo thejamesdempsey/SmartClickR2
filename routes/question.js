@@ -107,3 +107,8 @@ exports.postResponse = function(request, response) {
 	}
 }
 
+// GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID
+exports.getpresentPage = function(request, response) {
+	// send questionData in JSON format
+	//response.render('present.jade', {title: 'SmartClickR | Lets Present' });
+}

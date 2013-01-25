@@ -80,7 +80,7 @@ block content
 														
 			
 											li(id='start_poll'+poll.Poll_ID).span1
-												button(id="home-start", formmethod="GET", action="#", class="btn btn-medium btn-info") Start
+												button(id="home-start", formmethod="GET", formaction="/user/#{locals.udata.User_ID}/poll/#{poll.Poll_ID}", class="btn btn-medium btn-info") Start
 												article#poll_brief.span9
 											
 										aside#sub_info.span12
