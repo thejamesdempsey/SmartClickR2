@@ -107,8 +107,3 @@ exports.postResponse = function(request, response) {
 	}
 }
 
-
-// var questionIDs = [277, 279, 278, 282, 281, 280];
-// console.log(questionIDs.indexOf(278) - 1);
-
-
