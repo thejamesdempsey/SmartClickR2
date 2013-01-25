@@ -1,1 +1,43 @@
-body{font-family:"Helvetica Neue",Helvetica,Arial,Veranda,sans-serif;padding:0;margin:0 auto;font-size:62.5%}.clear{clear:both}#landing-page{background-color:#4c8ab0}#landing-pad{margin-top:60px}#hero_content{margin-top:40px;padding:40px;min-height:330px;background:rgba(56,118,156,.6);border-radius:10px}#start-poll{text-align:center;padding:16px 60px}#actions{text-align:center;padding-top:30px}#poll-name{color:#fff;font-size:2.6rem;font-weight:300;padding-bottom:12px}#poll-desc{color:#fff;font-size:1.0rem;padding-top:8px}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 62.5%;
+  /*min-width: 0;*/
+
+}
+.clear {
+  clear: both;
+}
+#landing-page {
+  background-color: #4c8ab0;
+}
+#landing-pad {
+  margin-top: 60px;
+}
+#hero_content {
+  margin-top: 40px;
+  padding: 40px;
+  min-height: 330px;
+  background: rgba(56, 118, 156, 0.6);
+  border-radius: 10px;
+}
+#starting-question.btn.btn-success {
+  text-align: center;
+  padding: 16px 60px;
+}
+#actions {
+  text-align: center;
+  padding-top: 30px;
+}
+#poll-name {
+  color: #fff;
+  font-size: 2.6rem;
+  font-weight: 300;
+  padding-bottom: 12px;
+}
+#poll-desc {
+  color: #fff;
+  font-size: 1.0rem;
+  padding-top: 8px;
+}
