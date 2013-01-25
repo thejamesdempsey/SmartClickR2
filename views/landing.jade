@@ -28,8 +28,5 @@ block content
 					#hero_content.span6.offset3
 						h3#poll-name #{locals.pdata[0].PollName}
 						p#poll-desc #{locals.pdata[0].PollDescription}
-						p#action
-							a(id='starting-question', href='/poll/#{locals.session}/question/#{locals.QuestionIDs[0].Question_ID}') Let's Go  &rarr; 
-
-						
+						a(id='starting-question', href='/poll/#{locals.session}/question/#{locals.QuestionIDs[0].Question_ID}') Let's Go  &rarr; 					
 
