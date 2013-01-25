@@ -85,7 +85,7 @@ exports.postResponse = function(request, response) {
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
 	content = request.param('response').trim();
-	user = request.session.user;
+	var user = request.session.user;
 	var nextQuestion = questionIDs.indexOf(currentQID) + 1;
 
 	if(user) {
@@ -108,7 +108,14 @@ exports.postResponse = function(request, response) {
 }
 
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID
-exports.getpresentPage = function(request, response) {
+exports.presentPollQuestion = function(request, response) {
+	var currentQID = request.param('Question_ID');
+	var userID = request.param('User_ID');
+	var pollID = request.param('Poll_ID');
+
 	// send questionData in JSON format
 	//response.render('present.jade', {title: 'SmartClickR | Lets Present' });
+	FM.getMCdata(currentQID, function(result) {
+		console.log(result);
+	});
 }
