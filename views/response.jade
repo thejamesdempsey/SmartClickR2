@@ -27,27 +27,36 @@ block content
 				.row-fluid
 					.span12
 						#hero
-							#hero_content.span6.offset3
-								h4#question-number Question #{locals.qdata[0].QuestionsOrder}
-								h3#question-content #{locals.qdata[0].Stem}
-								form(method='POST', action='/poll/#{locals.session}/question/#{locals.qdata[0].Question_ID}')
+							#hero_content_response.span6.offset3
+								span#question-wrap.span12
+									h4#question-number Question #{locals.qdata[0].QuestionsOrder}
+									h3#question-content #{locals.qdata[0].Stem}
+								.clear
+								form(id="response-form",method='POST', action='/poll/#{locals.session}/question/#{locals.qdata[0].Question_ID}')
 									case locals.qdata[0].AnswerType
 										when "MultipleChoice"
 											for choice in locals.qdata[0].Choices
-												fieldset
-													input(type='radio', value='#{choice.Content}', name='response', class='mc_response')
-													span  #{choice.ChoiceOrder}) #{choice.Content}
+												div.span12.no-margin
+													label.radio.inline
+														input(type='radio', value='#{choice.Content}', name='response', class='mc_response')
+														| #{choice.ChoiceOrder}) #{choice.Content}
 										when "TrueFalse"
-											fieldset.span4
-												input(type='radio', value='True', name='response', class='tf_response')
-												span   True
-											fieldset.span4
-												input(type='radio', value='False', name='response', class='tf_response')
-												span   False
+											div.span7.no-margin
+												label(class="radio", for="true")
+													input(id="true" ,type='radio', value='True', name='response', class='tf_response') 
+													| True
+												label(class="radio", for="false")
+													input(id="false",type='radio', value='False', name='response', class='tf_response') 
+													| False
 										when "FreeResponse"
-											textarea(class='f_response', name='response',cols='80', rows='5', placeholder='Type in your response')#freeresponse 
+											textarea(class='f_response span12',name='response',placeholder='Type in your response')#freeresponse
+											script 
+												$(".f_response").focus();
 										when "Numeric"
-											textarea(class='n_response', name='response', cols='80', rows='5', placeholder='Type in your response')#numericresponse 
-									input(type='submit', id='#{locals.qdata[0].AnswerType}_response', value='Next Question')
+											textarea(class='n_response span12',name='response',placeholder='Type in your response')#numericresponse
+											script
+												$(".n_response").focus();
+									div#next.span12
+										input(type='submit', id='#{locals.qdata[0].AnswerType}_response', value='Next Question', class="btn btn-large btn-info")
 							
 

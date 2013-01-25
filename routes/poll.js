@@ -82,3 +82,12 @@ exports.getPollQuestions = function(request, response) {
 }
 
 
+exports.presentLandingPage = function(request, response) {
+	response.render('present-landing.jade', {title: 'SmartClickR | Lets Present' });
+}
+
+exports.getpresentPage = function(request, response) {
+	response.render('present.jade', {title: 'SmartClickR | Lets Present' });
+}
+
+

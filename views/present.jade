@@ -1,0 +1,28 @@
+extends layout_landing
+
+
+block content
+	body#landing-page
+		// Header Content //
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/") SmartClickR
+					div(class="nav-collapse", style="height:auto;")
+						ul(class="nav pull-right")
+							li(class="active")
+								a(id="home", href="/") Home
+							li
+								a(id='signup', href='/user/create') Sign Up
+							li
+								a(id='log', href='/login') Log In
+		.clear
+		#landing-pad.hidden-phone
+		#landing-container
+			.container		
+				.row-fluid					
+					#hero_content
