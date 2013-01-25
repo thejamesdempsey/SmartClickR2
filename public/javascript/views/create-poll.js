@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var counter = 1;
 	var sesionCode = '';
 	$('#save_quitBtn').hide();
+	$('#addQuestion').hide();
 	$("#pollName").focus();
 	
 	
@@ -150,7 +151,8 @@ $(document).ready(function() {
 			$('#poll_info').find(".error").hide();
 			$('ol.poll-grid').show("blind");
 			$('#createPollBtn').hide();
-			$('#save_quitBtn').show("blind");
+			$('#save_quitBtn').show();
+			$('#addQuestion').show();
 			$.ajax({
 				type:"POST",
 				url:"/user/" + userID + "/poll/create",
@@ -172,29 +174,43 @@ $(document).ready(function() {
 		
 		format += "<h3>Multiple Choice</h3>";
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
+		format += "<div class='top-pad'>"
+		format += "</div>"
 		format += "<fieldset class='six columns'>";
 		format += "<span>a)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-1' placeholder='I am a possible answer'/>"
-		format += "<span>Correct Answer</span>"
+		format += "<div class='clear'></div>"
+		format += "<label class='radio'>"
+		format += "Correct Answer"	
 		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>b)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-2' placeholder='I am another possible answer'/>"
-		format += "<span>Correct Answer</span>"
+		format += "<div class='clear'></div>"
+		format += "<label class='radio'>"
+		format += "Correct Answer"	
 		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>c)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-3' placeholder='Yet another possible answer'/>"
-		format += "<span>Correct Answer</span>"
+		format += "<div class='clear'></div>"
+		format += "<label class='radio'>"
+		format += "Correct Answer"	
 		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>d)</span>";
 		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-4' placeholder='Im just like all the others...'/>"
-		format += "<span>Correct Answer</span>"
+		format += "<div class='clear'></div>"
+		format += "<label class='radio'>"
+		format += "Correct Answer"	
 		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>";
 		format += "<hr>";
 		
@@ -211,16 +227,25 @@ $(document).ready(function() {
 		
 		format += "<h3>True/False</h3>";
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
-		format += "<fieldset class='six columns'>";
-		format += "<span>True</span>";
-		format += "<input type='radio' class='tf_response' value='True' name='tf_response" + counter + "' placeholder='I am true, or am I?'/>";
+		format += "<div class='top-pad'>"
+		format += "</div>"
+		format += "<fieldset class='four columns'>";
+		format += "<label class='radio'>"
+		format += "True"	
+		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>"
-		format += "<fieldset class='six columns'>";
-		format += "<span>False</span>";
-		format += "<input type='radio' class='tf_response' value='False' name='tf_response" + counter + "' placeholder='I am false'/>"
+		format += "<fieldset class='four columns'>";
+		format += "<label class='radio'>"
+		format += "False"	
+		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>";
-		format += "<fieldset>";
-		format += "<input type='checkbox' class='no_correct' name='no_correct'>No correct answer</input>"	
+		format += "<fieldset class='four columns'>";
+		format += "<label class='radio'>"
+		format += "No correct answer"	
+		format += "<input type='radio' name='correct_answer' />"
+		format += "</label>"
 		format += "</fieldset>";
 		format += "<hr>";
 		
@@ -239,9 +264,9 @@ $(document).ready(function() {
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-"+counter+"' cols='30' rows='5' placeholder='What would you like to ask?' />";
 		format += "</fieldset>";
-		format += "<fieldset>";
-		format += "<input type='checkbox' class='add_correct' name='add_correct'>Add the correct answer</input>"	
-		format += "</fieldset>";
+		//format += "<fieldset>";
+		//format += "<input type='checkbox' class='add_correct' name='add_correct'>Add the correct answer</input>"	
+		//format += "</fieldset>";
 		format += "<hr>";
 		
 		$(format).hide().appendTo(('#question_container')).fadeIn("blind");
@@ -259,9 +284,9 @@ $(document).ready(function() {
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-" + counter + "' cols='30' rows='5' placeholder='What would you like to ask?' />";
 		format += "</fieldset>";
-		format += "<fieldset>";
-		format += "<input type='checkbox' class='add_correct' id='add_correct-" + counter + "' name='add_correct-" + counter + "'>Add the correct answer</input>"	
-		format += "</fieldset>";
+		//format += "<fieldset>";
+		//format += "<input type='checkbox' class='add_correct' id='add_correct-" + counter + "' name='add_correct-" + counter + "'>Add the correct answer</input>"	
+		//format += "</fieldset>";
 		format += "<hr>";
 
 		$(format).appendTo(('#question_container')).fadeIn("blind");

@@ -55,11 +55,25 @@ block content
 								hr
 							section#question_container.animated.fadeInDown
 
-							include modals/poll-types
+							//include modals/poll-types
 							section.create_actions
-								input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-								input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
-							.clear
+								input(type="button", id="createPollBtn", class="red button", value='Add a Question')
+								div(id="sub-actions")
+									.btn-group
+										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add a Question
+											span.caret
+										ul(class="dropdown-menu", role="menu", aria-labelledby="dropdownMenu")
+											li
+												a(class="", id="multipleChoiceBtn", value="Multiple Choice") Multiple Choice
+											li
+												a(class="", id="trueFalseBtn", value="True or False") True or False
+											li
+												a(class="", id="freeResponseBtn", value="Text Response") Text Response
+											li
+												a(class="", id="freeResponseNumericBtn", value="Numeric Response") Numeric Response
+
+									input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
+								.clear
 			hr
 			// Footer Content //
 			footer

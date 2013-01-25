@@ -63,12 +63,12 @@ block content
 							each poll in locals.pdata
 								div#poll_container
 									form(class='pollActions', method='post')
-										ul#alt-actions.span12
+										ul#alt-actions
 											li(id='edit_poll'+poll.Poll_ID).span1
 												button(id="home-edit", formaction="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", type="submit", formmethod="GET", class="btn btn-medium btn-info") Edit
 											li(id='delete_poll'+poll.Poll_ID).span1
 												button(href="#deleteConfirm", role="button", class="btn btn-medium btn-info", data-toggle="modal") Delete
-
+												
 												// Delete Confirmation Modal //
 												div(id="deleteConfirm", class="modal hide fade", tabindex="-1", role="dialog", aria-labelledby="deleteConfirmLabel", aria-hidden="true", style="text-align: left")
 													div(class="modal-header")
@@ -83,7 +83,7 @@ block content
 												button(id="home-start", formmethod="GET", formaction="/user/#{locals.udata.User_ID}/poll/#{poll.Poll_ID}", class="btn btn-medium btn-info") Start
 												article#poll_brief.span9
 											
-										aside#sub_info.span12
+										aside#sub_info
 											a(href="#")
 												span
 												a(href="#")
@@ -129,7 +129,7 @@ block content
 			
 										//	li(id='start_poll'+poll.Poll_ID)
 										//		button(id="home-start", formmethod="GET", action="#", class="btn btn-medium btn-info") Start
-								
+									hr
 								hr
 						else
 							article#no_polls

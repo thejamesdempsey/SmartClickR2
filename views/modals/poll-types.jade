@@ -1,15 +1,29 @@
 .modal-poll-types.modal.fade
-ol.poll-grid.group
-	li
-		input(type="button", class="poll_create_action", id="multipleChoiceBtn", value="Multiple Choice")
-	li
-		input(type="button", class="poll_create_action", id="trueFalseBtn", value="True or False")
+.btn-group
+	a(class="btn btn-info dropdown-toggle", data-toggle="dropdown", href="#") Add a Question
+		span.caret
+	ul.dropdown-menu
+		input(type="button", class="btn btn-info btn-medium", id="multipleChoiceBtn", value="Multiple Choice")
+		input(type="button", class="btn btn-info btn-medium", id="trueFalseBtn", value="True or False")
+		input(type="button", class="btn btn-info btn-medium", id="freeResponseBtn", value="Text Response")
+		input(type="button", class="btn btn-info btn-medium", id="freeResponseNumericBtn", value="Numeric Response")
+		
+
+//	
+	li.span3
+		input(type="button", class="poll_create_action btn btn-info btn-medium", id="multipleChoiceBtn", value="Multiple Choice")
+	li.span3
+		input(type="button", class="poll_create_action btn btn-info btn-medium", id="trueFalseBtn", value="True or False")
 	
-	li
-		input(type="button", class="poll_create_action", id="freeResponseBtn", value="Text Response")
+	li.span3
+		input(type="button", class="poll_create_action btn btn-info btn-medium", id="freeResponseBtn", value="Text Response")
 		
-	li
-		input(type="button", class="poll_create_action", id="freeResponseNumericBtn", value="Numeric Response")
+	li.span3
+		input(type="button", class="poll_create_action btn btn-info btn-medium", id="freeResponseNumericBtn", value="Numeric Response")
 	hr
+
+//
+
 		
+
 
