@@ -82,11 +82,6 @@ app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
 app.get('/user/:User_ID/poll/:Poll_ID/present/question/:Question_ID', poll.getPresentPage);
 
 
-
-less.render('.class { width: (1 + 1) }', function (e, css) {
-    console.log(css);
-});
-
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
