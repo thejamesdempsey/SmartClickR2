@@ -30,18 +30,24 @@ block content
 							#hero_content.span6.offset3
 								h4#question-number Question #{locals.qdata[0].QuestionsOrder}
 								h3#question-content #{locals.qdata[0].Stem}
-								form(method='POST', action='#')
+								form(method='POST', action='/poll/#{locals.session}/question/#{locals.qdata[0].Question_ID}')
 									case locals.qdata[0].AnswerType
+										when "MultipleChoice"
+											for choice in locals.qdata[0].Choices
+												fieldset
+													input(type='radio', value='#{choice.Content}', name='response', class='mc_response')
+													span  #{choice.ChoiceOrder}) #{choice.Content}
 										when "TrueFalse"
-											fieldset.span6
-												span True
-												input(type='radio', value='True', name='tf_response')
-											fieldset.span6
-												span False
-												input(type='radio', value='False', name='tf_response')
+											fieldset.span4
+												input(type='radio', value='True', name='response', class='tf_response')
+												span   True
+											fieldset.span4
+												input(type='radio', value='False', name='response', class='tf_response')
+												span   False
 										when "FreeResponse"
-											textarea(name='freeresponse',cols='80', rows='5', placeholder='Type in your response')#freeresponse 
+											textarea(class='f_response', name='response',cols='80', rows='5', placeholder='Type in your response')#freeresponse 
 										when "Numeric"
-											textarea(name='numeric', cols='80', rows='5', placeholder='Type in your response')#numericresponse 
+											textarea(class='n_response', name='response', cols='80', rows='5', placeholder='Type in your response')#numericresponse 
+									input(type='submit', id='#{locals.qdata[0].AnswerType}_response', value='Next Question')
 							
 

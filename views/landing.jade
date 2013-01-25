@@ -1,9 +1,7 @@
 extends layout_landing
 
-- qid = typeof(locals.QuestionIDs) != 'undefined' ? locals.QuestionIDs : {}
 - pdata = typeof(locals.pdata) != 'undefined' ? locals.pdata
 input(type='hidden', value = pdata)#pdata
-input(type = 'hidden', value = qid)#qid
 input(type="hidden", value = '')#session
 
 
@@ -35,4 +33,4 @@ block content
 						h3#poll-name #{locals.pdata[0].PollName}
 						p#poll-desc #{locals.pdata[0].PollDescription}
 						p#actions
-							a(id='starting-question', href='/poll/#{locals.session}/question/#{locals.QuestionIDs[0].Question_ID}', class="btn btn-success btn-large") Let's Go  &rarr; 
+							a(id='starting-question', href='/poll/#{locals.session}/question/#{locals.QuestionIDs[0]}', class="btn btn-success btn-large") Let's Go  &rarr; 

@@ -65,12 +65,14 @@ exports.getPollQuestions = function(request, response) {
 	
 	PM.getPoll(sessionCode, function(result) {
 		if(result != 'poll-not-found') {
-			QM.getPollQuestions(sessionCode, function(questionIDs) {
-				console.log(questionIDs);
-				request.session.questionIDs = questionIDs;
-				PM.pollTitleDescription(sessionCode, function(pollData) {
-					console.log(pollData);
-					response.render('landing.jade', { title: 'SmartClickR | Starting Poll', locals: { QuestionIDs : questionIDs, pdata : pollData , session : sessionCode }});
+			QM.getPollQuestions(sessionCode, function(qids) {
+				FM.arrayQID(qids, function(questionIDs) {
+					request.session.questionIDs = questionIDs;
+					console.log(questionIDs);
+					PM.pollTitleDescription(sessionCode, function(pollData) {
+						console.log(pollData);
+						response.render('landing.jade', { title: 'SmartClickR | Starting Poll', locals: { QuestionIDs : questionIDs, pdata : pollData , session : sessionCode }});
+					});
 				});
 			});
 		} else {

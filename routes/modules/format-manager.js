@@ -61,6 +61,11 @@ FM.getQuestion = function(questionID, callback) {
 			callback(question);
 		}, 25);
 	});
+}
 
-
+FM.arrayQID = function(questionID, callback) {
+	var result = []
+	for(var i = 0; i < questionID.length; i++) 
+		result.push(questionID[i].Question_ID.toString());
+	callback(result);
 }

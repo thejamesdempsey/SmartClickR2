@@ -72,7 +72,7 @@ app.post('/user/:User_ID/poll/:Poll_ID/question/create', question.postNewQuestio
 // start poll //
 app.get('/poll/:SessionCode', poll.getPollQuestions);
 app.get('/poll/:SessionCode/question/:Question_ID', question.pollQuestion);
-app.post('/poll/:SessionCode/question/:Question_ID', question);
+app.post('/poll/:SessionCode/question/:Question_ID', question.postResponse);
 
 
 less.render('.class { width: (1 + 1) }', function (e, css) {
