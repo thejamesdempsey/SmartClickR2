@@ -10,6 +10,7 @@ var MC = require('./my-info-config');
 var mysql = require('mysql');
 var QM = require('./question-manager');
 var CM = require('./choice-manager');
+var RM = require('./response-manager');
 
 // DB Credentials //
 var HOST = 'localhost';
@@ -60,6 +61,24 @@ FM.getQuestion = function(questionID, callback) {
 		setTimeout(function() {
 			callback(question);
 		}, 25);
+	});
+}
+
+FM.getMCdata = function(questionID, callback) {
+	connection.query('SELECT Content FROM Choices WHERE Question_ID = ?', [questionID], function(err, results) {
+		var size = [];
+		if(results.length > 0) {
+			for(var i = 0; i < results.length; i++) {
+				size.push(i);
+				RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
+					results[size.shift()]["Value"] = o.count;
+				});
+			}
+			
+			setTimeout(function() {
+				callback(results);
+			}, 25);
+		}
 	});
 }
 

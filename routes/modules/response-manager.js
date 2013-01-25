@@ -82,3 +82,16 @@ RM.getResponses = function(questionID, callback) {
 		}
 	});
 }
+
+// get the count of responses for a specific question //
+RM.getContentCount = function(data, callback) {
+	connection.query('SELECT count(Content) as count FROM ' + TABLE + ' WHERE Question_ID = ? and Content = ?', [data.Question_ID, data.Content], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection closed');
+		} else {
+			callback(results[0]);
+		}
+	});
+}

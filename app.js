@@ -79,7 +79,7 @@ app.post('/poll/:SessionCode/question/:Question_ID', question.postResponse);
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
-app.get('/user/:User_ID/poll/:Poll_ID/present/question/:Question_ID', poll.getPresentPage);
+app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID', question.presentPollQuestion);
 
 
 

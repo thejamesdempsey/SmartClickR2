@@ -84,6 +84,7 @@ exports.getPollQuestions = function(request, response) {
 
 exports.presentLandingPage = function(request, response) {
 	var pollID = request.param('Poll_ID');
+	var user = request.session.user;
 
 	PM.getPollFromID(pollID, function(result) {
 		if(result != 'poll-not-found') {
@@ -91,7 +92,7 @@ exports.presentLandingPage = function(request, response) {
 				FM.arrayQID(qids, function(questionIDs) {
 					//should determine if i should use cookie
 					request.session.questionIDs = questionIDs;
-					response.render('present-landing.jade', {title: 'SmartClickR | Lets Present', locals: { QuestionIDs : questionIDs, pdata : result }});
+					response.render('present-landing.jade', {title: 'SmartClickR | Lets Present', locals: { QuestionIDs : questionIDs, pdata : result, udata : user }});
 				});
 			});
 		}	

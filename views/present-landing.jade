@@ -29,5 +29,5 @@ block content
 						//h3#poll-name #{locals.pdata[0].PollName}
 						//p#poll-desc #{locals.pdata[0].PollDescription}
 						p#actions
-							a(id='starting-question', href='#', class="btn btn-success btn-large") Let's Go  &rarr;
-						// /poll/#{locals.session}/question/#{locals.QuestionIDs[0]}
+							a(id='starting-question', href='/user/#{locals.udata[0].User_ID}/poll/#{locals.pdata[0].Poll_ID}/question/#{locals.QuestionIDs[0]}', class="btn btn-success btn-large") Let's Go  &rarr;
+						
