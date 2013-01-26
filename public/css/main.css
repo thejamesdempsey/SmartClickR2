@@ -907,6 +907,10 @@ input#email:focus, input#password:focus{
 	margin: 0;
 }
 
+.errorBorder{
+	border: 2px solid #b94a48 !important;
+}
+
 #user_greeting h3{
 	border-bottom: none;
 	padding: 0;
