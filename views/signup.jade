@@ -1,55 +1,57 @@
 // Signup Page
-extends layout
+extends layout_signup
 block content
-	// Signup navigation
-	div#signup_nav
-		.row
-			.ten.columns.centered
-					nav.top-bar
-						ul
-							li.name#alt-nav
-								h1: a(id='title', href='/') SmartClickR
-							li#return
-								a(href='/') Return home &rarr;
-						.clear
-				hr
-
-
-
-	div(id='signup-container', class="row")
-		.twelve.columns
-			.nine.columns.centered
-			#signup-wrapper
-				section#signup-content
-					h1 Let's Go
-					form(id='signupForm', method='post', action='/user/create')
-						fieldset
-							span.field
-								label(id="firstNameLabel", for='firstName', class='form-text') First Name
-								input( id='firstName', type='text', class='required form-text', name='firstName', title='Full Name', autocomplete='off')
-								.clear
-							span.field
-								label(id="lastNameLabel", for='lastName', class='form-text') Last Name
-								input(id='lastName', type='text', class='required form-text', name='lastName', title='Full Name',  autocomplete='off')
-								.clear
-							span.field
-								label(id="emailLabel", for='email', class='form-text') Email Address
-								input(id='email', type='input', class='required email form-text', name='email', title='Email Address', autocomplete='off')
-								.clear
-							span.field.password
-								label(id="passwordLabel", for='password', class='form-text') Password
-								input(id='password', type='password', name='password', class='required form-text', title='Password',  autocomplete='off')
-								.clear
-						hr
-						.twelve.columns.no_pad
-							fieldset.check
-								label(id='termsLabel')
-									input#termsCheckBox(name='checkTerms',type='checkbox',checked='checked')
-									| I agree to 
-									a(href='#') the SmartClickr Terms of Service
-							fieldset.form-action
-								input(id='signup_submit',type='submit',value='Create My Account')
-						
-						hr
+	// Header Content //
+	header(class="navbar navbar-inverse navbar-fixed-top")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/") SmartClickR
+				div(class="nav-collapse", style="height:auto;")
+					ul(class="nav pull-right")
+						li(class="active")
+							a(id="home", href="/") Home
+						li
+							a(id='log', href='/login') Log In
+	#hero
+		.container
+			.row-fluid
+				.span8.offset2
+					h1.title Let's Go
+			.clear.dropshadow
+	#signup-container
+		.container 
+			.row-fluid
+				.span8.offset2
+					section#signup-content
+						form(id='signupForm', method='post', action='/user/create')
+							fieldset
+								span.field
+									label(id="firstNameLabel", for='firstName', class='form-label span3') First Name
+									input( id='firstName', type='text', class='input-block-level span9', name='firstName', title='Full Name', autocomplete='off')
+								span.field
+									label(id="lastNameLabel", for='lastName', class='form-label span3') Last Name
+									input(id='lastName', type='text', class='input-block-level span9', name='lastName', title='Full Name',  autocomplete='off')
+									.clear
+								span.field
+									label(id="emailLabel", for='email', class='form-label span3') Email
+									input(id='email', type='text', class='input-block-level span9', name='email', title='Email Address', autocomplete='off')
+									.clear
+								span.field.password
+									label(id="passwordLabel", for='password', class='form-label span3') Password
+									input(id='password', type='password', name='', class='input-block-level span9', title='Password',  autocomplete='off')
+									.clear
+							span12.no_pad
+								fieldset.check.span7
+									label(id='termsLabel')
+										input#termsCheckBox(name='checkTerms',type='checkbox',checked='checked')
+										| I agree to the
+										a(href='#')  Terms of Service
+								fieldset#action-btn.form-action.span5
+									input(id='signup_submit',type='submit',value='Create My Account', class="btn btn-large")
+								hr
 
 	script(src="/javascript/form-validators/validateSignup.js")
