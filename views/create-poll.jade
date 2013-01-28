@@ -48,7 +48,7 @@ block content
 							section#poll_info
 								fieldset
 									label(id="pollNameLabel",for="pollName") Poll Title  (required)
-									input(type="text", id="pollName", name="pollName")
+									input(type="text", id="pollName", name="pollName", class="")
 								fieldset
 									label(for="pollDescription") Poll Description
 									textarea(id="pollDescription", name="pollDescription")
@@ -60,7 +60,7 @@ block content
 								input(type="button", id="createPollBtn", class="red button", value='Add a Question')
 								div(id="sub-actions")
 									.btn-group
-										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add a Question
+										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add Question
 											span.caret
 										ul(class="dropdown-menu", role="menu", aria-labelledby="dropdownMenu")
 											li

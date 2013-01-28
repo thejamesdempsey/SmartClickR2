@@ -41,8 +41,13 @@ $(document).ready(function() {
 		
 		if( pollName == '' ) {
 			$('#poll_info').find(".error").hide();
-			$('#pollNameLabel').after('<label class="error"> Your poll needs a name. </label>');
-			$('#pollName').addClass('errorBorder');
+			
+			format  = '<div class="alert alert-error fade in">';
+			format += '<strong>Yikes!</strong> Your poll needs a name. ';
+			format += '</div>';
+			
+			$('#pollName').removeClass('errorBorder').addClass('errorBorder');
+			$('#pollNameLabel').after(format);
 			isValid = false;
 		}
 			

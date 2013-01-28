@@ -1,4 +1,4 @@
-extends layout
+extends layout_account
 
 - user = typeof(udata) != 'undefined' ? udata : {}
 input(type = 'hidden',value = user._id)#userId
@@ -23,36 +23,33 @@ block content
 							a(id='help', href='help-center') Help Center
 						li
 							a(id='logout',href='/logout') Log Out
-
-	section#settings_container
-		.row
-			.twelve.columns
-				section#settings_content.twelve.columns.dropshadow
+		
+	#hero
+		.container
+			.row-fluid
+				.span8.offset2
+					h1.title Your Account
+			.clear.dropshadow
+	section#settings-container.container
+		.row-fluid
+			.span8.offset2
+				#settings-content
 					article#settings_main
-						form(id='accountEmailForm', method='post')
-							fieldset
-								span.field
-									label(id="currentEmailLabel", for='currentEmail', class='form-text') Email Address
-									input( id='currentEmail', type='text', class='required form-text', name='currentEmail', title='Current Email Address', value='Current Email Address', autocomplete='off')
-									.clear
-							fieldset.form-action
-								input(id='changeEmailBtn', class="button", type='submit', value='Save')
-					
+		
 						form(id='accountPasswordForm', method='post')
 							fieldset
 								span.field
 									label(id="passwordChangeLabel", for='currentPassword', class='form-text') Password
-									input(id='currentPassword', type='password', class='required form-text', name='currentPassword', title='Current Password', placeholder='Current Password',  autocomplete='off')
+									input(id='currentPassword', type='password', class='input-block-level', name='currentPassword', title='Current Password', placeholder='Current Password',  autocomplete='off')
 									.clear
-						
-									input(id='newPassword', type='password', class='required form-text', name='NewPassword', title='New Password', placeholder='New Password', autocomplete='off')
+			
+									input(id='newPassword', type='password', class='input-block-level', name='NewPassword', title='New Password', placeholder='New Password', autocomplete='off')
 									.clear
 
-									input(id='reNewPassword', type='password', name='reNewPassword', class='required form-text', title='Re-Enter New Password', placeholder='Re-Enter Password',  autocomplete='off')
+									input(id='reNewPassword', type='password', name='reNewPassword', class='input-block-level', title='Re-Enter New Password', placeholder='Re-Enter Password',  autocomplete='off')
 									.clear
-							hr
 							fieldset.form-action
-								input(id='changePasswordBtn', type='submit', class="button", value='Save')
+								input(id='changePasswordBtn', type='submit', class="btn btn-info btn-large", value='Save your Password')
 
 							hr
 						form(id='deleteAccount', method='post')
@@ -61,8 +58,8 @@ block content
 									fieldset.form-action
 										input(id='deleteAccountBtn',type='submit', class="button red", value='Delete Your Account')
 										p This will delete your account and all the polls associated with your account. This action cannot be undone
-									
-			
+						
+
 
 
 
