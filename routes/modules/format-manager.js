@@ -18,7 +18,10 @@ var PORT = 3306;
 var MYSQL_USER = MC.user;
 var MYSQL_PASS = MC.pass;
 var DATABASE = 'SmartClickR';
-var TABLE = 'Polls';
+var POLLS = 'Polls';
+var QUESTIONS = 'Questions';
+var RESPONSES = 'Responses';
+var CHOICES = 'Choices';
 
 // Connect to the DB //
 var connection = mysql.createConnection({
@@ -47,7 +50,7 @@ FM.getQuestions = function(pollID, callback) {
 
 		setTimeout(function() {
 			callback(questions);
-		}, 25);
+		}, 8);
 
 	});
 }
@@ -60,7 +63,25 @@ FM.getQuestion = function(questionID, callback) {
 		
 		setTimeout(function() {
 			callback(question);
-		}, 25);
+		}, 5);
+	});
+}
+
+FM.getResponseData = function(questionID, callback) {
+	connection.query('SELECT AnswerType FROM ' + QUESTIONS + ' WHERE Question_ID = ?', [questionID], function(err, type) {
+		var qType = type[0].AnswerType;
+		console.log(qtype);
+
+		if(qType == 'MultipleChoice') {
+			FM.getMCdata(questionID, function(result) {
+				callback(result);
+			});
+		} else if(qType == 'TrueFalse') {
+			FM.getTFdata(questionID, function(result) {
+				callback(result);
+			});
+		}
+
 	});
 }
 
@@ -77,9 +98,30 @@ FM.getMCdata = function(questionID, callback) {
 			
 			setTimeout(function() {
 				callback(results);
-			}, 25);
+			}, 5);
 		}
 	});
+}
+
+FM.getTFdata = function(questionID, callback) {
+	var result = [];
+	var trueResponses = {};
+	var falseResponses = {};
+
+	trueResponses["Content"] = "True";
+	falseResponses["Content"] = "False";
+	
+	RM.getContentCount({ Question_ID : questionID, Content : trueResponses["Content"] }, function(o) {
+		trueResponses["Value"] = o.count;
+		result.push(trueResponses);
+		
+		RM.getContentCount({ Question_ID : questionID, Content : falseResponses["Content"] }, function(count) {
+			falseResponses["Value"] = count.count;
+			result.push(falseResponses);
+			callback(result);
+		});
+	});
+	
 }
 
 FM.arrayQID = function(questionID, callback) {

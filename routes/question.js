@@ -108,14 +108,14 @@ exports.postResponse = function(request, response) {
 }
 
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID
-exports.presentPollQuestion = function(request, response) {
+exports.responseData = function(request, response) {
 	var currentQID = request.param('Question_ID');
 	var userID = request.param('User_ID');
 	var pollID = request.param('Poll_ID');
 
 	// send questionData in JSON format
 	//response.render('present.jade', {title: 'SmartClickR | Lets Present' });
-	FM.getMCdata(currentQID, function(result) {
-		console.log(result);
+	FM.getResponseData(currentQID, function(result) {
+		resonse.send(result);
 	});
 }
