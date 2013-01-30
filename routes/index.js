@@ -14,9 +14,8 @@ exports.index = function(request, response) {
 			} else {
 				response.redirect('/login');
 			}
-		})
+		});
 	}
-	
 };
 
 

@@ -58,6 +58,7 @@ app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
+app.post('/user/edit/:User_ID', user.updatePassword);
 app.get('/logout', user.logout);
 
 // poll pages //
@@ -79,7 +80,8 @@ app.post('/poll/:SessionCode/question/:Question_ID', question.postResponse);
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
-app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID', question.presentPollQuestion);
+app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID', question.responseData);
+app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.presentPollQuestion);
 
 
 http.createServer(app).listen(app.get('port'), function(){

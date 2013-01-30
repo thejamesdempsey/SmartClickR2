@@ -1,16 +1,17 @@
 var AM = require('./modules/account-manager');
 var PM = require('./modules/poll-manager');
+var bcrypt = require('bcrypt');
 /*
  * GET users listing.
  */
 
-// GET /user //
+// GET /user/create //
 exports.signup = function(request, response) {
 	response.render('signup.jade', { title: 'SmartClickR | Join Now' });
 	console.log(request.protocol);
 };
 
-// POST /user //
+// POST /user/create //
 exports.createUser = function(request, response) {
 	AM.signup({
 		FirstName	: request.param('firstName'),
@@ -19,11 +20,12 @@ exports.createUser = function(request, response) {
 		Password	: request.param('password')
 	}, function(err, o) {
 		if(err) {
+			console.log(err);
 			response.send(err, 400);
 		} else {
 			// need to send out user confirmaiton email at this point
 			//response.send('okay', 200);
-			response.redirect('/');
+			response.redirect('/login');
 		}
 	});
 }
@@ -86,15 +88,41 @@ exports.getAccount = function(request, response) {
 // POST /user/:User_ID/account //
 exports.updateAccount = function(request, response) {
 	//update user's account: change password, etc...
+
+}
+
+exports.updatePassword = function(request, response) {
+	var user = request.session.user[0];
+
+	bcrypt.compare(request.param('currentPassword'), user.Password, function(err, match) {
+		if(match) {
+			if(request.param('NewPassword') == request.param('reNewPassword')) {
+				AM.setpasword(user.Email, request.param('reNewPassword'), function(o) {
+					response.cookie('pass', o, { maxAge: 900000});
+					response.redirect('/');
+				});
+			} else {
+				response.send("new password doesn't match");
+			}
+		} else {
+			response.send('current password is wrong');
+		}
+	});
 }
 
 // GET /logout //
 exports.logout = function(request, response) {
 	if(request.session.user) {
 		request.session.destroy();
-		response.clearCookie('email');
+		response.clear
+		('email');
 		response.clearCookie('pass');
 		console.log(request.cookies.email, request.cookies.pass);
 	}
 	response.redirect('/');
+}
+
+// POST /user/delete/:User_ID //
+exports.delete = function(request, response) {
+
 }

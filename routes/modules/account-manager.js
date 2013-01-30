@@ -73,7 +73,6 @@ AM.signup = function(newData, callback) {
 			console.log('Connection closed');
 		} else if (results.length != 0) {
 			callback('email-taken');
-			//console.log('The email address: ' + newData.Email + ' is already taken.');	
 		} else {
 			AM.saltAndHash(newData.Password, function(hash) {
 				//console.log(hash);
@@ -82,7 +81,7 @@ AM.signup = function(newData, callback) {
 						console.log("Error: " + error);
 					} else {
 						//console.log('Name: ' + newData.FirstName + ' ' + newData.LastName + ', Email: ' + newData.Email);
-						callback(info.insertId);
+						callback(null, info.insertId);
 					}
 				});
 			});
@@ -101,7 +100,7 @@ AM.update = function(newData, callback) {
 			/*
 			it depends on what user data we want to store
 			*/
-			if(result[0].Password ===''){
+			if(result[0].Password === ''){
 				//updated the new fields
 				connection.query('UPDATE ' + TABLE + ' SET FirstName = ?, LastName = ?, Email = ?, Gender = ?, Birthdate = ? ', [newData.FirstName, newData.LastName, newData.Email, newData.Gender, newData.Birthdate] + ' WHERE email = ?', [newData.Email], function(err, o) {
 					console.log(o);
@@ -130,8 +129,7 @@ AM.setpasword = function(email, newPass, callback) {
 			AM.saltAndHash(newPass, function(hash) {
 				var updatePassQuery = 'UPDATE ' + TABLE + ' SET Password = ' + connection.escape(hash) + ' WHERE Email = ' + connection.escape(email);
 				connection.query(updatePassQuery, function(err, result) {
-					console.log(email + ' has new password: ' + newPass);
-					callback(null);
+					callback(hash);
 				});
 			});
 		}
@@ -188,12 +186,6 @@ AM.getUserID = function(email, callback) {
 	});	
 }
 
-
-
-AM.getAllRecords = function(callback) {
-
-
-}
 
 // Methods used for Testing //
 

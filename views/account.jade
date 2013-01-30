@@ -36,7 +36,7 @@ block content
 				#settings-content
 					article#settings_main
 		
-						form(id='accountPasswordForm', method='post')
+						form(id='accountPasswordForm', method='post', action='/user/edit/#{locals.udata.User_ID}')
 							fieldset
 								span.field
 									label(id="passwordChangeLabel", for='currentPassword', class='form-text') Password
