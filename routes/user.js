@@ -49,8 +49,7 @@ exports.postLogin = function(request, response) {
 				response.cookie('email', o[0].Email, { maxAge: 900000 });
 				response.cookie('pass', o[0].Password, { maxAge: 900000});
 			}
-			
-			//console.log(o);
+
 			response.redirect('/user/' + o[0].User_ID);
 		}
 	});
@@ -58,9 +57,10 @@ exports.postLogin = function(request, response) {
 
 // GET /user/:User_ID //
 exports.getHome = function(request, response) {
-	var user = request.session.user[0];
-	console.log(user);
-	if(request.session.user != null) {
+
+	if(request.session.user != null && request.session.user != undefined) {
+		var user = request.session.user[0];
+
 		PM.getUsersPolls(user.User_ID, function(results) {
 			var polls = results;
 			
@@ -114,8 +114,7 @@ exports.updatePassword = function(request, response) {
 exports.logout = function(request, response) {
 	if(request.session.user) {
 		request.session.destroy();
-		response.clear
-		('email');
+		response.clearCookie('email');
 		response.clearCookie('pass');
 		console.log(request.cookies.email, request.cookies.pass);
 	}

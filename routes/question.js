@@ -85,6 +85,7 @@ exports.postResponse = function(request, response) {
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
 	content = request.param('response').trim();
+	
 	var user = request.session.user;
 	var nextQuestion = questionIDs.indexOf(currentQID) + 1;
 
@@ -99,6 +100,7 @@ exports.postResponse = function(request, response) {
 	} else {
 		RM.createPublicResponse({ Question_ID : currentQID, Content : content }, function(o) {
 			if(nextQuestion == questionIDs.length) {
+				request.session.questionIDs = '';
 				response.redirect('/');
 			} else {
 				response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);

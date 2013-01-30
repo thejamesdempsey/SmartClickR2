@@ -29,14 +29,20 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'vendor')));
   app.use(lessMiddleware({
-	src			: __dirname + "public",
-	compress	: true
+	 src			: __dirname + "public",
+	 compress	: true
 	}));
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
   app.use(express.errorHandler());
+  app.use(function(request, response, next) {
+    // var err = new Error('not found');
+    // err.status = 404;
+    // next(err);
+    response.send('file not found 404');
+  });
 });
 
 // main pages //
@@ -87,5 +93,4 @@ app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.p
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-
 

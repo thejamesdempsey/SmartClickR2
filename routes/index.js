@@ -18,7 +18,6 @@ exports.index = function(request, response) {
 	}
 };
 
-
 // GET /features //
 exports.features = function(request, response) {
 	response.render('features.jade', { title: 'SmartClickR | Polling and Presentation Features', layout: 'features_layout' });
@@ -67,7 +66,9 @@ exports.terms = function(request, response) {
 }
 
 
-
+exports.problemo = function(request, response) { 
+ 	response.send('404'); 
+}
 
 
 

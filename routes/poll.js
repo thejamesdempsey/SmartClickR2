@@ -5,9 +5,13 @@ var FM = require('./modules/format-manager');
 
 // GET /user/:User_ID/poll/create //
 exports.getCreatePoll = function(request, response) {
-	var user = request.session.user[0];
-	console.log(user);
-	response.render('create-poll.jade', { title: 'SmartClickR | Create New Poll', locals: { udata: user }});
+	if(request.session.user != null && request.session.user != undefined) {
+		var user = request.session.user[0];
+		console.log(user);
+		response.render('create-poll.jade', { title: 'SmartClickR | Create New Poll', locals: { udata: user }});
+	} else {
+		response.redirect('/');
+	}
 }
 
 // POST /user/:User_ID/poll/create //
@@ -27,17 +31,21 @@ exports.postCreatePoll = function(request, response) {
 
 // GET /user/:User_ID/poll/edit/:Poll_ID //
 exports.getEditPoll = function(request, response) {
-	var user = request.session.user[0];
-	FM.getQuestions(request.param('Poll_ID'), function(results) {
-		var questions = results;
+	
+	if(request.session.user != null && request.session.user != undefined) {
+		var user = request.session.user[0];
+		FM.getQuestions(request.param('Poll_ID'), function(results) {
+			var questions = results;
 
-		PM.getPollFromID(request.param('Poll_ID'), function(result) {
-			console.log(result);
-			var poll = result[0];
-			response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user, pdata: poll,  qdata: questions }});
+			PM.getPollFromID(request.param('Poll_ID'), function(result) {
+				console.log(result);
+				var poll = result[0];
+				response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user, pdata: poll,  qdata: questions }});
+			});
 		});
-		
-	});
+	} else {
+		response.redirect('/');
+	}
 }
 
 // POST /user/:User_ID/poll/update/:Poll_ID //
@@ -83,18 +91,24 @@ exports.getPollQuestions = function(request, response) {
 
 
 exports.presentLandingPage = function(request, response) {
-	var pollID = request.param('Poll_ID');
-	var user = request.session.user;
+	
+	if(request.session.user != null && request.session.user != undefined) {
+		var pollID = request.param('Poll_ID');
+		var user = request.session.user;
 
-	PM.getPollFromID(pollID, function(result) {
-		if(result != 'poll-not-found') {
-			QM.getPollQuestionsPID(pollID, function(qids) {
-				FM.arrayQID(qids, function(questionIDs) {
-					//should determine if i should use cookie
-					request.session.questionIDs = questionIDs;
-					response.render('present-landing.jade', {title: 'SmartClickR | Lets Present', locals: { QuestionIDs : questionIDs, pdata : result, udata : user }});
+		PM.getPollFromID(pollID, function(result) {
+			if(result != 'poll-not-found') {
+				QM.getPollQuestionsPID(pollID, function(qids) {
+					FM.arrayQID(qids, function(questionIDs) {
+						//should determine if i should use cookie
+						request.session.questionIDs = questionIDs;
+						response.render('present-landing.jade', {title: 'SmartClickR | Lets Present', locals: { QuestionIDs : questionIDs, pdata : result, udata : user }});
+					});
 				});
-			});
-		}	
-	});
+			}	
+		});
+		
+	} else {
+		response.redirect('/');
+	}
 }
