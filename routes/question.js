@@ -116,6 +116,6 @@ exports.responseData = function(request, response) {
 	// send questionData in JSON format
 	//response.render('present.jade', {title: 'SmartClickR | Lets Present' });
 	FM.getResponseData(currentQID, function(result) {
-		resonse.send(result);
+		response.send(result);
 	});
 }

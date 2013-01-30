@@ -51,7 +51,6 @@ FM.getQuestions = function(pollID, callback) {
 		setTimeout(function() {
 			callback(questions);
 		}, 8);
-
 	});
 }
 
@@ -70,7 +69,6 @@ FM.getQuestion = function(questionID, callback) {
 FM.getResponseData = function(questionID, callback) {
 	connection.query('SELECT AnswerType FROM ' + QUESTIONS + ' WHERE Question_ID = ?', [questionID], function(err, type) {
 		var qType = type[0].AnswerType;
-		console.log(qtype);
 
 		if(qType == 'MultipleChoice') {
 			FM.getMCdata(questionID, function(result) {
@@ -78,6 +76,10 @@ FM.getResponseData = function(questionID, callback) {
 			});
 		} else if(qType == 'TrueFalse') {
 			FM.getTFdata(questionID, function(result) {
+				callback(result);
+			});
+		} else if(qType == 'Numeric' || qType == 'FreeResponse') {
+			FM.getFRNdata(questionID, function(result) {
 				callback(result);
 			});
 		}
@@ -120,8 +122,25 @@ FM.getTFdata = function(questionID, callback) {
 			result.push(falseResponses);
 			callback(result);
 		});
+	});	
+}
+
+FM.getFRNdata = function(questionID, callback) {
+	connection.query('SELECT DISTINCT Content FROM ' + RESPONSES + ' WHERE Question_ID = ?', [questionID], function(err, results) {
+		var size = [];
+		if(results.length > 0) {
+			for(var i = 0; i < results.length; i++) {
+				size.push(i);
+				RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
+					results[size.shift()]["Value"] = o.count;
+				});
+			}
+		}
+
+		setTimeout(function() {
+			callback(results);
+		}, 5);
 	});
-	
 }
 
 FM.arrayQID = function(questionID, callback) {
