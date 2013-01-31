@@ -1,0 +1,39 @@
+#error-content{
+	padding: 23.5px !important;
+	border-radius: 6px;	
+	background: #fff !important;
+	top:-56px !important;
+	position: relative;
+}
+
+
+.explain{
+	padding: 23.5px;
+	background:#edeae3;
+}
+
+.explain p{
+	margin: 0 0 20px;
+}
+
+p.error-actions{
+	margin: 0 auto !important;
+	text-align: center !important;
+	padding-top: 16px;
+	color: #fff;
+	padding-bottom: 30px;
+	
+}
+
+p.error-actions span{
+	padding: 40px;
+}
+
+p.error-actions a{
+	color:#fff;
+}
+
+canvas{
+	padding-top: 20px;
+	padding-left: 36px;
+}

@@ -67,7 +67,7 @@ exports.terms = function(request, response) {
 
 
 exports.problemo = function(request, response) { 
- 	response.send('404'); 
+ 	response.render('404.jade', {title: 'SmartClickR | This page got lost', layout:'404_layout'}); 
 }
 
 

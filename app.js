@@ -41,7 +41,8 @@ app.configure('development', function(){
     // var err = new Error('not found');
     // err.status = 404;
     // next(err);
-    response.send('file not found 404');
+    //response.send('file not found 404');
+	response.render('404.jade', {title: 'SmartClickR | This page got lost', layout:'404_layout'});	
   });
 });
 
