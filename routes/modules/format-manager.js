@@ -100,7 +100,7 @@ FM.getMCdata = function(questionID, callback) {
 			
 			setTimeout(function() {
 				callback(results);
-			}, 5);
+			}, 8);
 		}
 	});
 }
@@ -139,7 +139,7 @@ FM.getFRNdata = function(questionID, callback) {
 
 		setTimeout(function() {
 			callback(results);
-		}, 5);
+		}, 15);
 	});
 }
 

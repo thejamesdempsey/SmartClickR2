@@ -72,6 +72,7 @@ exports.getPollQuestions = function(request, response) {
 	var sessionCode = request.param('SessionCode');
 	
 	PM.getPoll(sessionCode, function(result) {
+		console.log(result);
 		if(result != 'poll-not-found') {
 			QM.getPollQuestions(sessionCode, function(qids) {
 				FM.arrayQID(qids, function(questionIDs) {
@@ -84,7 +85,7 @@ exports.getPollQuestions = function(request, response) {
 				});
 			});
 		} else {
-			response.render('landing.jade', { title: 'SmartClickR | Starting Poll'});
+			response.redirect('/');
 		}
 	});
 }
