@@ -134,8 +134,6 @@ exports.presentPollQuestion = function(request, response) {
 	var pollID = request.param('Poll_ID');
 
 	FM.getQuestion(currentQID, function(questionData) {
-		console.log(userID);
-		console.log(pollID);
-		response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID }});
+		response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID, currentQID : currentQID.toString(), QuestionIDs : questionIDs}});
 	});
 }

@@ -28,6 +28,7 @@ block content
 					#hero_content
 						h3 Question# #{locals.qdata[0].QuestionsOrder}
 						h2 #{locals.qdata[0].Stem}
+		
 
 	script
 		var dataPath = 'http://localhost:8000/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
