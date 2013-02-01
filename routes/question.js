@@ -92,7 +92,9 @@ exports.postResponse = function(request, response) {
 	if(user) {
 		RM.createResponse({ Question_ID : currentQID, User_ID : user[0].User_ID, Content : content }, function(o) {
 			if(nextQuestion == questionIDs.length) {
-				response.redirect('/');
+				PM.getPoll(sessionCode, function(poll) {
+					response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
+				});
 			} else {
 				response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
 			}
@@ -101,7 +103,9 @@ exports.postResponse = function(request, response) {
 		RM.createPublicResponse({ Question_ID : currentQID, Content : content }, function(o) {
 			if(nextQuestion == questionIDs.length) {
 				request.session.questionIDs = '';
-				response.redirect('/');
+				PM.getPoll(sessionCode, function(poll) {
+					response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
+				});
 			} else {
 				response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
 			}
