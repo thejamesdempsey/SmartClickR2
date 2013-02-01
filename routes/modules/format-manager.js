@@ -94,7 +94,7 @@ FM.getMCdata = function(questionID, callback) {
 			for(var i = 0; i < results.length; i++) {
 				size.push(i);
 				RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
-					results[size.shift()]["Value"] = o.count;
+					results[size.shift()]["Value"] = parseInt(o.count);
 				});
 			}
 			
@@ -114,11 +114,11 @@ FM.getTFdata = function(questionID, callback) {
 	falseResponses["Content"] = "False";
 	
 	RM.getContentCount({ Question_ID : questionID, Content : trueResponses["Content"] }, function(o) {
-		trueResponses["Value"] = o.count;
+		trueResponses["Value"] = parseInt(o.count);
 		result.push(trueResponses);
 		
 		RM.getContentCount({ Question_ID : questionID, Content : falseResponses["Content"] }, function(count) {
-			falseResponses["Value"] = count.count;
+			falseResponses["Value"] = parseInt(count.count);
 			result.push(falseResponses);
 			callback(result);
 		});
@@ -132,7 +132,7 @@ FM.getFRNdata = function(questionID, callback) {
 			for(var i = 0; i < results.length; i++) {
 				size.push(i);
 				RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
-					results[size.shift()]["Value"] = o.count;
+					results[size.shift()]["Value"] = parseInt(o.count);
 				});
 			}
 		}

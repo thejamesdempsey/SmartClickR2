@@ -5,16 +5,16 @@ var verticalBars = function(dataset) {
     var vertPadding = 10;   //Vertical padding (for the bottom of the SVG object)
     
     //SVG element creation
-    var svg = d3.select("body")
+    var svg = d3.select("#hero_content")
         .append("svg")
         .attr("width", w)
         .attr("height", h);
         
     //D3 Scales
-    //Access the "value" element and scale it to the height of the SVG object
+    //Access the "Value" element and scale it to the height of the SVG object
     var yScale = d3.scale.linear()
         .domain([0, d3.max(dataset, function(d){
-                return d.value;
+                return d.Value;
             })
         ])
         .range([0, h - vertPadding]);
@@ -32,15 +32,15 @@ var verticalBars = function(dataset) {
             return xScale(i);
         })
         .attr("y", function(d) {
-            return h - vertPadding - yScale(d.value);
+            return h - vertPadding - yScale(d.Value);
         })
         .attr("width", xScale.rangeBand())
         .attr("height", function(d) {
-            return yScale(d.value) - vertPadding;
+            return yScale(d.Value) - vertPadding;
         })
         .attr("fill", function(d) {
             //Make the bar bluer as it increases in height
-            return "rgb(0, 0, " + (d.value * 10) + ")";  
+            return "rgb(0, 0, " + (d.Value * 10) + ")";  
         });
         
     //Add labels
@@ -49,7 +49,7 @@ var verticalBars = function(dataset) {
         .enter()
         .append("text")
         .text(function (d) {
-            return d.content + ": " + d.value;
+            return d.Content + ": " + d.Value;
         })
         .attr("x", function(d, i) {
             return xScale(i) + xScale.rangeBand() / 2;
@@ -76,7 +76,7 @@ var verticalBars = function(dataset) {
             
             //Update the yScale domain (since new elements could be larger/smaller)
             yScale.domain([0, d3.max(dataset, function(d){
-                return d.value;
+                return d.Value;
                 })
             ]);
             
@@ -85,13 +85,13 @@ var verticalBars = function(dataset) {
                 .data(dataset)
                 .transition().duration(1000)
                 .attr("y", function(d){
-                    return h - vertPadding - yScale(d.value);
+                    return h - vertPadding - yScale(d.Value);
                 })
                 .attr("height", function(d) {
-                    return yScale(d.value) - vertPadding;
+                    return yScale(d.Value) - vertPadding;
                 })
                 .attr("fill", function(d) {
-                    return "rgb(0, 0, " + (d.value * 10) + ")";
+                    return "rgb(0, 0, " + (d.Value * 10) + ")";
                 });
                 
             //Select all of the existing 'text's & update them
@@ -99,7 +99,7 @@ var verticalBars = function(dataset) {
                 .data(dataset)
                 .transition().delay(750).duration(1000)
                 .text(function(d) {
-                    return d.content + ": " + d.value;
+                    return d.Content + ": " + d.Value;
                 })
                 .attr("x", function(d, i) {
                     return xScale(i) + xScale.rangeBand() / 2;

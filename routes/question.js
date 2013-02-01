@@ -118,6 +118,19 @@ exports.responseData = function(request, response) {
 	// send questionData in JSON format
 	//response.render('present.jade', {title: 'SmartClickR | Lets Present' });
 	FM.getResponseData(currentQID, function(result) {
-		response.send(result);
+		response.json(result);
+	});
+}
+
+// GET /user/:User_ID/poll/:Poll_ID/question/present/:Question_ID
+exports.presentPollQuestion = function(request, response) {
+	var currentQID = request.param('Question_ID');
+	var userID = request.param('User_ID');
+	var pollID = request.param('Poll_ID');
+
+	FM.getQuestion(currentQID, function(questionData) {
+		console.log(userID);
+		console.log(pollID);
+		response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID }});
 	});
 }

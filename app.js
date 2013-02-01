@@ -38,11 +38,7 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
   app.use(function(request, response, next) {
-    // var err = new Error('not found');
-    // err.status = 404;
-    // next(err);
-    //response.send('file not found 404');
-	response.render('404.jade', {title: 'SmartClickR | This page got lost', layout:'404_layout'});	
+	  response.render('404.jade', {title: 'SmartClickR | This page got lost', layout:'404_layout'});	
   });
 });
 
@@ -87,7 +83,7 @@ app.post('/poll/:SessionCode/question/:Question_ID', question.postResponse);
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 // GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
-app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID', question.responseData);
+app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID.json', question.responseData);
 app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.presentPollQuestion);
 
 
