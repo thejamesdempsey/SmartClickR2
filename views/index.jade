@@ -3,7 +3,7 @@ extends layout
 
 block content
 	// Header Content //
-	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
+	header(class="navbar navbar-inverse navbar-fixed-top")
 		.navbar-inner
 			.container
 				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
@@ -13,7 +13,7 @@ block content
 				a(class="brand", href="/") 
 					| SmartClickR
 					span  alpha
-				div(class="nav-collapse", style="height:auto;")
+				div(class="nav-collapse", style="")
 					ul(class="nav pull-right")
 						li(class="active")
 							a(id="home", href="/") Home
@@ -29,9 +29,17 @@ block content
 			.row-fluid
 				.span12
 					#hero
-						#hero_content
+						#hero_content.clearfix
+							section#session-code.visible-phone
+								h3 Got a session code?
+								form#index-session.form-inline(method="GET", action="/poll")
+									input(type="text", placeholder="Enter it here", id="index-search")
+									button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+								hr
 							.span7.img-contain
-								img(src="http://placehold.it/600x400")
+								img(src="http://placehold.it/600x400", class="visible-desktop visible-phone")
+								img(src="http://placehold.it/400x450", class="visible-tablet")
+								
 							.span5#tag
 								h1 Audience participation made easy
 								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
@@ -39,7 +47,7 @@ block content
 									a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
 							.clear
 						//end hero_content
-						section#session-code
+						section#session-code.hidden-phone
 							h3 Have a session code?
 
 							form#index-session.form-inline(method="GET", action="/poll")

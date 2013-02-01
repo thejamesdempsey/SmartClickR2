@@ -14,12 +14,12 @@ block content
 
 							hr
 
-							fieldset
-								div(class='above-below login-field')
+							fieldset.clearfix
+								div(class='above-below login-field clearfix')
 									label(for='email', class='form-text', class='placeholder') Your Email 
 									input(id='email', type='input', class='required form-text', name='email', title='Email Address', tabindex='1', autocomplete='off')
 									.clear
-								div(class='above-below login-field')
+								div(class='above-below login-field clearfix')
 									label(for='password', class='form-text', class='placeholder') Password
 									input(id='password', type='password', name='password', class='required form-text', title='Password',tabindex='2', autocomplete='off')
 									.clear	
@@ -40,5 +40,8 @@ block content
 	script(src = "/javascript/form-validators/loginValidator.js")
 	script(src = "/javascript/views/login.js")
 	script(src="http://malsup.github.com/jquery.form.js")
+
+
+
 	
 

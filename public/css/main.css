@@ -33,6 +33,10 @@ canvas{
 	padding-left: 4px;
 }
 
+.img-contain{
+	margin-left:0px !important;
+}
+
 #index-session .alert{
 	width: 60%;
 
@@ -175,7 +179,8 @@ body{
 	padding: 0;
 	margin: 0 auto;
 	font-size:62.5%;
-	background: #eee url('/img/noise.png');
+	/*background: #eee url('/img/noise.png');*/
+	background-color: #4c8ab0 !important;
 	min-width: 0;
 	
 }
@@ -1452,6 +1457,11 @@ ol.poll-grid li:nth-child(4sn) {
 		
 	}
 	
+	.navbar-fixed-top, .navbar-static-top, .navbar-fixed-bottom{
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+	}
+	
 	#hero_content_response{
 		padding: 20px;
 		border-radius: 0;
@@ -1901,13 +1911,46 @@ input[type="submit"]:active {
 	#main-create{
 		text-align: center;
 	}
+	
+	#session-code, #tag{
+		margin-bottom:30px;
+	}
+	
+	#hero{
+		padding: 0px;
+	}
+	
+	#hero_content{ 
+		padding-top: 6px !important;
+	}
+	
+	#session-code input[type="text"]{
+		width: 100%;
+	}
+	
+	#session-code button{
+		margin-top: 12px;
+		margin-left: 0px;
+		padding: 10px 20px 10px 20px;
+	}
 }
 
 
-@media and (max-width: 320px){
+
+
+@media screen and (max-width: 320px){
 	#session-code{
-		margin: 0;
-		paddin: 0;
+		padding: 8px 20px;
+	}
+}
+@media screen and (max-width: 979px){
+
+	#hero{
+		padding: 0px !important;
+	}
+	
+	#hero-content{
+		padding-top: 30px;
 	}
 }
 

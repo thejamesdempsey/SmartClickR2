@@ -21,6 +21,21 @@ body{
 	box-sizing: border-box;
 }
 
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
 hr {
 	border: solid #ddd;
 	border-width: 1px 0 0;
