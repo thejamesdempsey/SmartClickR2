@@ -26,6 +26,18 @@ canvas{
 	padding-left:45px;
 }
 
+.brand span{
+	display: inline;
+	font-size: 70%;
+	color: #0088cc;
+	padding-left: 4px;
+}
+
+#index-session .alert{
+	width: 60%;
+
+}
+
 #home-edit{
 	padding: 4px 20px;
 }
