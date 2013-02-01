@@ -85,7 +85,7 @@ exports.getPollQuestions = function(request, response) {
 				});
 			});
 		} else {
-			response.redirect('/');
+				response.render('poll-not-found.jade', {title:'SmartClickR | Poll Not Found'});
 		}
 	});
 }
@@ -106,7 +106,7 @@ exports.presentLandingPage = function(request, response) {
 						response.render('present-landing.jade', {title: 'SmartClickR | Lets Present', locals: { QuestionIDs : questionIDs, pdata : result, udata : user }});
 					});
 				});
-			}	
+			} 
 		});
 		
 	} else {

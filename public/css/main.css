@@ -1866,6 +1866,15 @@ input[type="submit"]:active {
 	#session-id input[type="submit"]{
 		width: 98%;
 	}
+	
+	#session-code input[type="text"]{
+		width: 100%;
+	}
+	
+	#session-code button{
+		margin-left:0px;
+		margin-top:10px;
+	}
 }
 
 @media screen and (max-width: 767px) {
@@ -1881,4 +1890,14 @@ input[type="submit"]:active {
 		text-align: center;
 	}
 }
+
+
+@media and (max-width: 320px){
+	#session-code{
+		margin: 0;
+		paddin: 0;
+	}
+}
+
+
 

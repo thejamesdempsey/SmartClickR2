@@ -86,6 +86,38 @@ label.radio {
   resize: none;
   border-radius: 4px;
 }
+#session-code {
+  position: relative;
+}
+#session-code input[type="text"] {
+  width: 94%;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+}
+#session-code button {
+  padding: 8px;
+  margin-top: 10px;
+}
+.bg {
+  background: #edeae3;
+  padding: 20px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  margin-top: 26px;
+}
+.bg h4 {
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.action {
+  text-align: center;
+}
 @media (max-width: 767px) {
   body {
     padding-right: 0 !important;
@@ -97,5 +129,11 @@ label.radio {
     -webkit-box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.25);
     box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.25);
+  }
+}
+@media and (max-width: 320px) {
+  #session-code {
+    margin: 0;
+    paddin: 0;
   }
 }

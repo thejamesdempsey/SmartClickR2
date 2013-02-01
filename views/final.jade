@@ -1,0 +1,36 @@
+extends layout_landing
+
+- pdata = typeof(locals.pdata) != 'undefined' ? locals.pdata
+input(type='hidden', value = pdata)#pdata
+input(type="hidden", value = '')#session
+
+
+block content
+	body#landing-page
+		// Header Content //
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/") SmartClickR
+					div(class="nav-collapse", style="height:auto;")
+						ul(class="nav pull-right")
+							li(class="active")
+								a(id="home", href="/") Home
+							li
+								a(id='signup', href='/user/create') Sign Up
+							li
+								a(id='log', href='/login') Log In
+		.clear
+		#landing-pad.hidden-phone
+		#landing-container
+			.container		
+				.row-fluid					
+					#hero_content.span6.offset3
+						h3#poll-name #{locals.pdata[0].PollName}
+						p This poll does not have any more questions
+						p#actions
+							a(id='starting-question', href='/', class="btn btn-success btn-large") Finish and Quit  &rarr; 

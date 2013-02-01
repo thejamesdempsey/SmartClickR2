@@ -13,7 +13,12 @@ $("#loginForm").ready(function() {
 			url  	: '/login',
 		   	error 	: function(jqHRX, textStatus, errorThrown){
 					if (textStatus == 'error'){
-						$("#login-container h1").after('<label class="error"> <p>Your username or password was incorrect</label>');
+						format  = '<div class="alert alert-error fade in">';
+						format += '<strong>Uhh Ohh, </strong> your email address or password is incorrect';
+						format += '</div>';
+						
+						$("#login-container h1").after(format);
+						
 					}						
 						console.log(jqHRX.status, textStatus, errorThrown);
 					}
