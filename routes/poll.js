@@ -28,7 +28,6 @@ exports.postCreatePoll = function(request, response) {
 }
 
 
-
 // GET /user/:User_ID/poll/edit/:Poll_ID //
 exports.getEditPoll = function(request, response) {
 	

@@ -1,4 +1,4 @@
-var verticalBars = function(dataset) {
+var verticalBars = function(dataset, path) {
     //SVG dimensions
     var w = 1024;           //SVG object width in pixels
     var h = 600;            //SVG object height in pixels

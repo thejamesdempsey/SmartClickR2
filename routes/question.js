@@ -129,6 +129,7 @@ exports.responseData = function(request, response) {
 // GET /user/:User_ID/poll/:Poll_ID/question/present/:Question_ID
 exports.presentPollQuestion = function(request, response) {
 	var currentQID = request.param('Question_ID');
+	var questionIDs = request.session.questionIDs;
 	var userID = request.param('User_ID');
 	var pollID = request.param('Poll_ID');
 

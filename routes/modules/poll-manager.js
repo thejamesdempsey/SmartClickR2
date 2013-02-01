@@ -141,7 +141,7 @@ PM.delete = function(pollID, callback) {
 
 PM.getPoll = function(sessionCode, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE SessionCode = ?', [sessionCode], function(err, results) {
-		if (results.length === 1)
+		if (results.length === 1 && results != undefined)
 			callback(results);
 		else 
 			callback('poll-not-found');
