@@ -246,6 +246,12 @@ a, a:link, a:visited{
 	font-size: 14px;
 }
 
+
+.login-field{
+	position: relative;
+}
+
+
 label.placeholder{
 	position: absolute;
 	top: 5px;
@@ -255,14 +261,16 @@ label.placeholder{
 	text-align: right;
 	margin-top: 10px;
 	font-size: 14px;
+	z-index: 5;
 }
 label.placeholder:focus{
 	color: #000;
 }
 
-#login-container input#email, 
-#login-container input#password{
-	padding: 10px 15px 10px 100px;
+#login-container input#email, #login-container input#password{
+	padding: 10px 15px 10px 100px;	
+	position: relative;
+	z-index: 2;
 	margin: 0;
 	background-color: #fbfbfb;
 	border: 1px solid #ccc;
@@ -270,7 +278,10 @@ label.placeholder:focus{
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;	
+	line-height: 20px;
 }
+
+
 
 input#email:focus, input#password:focus{
 }

@@ -185,6 +185,10 @@ body{
 	
 }
 
+#signup-body{
+	background: #eee url('/img/noise.png');
+}
+
 ::selection {
 	background: rgba(252, 107, 53, 0.6); /* Safari */
 	}
@@ -1933,6 +1937,7 @@ input[type="submit"]:active {
 		margin-left: 0px;
 		padding: 10px 20px 10px 20px;
 	}
+	
 }
 
 
@@ -1946,12 +1951,14 @@ input[type="submit"]:active {
 @media screen and (max-width: 979px){
 
 	#hero{
-		padding: 0px !important;
+		padding-top: 40px !important;
 	}
 	
 	#hero-content{
 		padding-top: 30px;
 	}
+	
+	
 }
 
 

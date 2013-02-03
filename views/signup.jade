@@ -1,21 +1,8 @@
 // Signup Page
 extends layout_signup
 block content
-	// Header Content //
-	header(class="navbar navbar-inverse navbar-fixed-top")
-		.navbar-inner
-			.container
-				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
-					span(class="icon-bar")
-					span(class="icon-bar")
-					span(class="icon-bar")
-				a(class="brand", href="/") SmartClickR
-				div(class="nav-collapse", style="height:auto;")
-					ul(class="nav pull-right")
-						li(class="active")
-							a(id="home", href="/") Home
-						li
-							a(id='log', href='/login') Log In
+	body#signup-body
+	include extra/nav-signup
 	#hero
 		.container
 			.row-fluid
