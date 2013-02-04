@@ -136,7 +136,7 @@ $(document).ready(function() {
 				
 				setTimeout(function() {
 					window.location = '/user/' + userID;
-				}, 45);
+				}, 50);
 			}
 
 		});

@@ -30,6 +30,15 @@ block content
 					#hero_content
 						h3 Question# #{locals.qdata[0].QuestionsOrder}
 						h2 #{locals.qdata[0].Stem}
+				.row-fluid
+					.span6
+						if locals.qdata[0].Question_ID != locals.QuestionIDs[0]
+							a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder - 2]}', class="btn btn-success btn-large") Previous
+					.span6
+						if locals.qdata[0].Question_ID == locals.QuestionIDs[locals.QuestionIDs.length - 1]
+							a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/present/final', class="btn btn-success btn-large") Completed
+						else
+							a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
 
 
 	script

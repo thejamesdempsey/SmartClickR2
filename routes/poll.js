@@ -112,3 +112,15 @@ exports.presentLandingPage = function(request, response) {
 		response.redirect('/');
 	}
 }
+
+// GET /user/:User_ID/poll/:Poll_ID/present/final //
+exports.presentFinal = function(request, response) {
+	pollID = request.param('Poll_ID');
+	request.session.questionIDs = '';
+
+	console.log(pollID);
+	PM.getPollFromID(pollID, function(poll) {
+		console.log(poll);
+		response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
+	});
+}
