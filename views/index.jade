@@ -2,36 +2,25 @@
 extends layout
 
 block content
-	// Header Content //
-	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
-		.navbar-inner
-			.container
-				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
-					span(class="icon-bar")
-					span(class="icon-bar")
-					span(class="icon-bar")
-				a(class="brand", href="/") 
-					| SmartClickR
-					span  alpha
-				div(class="nav-collapse", style="height:auto;")
-					ul(class="nav pull-right")
-						li(class="active")
-							a(id="home", href="/") Home
-						li
-							a(id='features', href='features') Features
-						li
-							a(id='signup', href='user/create') Sign Up
-						li
-							a(id='log', href='login') Log In
+
+	include extra/nav-main
 
 	#feature-container
 		.container
 			.row-fluid
 				.span12
 					#hero
-						#hero_content
+						#hero_content.clearfix
+							section#session-code.visible-phone
+								h3 Got a session code?
+								form#index-session.form-inline(method="GET", action="/poll")
+									input(type="text", placeholder="Enter it here", id="index-search")
+									button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+								hr
 							.span7.img-contain
-								img(src="http://placehold.it/600x400")
+								img(src="http://placehold.it/600x400", class="visible-desktop visible-phone")
+								img(src="http://placehold.it/400x450", class="visible-tablet")
+								
 							.span5#tag
 								h1 Audience participation made easy
 								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
@@ -39,7 +28,7 @@ block content
 									a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
 							.clear
 						//end hero_content
-						section#session-code
+						section#session-code.hidden-phone
 							h3 Have a session code?
 
 							form#index-session.form-inline(method="GET", action="/poll")
@@ -49,41 +38,4 @@ block content
 					.clear
 					//end section
 
-	// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
-
-
-
-
+	include extra/footer-main

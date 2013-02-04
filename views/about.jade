@@ -10,7 +10,9 @@ block content
 					span(class="icon-bar")
 					span(class="icon-bar")
 					span(class="icon-bar")
-				a(class="brand", href="/") SmartClickR
+					a(class="brand", href="/") 
+						| SmartClickR
+						span  alpha
 				div(class="nav-collapse", style="height:auto;")
 					ul(class="nav pull-right")
 						li(class="active")
@@ -69,41 +71,5 @@ block content
 									hr
 						
 
-	// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms Of Service
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
-
-
-
-
+	include extra/footer-main
+	

@@ -10,6 +10,10 @@ body {
 .clear {
   clear: both;
 }
+#response-form label.radio.inline {
+  width: 100%;
+  margin-top: 16px;
+}
 #landing-page {
   background-color: #4c8ab0;
 }

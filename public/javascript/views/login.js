@@ -1,4 +1,5 @@
 $("#loginForm").ready(function() {
+	$("input #email").focus();	
 	$(this).submit(function() {
 		
 		var email = $('#email').val().trim();

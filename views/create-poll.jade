@@ -16,8 +16,10 @@ block content
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
-					a(class="brand", href="/user/#{locals.udata.User_ID}") SmartClickR
-					div(class="nav-collapse in collapse", style="height:auto;")
+					a(class="brand", href="/user/#{locals.udata.User_ID}") 
+						| SmartClickR
+						span  alpha
+					div(class="nav-collapse in collapse")
 						ul(class="nav pull-right")
 							li(class="active")
 								a(id="home", href="/user/#{locals.udata.User_ID}") Home
@@ -57,7 +59,7 @@ block content
 
 							//include modals/poll-types
 							section.create_actions
-								input(type="button", id="createPollBtn", class="red button", value='Add a Question')
+								input(type="button", id="createPollBtn", class="red button", value='Create that Poll!')
 								div(id="sub-actions")
 									.btn-group
 										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add Question
@@ -75,33 +77,8 @@ block content
 									input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
 								.clear
 			hr
-			// Footer Content //
-			footer
-				#footer_container.container
-					.row-fluid
-						#footer_content
-							div.span3
-								h5 About Us
-								ul
-									li: a(href='#') Home
-									li: a(href='#') Features
-									li: a(href='#') Sample Questions
-							div.span3
-								h5 Contact Us
-								ul
-									li: a(href='#') About The Team
-									li: a(href='#') Blog
-									li: a(href='#') Contact
-							div.span3
-								h5 Legal Stuff
-								ul
-									li: a(href='#') Privacy
-									li: a(href='#') Terms Of Service
-					.clear
-				#legal
-					span
-						| ©
-						| SmartClickR Inc, All Rights Reserved
+		include extra/footer-main
+			
 		
 	script(src="/javascript/views/create-poll.js")
 	script(src="/jquery.ui.effect-blind.js")

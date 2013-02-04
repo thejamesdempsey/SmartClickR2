@@ -7,11 +7,16 @@ html
 		link(rel='stylesheet', type='text/css', href='/css/login.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/forms.css', media='screen')
 
+
 		// Add Jquery //
 		script(type='text/javascript', src='http://code.jquery.com/jquery-latest.min.js')
 
 		script(type='text/javascript', src='/bootstrap/bootstrap.js')
-
+		
+		script
+			if ( $.browser.mozilla == true ) {
+				document.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"/css/ff.css\">");
+			}
 		
 	body
 		block content

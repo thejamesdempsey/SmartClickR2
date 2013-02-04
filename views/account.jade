@@ -4,6 +4,7 @@ extends layout_account
 input(type = 'hidden',value = user._id)#userId
 
 block content
+	body#account-body
 	// Header Content //
 	header(class="navbar navbar-inverse navbar-fixed-top")
 		.navbar-inner
@@ -12,8 +13,10 @@ block content
 					span(class="icon-bar")
 					span(class="icon-bar")
 					span(class="icon-bar")
-				a(class="brand", href="/user/#{locals.udata.User_ID}") SmartClickR
-				div(class="nav-collapse in collapse", style="height:auto;")
+					a(class="brand", href="/") 
+						| SmartClickR
+						span  alpha
+				div(class="nav-collapse in collapse")
 					ul(class="nav pull-right")
 						li(class="active")
 							a(id="home", href="/user/#{locals.udata.User_ID}") Home
@@ -24,7 +27,7 @@ block content
 						li
 							a(id='logout',href='/logout') Log Out
 		
-	#hero
+	#acct-hero
 		.container
 			.row-fluid
 				.span8.offset2
@@ -56,6 +59,7 @@ block content
 							fieldset
 								span.field
 									fieldset.form-action
+										h2 Not satisfied with SmartClickR? 
 										input(id='deleteAccountBtn',type='submit', class="button red", value='Delete Your Account')
 										p This will delete your account and all the polls associated with your account. This action cannot be undone
 						
