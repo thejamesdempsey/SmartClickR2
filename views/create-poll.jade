@@ -16,8 +16,10 @@ block content
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
-					a(class="brand", href="/user/#{locals.udata.User_ID}") SmartClickR
-					div(class="nav-collapse in collapse", style="height:auto;")
+					a(class="brand", href="/user/#{locals.udata.User_ID}") 
+						| SmartClickR
+						span  alpha
+					div(class="nav-collapse in collapse")
 						ul(class="nav pull-right")
 							li(class="active")
 								a(id="home", href="/user/#{locals.udata.User_ID}") Home
@@ -57,7 +59,7 @@ block content
 
 							//include modals/poll-types
 							section.create_actions
-								input(type="button", id="createPollBtn", class="red button", value='Add a Question')
+								input(type="button", id="createPollBtn", class="red button", value='Create that Poll!')
 								div(id="sub-actions")
 									.btn-group
 										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add Question

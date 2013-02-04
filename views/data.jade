@@ -3,24 +3,8 @@ extends layout_data
 
 block content
 	// Header Content //
-	header(class="navbar navbar-inverse navbar-fixed-top")
-		.navbar-inner
-			.container
-				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
-					span(class="icon-bar")
-					span(class="icon-bar")
-					span(class="icon-bar")
-				a(class="brand", href="/") SmartClickR
-				div(class="nav-collapse in collapse", style="height:auto;")
-					ul(class="nav pull-right")
-						li
-							a(id="home", href="/") Home
-						li(class="active")
-							a(id='features', href='features') Features
-						li
-							a(id='signup', href='user/create') Sign Up
-						li
-							a(id='log', class='fancybox', href='login') Log In
+	include extra/nav-main
+
 	#main-content
 		article#user_hero
 			.container

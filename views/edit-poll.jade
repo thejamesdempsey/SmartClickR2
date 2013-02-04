@@ -8,33 +8,29 @@ block content
 	//- input(type = 'hidden',value = '')#pollId
 
 	body#create_poll_body
-		header#create_poll_header
-			.row
-				.twelve.columns
-					nav#user_nav.top-bar
-						ul
-							li.name
-								h1: a(id='title', href='/user/#{locals.udata.User_ID}') SmartClickR
-							li.toggle-topbar
-								a(href='#')
-						section
-							ul.right
-								li: a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account Settings
-								li: a(id='help', href='help-center') Help Center
-								li: a(id='logout', href='/logout') Log Out
-			
-					hr
-				article#user_hero.row
-					.twelve.columns
-						section#create_title
-							h1 Build your poll
-						//section.create_actions
-						//	input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-						//	input(type="button", id="finishBtn", class="red button", value='Finish') 
-						//	input(type="button", id="save_quitBtn", class="red button", value='Save and Quit') 
-						.clear
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/user/#{locals.udata.User_ID}") 
+						| SmartClickR
+						span  alpha
+					div(class="nav-collapse in collapse")
+						ul(class="nav pull-right")
+							li(class="active")
+								a(id="home", href="/user/#{locals.udata.User_ID}") Home
+							li
+								a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account
+							li
+								a(id='help', href='help-center') Help Center
+							li
+								a(id='logout',href='/logout') Log Out
+		.clear
 
-				hr
+
 		section#content_container
 			.row
 				.twelve.columns	

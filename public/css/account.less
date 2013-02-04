@@ -1,4 +1,9 @@
-#hero{
+#account-body{
+	background: #eee url('/img/noise.png');
+	
+}
+
+#acct-hero{
 /*	background:#4c8ab0;*/
 	background:#72c1b0; /*red*/	
 	padding: 94px 0 84px 0 !important;
@@ -49,4 +54,23 @@
 	background: #fff !important;
 	top:-56px !important;
 	position: relative;
+}
+
+@media screen and (min-width: 767px){
+	
+input #deleteAccountBtn.button.red{
+	margin: 12px;
+}
+
+}
+@media screen and (max-width: 767px){
+	
+	#acct-hero{
+		padding: 34px 0 84px 0 !important;
+	}
+	
+	#settings-content{
+		padding: 32px !important;
+	}
+
 }
