@@ -133,9 +133,10 @@ $(document).ready(function() {
 			// redirect back to user's page after saving all questions
 			//alert('Index is....' + index);
 			if($('.question_wrap').length == (index + 1)) {
+				
 				setTimeout(function() {
 					window.location = '/user/' + userID;
-				}, 25);
+				}, 50);
 			}
 
 		});
