@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+	var socket = io.connect('http://localhost:8000')
+	socket.on('connect', function() {
+		socket.send(window.location);
+	});
+
+
+

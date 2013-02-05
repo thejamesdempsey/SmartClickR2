@@ -112,3 +112,8 @@ exports.presentLandingPage = function(request, response) {
 		response.redirect('/');
 	}
 }
+
+
+exports.socketio = function(request, response) {
+	response.render('socketio.jade', {title: 'SocketIO'});
+}
