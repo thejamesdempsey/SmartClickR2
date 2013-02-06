@@ -4,10 +4,11 @@ block content
 
 	- user = typeof(locals.udata) != 'undefined' ? locals.udata : {}
 	input(type = 'hidden',value = user.User_ID)#userId
-	//- input(type = 'hidden',value = '')#sessionCode
-	//- input(type = 'hidden',value = '')#pollId
+	input(type = 'hidden',value = '')#sessionCode
+	input(type = 'hidden',value = '')#pollId
 
 	body#create_poll_body
+		// Header Content //
 		header(class="navbar navbar-inverse navbar-fixed-top")
 			.navbar-inner
 				.container
@@ -29,33 +30,106 @@ block content
 							li
 								a(id='logout',href='/logout') Log Out
 		.clear
+		article#user_hero
+			.container
+				.row
+					section#create_title.span12
+						h1 Edit Your Poll
+					.clear
 
-
+		hr
 		section#content_container
-			.row
-				.twelve.columns	
-					section#create_content.twelve.columns.dropshadow
-						section#poll_info
-							fieldset.twelve.columns
-								label(id="pollNameLabel",for="pollName") Poll Title  (required)
-								input(type="text", id="pollName", name="pollName", value="#{locals.pdata.PollName}")
-							fieldset.twelve.columns
-								label(for="pollDescription") Poll Description
-								textarea(id="pollDescription", name="pollDescription") #{locals.pdata.PollDescription}
-							hr
-						section#question_container.animated.fadeInDown
-						form
-							include modals/poll-types
+			.container
+				.row
+					.span12
+						section#create_content.dropshadow
+							section#poll_info
+								fieldset
+									label(id="pollNameLabel",for="pollName") Poll Title  (required)
+									input(type="text", id="pollName", name="pollName", class="", value='#{locals.pdata.PollName}')
+								fieldset
+									label(for="pollDescription") Poll Description
+									textarea(id="pollDescription", name="pollDescription", value='#{locals.pdata.PollDescription}')
+								hr
+							section#question_container.animated.fadeInDown
+								each question, i in locals.qdata
+									if question.AnswerType == "MultipleChoice"
+										article(class='question_wrap', id='multipleChoice_question' + #{question.QuestionsOrder})
+											h3 Multiple Choice
+											textarea(class='textarea_small') #{question.Stem}
+											.top-pad
+											fieldset.span6
+												span a)
+												input(type='text', class='mc_response', name='question-1_order' + #{question.QuestionsOrder}, value='#{question.Choices[0].Content}')
+												.clear
+												label.radio Correct Answer 
+													input(type='radio', name='correct_answer')
+											fieldset.span6
+												span b)
+												input(type='text', class='mc_response', name='question-2_order' + #{question.QuestionsOrder}, value='#{question.Choices[1].Content}')
+												.clear
+												label.radio Correct Answer
+													input(type='radio', name='correct_anwer')
+											fieldset.span6
+												span c)
+												input(type='text', class='mc_response', name='question-3_order' + #{question.QuestionsOrder}, value='#{question.Choices[2].Content}')
+												.clear
+												label.radio Correct Answer
+													input(type='radio', name='correct_anwer')
+											fieldset.span6
+												span d)
+												input(type='text', class='mc_response', name='question-3_order'+#{question.QuestionsOrder}, value='#{question.Choices[3].Content}')
+												.clear
+												label.radio Correct Answer
+													input(type='radio', name='correct_anwer')	
+									else if question.AnswerType == "TrueFalse"	
+										article(class='question_wrap', id='trueFalse_question' + #{question.QuestionsOrder})
+											h3 True/False
+											textarea(class='textarea_small') #{question.Stem}											
+											fieldset.span4
+												label.radio True
+													input(type='radio', name='correct_anwer')
+											fieldset.span4
+												label.radio False
+													input(type='radio', name='correct_anwer')
+											fieldset.span4
+												label.radio No correct answer
+													input(type='radio', name='correct_anwer')
+									else if question.AnswerType == "FreeResponse"
+										article(class='question_wrap', id='freeResponse_question' + #{question.QuestionsOrder})
+											h3 Free Response
+											fieldset
+												textarea(class='fr_response', name='question-' + #{question.QuestionsOrder}, cols='30', rows='5') #{question.Stem}
+											hr
+									else if question.AnswerType == "Numeric"
+										article(class='question_wrap', id='numeric_question' + #{question.QuestionsOrder})
+											h3 Numeric Free Response
+											fieldset
+												textarea(class='numeric', name='question-' + #{question.QuestionsOrder}, cols='30', rows='5') #{question.Stem}
+
+							//include modals/poll-types
 							section.create_actions
-								input(type="button", id="createPollBtn", class="red button", value='Add a Question') 
-								input(type="submit", id="save_quitBtn", class="red button", value='Save and Quit', onsubmit="Saving...") 
-						.clear
+								div(id="sub-actions")
+									.btn-group
+										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add Question
+											span.caret
+										ul(class="dropdown-menu", role="menu", aria-labelledby="dropdownMenu")
+											li
+												a(class="", id="multipleChoiceBtn", value="Multiple Choice") Multiple Choice
+											li
+												a(class="", id="trueFalseBtn", value="True or False") True or False
+											li
+												a(class="", id="freeResponseBtn", value="Text Response") Text Response
+											li
+												a(class="", id="freeResponseNumericBtn", value="Numeric Response") Numeric Response
+
+									input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
+								.clear
 			hr
-		footer#create_footer
-			.row
-				.twelve.columns
-					section(style='height:200px')
-			hr
-	script(src="/javascript/views/create-poll.js")
+		include extra/footer-main
+			
+		
 	script(src="/jquery.ui.effect-blind.js")
 	script(src="/jquery-ui-1.9.2.custom.min.js")
+
+				

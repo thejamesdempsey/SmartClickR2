@@ -79,9 +79,6 @@ app.get('/poll/:SessionCode/question/:Question_ID', question.pollQuestion);
 app.post('/poll/:SessionCode/question/:Question_ID', question.postResponse);
 
 // poll present pages //
-
-// GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
-// GET /user/:User_ID/poll/:Poll_ID/question/:Question_ID //
 app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
 app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID.json', question.responseData);
