@@ -48,6 +48,7 @@ AM.manualLogin = function(email, pass, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Email = ?', [email], function(error, results){
 		if (results == undefined || results.length === 0) {
 			callback('user-not-found');
+			//response.send(res : 'user-not-found');
 		} else {
 			//console.log(results);
 			bcrypt.compare(pass, results[0].Password, function(err, o) {
@@ -56,6 +57,7 @@ AM.manualLogin = function(email, pass, callback) {
 					callback(null, results);
 				}	else{
 					callback('invalid-password');
+					//response.send({res : 'wrong password'});
 				}
 			});
 		}

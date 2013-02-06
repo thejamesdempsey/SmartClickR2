@@ -113,11 +113,7 @@ exports.presentLandingPage = function(request, response) {
 	}
 }
 
-<<<<<<< HEAD
 
-exports.socketio = function(request, response) {
-	response.render('socketio.jade', {title: 'SocketIO'});
-=======
 // GET /user/:User_ID/poll/:Poll_ID/present/final //
 exports.presentFinal = function(request, response) {
 	pollID = request.param('Poll_ID');
@@ -128,5 +124,4 @@ exports.presentFinal = function(request, response) {
 		console.log(poll);
 		response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
 	});
->>>>>>> fdd093790403d6e2314a109694fa8bc8eb7b46ad
 }

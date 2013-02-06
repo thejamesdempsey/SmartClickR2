@@ -34,39 +34,41 @@ block content
 	#main-content
 	article#user_hero
 		.container
-			.span12
-				section#user_greeting
-					h2#user_hello.span5.visible-desktop.visible-phone
-						return Hi there, #{locals.udata.FirstName}
-					h2#user_hello.span5.visible-tablet
-						return Hi, #{locals.udata.FirstName}
-					// this type of call gets the desired info about the user
-					//#{locals.udata.FirstName} 
-					div.span6.hidden-phone
-						p#greeting.bubble
-						.clear
-					aside#actions_container.span12
-						div#user_actions.span5
+			section#user_greeting.clearfix
+				h2#user_hello.span5.visible-desktop.visible-phone
+					return Hi there, #{locals.udata.FirstName}
+				h2#user_hello.span5.visible-tablet
+					return Hi, #{locals.udata.FirstName}
+
+				// this type of call gets the desired info about the user
+				//#{locals.udata.FirstName} 
+				div.span6.hidden-phone
+					p#greeting.bubble
+					.clear
+				aside#actions_container.span12
+					div#user_actions.span5
+						if locals.pdata.length > 0
 							a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
+						else
+						.clear
+					div#user_search.span6
+						form#index-session.form-inline(method="GET", action="/poll")
+							input(type="text", placeholder="Enter a Session Code", id="index-search")
+							button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+					.span6
+						
 							.clear
-						div#user_search.span6
-							form#index-session.form-inline(method="GET", action="/poll")
-								input(type="text", placeholder="Enter a Session Code", id="index-search")
-								button(type="submit", class="btn btn-info", name="session") Find it &rarr;
-						.span6
-							
-								.clear
 		hr
 	section#content_container
 		.container
-			.row
-				.span12					
+			.row-fluid
+				.backdrop.dropshadow
 					section#user_content
-						if locals.pdata.length > 0
+						if locals.pdata.length > 1
 							each poll in locals.pdata
-								div#poll_container
+								div#poll_container.clearfix
 									form(class='pollActions', method='post')
-										article#poll_brief.span9
+										article#poll_brief.span
 											aside#sub_info
 												a(href="#")
 													span
@@ -77,64 +79,116 @@ block content
 											span
 												aside#sub_content
 													p #{poll.PollDescription}
-											p Session Code: #{poll.SessionCode}
-											p Url: 
-												a(href='/poll/'+poll.SessionCode) smartclickr.com/poll/#{poll.SessionCode}
-										ul#alt-actions.span1
-											li(id='edit_poll'+poll.Poll_ID)
-												button(id="home-edit", formaction="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", type="submit", formmethod="GET", class="btn btn-medium btn-info") Edit
-											li(id='delete_poll'+poll.Poll_ID)
-												button(href='#deleteConfirm' + poll.Poll_ID, role="button", class="btn btn-medium btn-info", data-toggle="modal") Delete
+											aside#poll-actions
+												section#poll-links.span6
+													p Session Code: #{poll.SessionCode}
+													p Url: 
+														a(href='/poll/'+poll.SessionCode) smartclickr.com/poll/#{poll.SessionCode}
+												ul#alt-actions.span6
+													li(id='edit_poll'+poll.Poll_ID)
+														button(id="home-edit", formaction="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", type="submit", formmethod="GET", class="btn btn-medium btn-info") Edit
+													li(id='delete_poll'+poll.Poll_ID)
+														button(href='#deleteConfirm' + poll.Poll_ID, role="button", class="btn btn-medium btn-info", data-toggle="modal") Delete
 
-												// Delete Confirmation Modal //
-												div(id='deleteConfirm' + poll.Poll_ID, class="modal hide fade", tabindex="-1", role="dialog", aria-labelledby="deleteConfirmLabel", aria-hidden="true", style="text-align: left")
-													div(class="modal-header")
-														button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
-														h5(id="deleteConfirmLabel") Are you sure you want to delete this poll?
-														p This will remove all questions and responses associated with this poll and cannot be undone
-													div(class="modal-footer")
-														button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel
-														button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='btn btn-medium btn-danger') Delete
-														
-			
-											li(id='start_poll'+poll.Poll_ID)
-												button(id="home-start", formmethod="GET", formaction="/user/#{locals.udata.User_ID}/poll/#{poll.Poll_ID}", class="btn btn-medium btn-info") Start
-									hr
-								hr
+														// Delete Confirmation Modal //
+														div(id='deleteConfirm' + poll.Poll_ID, class="modal hide fade", tabindex="-1", role="dialog", aria-labelledby="deleteConfirmLabel", aria-hidden="true", style="text-align: left")
+															div(class="modal-header")
+																button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+																h5(id="deleteConfirmLabel") Are you sure you want to delete this poll?
+																p This will remove all questions and responses associated with this poll and cannot be undone
+															div(class="modal-footer")
+																button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel
+																button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='btn btn-medium btn-danger') Delete
+											
+
+													li(id='start_poll'+poll.Poll_ID)
+														button(id="home-start", formmethod="GET", formaction="/user/#{locals.udata.User_ID}/poll/#{poll.Poll_ID}", class="btn btn-medium btn-info") Start
+											hr
+						else if locals.pdata.length == 1	
+							each poll in locals.pdata
+								div#poll_container.clearfix
+									form(class='pollActions', method='post')
+										article#poll_brief.span
+											aside#sub_info
+												a(href="#")
+													span
+													a(href="#")
+														h1#poll_title #{poll.PollName}
+														#date-time #{poll.CreateDate}
+													.clear	
+											span
+												aside#sub_content
+													p #{poll.PollDescription}
+											aside#poll-actions
+												section#poll-links.span6
+													p Session Code: #{poll.SessionCode}
+													p Url: 
+														a(href='/poll/'+poll.SessionCode) smartclickr.com/poll/#{poll.SessionCode}
+												ul#alt-actions.span6
+													li(id='edit_poll'+poll.Poll_ID)
+														button(id="home-edit", formaction="/user/#{locals.udata.User_ID}/poll/edit/#{poll.Poll_ID}", type="submit", formmethod="GET", class="btn btn-medium btn-info") Edit
+													li(id='delete_poll'+poll.Poll_ID)
+														button(href='#deleteConfirm' + poll.Poll_ID, role="button", class="btn btn-medium btn-info", data-toggle="modal") Delete
+
+														// Delete Confirmation Modal //
+														div(id='deleteConfirm' + poll.Poll_ID, class="modal hide fade", tabindex="-1", role="dialog", aria-labelledby="deleteConfirmLabel", aria-hidden="true", style="text-align: left")
+															div(class="modal-header")
+																button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+																h5(id="deleteConfirmLabel") Are you sure you want to delete this poll?
+																p This will remove all questions and responses associated with this poll and cannot be undone
+															div(class="modal-footer")
+																button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel
+																button(formmethod='POST', formaction='/user/#{locals.udata.User_ID}/poll/delete/#{poll.Poll_ID}', type='submit', class='btn btn-medium btn-danger') Delete
+											
+
+													li(id='start_poll'+poll.Poll_ID)
+														button(id="home-start", formmethod="GET", formaction="/user/#{locals.udata.User_ID}/poll/#{poll.Poll_ID}", class="btn btn-medium btn-info") Start
+											hr
+							article#one_poll.clearfix
+								span.visible-phone Still need help?
+								span.hidden-phone Need some more help? Feel free to check out our
+									br
+									a(id="guide", href="#") getting started guide
 						else
-							article#no_polls
-								h2 You have not created any polls yet 
-								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="btn btn-info btn-large") Start Your First Poll
-								span or read our 
-									a(href="#") getting started guide
+							article#no_polls.clearfix
+								article#three-steps.hidden-phone
+									h2 Get Going in Three Easy Steps
+									ul#steps.clearfix
+										li.span4 
+											img(src="http://placehold.it/200x200")
+											a(id="create-step", href="/user/#{locals.udata.User_ID}/poll/create", class="steps-link btn btn-info btn-large") Create a Poll
+										li.span4 
+											img(src="http://placehold.it/200x200")
+											a(id="questions-toggle", href="#", class="steps-link btn btn-large disabled") Add Questions
+										li.span4 
+											img(src="http://placehold.it/200x200")
+											a(id="responses-toggle", href="#", class="steps-link btn btn-large disabled") Collect Responses
+								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="btn btn-info btn-large visible-phone") Start Your First Poll
+								span.visible-phone or read our 
+								span.hidden-phone If you need more guidance feel free to check out our
+									br
+									a(id="guide", href="#") getting started guide
+					
 	// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span3
-						h5 About Us
+	if locals.pdata.length == 1
+		footer#logged-in-one
+			#footer_container.container
+				.row-fluid
+					#footer_content
 						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/samples') Sample Questions
-					div.span3
-						h5 Contact Us
-						ul
-							li: a(href='/about') About The Team
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-					div.span3
-						h5 Legal Stuff
-						ul
+							li 
+								| ©
+								| SmartClickR Inc
+							li: a(href='/help-center') Help Center
 							li: a(href='/privacy') Privacy
 							li: a(href='/terms') Terms Of Service
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
-
+							//li: a(href='/blog') Blog 
+							//li: a(href='/about') About
+				.clear
+	else 
+		include extra/footer-logged
+				.clear
+		
 
 
 	

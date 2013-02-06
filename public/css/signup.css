@@ -83,19 +83,17 @@ input.form-text {
     margin: 8px 0 0 -7px !important;
   }
 }
-
-
-@media screen and (max-width: 767px){
-	#signup-content{
-		padding: 20px !important;
-	}	
-	
-	fieldset label{
-		margin: 0 0 -8px 0 !important;
-	}
-	
-	#signup-container{
-		padding: 0 !important;
-	}
+@media screen and (max-width: 768px) {
+  #signup-content {
+    padding: 26px !important;
+  }
 }
-
+@media screen and (max-width: 480px) {
+  #signup-container .container {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  #signup-content {
+    padding: 18px !important;
+  }
+}

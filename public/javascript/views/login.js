@@ -6,7 +6,6 @@ $("#loginForm").ready(function() {
 		var pass = $('#password').val().trim();
 		
 		console.log('Errrybody was Kung Fu fighting');
-		console.log(email, pass);
 		
 		$(this).ajaxForm({
 			type 	: 'POST',
@@ -18,11 +17,13 @@ $("#loginForm").ready(function() {
 						format += '<strong>Uhh Ohh, </strong> your email address or password is incorrect';
 						format += '</div>';
 						
+						$('#email').removeClass("input-error").addClass('input-error');
+						$('#password').removeClass("input-error").addClass('input-error');
+						
 						$("#login-container h1").after(format);
 						
 					}						
-						console.log(jqHRX.status, textStatus, errorThrown);
-					}
+				}
 						//if ( error == 'user-not-found') {
 						// 	$(body).after('<div class="top-error"> <p>Your username was not found</p></div>')
 						// }
