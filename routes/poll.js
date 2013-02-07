@@ -114,6 +114,7 @@ exports.presentLandingPage = function(request, response) {
 	}
 }
 
+
 // GET /user/:User_ID/poll/:Poll_ID/present/final //
 exports.presentFinal = function(request, response) {
 	pollID = request.param('Poll_ID');

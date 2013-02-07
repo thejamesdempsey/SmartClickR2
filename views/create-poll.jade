@@ -30,7 +30,7 @@ block content
 							li
 								a(id='logout',href='/logout') Log Out
 		.clear
-		article#user_hero
+		article#create_hero
 			.container
 				.row
 					section#create_title.span12
@@ -46,38 +46,40 @@ block content
 			.container
 				.row
 					.span12
-						section#create_content.dropshadow
-							section#poll_info
-								fieldset
-									label(id="pollNameLabel",for="pollName") Poll Title  (required)
-									input(type="text", id="pollName", name="pollName", class="")
-								fieldset
-									label(for="pollDescription") Poll Description
-									textarea(id="pollDescription", name="pollDescription")
-								hr
-							section#question_container.animated.fadeInDown
+						.backdrop.dropshadow
+							section#create_content
+								section#poll_info
+									fieldset
+										label(id="pollNameLabel",for="pollName") Poll Title  (required)
+										input(type="text", id="pollName", name="pollName", class="")
+									fieldset
+										label(for="pollDescription") Poll Description
+										textarea(id="pollDescription", name="pollDescription")
+									hr
+								section#question_container.animated.fadeInDown
 
-							//include modals/poll-types
-							section.create_actions
-								input(type="button", id="createPollBtn", class="red button", value='Create that Poll!')
-								div(id="sub-actions")
-									.btn-group
-										a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add Question
-											span.caret
-										ul(class="dropdown-menu", role="menu", aria-labelledby="dropdownMenu")
-											li
-												a(class="", id="multipleChoiceBtn", value="Multiple Choice") Multiple Choice
-											li
-												a(class="", id="trueFalseBtn", value="True or False") True or False
-											li
-												a(class="", id="freeResponseBtn", value="Text Response") Text Response
-											li
-												a(class="", id="freeResponseNumericBtn", value="Numeric Response") Numeric Response
+								//include modals/poll-types
+								section.create_actions
+									input(type="button", id="createPollBtn", class="red button", value='Create that Poll!')
+									div(id="sub-actions")
+										.btn-group
+											a(id="addQuestion",class="btn btn-info btn-medium dropdown-toggle", data-toggle="dropdown", href="#") Add Question
+												span.caret
+											ul(class="dropdown-menu", role="menu", aria-labelledby="dropdownMenu")
+												li
+													a(class="", id="multipleChoiceBtn", value="Multiple Choice") Multiple Choice
+												li
+													a(class="", id="trueFalseBtn", value="True or False") True or False
+												li
+													a(class="", id="freeResponseBtn", value="Text Response") Text Response
+												li
+													a(class="", id="freeResponseNumericBtn", value="Numeric Response") Numeric Response
 
-									input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
-								.clear
-			hr
-		include extra/footer-main
+										input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
+									.clear
+				hr
+		include extra/footer-logged
+		
 			
 		
 	script(src="/javascript/views/create-poll.js")

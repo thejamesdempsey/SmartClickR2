@@ -11,17 +11,14 @@ block content
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
-					a(class="brand", href="/") 
+					a(class="brand", href="/user/#{locals.udata.User_ID}") 
 						| SmartClickR
 						span  alpha
 					div(class="nav-collapse")
 						ul(class="nav pull-right")
 							li(class="active")
-								a(id="home", href="/") Home
-							li
-								a(id='signup', href='/user/create') Sign Up
-							li
-								a(id='log', href='/login') Log In
+								a(id="home", href="/user/#{locals.udata.User_ID}") Home
+
 		.clear
 		#landing-pad.hidden-phone
 		#landing-container

@@ -3,6 +3,7 @@ extends layout
 
 block content
 
+
 	include extra/nav-main
 
 	#feature-container
@@ -13,8 +14,9 @@ block content
 						#hero_content.clearfix
 							section#session-code.visible-phone
 								h3 Got a session code?
-								form#index-session.form-inline(method="GET", action="/poll")
-									input(type="text", placeholder="Enter it here", id="index-search")
+
+								form#top-search.form-inline(method="GET", action="/poll")
+									input(type="text", placeholder="Enter it here", id="index-top-input")
 									button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 								hr
 							.span7.img-contain
@@ -31,8 +33,8 @@ block content
 						section#session-code.hidden-phone
 							h3 Have a session code?
 
-							form#index-session.form-inline(method="GET", action="/poll")
-								input(type="text", placeholder="Enter it here", id="index-search")
+							form#bottom-search.form-inline(method="GET", action="/poll")
+								input(type="text", placeholder="Enter it here", id="index-bottom-input")
 								button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 
 					.clear
