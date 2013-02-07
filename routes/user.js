@@ -21,6 +21,7 @@ exports.createUser = function(request, response) {
 	}, function(err, o) {
 		if(err) {
 			console.log(err);
+			res.set('Content-Type', 'text/html');
 			response.send(err, 400);
 		} else {
 			// need to send out user confirmaiton email at this point
