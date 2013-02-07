@@ -15,9 +15,10 @@ $("#loginForm").ready(function() {
 			type 	: 'POST',
 			data 	: {"email": email, "password": pass},
 			url  	: '/login',
-		   	success : function(responseText, status, xhr, $form){
-							if (status == 'success') window.location.href = '/user/'+ o[0].User_ID;
-							console.log('/user/'+ o[0].User_ID);
+		   	success : function(data, status, xhr){
+				
+				if(status == "success") window.location.href = '/user/' + data.res;
+				
 			},
 			error	: function(e){
 				format  = '<div class="alert alert-error fade in">';

@@ -52,7 +52,7 @@ exports.postLogin = function(request, response) {
 				response.cookie('pass', o[0].Password, { maxAge: 900000});
 			}
 
-			response.redirect('/user/' + o[0].User_ID);
+			response.send({ res : o[0].User_ID });
 		}
 	});
 }
