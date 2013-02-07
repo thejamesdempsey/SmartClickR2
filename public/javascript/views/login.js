@@ -16,7 +16,7 @@ $("#loginForm").ready(function() {
 			data 	: {"email": email, "password": pass},
 			url  	: '/login',
 		   	success : function(data, status, xhr){
-				
+	
 				if(status == "success") window.location.href = '/user/' + data.res;
 				
 			},
