@@ -1,17 +1,104 @@
-var verticalBars = function(dataset) {
+var verticalBars = function(dataset, json_loc) {
     //SVG dimensions
     var w = 1024;           //SVG object width in pixels
     var h = 600;            //SVG object height in pixels
-    var vertPadding = 10;   //Vertical padding (for the bottom of the SVG object)
+    var vertPadding = 25;   //Vertical padding (for the bottom of the SVG object)
     
     //SVG element creation
-    var svg = d3.select("#hero_content")
+    var svg = d3.select("body")
         .append("svg")
         .attr("width", w)
         .attr("height", h);
         
     //D3 Scales
-    //Access the "Value" element and scale it to the height of the SVG object
+    //Access the "value" element and scale it to the height of the SVG object
+    var yScale = d3.scale.linear()
+        .domain([0, d3.max(dataset, function(d){
+                return d.value;
+            })
+        ])
+        .range([0, h - vertPadding]);
+        
+    var xScale = d3.scale.ordinal()
+        .domain(d3.range(dataset.length))       //returns 'domain' an array '0' to 'n' equal to the length of dataset
+        .rangeRoundBands([0, w], 0.03);         //last parameter is the space between data elements ('bars' in this case)
+    
+    //Easy colors accessible via a 10-step ordinal scale
+    var color = d3.scale.category10();
+    
+    //---------------------------------- ADD NEW ELEMENTS ----------------------------------
+    //Add attributes to the SVG rectangles
+    svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", function(d, i){
+            return xScale(i);
+        })
+        .attr("y", function(d) {
+            return h - vertPadding - yScale(d.value);
+        })
+        .attr("width", xScale.rangeBand())
+        .attr("height", function(d) {
+            return yScale(d.value) - (vertPadding);
+        })
+        .attr("fill", function(d, i) {
+            //Make the bar bluer as it increases in height
+            //return "rgb(0, 0, " + (d.value * 10) + ")";
+            return color(i);
+        });
+        
+    //Add labels
+    svg.selectAll("text")
+        .data(dataset)
+        .enter()
+        .append("text")
+        .text(function (d) {
+            return d.content + ": " + d.value;
+        })
+        .attr("x", function(d, i) {
+            return xScale(i) + xScale.rangeBand() / 2;
+        })
+        .attr("y", function(d) {
+            return h - (vertPadding * 0.5);
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "16px")
+        .attr("fill", "black")
+        .attr("text-anchor", "middle");
+    
+    // -------------------------------------------- UPDATE ------------------------------------------------
+    //Upon clicking "p", UPDATE with new data from SCRdata.json
+    d3.select("#update")
+        .on("click", function() {
+            //Assume new data is in SCRdata.json
+            d3.json(json_loc, function(json) {
+                //console.log(json);
+                dataset = json;
+            });
+            
+            // * * * Assume the same number of data elements * * *
+            
+            //Update the yScale domain (since new elements could be larger/smaller)
+            yScale.domain([0, d3.max(dataset, function(d){
+                return d.value;
+                })
+            ]);
+            
+            //Select all of the existing 'rect's & update themvar verticalBars = function(dataset, json_loc) {
+    //SVG dimensions
+    var w = 1024;           //SVG object width in pixels
+    var h = 600;            //SVG object height in pixels
+    var vertPadding = 25;   //Vertical padding (for the bottom of the SVG object)
+    
+    //SVG element creation
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+        
+    //D3 Scales
+    //Access the "value" element and scale it to the height of the SVG object
     var yScale = d3.scale.linear()
         .domain([0, d3.max(dataset, function(d){
                 return d.Value;
@@ -23,6 +110,10 @@ var verticalBars = function(dataset) {
         .domain(d3.range(dataset.length))       //returns 'domain' an array '0' to 'n' equal to the length of dataset
         .rangeRoundBands([0, w], 0.03);         //last parameter is the space between data elements ('bars' in this case)
     
+    //Easy colors accessible via a 10-step ordinal scale
+    var color = d3.scale.category10();
+    
+    //---------------------------------- ADD NEW ELEMENTS ----------------------------------
     //Add attributes to the SVG rectangles
     svg.selectAll("rect")
         .data(dataset)
@@ -36,11 +127,12 @@ var verticalBars = function(dataset) {
         })
         .attr("width", xScale.rangeBand())
         .attr("height", function(d) {
-            return yScale(d.Value) - vertPadding;
+            return yScale(d.Value) - (vertPadding);
         })
-        .attr("fill", function(d) {
+        .attr("fill", function(d, i) {
             //Make the bar bluer as it increases in height
-            return "rgb(0, 0, " + (d.Value * 10) + ")";  
+            //return "rgb(0, 0, " + (d.value * 10) + ")";
+            return color(i);
         });
         
     //Add labels
@@ -55,7 +147,7 @@ var verticalBars = function(dataset) {
             return xScale(i) + xScale.rangeBand() / 2;
         })
         .attr("y", function(d) {
-            return h;
+            return h - (vertPadding * 0.5);
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", "16px")
@@ -67,8 +159,8 @@ var verticalBars = function(dataset) {
     d3.select("#update")
         .on("click", function() {
             //Assume new data is in SCRdata.json
-            d3.json("SCRdata.json", function(json) {
-                console.log(json);
+            d3.json(json_loc, function(json) {
+                //console.log(json);
                 dataset = json;
             });
             
@@ -90,8 +182,9 @@ var verticalBars = function(dataset) {
                 .attr("height", function(d) {
                     return yScale(d.Value) - vertPadding;
                 })
-                .attr("fill", function(d) {
-                    return "rgb(0, 0, " + (d.Value * 10) + ")";
+                .attr("fill", function(d, i) {
+                    //return "rgb(0, 0, " + (d.value * 10) + ")";
+                    return color(i);
                 });
                 
             //Select all of the existing 'text's & update them
@@ -105,7 +198,36 @@ var verticalBars = function(dataset) {
                     return xScale(i) + xScale.rangeBand() / 2;
                 })
                 .attr("y", function (d) {
-                    return h;
+                    return h - (vertPadding * 0.5);
+                });
+        });
+};
+            svg.selectAll("rect")
+                .data(dataset)
+                .transition().duration(1000)
+                .attr("y", function(d){
+                    return h - vertPadding - yScale(d.value);
+                })
+                .attr("height", function(d) {
+                    return yScale(d.value) - vertPadding;
+                })
+                .attr("fill", function(d, i) {
+                    //return "rgb(0, 0, " + (d.value * 10) + ")";
+                    return color(i);
+                });
+                
+            //Select all of the existing 'text's & update them
+            svg.selectAll("text")
+                .data(dataset)
+                .transition().delay(750).duration(1000)
+                .text(function(d) {
+                    return d.content + ": " + d.value;
+                })
+                .attr("x", function(d, i) {
+                    return xScale(i) + xScale.rangeBand() / 2;
+                })
+                .attr("y", function (d) {
+                    return h - (vertPadding * 0.5);
                 });
         });
 };
