@@ -102,16 +102,15 @@ exports.updatePassword = function(request, response) {
 		console.log('Match? ',match);
 		if(match) {
 			if(request.param('NewPassword') == request.param('reNewPassword')) {
-				AM.setpasword(user.Email, request.param('reNewPassword'), function(o) {
-					response.cookie('pass', o, { maxAge: 900000});
-					response.send({res	: 'success'}, 200);
-
+				AM.setpasword(user.Email, request.param('reNewPassword'), function(out) {
+					console.log(out);
 					AM.getUser(user.User_ID, function(o) {
-						console.log(o);
-						request.session.user = o;
-						console.log(request.session.user);
-						console.log('password changed');
 						
+						request.session.user = o;
+						request.session.user.save;
+						response.cookie('pass', out.Password, { maxAge: 900000});
+						response.send({res	: 'success'}, 200);
+		
 					});
 				});
 			} else {

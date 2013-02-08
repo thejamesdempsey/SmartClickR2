@@ -9,13 +9,15 @@ $("#loginForm").ready(function() {
 		
 		var email = $('#email').val().trim();
 		var pass = $('#password').val().trim();
+		var remember = $('#remember-me').val();
 		
 		console.log('Errrybody was Kung Fu fighting');
+		console.log(remember);
 		
 		
 		$(this).ajaxSubmit({
 			type 	: 'POST',
-			data 	: {"email": email, "password": pass},
+			data 	: {"email": email, "password": pass, "remember-me": remember},
 			url  	: '/login',
 
 			beforeSubmit : function(formData, jqForm, options){				

@@ -15,8 +15,6 @@ $("#accountPasswordForm").ready(function() {
 		$(this).find(".alert").hide();
 		
 		console.log('Errrybody was Kung Fu fighting');
-		console.log(pass);
-		console.log(newpass);
 		
 				$(this).ajaxSubmit({
 					type 	: 'POST',
