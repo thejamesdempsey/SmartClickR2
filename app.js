@@ -63,6 +63,7 @@ app.post('/login', user.postLogin);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.post('/user/edit/:User_ID', user.updatePassword);
+app.post('/user/delete/:User_ID', user.delete);
 app.get('/logout', user.logout);
 
 // poll pages //

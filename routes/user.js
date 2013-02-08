@@ -137,5 +137,12 @@ exports.logout = function(request, response) {
 
 // POST /user/delete/:User_ID //
 exports.delete = function(request, response) {
+	userID = request.param('User_ID');
 
+	AM.delete(userID, function(o) {
+		request.session.destroy();
+		response.clearCookie('email');
+		response.clearCookie('pass');
+		response.redirect('/');
+	});
 }
