@@ -181,6 +181,13 @@ AM.getEmail = function(email, callback) {
 	});
 }
 
+AM.getUser = function(userID, callback) {
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE User_ID = ?', [userID], function(err, results) {
+		if(results.length === 1)
+			callback(results);
+	});
+}
+
 AM.getUserID = function(email, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Email = ?', [email], function(err, results) {
 		if (results.length === 1)

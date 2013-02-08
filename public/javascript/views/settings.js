@@ -1,4 +1,8 @@
 $("#accountPasswordForm").ready(function() {
+	
+	$("#currentPassword").focus();	
+	
+	
 	$(this).submit(function(e){
 		e.preventDefault();
 		
@@ -7,18 +11,26 @@ $("#accountPasswordForm").ready(function() {
 		var repass = $('#reNewPassword').val().trim();
 		var id = $('#userId').val();
 		
-		console.log(id);
-		console.log('/user/edit/' + id);
+		
+		$(this).find(".alert").hide();
 		
 		console.log('Errrybody was Kung Fu fighting');
+		console.log(pass);
+		console.log(newpass);
 		
-		//if (pass != '' && newpass != '' && repass != ''){
-				$("#accountPasswordForm").ajaxForm({
+				$(this).ajaxSubmit({
 					type 	: 'POST',
 					data 	: {"currentPassword": pass, "NewPassword": newpass, "reNewPassword": repass},
 					url  	: '/user/edit/' + id,
-					success	: function(data){
-						if (data.res == 'success'){
+					beforeSubmit : function(formData, jqForm, options){				
+									if (false == validateSettings($(this))) {
+										return false;
+									}
+					},
+					success	: function(data, status, xhr){
+						console.log(data)
+						console.log(data.res)
+						if (status == 'success'){
 							format  = '<div class="alert alert-success fade in">';
 							format += '<strong>Hooray!</strong> Your password has been changed';
 							format += '</div>';
@@ -29,9 +41,9 @@ $("#accountPasswordForm").ready(function() {
 							$("#accountPasswordForm").resetForm();
 
 							$("#passwordChangeLabel").after(format);
-
-							console.log(data.res);
-						} else if (data.res == 'wrong'){
+						}
+					}, 
+					error	: function(e){
 
 								format  = '<div class="alert alert-error fade in">';
 								format += '<strong>Yikes!</strong> Your current password is incorrect';
@@ -43,31 +55,81 @@ $("#accountPasswordForm").ready(function() {
 								$("#accountPasswordForm").resetForm();
 
 								$("#passwordChangeLabel").after(format);
-
-								console.log(jqHRX.status, textStatus, errorThrown);
-							} else if (data.res == 'no match'){
-
-									format  = '<div class="alert alert-error fade in">';
-									format += '<strong>Uhh Ohh!</strong> Your passwords do not match';
-									format += '</div>';
-
-									$('#currentPassword').removeClass("input-error");
-									$('#newPassword').removeClass("input-error").addClass('input-error');
-									$('#reNewPassword').removeClass("input-error").addClass('input-error');
-									$("#accountPasswordForm").resetForm();
-
-									$("#passwordChangeLabel").after(format);
-							}
-
-					}						
+					}					
 							//format  = '<div class="alert alert-error fade in">';
 						//	format += '<strong>Yikes!</strong> You entered a password but no email address';
-						//	format += '</div>';	
-			return false;
+						//	format += '</div>';				
 			});
-	//	}
 	return false;	
 	});
-	return false;	
 
 });
+
+
+validateSettings = function($form) {
+	$form.find(".alert").hide();
+
+	isValid = true;
+		
+	var currentVal = $("#currentPassword").val();
+	var newVal 	   = $('#newPassword').val();
+	var repeatVal   = $('#reNewPassword').val();
+	
+	if ( currentVal == '' && newVal == '' && repeatVal == '') {
+		
+		format  = '<div class="alert alert-error fade in">';
+		format += '<strong>Hmmmm.</strong> You didnt enter anything for us to change';
+		format += '</div>';
+		
+		$('#currentPassword').removeClass("input-error").addClass('input-error');
+		$('#newPassword').removeClass("input-error").addClass('input-error');
+		$('#reNewPassword').removeClass("input-error").addClass('input-error');
+		
+		
+		$("#passwordChangeLabel").after(format);
+		isValid = false;
+		
+	} else if(currentVal == '') {
+		
+		format  = '<div class="alert alert-error fade in">';
+		format += '<strong>Yikes!</strong> You entered in a new password but not the current one';
+		format += '</div>';
+		
+		
+		$('#currentPassword').removeClass("input-error").addClass('input-error');
+		$('#newPassword').removeClass("input-error");
+		$('#reNewPassword').removeClass("input-error");
+		
+		$("#passwordChangeLabel").after(format);
+		isValid = false;
+		
+	} else if( newVal == '' ) {
+		
+		format = '<div class="alert alert-error fade in">';
+		format += 'We need to know what to make your new password';
+		format += '</div>';
+		
+		$('#currentPassword').removeClass("input-error");
+		$('#newPassword').removeClass("input-error").addClass('input-error');
+		$('#reNewPassword').removeClass("input-error");
+		
+		$("#passwordChangeLabel").after(format);
+		isValid = false;
+	} else if( repeatVal == '' ) {
+
+		format = '<div class="alert alert-error fade in">';
+		format += 'For security reasons we need you to repeat your new password';
+		format += '</div>';
+
+		$('#currentPassword').removeClass("input-error");
+		$('#newPassword').removeClass("input-error");
+		$('#reNewPassword').removeClass("input-error").addClass('input-error');
+
+		$("#passwordChangeLabel").after(format);
+		
+		isValid = false;
+	} 
+	
+	return isValid;
+	
+}

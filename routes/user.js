@@ -21,12 +21,12 @@ exports.createUser = function(request, response) {
 	}, function(err, o) {
 		if(err) {
 			console.log(err);
-			res.set('Content-Type', 'text/html');
+			response.set('Content-Type', 'text/html');
 			response.send(err, 400);
 		} else {
 			// need to send out user confirmaiton email at this point
-			//response.send('okay', 200);
-			//response.redirect('/login');
+			response.send('okay', 200);
+			response.redirect('/login');
 		}
 	});
 }
@@ -95,21 +95,31 @@ exports.updateAccount = function(request, response) {
 
 exports.updatePassword = function(request, response) {
 	var user = request.session.user[0];
-
-	bcrypt.compare(request.param('currentPassword')[0], user.Password, function(err, match) {
+	console.log(user);
+	console.log('post password: ', request.param('currentPassword'));
+	console.log('session password: ', user.Password);
+	bcrypt.compare(request.param('currentPassword'), user.Password, function(err, match) {
+		console.log('Match? ',match);
 		if(match) {
-			if(request.param('NewPassword')[0] == request.param('reNewPassword')[0]) {
-				AM.setpasword(user.Email, request.param('reNewPassword')[0], function(o) {
+			if(request.param('NewPassword') == request.param('reNewPassword')) {
+				AM.setpasword(user.Email, request.param('reNewPassword'), function(o) {
 					response.cookie('pass', o, { maxAge: 900000});
-					response.send({res	: 'success'});
-					console.log('password changed');
+					response.send({res	: 'success'}, 200);
+
+					AM.getUser(user.User_ID, function(o) {
+						console.log(o);
+						request.session.user = o;
+						console.log(request.session.user);
+						console.log('password changed');
+						
+					});
 				});
 			} else {
-				response.send({res : 'no match'});
+				response.send({res : 'no match'}, 400);
 				console.log('passwords do not match');
 			}
 		} else {
-			response.send({res : 'wrong'});
+			response.send({res : 'wrong'}, 400);
 			console.log('current password wrong');
 		}
 	});

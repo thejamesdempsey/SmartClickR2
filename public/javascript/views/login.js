@@ -3,7 +3,7 @@ $("#loginForm").ready(function() {
 	$("#email").focus();	
 	
 	$(this).submit(function(e) {
-		//e.preventDefault();
+		e.preventDefault();
 		$(this).find(".alert").hide();
 		
 		
@@ -17,27 +17,18 @@ $("#loginForm").ready(function() {
 			type 	: 'POST',
 			data 	: {"email": email, "password": pass},
 			url  	: '/login',
-<<<<<<< HEAD
+
 			beforeSubmit : function(formData, jqForm, options){				
 							if (false == validateLogin($(this))) {
 								return false;
 							}
 			},
-		   	success : function(responseText, status, xhr, $form){
-							//if (status == 'success') window.location.href = '/user/'+ o[0].User_ID;
-							//console.log('/user/'+ o[0].User_ID);
-							
-							$('#email').removeClass("input-error").addClass('input-success');
-							$('#password').removeClass("input-error").addClass('input-success');
-=======
 		   	success : function(data, status, xhr){
-	
-				if(status == "success") window.location.href = '/user/' + data.res;
-				
->>>>>>> d429227a424fc9ce2eddd210c7dad02c01ca57cd
+						$('#email').removeClass("input-error").addClass('input-success');
+						$('#password').removeClass("input-error").addClass('input-success');
+						if(status == "success") window.location.href = '/user/' + data.res;
 			},
 			error	: function(e){
-				
 						format  = '<div class="alert alert-error fade in">';
 						format += '<strong>Uhh Ohh, </strong> your email address or password is incorrect';
 						format += '</div>';
@@ -48,7 +39,7 @@ $("#loginForm").ready(function() {
 			}
 		
 	});
-	//return false;
+	return false;
 
 });
 
