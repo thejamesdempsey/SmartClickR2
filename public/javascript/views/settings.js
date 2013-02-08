@@ -1,4 +1,6 @@
-$(document).ready(function() {
+$("#accountPasswordForm").ready(function() {
+	$(this).submit(function(e){
+		e.preventDefault();
 		
 		var pass = $('#currentPassword').val().trim();
 		var newpass = $('#newPassword').val().trim();
@@ -61,9 +63,11 @@ $(document).ready(function() {
 							//format  = '<div class="alert alert-error fade in">';
 						//	format += '<strong>Yikes!</strong> You entered a password but no email address';
 						//	format += '</div>';	
+			return false;
 			});
 	//	}
-		
-
+	return false;	
+	});
+	return false;	
 
 });

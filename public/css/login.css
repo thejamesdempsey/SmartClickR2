@@ -1175,6 +1175,9 @@ label.placeholder:focus {
   font-size: 14px;
   color: #fff;
 }
+.input-success {
+  border: 2px solid #9c6 !important;
+}
 #remember {
   font-size: 0.9rem;
   margin: 8px 0 0 20px !important;

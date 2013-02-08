@@ -8,7 +8,6 @@ input(type = 'hidden',value = user._id)#userId
 
 block content
 	script(src="/javascript/randomGreeting.js")
-	script(src="/javascript/snake.js")
 
 	// Header Content //
 	header(class="navbar navbar-inverse navbar-fixed-top")
@@ -163,8 +162,12 @@ block content
 										li.span4 
 											img(src="http://placehold.it/200x200")
 											a(id="responses-toggle", href="#", class="steps-link btn btn-large disabled") Collect Responses
+								h2.visible-phone You have no polls for us to display 
 								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="btn btn-info btn-large visible-phone") Start Your First Poll
-								span.visible-phone or read our 
+								span.visible-phone 
+									h2 or read our 
+									//br
+									a(id="guide", href="#") getting started guide
 								span.hidden-phone If you need more guidance feel free to check out our
 									br
 									a(id="guide", href="#") getting started guide
