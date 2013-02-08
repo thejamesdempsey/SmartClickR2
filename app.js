@@ -16,7 +16,6 @@ var express = require('express')
 
 var app = express();
 
-io = require('socket.io').listen(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);
@@ -86,18 +85,6 @@ app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID.json', question.responseData);
 app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.presentPollQuestion);
 
-
-
-
-app.get('/socket', poll.socketio);
-
-io.sockets.on('connection', function (socket) {
-	socket.on('message', function(message) {
-		console.log("Got message: " + message);
-		io.sockets.emit('pageview', { 'url': message });
-	});
-
-});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
