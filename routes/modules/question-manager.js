@@ -7,6 +7,8 @@
 
 // Required Modules //
 var MC = require('./my-info-config'); 
+var CM = require('./choice-manager');
+var PM = require('./poll-manager');
 var mysql = require('mysql');
 
 // DB Credentials //
@@ -99,7 +101,6 @@ QM.getPollQuestionsPID = function(pollID, callback) {
 	});
 }
 
-
 // Get a Question //
 QM.getQuestion = function(questionId, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [questionId], function(err, results) {
@@ -109,6 +110,29 @@ QM.getQuestion = function(questionId, callback) {
 			callback('question-doesnt-exist');
 	});
 
+}
+
+QM.getQuestionSC = function(questionId, sessionCode, callback) {
+	connection.query('SELECT Poll_ID FROM Polls WHERE SessionCode = ?', [sessionCode], function(err, results) {
+		var pollID = results[0].Poll_ID;
+		connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ? and Poll_ID = ?', [questionId, pollID], function(err, results) {
+			if(results.length === 1) 
+				callback(results);
+			else
+				callback('question-doesnt-exist');
+		});
+
+	});
+}
+
+QM.getQuestionPID = function(questionId, pollID, callback) {
+	console.log(pollID);
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ? and Poll_ID = ?', [questionId, pollID], function(err, results) {
+		if(results.length === 1) 
+			callback(results);
+		else
+			callback('question-doesnt-exist');
+	});
 }
 
 

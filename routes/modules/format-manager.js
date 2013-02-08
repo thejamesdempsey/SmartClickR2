@@ -54,8 +54,22 @@ FM.getQuestions = function(pollID, callback) {
 	});
 }
 
-FM.getQuestion = function(questionID, callback) {
-	QM.getQuestion(questionID, function(question) {
+FM.getQuestionSC = function(questionID, sessionCode, callback) {
+	QM.getQuestionSC(questionID, sessionCode, function(question) {
+
+		CM.getChoices(questionID, function(choices) {
+			question[0]["Choices"] = choices;
+		});
+		
+		setTimeout(function() {
+			callback(question);
+		}, 5);
+	});
+}
+
+FM.getQuestionPID = function(questionID, pollID, callback) {
+	QM.getQuestionPID(questionID, pollID, function(question) {
+
 		CM.getChoices(questionID, function(choices) {
 			question[0]["Choices"] = choices;
 		});
