@@ -33,6 +33,7 @@ block content
 				.row-fluid					
 					#hero_content.span6.offset3
 						h3#poll-name #{locals.pdata[0].PollName}
+						h5#created-by #{locals.udata}
 						p#poll-desc #{locals.pdata[0].PollDescription}
 						p#actions
 							a(id='starting-question', href='/poll/#{locals.session}/question/#{locals.QuestionIDs[0]}', class="btn btn-success btn-large") Let's Go  &rarr; 

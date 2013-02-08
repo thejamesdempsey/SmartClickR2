@@ -178,10 +178,10 @@ footer{
 	margin-bottom: 70px;
 }
 
-#session-code input[type="text"]{
+#session-code input[type="search"]{
 	width: 60%;
 	font-size: 18px;
-	padding: 18px;
+	padding: 8px;
 }
 
 #session-code button{
@@ -1590,6 +1590,9 @@ ol.poll-grid li:nth-child(4sn) {
 	#content_container .container, #user_hero .container{
 		padding-right: 0 !important;
 		padding-left: 0 !important;
+	}
+	#session-code input[type="search"]{
+		width: 90%;
 	}
 }
 
