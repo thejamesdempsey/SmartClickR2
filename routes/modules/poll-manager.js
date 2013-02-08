@@ -63,8 +63,8 @@ PM.getPollId = function(sessionCode, callback) {
 	});
 }
 
-PM.pollTitleDescription = function(sessionCode, callback) {
-	connection.query('SELECT PollName, PollDescription FROM ' + TABLE + ' WHERE SessionCode = ?', [sessionCode], function(err, results) {
+PM.pollLanding = function(sessionCode, callback) {
+	connection.query('SELECT PollName, PollDescription, FirstName, LastName FROM ' + TABLE + ' join Users on Owner_ID = User_ID WHERE SessionCode = ?', [sessionCode], function(err, results) {
 		callback(results);
 	});
 }

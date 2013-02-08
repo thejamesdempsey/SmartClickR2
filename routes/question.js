@@ -74,8 +74,14 @@ exports.pollQuestion = function(request, response) {
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
 
-	FM.getQuestion(currentQID, function(questionData) {
-		response.render('response.jade', { title: 'SmartClickR | Poll Response', locals: { QuestionIDs : questionIDs, qdata : questionData , session : sessionCode }})
+
+	FM.getQuestionSC(currentQID, sessionCode, function(questionData) {
+		console.log(questionData);
+		if(questionData == 'question-doesnt-exist') {
+			response.redirect('/');
+		} else {
+			response.render('response.jade', { title: 'SmartClickR | Poll Response', locals: { QuestionIDs : questionIDs, qdata : questionData , session : sessionCode }});
+		}
 	});
 }
 
@@ -133,7 +139,12 @@ exports.presentPollQuestion = function(request, response) {
 	var userID = request.param('User_ID');
 	var pollID = request.param('Poll_ID');
 
-	FM.getQuestion(currentQID, function(questionData) {
-		response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID, currentQID : currentQID.toString(), QuestionIDs : questionIDs}});
+	FM.getQuestionPID(currentQID, pollID, function(questionData) {
+		console.log(questionData);
+		if(questionData == 'question-doesnt-exist') {
+			response.redirect('/');
+		} else {
+			response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID, currentQID : currentQID.toString(), QuestionIDs : questionIDs}});
+		}
 	});
 }
