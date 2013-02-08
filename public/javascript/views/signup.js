@@ -13,8 +13,7 @@ $("#signupForm").ready(function() {
 				data 	: {"firstname": $("#firstName").val().trim(), "lastname": $("#lastName").val().trim(), "email": $("#email").val().trim(), "password" : $('#password').val().trim()},
 				url  	: '/user/create',
 				beforeSubmit : function(formData, jqForm, options){	
-					$(this).find(".alert").hide();
-								
+								$(this).find(".alert").hide();			
 								if (false == validateSignup($(this))) {
 									return false;
 								}

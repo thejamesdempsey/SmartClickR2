@@ -1198,7 +1198,7 @@ h4 {
   color: #fff !important;
 }
 #search_polls {
-  padding: 18px;
+  padding: 8px;
 }
 #user_hello {
   color: #fff;
@@ -1263,7 +1263,7 @@ a.red:hover {
   background: rgba(237, 93, 59, 0.8);
 }
 #search_polls {
-  font-size: 18px;
+  font-size: 8px;
   float: left;
 }
 #search_polls_submit {
@@ -1492,7 +1492,7 @@ article#no_polls h1 {
   padding-top: 10px;
 }
 input#index-search {
-  padding: 18px;
+  padding: 8px;
 }
 #index-search {
   padding: 18px;

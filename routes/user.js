@@ -138,5 +138,6 @@ exports.logout = function(request, response) {
 
 // POST /user/delete/:User_ID //
 exports.delete = function(request, response) {
+	console.log('User ID', request.params.User_ID);
 
 }

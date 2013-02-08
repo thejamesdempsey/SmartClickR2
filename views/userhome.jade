@@ -52,7 +52,7 @@ block content
 						.clear
 					div#user_search.span6
 						form#index-session.form-inline(method="GET", action="/poll")
-							input(type="text", placeholder="Enter a Session Code", id="index-search")
+							input(type="search", placeholder="Enter a Session Code", id="index-search")
 							button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 					.span6
 						
@@ -144,7 +144,9 @@ block content
 														button(id="home-start", formmethod="GET", formaction="/user/#{locals.udata.User_ID}/poll/#{poll.Poll_ID}", class="btn btn-medium btn-info") Start
 											hr
 							article#one_poll.clearfix
-								span.visible-phone Still need help?
+								span.visible-phone 
+									h2 Still need help? Here's our 
+									a(id="guide", href="#") getting started guide
 								span.hidden-phone Need some more help? Feel free to check out our
 									br
 									a(id="guide", href="#") getting started guide
