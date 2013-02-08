@@ -1,15 +1,13 @@
-$("#accountPasswordForm").ajaxForm({
-	
-	var firstname = $("#firstName").val();
-	var lastname = $("#lastName").val();
-	var email = $("#email").val();
-	var password = $('#password').val();
-	
-	
-	
+
+$("#signupForm").ajax({
+
 	type 	: 'POST',
-	data 	: {"firstname": firstname, "lastname": lastname, "email": email, "password" : password},
-	url  	: '/user/edit/' + id,
+	data 	: {"firstname": $("#firstName").val().trim(), "lastname": $("#lastName").val().trim(), "email": $("#email").val().trim(), "password" : $('#password').val().trim()},
+	url  	: '/user/create',
+	success : function(data, status, xhr) {
+		if(status == "success") window.location.href = '/login';
+
+	},
 	error 	: function(jqHRX, textStatus, errorThrown){
 		console.log(textStatus);
 			if (textStatus == 'error'){

@@ -38,6 +38,7 @@ exports.getEditPoll = function(request, response) {
 
 			PM.getPollFromID(request.param('Poll_ID'), function(result) {
 				console.log(result);
+				console.log(JSON.stringify(questions));
 				var poll = result[0];
 				response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user, pdata: poll,  qdata: questions }});
 			});

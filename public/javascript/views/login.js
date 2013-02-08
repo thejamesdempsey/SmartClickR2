@@ -17,6 +17,7 @@ $("#loginForm").ready(function() {
 			type 	: 'POST',
 			data 	: {"email": email, "password": pass},
 			url  	: '/login',
+<<<<<<< HEAD
 			beforeSubmit : function(formData, jqForm, options){				
 							if (false == validateLogin($(this))) {
 								return false;
@@ -28,6 +29,12 @@ $("#loginForm").ready(function() {
 							
 							$('#email').removeClass("input-error").addClass('input-success');
 							$('#password').removeClass("input-error").addClass('input-success');
+=======
+		   	success : function(data, status, xhr){
+	
+				if(status == "success") window.location.href = '/user/' + data.res;
+				
+>>>>>>> d429227a424fc9ce2eddd210c7dad02c01ca57cd
 			},
 			error	: function(e){
 				

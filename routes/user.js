@@ -14,8 +14,8 @@ exports.signup = function(request, response) {
 // POST /user/create //
 exports.createUser = function(request, response) {
 	AM.signup({
-		FirstName	: request.param('firstName'),
-		LastName	: request.param('lastName'),
+		FirstName	: request.param('firstname'),
+		LastName	: request.param('lastname'),
 		Email		: request.param('email'),
 		Password	: request.param('password')
 	}, function(err, o) {
@@ -26,7 +26,7 @@ exports.createUser = function(request, response) {
 		} else {
 			// need to send out user confirmaiton email at this point
 			//response.send('okay', 200);
-			response.redirect('/login');
+			//response.redirect('/login');
 		}
 	});
 }
@@ -52,7 +52,7 @@ exports.postLogin = function(request, response) {
 				response.cookie('pass', o[0].Password, { maxAge: 900000});
 			}
 
-			response.redirect('/user/' + o[0].User_ID);
+			response.send({ res : o[0].User_ID });
 		}
 	});
 }
