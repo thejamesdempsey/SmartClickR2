@@ -29,7 +29,6 @@ block content
 						h3 Question# #{locals.qdata[0].QuestionsOrder}
 						h2 #{locals.qdata[0].Stem}
 						#graph-display.clearfix
-							include extra/d3-graphs.jade
 
 					#present-actions
 						.span6.offset3
@@ -45,11 +44,11 @@ block content
 								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
 
 
-//	script
-//		
-//		var dataPath = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
-//		d3.json(dataPath, function(json) { console.log(json); verticalBars(json, dataPath); });
-//		d3.json(dataPath, function(json) { pieChart(json, dataPath);     });
+	script
+		
+		var dataPath = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
+		d3.json(dataPath, function(json) { console.log(json); verticalBars(json, dataPath); });
+		d3.json(dataPath, function(json) { pieChart(json, dataPath);     });
 		//var loc = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
 	//		d3.json(loc, function(json) {
 	//		pieChart(json, loc);
