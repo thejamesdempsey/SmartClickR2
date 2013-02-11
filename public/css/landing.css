@@ -122,6 +122,17 @@ label.radio {
 .action {
   text-align: center;
 }
+#graph-display {
+  text-align: center;
+  margin-top: 40px;
+}
+.present-content {
+  color: #fff;
+}
+.present-content h2,
+.present-content h3 {
+  font-weight: 300;
+}
 @media (max-width: 767px) {
   body {
     padding-right: 0 !important;

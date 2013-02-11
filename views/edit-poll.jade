@@ -1,4 +1,4 @@
-extends layout
+extends layout_edit
 
 block content
 
@@ -7,7 +7,7 @@ block content
 	input(type = 'hidden',value = '#{locals.pdata.SessionCode}')#sessionCode
 	input(type = 'hidden',value = '#{locals.pdata.Poll_ID}')#pollId
 
-	body#create_poll_body
+	body
 		// Header Content //
 		header(class="navbar navbar-inverse navbar-fixed-top")
 			.navbar-inner
@@ -33,16 +33,16 @@ block content
 		article#user_hero
 			.container
 				.row
-					section#create_title.span12
-						h1 Edit Your Poll
+					section#edit_title.span12
+						h2 Edit Your Poll
 					.clear
 
 		hr
 		section#content_container
 			.container
-				.row
+				.row-fluid
 					.span12
-						section#create_content.dropshadow
+						section#edit_content.dropshadow
 							section#poll_info
 								fieldset
 									label(id="pollNameLabel",for="pollName") Poll Title  (required)
@@ -51,7 +51,7 @@ block content
 									label(for="pollDescription") Poll Description
 									textarea(id="pollDescription", name="pollDescription", value='#{locals.pdata.PollDescription}')
 								hr
-							section#question_container.animated.fadeInDown
+							section#question_container
 								each question, i in locals.qdata
 									if question.AnswerType == "MultipleChoice"
 										article(class='question_wrap', id='multipleChoice_question#{question.QuestionsOrder}')
@@ -85,7 +85,8 @@ block content
 									else if question.AnswerType == "TrueFalse"	
 										article(class='question_wrap', id='trueFalse_question#{question.QuestionsOrder}')
 											h3 True/False
-											textarea(class='textarea_small') #{question.Stem}											
+											textarea(class='textarea_small') #{question.Stem}	
+											.top-pad
 											fieldset.span4
 												label.radio True
 													input(type='radio', name='correct_anwer')
@@ -106,6 +107,7 @@ block content
 											h3 Numeric Free Response
 											fieldset
 												textarea(class='numeric', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
+											hr
 
 							//include modals/poll-types
 							section.create_actions
@@ -128,7 +130,7 @@ block content
 			hr
 		include extra/footer-main
 			
-		
+	script(src="/javascript/views/edit-poll.js")	
 	script(src="/jquery.ui.effect-blind.js")
 	script(src="/jquery-ui-1.9.2.custom.min.js")
 

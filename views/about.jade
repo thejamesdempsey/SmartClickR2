@@ -13,16 +13,16 @@ block content
 					a(class="brand", href="/") 
 						| SmartClickR
 						span  alpha
-				div(class="nav-collapse", style="height:auto;")
+				div(class="nav-collapse")
 					ul(class="nav pull-right")
 						li(class="active")
 							a(id="home", href="/") Home
 						li
-							a(id='features', href='features') Features
+							a(id='features', href='/features') Features
 						li
-							a(id='signup', href='user/create') Sign Up
+							a(id='signup', href='/user/create') Sign Up
 						li
-							a(id='log',href='login') Log In
+							a(id='log', href='/login') Log In
 
 	#main-content
 	article#user_hero
@@ -44,31 +44,33 @@ block content
 										.thumb
 											img(src="http://placehold.it/400x250")
 										h3 Brad Fischer
-										p Lead Server Engineer and Product Manager, Organizer of Transportation
+										p Lead Server Engineer and Product Manager
 										p
 											a(href="#")@bradfisher
 									li.span5
 										.thumb
 											img(src="http://placehold.it/400x250")
 										h3 Billy Godfrey
-										p Lead Infrastructure Engineer, Slayer of Zombies
+										p Lead Infrastructure Engineer
 										p 
 											a(href="#")@billygodfrey
 									li.span5
 										.thumb
 											img(src="http://placehold.it/400x250")
 										h3 Daniel To
-										p Lead Programmer and Server-Side Developer, Amatuer Lifehacker
+										p Lead Programmer/Server-Side Developer
 										p
 											a(href="#")@danielto
 									li.span5
 										.thumb
 											img(src="http://placehold.it/400x250")
 										h3 Jimmy Dempsey
-										p Lead Front-End Developer, Guru of Pillow Fort Building
+										p Lead Front-End Developer
 										p
 											a(href="#")@thejamesdempsey
 									hr
+
+								p
 						
 
 	include extra/footer-main

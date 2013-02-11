@@ -1,4 +1,4 @@
-$(document).ready(function){
+$(document).ready(function(){
 	$("#accountPasswordForm").ready(function() {
 
 		$("#currentPassword").focus();	
@@ -139,3 +139,4 @@ $(document).ready(function){
 
 	
 }
+)
