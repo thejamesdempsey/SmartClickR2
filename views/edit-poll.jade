@@ -4,8 +4,8 @@ block content
 
 	- user = typeof(locals.udata) != 'undefined' ? locals.udata : {}
 	input(type = 'hidden',value = user.User_ID)#userId
-	input(type = 'hidden',value = '')#sessionCode
-	input(type = 'hidden',value = '')#pollId
+	input(type = 'hidden',value = '#{locals.pdata.SessionCode}')#sessionCode
+	input(type = 'hidden',value = '#{locals.pdata.Poll_ID}')#pollId
 
 	body#create_poll_body
 		// Header Content //
@@ -54,36 +54,36 @@ block content
 							section#question_container.animated.fadeInDown
 								each question, i in locals.qdata
 									if question.AnswerType == "MultipleChoice"
-										article(class='question_wrap', id='multipleChoice_question' + #{question.QuestionsOrder})
+										article(class='question_wrap', id='multipleChoice_question#{question.QuestionsOrder}')
 											h3 Multiple Choice
 											textarea(class='textarea_small') #{question.Stem}
 											.top-pad
 											fieldset.span6
 												span a)
-												input(type='text', class='mc_response', name='question-1_order' + #{question.QuestionsOrder}, value='#{question.Choices[0].Content}')
+												input(type='text', class='mc_response', name='question-1_order#{question.QuestionsOrder}', value='#{question.Choices[0].Content}')
 												.clear
 												label.radio Correct Answer 
 													input(type='radio', name='correct_answer')
 											fieldset.span6
 												span b)
-												input(type='text', class='mc_response', name='question-2_order' + #{question.QuestionsOrder}, value='#{question.Choices[1].Content}')
+												input(type='text', class='mc_response', name='question-2_order#{question.QuestionsOrder}', value='#{question.Choices[1].Content}')
 												.clear
 												label.radio Correct Answer
 													input(type='radio', name='correct_anwer')
 											fieldset.span6
 												span c)
-												input(type='text', class='mc_response', name='question-3_order' + #{question.QuestionsOrder}, value='#{question.Choices[2].Content}')
+												input(type='text', class='mc_response', name='question-3_order#{question.QuestionsOrder}', value='#{question.Choices[2].Content}')
 												.clear
 												label.radio Correct Answer
 													input(type='radio', name='correct_anwer')
 											fieldset.span6
 												span d)
-												input(type='text', class='mc_response', name='question-3_order'+#{question.QuestionsOrder}, value='#{question.Choices[3].Content}')
+												input(type='text', class='mc_response', name='question-3_order#{question.QuestionsOrder}', value='#{question.Choices[3].Content}')
 												.clear
 												label.radio Correct Answer
 													input(type='radio', name='correct_anwer')	
 									else if question.AnswerType == "TrueFalse"	
-										article(class='question_wrap', id='trueFalse_question' + #{question.QuestionsOrder})
+										article(class='question_wrap', id='trueFalse_question#{question.QuestionsOrder}')
 											h3 True/False
 											textarea(class='textarea_small') #{question.Stem}											
 											fieldset.span4
@@ -96,16 +96,16 @@ block content
 												label.radio No correct answer
 													input(type='radio', name='correct_anwer')
 									else if question.AnswerType == "FreeResponse"
-										article(class='question_wrap', id='freeResponse_question' + #{question.QuestionsOrder})
+										article(class='question_wrap', id='freeResponse_question#{question.QuestionsOrder}')
 											h3 Free Response
 											fieldset
-												textarea(class='fr_response', name='question-' + #{question.QuestionsOrder}, cols='30', rows='5') #{question.Stem}
+												textarea(class='fr_response', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 											hr
 									else if question.AnswerType == "Numeric"
-										article(class='question_wrap', id='numeric_question' + #{question.QuestionsOrder})
+										article(class='question_wrap', id='numeric_question#{question.QuestionsOrder}')
 											h3 Numeric Free Response
 											fieldset
-												textarea(class='numeric', name='question-' + #{question.QuestionsOrder}, cols='30', rows='5') #{question.Stem}
+												textarea(class='numeric', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 
 							//include modals/poll-types
 							section.create_actions

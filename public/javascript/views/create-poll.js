@@ -132,9 +132,6 @@ $(document).ready(function() {
 
 		});
 
-		console.log(type);
-		console.log(question);
-
 		$.ajax({
 			type:"POST",
 			url:"/user/" + userID + "/poll/" + pollID + "/question/create",

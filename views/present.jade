@@ -44,11 +44,15 @@ block content
 								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
 
 
-	script
-		
+	script(type='text/javascript', src='/javascript/d3/vert_bars.js')
 		var dataPath = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
-		d3.json(dataPath, function(json) { console.log(json); verticalBars(json, dataPath); });
-		d3.json(dataPath, function(json) { pieChart(json, dataPath);     });
+
+		d3.json(dataPath, function(json) {
+			console.log(dataPath);
+			console.log(json); 
+			verticalBars(json, dataPath); 
+		});
+		//d3.json(dataPath, function(json) { pieChart(json, dataPath);     });
 		//var loc = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
 	//		d3.json(loc, function(json) {
 	//		pieChart(json, loc);
