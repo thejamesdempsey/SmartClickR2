@@ -54,71 +54,75 @@ $(document).ready(function() {
 		var pollID = $('#pollId').val();
 		var stem, answer, type, question, mChoices;
 		var count = 0;
+		question = [];
+		mChoices = [];
+		type = [];
 
 		$('.question_wrap').each(function(index) {
 
 			answer = '';
 			stem = '';
-			question = [];
-			mChoices = [];
 			count++;
 
 
 			//console.log(index + 1, $(this).children('h3').text());
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
-				type = 'MC';
+				var mc = [];
+				type.push('MC');
 				stem = $(this).children('textarea').val();
 				$('.mc_response', this).each(function(index) {
 					mChoices.push($(this).val());
 				});
 
-				question.push(stem);
-				question.push(mChoices);
+
+				mc.push(stem);
+				mc.push(mChoices);
+				question.push(mc);
 
 			} else if ($(this).children('h3').text() == 'True/False') {
 				
-				type = 'TF';
+				var tf = [];
+				type.push('TF');
 				stem = $(this).children('textarea').val(); 
 
-				question.push(stem);
-				answer = $('input[name=tf_response' + count.toString() + ']:checked').val();
+				tf.push(stem);
+				answer = $('input[name=correct_answer' + count.toString() + ']:checked').parent().text();
 				
-				if(answer == 'True' || answer == 'False') {
-					question.push(answer);
-				}
+				console.log(answer);
+				if(answer == 'True' || answer == 'False')
+					tf.push(answer);
+				
+				question.push(tf);
 
 			} else if ($(this).children('h3').text() == 'Free Response') {
 				
-				type = 'FR';
+				type.push('FR');
 				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
 
 
 			} else {
 
-				type = 'N';
+				type.push('N');
 				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
-
-			}
-		
-			$.ajax({
-				type:"POST",
-				url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-				data: {"questionType": type, "question": question, "count" : count}
-			});
-
-			// redirect back to user's page after saving all questions
-			//alert('Index is....' + index);
-			if($('.question_wrap').length == (index + 1)) {
-				
-				setTimeout(function() {
-					window.location = '/user/' + userID;
-				}, 50);
-			}
+			}		
 
 		});
+
+		console.log(type);
+		console.log(question);
+
+		$.ajax({
+			type:"POST",
+			url:"/user/" + userID + "/poll/" + pollID + "/question/create",
+			data: {"questionType": type, "questions": question},
+			success: function() {
+				window.location.href = '/';
+			}
+		});
+
 
 	});
 
@@ -217,19 +221,19 @@ $(document).ready(function() {
 		format += "<fieldset class='four columns'>";
 		format += "<label class='radio'>"
 		format += "True"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "' />"
 		format += "</label>"
 		format += "</fieldset>"
 		format += "<fieldset class='four columns'>";
 		format += "<label class='radio'>"
 		format += "False"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "' />"
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='four columns'>";
 		format += "<label class='radio'>"
 		format += "No correct answer"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "'/>"
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<hr>";

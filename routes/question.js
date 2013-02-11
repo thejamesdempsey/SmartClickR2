@@ -8,64 +8,72 @@ var RM = require('./modules/response-manager');
 // create each question //
 exports.postNewQuestion = function(request, response) {
 
-	QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
-					 AType   : request.param('questionType'),
-					 Order   : request.param('count') }, function(qid) {
-		
-		console.log("Question ID", qid);
-		console.log('Posting Question type....', request.body.questionType);
+	var questions = request.param('questions');
+	var types = request.param('questionType');
+	var count1 = [];
+	var currentCount;
 
-		var stem = '';
+	for(var i = 0; i < types.length; i++) {
 
-		if(request.param('questionType') == 'MC') {
+		count1.push(i + 1);
 
-			var answer = '';
-			var choices = request.param('question')[1];
-			stem = request.param('question')[0];
-			console.log('Stem ',request.param('question')[0]);
+		QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
+						 AType   : types[i],
+						 Order   : i + 1 }, function(qid) {
 			
-			QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
-				for(var i = 0; i < choices.length; i++) {
+			var stem = '';
+			currentCount = count1.shift();
+			var question = questions[currentCount - 1];
 
-					CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
-						// create choices for MC
-					});
-				}
-			});
 
-		} else if (request.param('questionType') == 'TF') {
+			if(types[currentCount - 1] == 'MC') {
 
-			stem = request.body.question[0];
-			console.log(stem);
-			console.log(request.body.question[1]);
-
-			QM.updateStem({ Stem : stem,
-			 				Question_ID : qid }, function(o) {
+				var answer = '';
+				var choices = question[1];
+				stem = question[0];
 				
-				if(request.body.question.length == 2) {
-					CM.createTFChoices({ Question_ID : qid, Answer : request.body.question[1] }, function(o) {
-						// create choices for TF
-					});
-				}
-			});				
+				QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
+					for(var i = 0; i < choices.length; i++) {
 
-		} else if (request.param('questionType') == 'FR') {
+						CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
+							// create choices for MC
+						});
+					}
+				});
 
-			stem = request.body.question[0];
-			QM.updateStem({ Stem : stem,
-							Question_ID : qid }, function(o) { 
-				//do nothing
-			});
+			} else if (types[currentCount - 1] == 'TF') {
 
-		} else if (request.param('questionType') == 'N') {
-	
-			stem = request.body.question[0];
-			QM.updateStem({ Stem : stem,
-							Question_ID : qid }, function(o) { 
-				//do nothing
-			});
-		}
-	});
+				stem = question[0];
+
+				QM.updateStem({ Stem : stem,
+				 				Question_ID : qid }, function(o) {
+					
+					if(question.length == 2) {
+						CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
+							// create choices for TF
+						});
+					}
+				});				
+
+			} else if (types[currentCount - 1] == 'FR') {
+
+				stem = question;
+				QM.updateStem({ Stem : stem,
+								Question_ID : qid }, function(o) { 
+					//do nothing
+				});
+
+			} else if (types[currentCount - 1] == 'N') {
+		
+				stem = question;
+				QM.updateStem({ Stem : stem,
+								Question_ID : qid }, function(o) { 
+					//do nothing
+				});
+			}
+		});
+	}
+	response.send(200);
 }
 
 // GET /poll/:SessionCode/question/:Question_ID //
