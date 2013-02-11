@@ -1,12 +1,12 @@
 $(document).ready(function() {
 	var counter = 1;
 	var sesionCode = '';
-	$('#save_quitBtn').hide();
-	$('#addQuestion').hide();
+	//$('#save_quitBtn').hide();
+	//$('#addQuestion').hide();
 	$("#pollName").focus();
 		
 
-	$('#create_content').ready(function() {
+	$('#edit_content').ready(function() {
 		$(this).submit(function() {
 			if (false == saveAndQuit($(this))) {
 				return false;

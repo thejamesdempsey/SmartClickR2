@@ -1,0 +1,30 @@
+body{
+	background: #eee url('/img/noise.png') !important;
+	
+}
+
+#edit_title{
+	padding-bottom:80px;
+	padding-top:20px;
+}
+
+#edit_title h2{
+	font-size: 3.4rem;
+	color: #fff;
+}
+
+#edit_content{
+	position: relative;
+	background: #fff;
+	border-radius: 12px;
+	padding: 30px;
+	top: -86px;
+}
+
+#question_container fieldset{
+	margin-left: 0;
+}
+
+#question_container h3{
+	font-weight: 300;
+}

@@ -56,8 +56,7 @@
 	min-height: 115px;
 }
 #footer_content ul li{
-	display: inline-block;
-	margin-left: 15px;
+	display: block;
 }
 
 .container{

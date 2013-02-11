@@ -1553,8 +1553,8 @@ input#index-search {
   line-height: 70px !important;
 }
 #footer_content ul li {
-  display: inline-block;
-  margin-left: 15px;
+  display: inline-block !important;
+  margin-left: 15px !important;
 }
 #logged-in {
   min-height: 115px;
