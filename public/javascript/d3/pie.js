@@ -26,7 +26,7 @@ var pieChart = function(dataset, json_loc){
 	var color = d3.scale.category10();
 
     //Create SVG element
-    var svg = d3.select("#graph-display")
+    var svg = d3.select("#pie-display")
                 .append("svg:svg")
                 .attr("width", w)
                 .attr("height", h);
