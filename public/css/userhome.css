@@ -1604,6 +1604,13 @@ input#index-search {
 #user_content div#poll_container:not(:first-child) {
   padding-top: 20px !important;
 }
+.info {
+  display: none;
+}
+#create_button:hover {
+  text-decoration: none;
+  background: #e75033 !important;
+}
 @media screen and (min-width: 769px) {
   #index-search {
     padding: 18px;
@@ -1634,5 +1641,84 @@ input#index-search {
 @media screen and (max-width: 977px) {
   #alert-bottom {
     width: 86%;
+  }
+}
+@media screen and (max-width: 967px) {
+  #alt-actions {
+    text-align: center !important;
+  }
+}
+@media screen and (max-width: 980px) {
+  #poll_container {
+    padding: 40px 32px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #alt-actions,
+  #user-search {
+    text-align: center !important;
+    width: 100%;
+  }
+  #user_actions.visible-phone {
+    margin-bottom: 24px !important;
+    text-align: left;
+  }
+  #create_button {
+    float: none !important;
+    margin-top: 12px;
+    margin-right: 0px !important;
+    padding: 14px 36px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 670px) {
+  #index-session {
+    text-align: left;
+  }
+  #user_actions {
+    position: relative;
+    top: 16px;
+  }
+  .info {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #fff;
+  }
+}
+@media screen and (max-width: 670px) {
+  #index-session input[type="search"] {
+    width: 60%;
+  }
+  #index-session {
+    text-align: left;
+  }
+  .info {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #fff;
+  }
+  #create_button {
+    width: 42%;
+  }
+}
+@media screen and (max-width: 320px) {
+  #alt-actions li:not(:last-child) {
+    margin-right: 10px;
+  }
+  section #user_content {
+    padding: 8px !important;
+  }
+  #poll_container {
+    padding: 40px 12px;
+  }
+  #index-session input[type="search"] {
+    width: 60%;
+    text-align: center;
+  }
+  #create_button {
+    width: 54%;
   }
 }

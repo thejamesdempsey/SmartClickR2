@@ -45,7 +45,7 @@ block content
 					p#greeting.bubble
 					.clear
 				aside#actions_container.span12
-					div#user_actions.span5
+					div#user_actions.span5.hidden-phone
 						if locals.pdata.length > 0
 							a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
 						else
@@ -55,14 +55,17 @@ block content
 							input(type="search", placeholder="Enter a Session Code", id="index-search")
 							button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 					.span6
+					
 						
-							.clear
 		hr
 	section#content_container
 		.container
 			.row-fluid
 				.backdrop.dropshadow
 					section#user_content
+						div#user_actions.span5.visible-phone.clearfix						
+							if locals.pdata.length > 0
+								a(id="create_button",href="/user/#{locals.udata.User_ID}/poll/create", class="big button red") Create a Poll
 						if locals.pdata.length > 1
 							each poll in locals.pdata
 								div#poll_container.clearfix
