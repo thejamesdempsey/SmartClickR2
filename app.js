@@ -74,6 +74,7 @@ app.post('/user/:User_ID/poll/delete/:Poll_ID', poll.deletePoll);
 
 // question pages //
 app.post('/user/:User_ID/poll/:Poll_ID/question/create', question.postNewQuestion);
+app.post('/user/:User_ID/poll/edit/:Poll_ID', question.postEditPoll);
 
 // responding pages //
 app.get('/poll/:SessionCode', poll.getPollQuestions);

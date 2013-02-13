@@ -33,20 +33,6 @@ $(document).ready(function() {
 		return isValid;
 		
 	}
-/*	requiredTitle = function($('#poll_info') {
-		$('#poll_info').find(".error").removeClass().hide();
-		isFilled = true;
-		
-		var titleVal = $("#pollName").val();
-		
-		if ( titleVal == '' ) {
-			$('label #pollName').after('<label class="error animated fadeInDown"> Your poll needs a name. </label>');
-			isFilled = false;
-		}
-		
-		return isFilled;
-	});*/
-	
 		
 	$('#save_quitBtn').click(function() {
 		
@@ -118,8 +104,8 @@ $(document).ready(function() {
 
 		$.ajax({
 			type:"POST",
-			url:"/user/" + userID + "/poll/" + pollID + "/question/create",
-			data: {"questionType": type, "questions": question, "pollData": poll},
+			url:"/user/" + userID + "/poll/edit/" + pollID,
+			data: {"questionType": type, "questions": question, "pollData": poll },
 			success: function() {
 				window.location.href = '/';
 			}

@@ -50,7 +50,7 @@ block content
 									input(type="text", id="pollName", name="pollName", class="", value='#{locals.pdata.PollName}')
 								fieldset
 									label(for="pollDescription") Poll Description
-									textarea(id="pollDescription", name="pollDescription", value='#{locals.pdata.PollDescription}')
+									textarea(id="pollDescription", name="pollDescription") #{locals.pdata.PollDescription}
 								hr
 							section#question_container
 								each question, i in locals.qdata
