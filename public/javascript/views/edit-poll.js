@@ -79,8 +79,7 @@ $(document).ready(function() {
 
 				tf.push(stem);
 				answer = $('input[name=correct_answer' + count.toString() + ']:checked').parent().text();
-				
-				console.log(answer);
+
 				if(answer == 'True' || answer == 'False')
 					tf.push(answer);
 				

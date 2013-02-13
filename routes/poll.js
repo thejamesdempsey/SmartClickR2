@@ -38,6 +38,7 @@ exports.getEditPoll = function(request, response) {
 
 			PM.getPollFromID(request.param('Poll_ID'), function(result) {
 				var poll = result[0];
+				console.log(questions);
 				response.render('edit-poll.jade', { title: 'SmartClickR | Edit your Poll', locals: { udata: user, pdata: poll,  qdata: questions }});
 			});
 		});
@@ -46,10 +47,6 @@ exports.getEditPoll = function(request, response) {
 	}
 }
 
-// POST /user/:User_ID/poll/update/:Poll_ID //
-exports.updatePollDescription = function(request, response) {
-
-}
 
 // POST /user/:User_ID/poll/delete/:Poll_ID
 exports.deletePoll = function(request, response) {
