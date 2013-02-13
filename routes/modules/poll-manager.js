@@ -106,13 +106,13 @@ PM.updatePollDescription = function(sessionCode, description, callback) {
 }
 
 PM.updatePollData = function(pollData, callback) {
-	connection.query('UPDATE ' + TABLE + ' SET PollName = ?, PollDescription = ? WHERE Poll_ID = ?', [pollName, pollDescription, pollID], function(err, results) {
+	connection.query('UPDATE ' + TABLE + ' SET PollName = ?, PollDescription = ? WHERE Poll_ID = ?', [pollData.pollName, pollData.pollDescription, pollData.pollID], function(err, results) {
 		if(err) {
 			console.log('Error: ', err);
 			connection.destroy();
 			console.log('Connection closed');
 		} else {
-			callback(null);
+			callback('Updated!');
 		}		
 	});
 }

@@ -50,7 +50,7 @@ block content
 									input(type="text", id="pollName", name="pollName", class="", value='#{locals.pdata.PollName}')
 								fieldset
 									label(for="pollDescription") Poll Description
-									textarea(id="pollDescription", name="pollDescription", value='#{locals.pdata.PollDescription}')
+									textarea(id="pollDescription", name="pollDescription") #{locals.pdata.PollDescription}
 								hr
 							section#question_container
 								each question, i in locals.qdata
@@ -90,13 +90,22 @@ block content
 											.top-pad
 											fieldset.span4
 												label.radio True
-													input(type='radio', name='correct_anwer')
+													if question.Choices.length > 0 && question.Choices[0].IsCorrectChoice == "T"
+														input(type='radio', name='correct_answer#{question.QuestionsOrder}', checked="checked")	
+													else
+														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 											fieldset.span4
 												label.radio False
-													input(type='radio', name='correct_anwer')
+													if question.Choices.length > 0 && question.Choices[0].IsCorrectChoice == "F"
+														input(type='radio', name='correct_answer#{question.QuestionsOrder}', checked="checked")	
+													else
+														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 											fieldset.span4
 												label.radio No correct answer
-													input(type='radio', name='correct_anwer')
+													if question.Choices.length > 0 && question.Choices[0].IsCorrectChoice == "N"
+														input(type='radio', name='correct_answer#{question.QuestionsOrder}', checked="checked")	
+													else
+														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 									else if question.AnswerType == "FreeResponse"
 										article(class='question_wrap', id='freeResponse_question#{question.QuestionsOrder}')
 											h3 Free Response

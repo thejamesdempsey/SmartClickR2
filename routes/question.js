@@ -10,19 +10,19 @@ exports.postNewQuestion = function(request, response) {
 
 	var questions = request.param('questions');
 	var types = request.param('questionType');
-	var count1 = [];
+	var count = [];
 	var currentCount;
 
 	for(var i = 0; i < types.length; i++) {
 
-		count1.push(i + 1);
+		count.push(i + 1);
 
 		QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
 						 AType   : types[i],
 						 Order   : i + 1 }, function(qid) {
 			
 			var stem = '';
-			currentCount = count1.shift();
+			currentCount = count.shift();
 			var question = questions[currentCount - 1];
 
 
@@ -78,7 +78,80 @@ exports.postNewQuestion = function(request, response) {
 
 // POST /user/:User_ID/poll/edit/:Poll_ID //
 exports.postEditPoll = function(request, response) {
-	
+	var types = request.param('questionType');
+	var questions = request.param('questions');
+	var pollData = request.param('pollData');
+	var count = [];
+	var currentCount;
+
+	PM.updatePollData({pollName: pollData[1], pollDescription: pollData[2], pollID : pollData[0]}, function(nothing) {
+
+		QM.deleteQuestions(pollData[0], function(done) {
+
+			for(var i = 0; i < types.length; i++) {
+
+				count.push(i + 1);
+
+				QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
+								 AType   : types[i],
+								 Order   : i + 1 }, function(qid) {
+					
+					var stem = '';
+					currentCount = count.shift();
+					var question = questions[currentCount - 1];
+
+
+					if(types[currentCount - 1] == 'MC') {
+
+						var answer = '';
+						var choices = question[1];
+						stem = question[0];
+						
+						QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
+							for(var i = 0; i < choices.length; i++) {
+
+								CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
+									// create choices for MC
+								});
+							}
+						});
+
+					} else if (types[currentCount - 1] == 'TF') {
+
+						stem = question[0];
+
+						QM.updateStem({ Stem : stem,
+						 				Question_ID : qid }, function(o) {
+							
+							if(question.length == 2) {
+								CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
+									// create choices for TF
+								});
+							}
+						});				
+
+					} else if (types[currentCount - 1] == 'FR') {
+
+						stem = question;
+						QM.updateStem({ Stem : stem,
+										Question_ID : qid }, function(o) { 
+							//do nothing
+						});
+
+					} else if (types[currentCount - 1] == 'N') {
+				
+						stem = question;
+						QM.updateStem({ Stem : stem,
+										Question_ID : qid }, function(o) { 
+							//do nothing
+						});
+					}
+				});
+			}
+			response.send(200);
+		});
+	});
+
 }
 
 // GET /poll/:SessionCode/question/:Question_ID //

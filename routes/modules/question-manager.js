@@ -144,7 +144,7 @@ QM.deleteQuestions = function(pollID, callback) {
 			connection.destroy();
 			console.log('Connection is closed');
 		} else {
-			callback(null);
+			callback('Questions-Deleted');
 		}
 	});
 }
