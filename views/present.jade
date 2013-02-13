@@ -30,17 +30,20 @@ block content
 						h2 #{locals.qdata[0].Stem}
 						article#graph-display.clearfix
 					#present-actions
-						.span6.offset3
+						ul.pager.span4.offset4
 							if locals.qdata[0].Question_ID != locals.QuestionIDs[0]
-								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder - 2]}', class="btn btn-success btn-large") Previous
-								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
+								li.previous
+									a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder - 2]}', class="") &larr; Previous
+								li.next
+									a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="") Next &rarr;
 							
 							else if locals.qdata[0].Question_ID == locals.QuestionIDs[locals.QuestionIDs.length - 1]
 								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/present/final', class="btn btn-success btn-large") Completed
 							else
-								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder - 2]}', class="btn btn-large disabled") Previous
-
-								a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
+								li.previous
+									a(id='starting-question', href='#', class="disabled")&larr; Previous
+								li.next
+									a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="") Next &rarr;
 
 
 	script(type='text/javascript', src='/javascript/d3/vert_bars.js')
