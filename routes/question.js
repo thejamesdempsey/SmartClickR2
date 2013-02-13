@@ -5,7 +5,7 @@ var FM = require('./modules/format-manager');
 var RM = require('./modules/response-manager');
 
 // POST /user/:User_ID/poll/:Poll_ID/question/create //
-// create each question //
+// Create poll //
 exports.postNewQuestion = function(request, response) {
 
 	var questions = request.param('questions');
@@ -74,6 +74,11 @@ exports.postNewQuestion = function(request, response) {
 		});
 	}
 	response.send(200);
+}
+
+// POST /user/:User_ID/poll/edit/:Poll_ID //
+exports.postEditPoll = function(request, response) {
+	
 }
 
 // GET /poll/:SessionCode/question/:Question_ID //
@@ -149,6 +154,7 @@ exports.presentPollQuestion = function(request, response) {
 
 	FM.getQuestionPID(currentQID, pollID, function(questionData) {
 		console.log(questionData);
+		console.log(questionIDs);
 		if(questionData == 'question-doesnt-exist') {
 			response.redirect('/');
 		} else {

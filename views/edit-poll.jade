@@ -6,6 +6,7 @@ block content
 	input(type = 'hidden',value = user.User_ID)#userId
 	input(type = 'hidden',value = '#{locals.pdata.SessionCode}')#sessionCode
 	input(type = 'hidden',value = '#{locals.pdata.Poll_ID}')#pollId
+	input(type = 'hidden',value = '#{locals.qdata.length + 1}')#counter
 
 	body
 		// Header Content //

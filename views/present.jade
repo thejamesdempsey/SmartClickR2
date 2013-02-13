@@ -30,6 +30,7 @@ block content
 						h2 #{locals.qdata[0].Stem}
 						article#graph-display.clearfix
 					#present-actions
+<<<<<<< HEAD
 						ul.pager.span4.offset4
 							if locals.qdata[0].Question_ID != locals.QuestionIDs[0]
 								li.previous
@@ -44,20 +45,29 @@ block content
 									a(id='starting-question', href='#', class="disabled")&larr; Previous
 								li.next
 									a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="") Next &rarr;
+=======
+						.span6.offset3
+							if locals.qdata[0].Question_ID == locals.QuestionIDs[locals.QuestionIDs.length - 1]
+								a(id='last-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/present/final', class="btn btn-success btn-large") Completed
+							else if locals.qdata[0].Question_ID != locals.QuestionIDs[0]
+								a(id='previous-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder - 2]}', class="btn btn-success btn-large") Previous
+								a(id='next-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
+							else if locals.qdata[0].Question_ID == locals.QuestionIDs[0]
+								a(id='next-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="btn btn-success btn-large") Next
+							
 
+>>>>>>> e0a2474a6ff92ac5b34bd8da3d7cd089379c889d
 
-	script(type='text/javascript', src='/javascript/d3/vert_bars.js')
+	script
 		var dataPath = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
+		
+		//- d3.json(dataPath, function(json) {
+		//- 	console.log(dataPath);
+		//- 	console.log(json); 
+		//- 	verticalBars(json, dataPath); 
+		//- });
 
 		d3.json(dataPath, function(json) {
-			console.log(dataPath);
-			console.log(json); 
-			verticalBars(json, dataPath); 
+			pieChart(json, dataPath);
 		});
-		//d3.json(dataPath, function(json) { pieChart(json, dataPath);     });
-
-		//var loc = '/user/' + #{locals.udata} + '/poll/' + #{locals.pdata} + '/question/' + #{locals.qdata[0].Question_ID} + '.json';
-	//		d3.json(loc, function(json) {
-	//		pieChart(json, loc);
-	//	});
 

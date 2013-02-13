@@ -105,6 +105,18 @@ PM.updatePollDescription = function(sessionCode, description, callback) {
 	});
 }
 
+PM.updatePollData = function(pollData, callback) {
+	connection.query('UPDATE ' + TABLE + ' SET PollName = ?, PollDescription = ? WHERE Poll_ID = ?', [pollName, pollDescription, pollID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection closed');
+		} else {
+			callback(null);
+		}		
+	});
+}
+
 // Set Start Time //
 
 PM.setStartTime = function(sessionCode, int, callback) {
