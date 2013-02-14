@@ -4,7 +4,7 @@ extends layout_present
 input(type = 'hidden',value = user._id)#userId
 
 block content
-	body#landing-page
+	body#present-page
 		// Header Content //
 		header(class="navbar navbar-inverse navbar-fixed-top")
 			.navbar-inner
@@ -89,4 +89,6 @@ block content
 		d3.json(dataPath, function(json) {
 			pieChart(json, dataPath);
 		});
+
+
 

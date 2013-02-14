@@ -15,7 +15,7 @@ block content
 									h4#question-number Question #{locals.qdata[0].QuestionsOrder}
 									h3#question-content #{locals.qdata[0].Stem}
 								.clear
-								form(id="response-form",method='POST', action='/poll/#{locals.session}/question/#{locals.qdata[0].Question_ID}')
+								form(id="response-form",method='POST', action='/poll/#{locals.session}/question/#{locals.qdata[0].Question_ID}', class="clearfix")
 									case locals.qdata[0].AnswerType
 										when "MultipleChoice"
 											for choice in locals.qdata[0].Choices
@@ -41,5 +41,8 @@ block content
 												$(".n_response").focus();
 									div#next.span12
 										input(type='submit', id='#{locals.qdata[0].AnswerType}_response', value='Next Question &rarr;', class="btn btn-large btn-info")
-							
+										//span Question #{locals.qdata[0].QuestionsOrder} of #{locals.qdata[0].QuestionOrder.length-1});
+	script(src="/javascript/randomBackground.js")
+	script(src="/javascript/views/response.js")
+	
 
