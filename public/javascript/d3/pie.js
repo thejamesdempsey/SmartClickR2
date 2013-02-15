@@ -1,7 +1,7 @@
 var pieChart = function(dataset, json_loc){
     //Width and height
-	var w = 400;
-    var h = 400;
+    var w = 350;
+    var h = 350;
     var dur = 750;
     
     //Dataset Total
@@ -15,7 +15,7 @@ var pieChart = function(dataset, json_loc){
                     .outerRadius(outerRadius);
 
 	var donut = d3.layout.pie()
-                        //Get just the "values" from the JSON
+                        //Get just the "Values" from the JSON
                         .value(function(d){
                             total = (total + d.Value);  //Calculate the total number of responses
                             return d.Value;
@@ -26,7 +26,7 @@ var pieChart = function(dataset, json_loc){
 	var color = d3.scale.category10();
 
     //Create SVG element
-    var svg = d3.select("#pie-display")
+    var svg = d3.select("body")
                 .append("svg:svg")
                 .attr("width", w)
                 .attr("height", h);
@@ -77,21 +77,24 @@ var pieChart = function(dataset, json_loc){
                     .attr("text-anchor", "middle")
                     .text(function(d, i){
                         return dataset[i].Content;
-						return total;
                     });
         
     //---------------------------------- UPDATE ------------------------------------------------
     function refresh() {
-        //Store the current data before overwriting "dataset"
-        oldata = dataset;
-        
         //Get JSON file (and hopefully new data)
         d3.json(json_loc, function(json) {
             dataset = json;
             total = 0;
-            arcs.data(donut(dataset));     //Update the data
+            
+            //Only update the data once, then pass the result to redraw the arcs, and redraw the labels
+            var newData = donut(dataset);    //Update the data
+            
+            //New Arcs:
+            arcs.data(newData);
             arcs.transition().duration(dur).attrTween("d", arcTween);       //Redraw the arcs
-            sliceLabel.data(donut(dataset));
+            
+            //New Labels:
+            sliceLabel.data(newData);
             sliceLabel.transition().duration(dur)
                     .attr("transform", function(d) {
                         return "translate(" + arc.centroid(d) + ")";
