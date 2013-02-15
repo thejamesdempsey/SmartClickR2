@@ -73,7 +73,7 @@ block content
 									a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="") Next &rarr;
 							else if locals.qdata[0].Question_ID == locals.QuestionIDs[0]
 								li.previous
-									a(id='starting-question', href='#', class="disabled")&larr; Previous
+									a(id='starting-question', href='/', class="disabled")&larr; Home
 								li.next
 									a(id='starting-question', href='/user/#{locals.udata}/poll/#{locals.pdata}/question/present/#{locals.QuestionIDs[locals.qdata[0].QuestionsOrder]}', class="") Next &rarr;
 
