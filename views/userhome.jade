@@ -34,10 +34,10 @@ block content
 	article#user_hero
 		.container
 			section#user_greeting.clearfix
-				h2#user_hello.span5.visible-desktop.visible-phone
+				h2#user_hello.span5.visible-desktop
 					return Hi there, #{locals.udata.FirstName}
-				h2#user_hello.span5.visible-tablet
-					return Hi, #{locals.udata.FirstName}
+				h2#user_hello.span5.hidden-desktop
+					return Hey, #{locals.udata.FirstName}
 
 				// this type of call gets the desired info about the user
 				//#{locals.udata.FirstName} 

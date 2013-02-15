@@ -21,7 +21,15 @@ html
 
 
 		script(type="text/javascript", src="http://malsup.github.com/jquery.form.js")
+		noscript
+			div(id="no-js", class="modal") 
+				div(class="modal-header")
+					p JavaScript has been turned off.
+					p Please enable to view full site and get full use of our product. 
 
+				div(class="modal-footer")
+					a(href="http://www.enable-javascript.com", target="_blank")  This article can tell you why Javascript is important and how to turn it on
+			div(class="modal-backdrop")
 	
 	body
 		block content

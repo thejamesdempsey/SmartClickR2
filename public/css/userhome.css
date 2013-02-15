@@ -1669,6 +1669,10 @@ input#index-search {
     margin-right: 0px !important;
     padding: 14px 36px;
   }
+  #actions_container {
+    padding: 20px 0px 10px 0px !important;
+    margin-top: 0px !important;
+  }
 }
 @media screen and (max-width: 767px) and (min-width: 670px) {
   #index-session {
@@ -1719,6 +1723,29 @@ input#index-search {
     text-align: center;
   }
   #create_button {
-    width: 54%;
+    width: 54% !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  #create_button {
+    width: 50%;
+  }
+  #user_hello {
+    font-size: 2.2rem !important;
+  }
+  #actions_container {
+    padding: 8px 0px 10px 0px !important;
+    margin-top: 0px !important;
+  }
+  #create_button {
+    margin-top: 0px;
+  }
+  #user_actions.visible-phone {
+    margin-bottom: 12px !important;
+  }
+  #copy {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
   }
 }

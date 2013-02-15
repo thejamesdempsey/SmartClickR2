@@ -231,9 +231,21 @@ label.radio{
 		
 	}
 	
+	header .container{
+		padding-right: 20px !important;
+		padding-left: 20px !important;
+	}
+	
+	.container{
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+	
+	
+	
 	#hero_content_response{
 		padding: 20px;
-		border-radius: 0;
+		border-radius: 4px 4px 4px 4px;
 		-webkit-box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.25);
 		-moz-box-shadow:    0px -3px 5px rgba(0, 0, 0, 0.25);
 		box-shadow:         0px -3px 5px rgba(0, 0, 0, 0.25);
@@ -251,15 +263,31 @@ label.radio{
 		border-color: #555555 !important;
 		border-bottom: 0px;
 	}
+	
+	#hero{
+		margin-top: -20px;
+	}
+	
 
 	
 }
 
 
 
-@media and (max-width: 320px){
+@media screen and (max-width: 320px){
 	#session-code{
 		margin: 0;
 		paddin: 0;
 	}
+	
+	.container{
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+	
+	#hero_content_response{
+		border-radius: 8px 8px 0px 0px;
+		min-height: 438px;
+	}
+	
 }

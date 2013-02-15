@@ -7,7 +7,28 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+#no-js{
+	text-align: center;
+}
 
+#no-js .modal-footer{
+	text-align: center;
+	padding: 26px;
+	
+}
+
+#no-js a{
+	color: #b94a48 !important;
+	border-bottom: 1px dashed #b94a48;
+	font-size: 1.1em;
+
+}
+
+#no-js a:hover{
+	text-decoration: none;
+	border-bottom: 1px solid #b94a48;
+
+}
 article,
 aside,
 details,

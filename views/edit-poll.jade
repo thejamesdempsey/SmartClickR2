@@ -55,7 +55,7 @@ block content
 							section#question_container
 								each question, i in locals.qdata
 									if question.AnswerType == "MultipleChoice"
-										article(class='question_wrap', id='multipleChoice_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='multipleChoice_question#{question.QuestionsOrder}')
 											h3 Multiple Choice
 											textarea(class='textarea_small') #{question.Stem}
 											.top-pad
@@ -84,7 +84,7 @@ block content
 												label.radio Correct Answer
 													input(type='radio', name='correct_anwer')	
 									else if question.AnswerType == "TrueFalse"	
-										article(class='question_wrap', id='trueFalse_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='trueFalse_question#{question.QuestionsOrder}')
 											h3 True/False
 											textarea(class='textarea_small') #{question.Stem}	
 											.top-pad
@@ -107,13 +107,13 @@ block content
 													else
 														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 									else if question.AnswerType == "FreeResponse"
-										article(class='question_wrap', id='freeResponse_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='freeResponse_question#{question.QuestionsOrder}')
 											h3 Free Response
 											fieldset
 												textarea(class='fr_response', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 											hr
 									else if question.AnswerType == "Numeric"
-										article(class='question_wrap', id='numeric_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='numeric_question#{question.QuestionsOrder}')
 											h3 Numeric Free Response
 											fieldset
 												textarea(class='numeric', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
