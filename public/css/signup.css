@@ -59,7 +59,7 @@
   border-top: 1px solid #f0f0f0;
 }
 #signup-content {
-  padding: 45px !important;
+  padding: 26px !important;
   border-radius: 6px;
   background: #fff !important;
   top: -56px !important;
@@ -94,6 +94,17 @@ input.form-text {
     padding-left: 0px !important;
   }
   #signup-content {
-    padding: 18px !important;
+    padding: 10px !important;
+  }
+  fieldset label {
+    margin: 0 0 -2px 0 !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .title {
+    margin-top: 0px;
+  }
+  #signup-content {
+    top: -66px !important;
   }
 }

@@ -891,6 +891,23 @@ input[type="submit"]:active {
     margin-top: 20px;
   }
 }
+.alert-js {
+  position: relative;
+  width: 100%;
+  top: -16px;
+  border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  text-align: center;
+}
+.alert-js a {
+  color: #b94a48 !important;
+  border-bottom: 1px dashed #b94a48;
+}
+.alert-js a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #b94a48;
+}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;
   padding: 0;
@@ -1219,5 +1236,10 @@ input[type="submit"]:active {
 @media screen and (min-width: 490px) {
   #login-container h1 {
     margin-top: 40px;
+  }
+}
+@media screen and (max-width: 480px) {
+  #login-container {
+    margin-top: 0px !important;
   }
 }

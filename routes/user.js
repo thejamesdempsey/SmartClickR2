@@ -48,8 +48,8 @@ exports.postLogin = function(request, response) {
 			// and passed to the userhome.jade page
 			request.session.user = o;
 			if(request.param('remember-me') == 'on') {
-				response.cookie('email', o[0].Email, { maxAge: 900000 });
-				response.cookie('pass', o[0].Password, { maxAge: 900000});
+				response.cookie('email', o[0].Email, { maxAge: 2592000000 });
+				response.cookie('pass', o[0].Password, { maxAge: 2592000000 });
 			}
 
 			response.send({ res : o[0].User_ID });
@@ -108,7 +108,7 @@ exports.updatePassword = function(request, response) {
 						
 						request.session.user = o;
 						request.session.user.save;
-						response.cookie('pass', out.Password, { maxAge: 900000});
+						response.cookie('pass', out.Password, { maxAge: 2592000000});
 						response.send({res	: 'success'}, 200);
 		
 					});
