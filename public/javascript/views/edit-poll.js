@@ -41,7 +41,6 @@ $(document).ready(function() {
 		var stem, answer, type, question, mChoices, poll;
 		var count = 0;
 		question = [];
-		mChoices = [];
 		poll = [];
 		type = [];
 
@@ -55,13 +54,14 @@ $(document).ready(function() {
 			stem = '';
 			count++;
 
-
 			//console.log(index + 1, $(this).children('h3').text());
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
 				var mc = [];
+				mChoices = [];
 				type.push('MC');
 				stem = $(this).children('textarea').val();
+				
 				$('.mc_response', this).each(function(index) {
 					mChoices.push($(this).val());
 				});
@@ -101,12 +101,14 @@ $(document).ready(function() {
 
 		});
 
+		console.log(question);
+
 		$.ajax({
 			type:"POST",
 			url:"/user/" + userID + "/poll/edit/" + pollID,
 			data: {"questionType": type, "questions": question, "pollData": poll },
 			success: function() {
-				window.location.href = '/';
+				//window.location.href = '/';
 			}
 		});
 

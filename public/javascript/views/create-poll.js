@@ -55,7 +55,6 @@ $(document).ready(function() {
 		var stem, answer, type, question, mChoices;
 		var count = 0;
 		question = [];
-		mChoices = [];
 		type = [];
 
 		$('.question_wrap').each(function(index) {
@@ -69,12 +68,12 @@ $(document).ready(function() {
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
 				var mc = [];
+				mChoices = [];
 				type.push('MC');
 				stem = $(this).children('textarea').val();
 				$('.mc_response', this).each(function(index) {
 					mChoices.push($(this).val());
 				});
-
 
 				mc.push(stem);
 				mc.push(mChoices);
