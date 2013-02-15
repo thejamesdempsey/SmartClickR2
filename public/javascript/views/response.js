@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	$('#response-form').submit(function(){
-			$(this).find(".alert").hide();			
 			if (false == validateResponse($(this))) {
 				return false;
 			}
@@ -10,19 +9,41 @@ $(document).ready(function(){
 });
 
 
-
-
-
 validateResponse = function($form){
 	
 	isValid = true;
 
-	var selected = $('input[type=radio]:checked');
+//	var input = $('.mc_response').attr('checked');
 	
+	//var text = $('textarea[name="response"]').val();
 	
+	var mc = $('.mc_response:radio').is('checked');
+	console.log(mc);
+	var tf = $('.tf_response:radio').is('checked');
+	console.log(tf);
 	
-	if (selected.length == 0){
+	/*if (text == '')	{
+		$form.find(".alert").hide();	
+		format  = '<div class="alert alert-error fade in">';
+		format += '<strong>No answer?</strong> That&rsquo;s just silly.';
+		format += '</div>';
 		
+		$("#response-form").before(format);
+		isValid = false;
+	}*/
+	if ( mc == false) {
+		$form.find(".alert").hide();	
+		format  = '<div class="alert alert-error fade in">';
+		format += '<strong>No answer?</strong> That&rsquo;s just silly.';
+		format += '</div>';
+		
+		$("#response-form").before(format);
+		isValid = false;
+		
+	}
+	
+	if ( tf == false) {
+		$form.find(".alert").hide();	
 		format  = '<div class="alert alert-error fade in">';
 		format += '<strong>No answer?</strong> That&rsquo;s just silly.';
 		format += '</div>';
