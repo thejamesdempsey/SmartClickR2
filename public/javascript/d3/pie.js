@@ -26,7 +26,7 @@ var pieChart = function(dataset, json_loc){
 	var color = d3.scale.category10();
 
     //Create SVG element
-    var svg = d3.select("#pie-display")
+    var svg = d3.select("body")
                 .append("svg:svg")
                 .attr("width", w)
                 .attr("height", h);
@@ -50,7 +50,7 @@ var pieChart = function(dataset, json_loc){
                                 .attr("dy", ".35em")
                                 .attr("class", "chartLabel")
                                 .attr("text-anchor", "middle")
-                                .text(total);
+                                .text("Total: " + total);
 
     // Draw Arc Paths
     var arcs = arc_grp.selectAll("path")
@@ -76,7 +76,9 @@ var pieChart = function(dataset, json_loc){
                     })
                     .attr("text-anchor", "middle")
                     .text(function(d, i){
-                        return dataset[i].Content;
+                        var sliceText;
+                        sliceText = dataset[i].Content + ": " + dataset[i].Value;
+                        return sliceText;
                     });
         
     //---------------------------------- UPDATE ------------------------------------------------
@@ -101,8 +103,13 @@ var pieChart = function(dataset, json_loc){
                     })
                     .style("fill-opacity", function(d) {
                         return d.value===0 ? 1e-6 : 1;
+                    })
+                    .text(function(d, i){
+                        var sliceText;
+                        sliceText = dataset[i].Content + ": " + dataset[i].Value;
+                        return sliceText;
                     });
-            pieLabel.text(total);
+            pieLabel.text("Total: " + total);
         });
         setTimeout(refresh, 1000);
     }
