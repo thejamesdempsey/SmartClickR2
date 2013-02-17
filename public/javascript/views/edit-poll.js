@@ -38,11 +38,13 @@ $(document).ready(function() {
 		
 		var userID = $('#userId').val();
 		var pollID = $('#pollId').val();
-		var stem, answer, type, question, mChoices, poll;
+		var stem, answer, type, question, mChoices, poll, qids, cids;
 		var count = 0;
 		question = [];
+		qids = [];
 		poll = [];
 		type = [];
+		cids = [];
 
 		poll.push($('#pollId').val());
 		poll.push($('#pollName').val());
@@ -58,8 +60,17 @@ $(document).ready(function() {
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
 				var mc = [];
+				cids = [];
 				mChoices = [];
 				type.push('MC');
+				
+				if($(this).find('.questionID').length == 1) {
+					qids.push($(this).children('.questionID').val());
+
+					$('.mc_response', this).each(function(index) {
+						cids.push($(this).parent().children('[type=hidden]').val());
+					});
+				}
 				stem = $(this).children('textarea').val();
 				
 				$('.mc_response', this).each(function(index) {
@@ -69,20 +80,34 @@ $(document).ready(function() {
 
 				mc.push(stem);
 				mc.push(mChoices);
+	
+				if(cids.length > 0) 
+					mc.push(cids);
+					
 				question.push(mc);
 
 			} else if ($(this).children('h3').text() == 'True/False') {
 				
 				var tf = [];
+				cids = [];
 				type.push('TF');
 				stem = $(this).children('textarea').val(); 
-
+				
+				if($(this).find('.questionID').length == 1) {
+					qids.push($(this).children('.questionID').val());
+					//issue! find out the value!!!
+					cids.push($('.choice_id', this).val());
+				}
+				
 				tf.push(stem);
 				answer = $('input[name=correct_answer' + count.toString() + ']:checked').parent().text();
 
 				if(answer == 'True' || answer == 'False')
 					tf.push(answer);
 				
+				if(cids.length > 0) 
+					tf.push(cids);
+
 				question.push(tf);
 
 			} else if ($(this).children('h3').text() == 'Free Response') {
@@ -90,23 +115,32 @@ $(document).ready(function() {
 				type.push('FR');
 				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
-
-
+				
+				if($(this).find('.questionID').length == 1) {
+					qids.push($(this).children('.questionID').val());
+				}
+				
 			} else {
 
 				type.push('N');
 				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
+
+				if($(this).find('.questionID').length == 1) {
+					qids.push($(this).children('.questionID').val());
+				}
+				
 			}		
 
 		});
-
+		
 		console.log(question);
+		console.log(qids);
 
 		$.ajax({
 			type:"POST",
 			url:"/user/" + userID + "/poll/edit/" + pollID,
-			data: {"questionType": type, "questions": question, "pollData": poll },
+			data: {"questionType": type, "questions": question, "pollData": poll, "questionIDs" : qids },
 			success: function() {
 				//window.location.href = '/';
 			}
@@ -260,7 +294,6 @@ $(document).ready(function() {
 
 			counter++;
 		}
-
 	});
 });
 

@@ -11,67 +11,13 @@ exports.postNewQuestion = function(request, response) {
 	var questions = request.param('questions');
 	var types = request.param('questionType');
 	var count = [];
-	var currentCount;
 
 	for(var i = 0; i < types.length; i++) {
 
 		count.push(i + 1);
 
-		QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
-						 AType   : types[i],
-						 Order   : i + 1 }, function(qid) {
-			
-			var stem = '';
-			currentCount = count.shift();
-			var question = questions[currentCount - 1];
-
-
-			if(types[currentCount - 1] == 'MC') {
-
-				var answer = '';
-				var choices = question[1];
-				stem = question[0];
-				
-				QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
-					for(var i = 0; i < choices.length; i++) {
-
-						CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
-							// create choices for MC
-						});
-					}
-				});
-
-			} else if (types[currentCount - 1] == 'TF') {
-
-				stem = question[0];
-
-				QM.updateStem({ Stem : stem,
-				 				Question_ID : qid }, function(o) {
-					
-					if(question.length == 2) {
-						CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
-							// create choices for TF
-						});
-					}
-				});				
-
-			} else if (types[currentCount - 1] == 'FR') {
-
-				stem = question;
-				QM.updateStem({ Stem : stem,
-								Question_ID : qid }, function(o) { 
-					//do nothing
-				});
-
-			} else if (types[currentCount - 1] == 'N') {
-		
-				stem = question;
-				QM.updateStem({ Stem : stem,
-								Question_ID : qid }, function(o) { 
-					//do nothing
-				});
-			}
-		});
+		//types, questions, pollID, numb, count
+		newQuestionHelper(types, questions, request.param('Poll_ID'), i, count);
 	}
 	response.send(200);
 }
@@ -81,75 +27,27 @@ exports.postEditPoll = function(request, response) {
 	var types = request.param('questionType');
 	var questions = request.param('questions');
 	var pollData = request.param('pollData');
+	var questionIDs = request.param('questionIDs');
 	var count = [];
-	var currentCount;
 
 	PM.updatePollData({pollName: pollData[1], pollDescription: pollData[2], pollID : pollData[0]}, function(nothing) {
 
-		QM.deleteQuestions(pollData[0], function(done) {
 
-			for(var i = 0; i < types.length; i++) {
+		for(var i = 0; i < types.length; i++) {
+			
+			count.push(i + 1);
+			
+			if(i < questionIDs.length) {
 
-				count.push(i + 1);
+				//update question helper
+				updateQuestionHelper(questionIDs[i], types, questions[i], count);
 
-				QM.newQuestion({ Poll_ID : request.param('Poll_ID'),
-								 AType   : types[i],
-								 Order   : i + 1 }, function(qid) {
-					
-					var stem = '';
-					currentCount = count.shift();
-					var question = questions[currentCount - 1];
-
-
-					if(types[currentCount - 1] == 'MC') {
-
-						var answer = '';
-						var choices = question[1];
-						stem = question[0];
-						
-						QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
-							for(var i = 0; i < choices.length; i++) {
-
-								CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
-									// create choices for MC
-								});
-							}
-						});
-
-					} else if (types[currentCount - 1] == 'TF') {
-
-						stem = question[0];
-
-						QM.updateStem({ Stem : stem,
-						 				Question_ID : qid }, function(o) {
-							
-							if(question.length == 2) {
-								CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
-									// create choices for TF
-								});
-							}
-						});				
-
-					} else if (types[currentCount - 1] == 'FR') {
-
-						stem = question;
-						QM.updateStem({ Stem : stem,
-										Question_ID : qid }, function(o) { 
-							//do nothing
-						});
-
-					} else if (types[currentCount - 1] == 'N') {
-				
-						stem = question;
-						QM.updateStem({ Stem : stem,
-										Question_ID : qid }, function(o) { 
-							//do nothing
-						});
-					}
-				});
+			} else {
+				//types, question, pollID, numb, currentCount
+				newQuestionHelper(types, questions, request.param('Poll_ID'), i, count);
 			}
-			response.send(200);
-		});
+		}
+		response.send(200);
 	});
 
 }
@@ -162,7 +60,7 @@ exports.pollQuestion = function(request, response) {
 
 
 	FM.getQuestionSC(currentQID, sessionCode, function(questionData) {
-		console.log(questionData);
+		
 		if(questionData == 'question-doesnt-exist') {
 			response.redirect('/');
 		} else {
@@ -226,12 +124,124 @@ exports.presentPollQuestion = function(request, response) {
 	var pollID = request.param('Poll_ID');
 
 	FM.getQuestionPID(currentQID, pollID, function(questionData) {
-		console.log(questionData);
-		console.log(questionIDs);
+
 		if(questionData == 'question-doesnt-exist') {
 			response.redirect('/');
 		} else {
 			response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID, currentQID : currentQID.toString(), QuestionIDs : questionIDs}});
 		}
 	});
+}
+
+
+var newQuestionHelper = function(types, questions, pollID, numb, count) {
+
+	var currentCount;
+
+	QM.newQuestion({ Poll_ID : pollID,
+				 AType   : types[numb],
+				 Order   : numb + 1 }, function(qid) {
+		
+		var stem = '';
+		currentCount = count.shift();
+		var question = questions[currentCount - 1];
+
+
+		if(types[currentCount - 1] == 'MC') {
+
+			var answer = '';
+			var choices = question[1];
+			stem = question[0];
+			
+			QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
+				for(var i = 0; i < choices.length; i++) {
+
+					CM.createMCChoices({ Question_ID : qid, Order : numb+1, Answer : answer, Content : choices[i] }, function(err, results) {
+						// create choices for MC
+					});
+				}
+			});
+
+		} else if (types[currentCount - 1] == 'TF') {
+
+			stem = question[0];
+
+			QM.updateStem({ Stem : stem,
+			 				Question_ID : qid }, function(o) {
+				
+				if(question.length == 2) {
+					CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
+						// create choices for TF
+					});
+				}
+			});				
+
+		} else if (types[currentCount - 1] == 'FR') {
+
+			stem = question;
+			QM.updateStem({ Stem : stem,
+							Question_ID : qid }, function(o) { 
+				//do nothing
+			});
+
+		} else if (types[currentCount - 1] == 'N') {
+	
+			stem = question;
+			QM.updateStem({ Stem : stem,
+							Question_ID : qid }, function(o) { 
+				//do nothing
+			});
+		}
+	});
+}
+
+// need choice id
+var updateQuestionHelper = function(qid, types, question, count) {
+
+	var currentCount = count.shift();
+
+	if(types[currentCount - 1] == 'MC') {
+
+		var answer = '';
+		var choices = question[1];
+		var cids = question[2];
+		stem = question[0];
+		
+		QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
+			for(var i = 0; i < choices.length; i++) {
+
+				CM.updateContent({ Content : choices[i], Choice_ID : parseInt(cids[i])}, function(err, results) {
+					// create choices for MC
+				});
+			}
+		});
+
+	} else if (types[currentCount - 1] == 'TF') {
+
+		stem = question[0];
+
+		QM.updateStem({ Stem : stem,
+		 				Question_ID : qid }, function(o) {
+			
+			CM.updateContent({ Content : question[1], Choice_ID : question[2][0]}, function(results) {
+				//update choice for true false
+			});
+		});				
+
+	} else if (types[currentCount - 1] == 'FR') {
+
+		stem = question;
+		QM.updateStem({ Stem : stem,
+						Question_ID : qid }, function(o) { 
+			//do nothing
+		});
+
+	} else if (types[currentCount - 1] == 'N') {
+
+		stem = question;
+		QM.updateStem({ Stem : stem,
+						Question_ID : qid }, function(o) { 
+			//do nothing
+		});
+	}
 }
