@@ -2,13 +2,13 @@
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
-.navbar-inner, .navbar-inverse{
+.navbar-inverse .navbar-inner{
 	border-radius: 0 !important;
 	-moz-border-radius: 0 !important;
 	-webkit-border-radius: 0 !important;
 	-o-border-radius: 0 !important;	
-	background:#1b1b1b url('/img/bg.png');
-}
+	background-color:#333 !important;
+	}
 
 .navbar{
 	margin-bottom: 0px !important;
@@ -34,6 +34,68 @@
 	text-decoration: none;
 	border-bottom: 1px solid #b94a48;
 	
+}
+
+#social{
+	margin-top: 14px;
+}
+
+#social ul{
+	background: #fff;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+#social ul li{
+	display: inline-block !important;
+}
+
+
+#social ul li:not(:first-child){
+	padding: 12px;
+}
+#legal{
+	text-align: center;
+}
+
+#legal span{
+}
+
+#kind, #copy{
+	margin-left: 12px;
+	text-transform: uppercase;
+}
+
+#copy, #date, #rights{
+	font-size:13px !important;
+	letter-spacing: 2px;
+}
+
+#kind{
+	letter-spacing: 1px;
+	font-size: 16px !important;
+}
+
+#copy a{
+	letter-spacing: 1px;
+	text-transform: none;
+	color: #edeae3;
+	margin-left: 4px;
+	font-size: 14px;
+}
+
+#copy a:hover{
+	text-decoration: none;
+}
+
+#date, #rights{
+	display: inline-block;
+}
+
+#love{
+	display: inline-block;
+	margin: 0 6px 0 5px;
+	font-size: 18px !important;
 }
 
 #create_poll_body{
@@ -2084,6 +2146,27 @@ input[type="submit"]:active {
 		padding-top: 0px;
 	}
 	
+	#social ul li:not(:first-child){
+		padding: 0px;
+		display: inline-block;
+		width: auto;
+	}
+	
+	#social ul li:first-child{
+		position: relative;
+		top: -3px;
+	}
+	
+	#social ul li{
+		display: inline-block;
+		width: auto;
+		margin-right: 20px;
+	}
+	
+	#footer_content .span2{
+		margin-left: 12px;
+	}
+	
 }
 
 
@@ -2092,10 +2175,9 @@ input[type="submit"]:active {
 		top: -110px;
 	}
 	
-	#footer_content .span3{
-		width: 38%;
-		display: inline-block !important;
-		margin-left: 45px;
+	#footer_content .span2{
+		width: 40%;
+		display: inline-block;
 	}
 }
 
@@ -2104,6 +2186,12 @@ input[type="submit"]:active {
 @media screen and (max-width: 320px){
 	#session-code{
 		padding: 8px 20px;
+	}
+	
+	#social ul li{
+		display: inline-block;
+		width: auto;
+		margin-right: 13px;
 	}
 }
 @media screen and (max-width: 979px){

@@ -5,7 +5,7 @@ var verticalBars = function(dataset, json_loc) {
     var vertPadding = 25;   //Vertical padding (for the bottom of the SVG object)
     
     //SVG element creation
-    var svg = d3.select("#graph-display")
+    var svg = d3.select("#bar-display")
         .append("svg")
         .attr("width", w)
         .attr("height", h);
