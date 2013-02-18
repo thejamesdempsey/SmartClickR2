@@ -37,12 +37,19 @@
 }
 
 #social{
-	margin-top: 14px;
+	background: #fff;
+	border-radius: 4px;
+}
+
+#social h5{
+	color: #000;
+	margin-bottom: 0px;
+	padding-left: 10px;
 }
 
 #social ul{
 	background: #fff;
-	padding: 10px;
+	padding: 0 10px 10px 10px;
 	border-radius: 4px;
 }
 
@@ -2163,8 +2170,58 @@ input[type="submit"]:active {
 		margin-right: 20px;
 	}
 	
+	#footer_content .span2 h5{
+		font-size: 16px;
+	}
+	
+	#footer_content .span2 ul{
+		padding-bottom: 20px;
+		border-bottom: 1px solid #fff;
+	}
+	
+	div.span2.legal ul{
+		padding-bottom: 20px;
+		border-bottom: none !important;
+	}
+	
+	#footer_content .span2 a{
+		font-size: 15px;
+	}
+	
 	#footer_content .span2{
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+	
+	#footer_content .span2:not(:first-child){
+		padding-top: 8px;
+	}
+	#footer_content .span2 li{
+		padding: 8px 0;
+	}
+	#footer_content .span2 li a{
+		padding: 8px 0;
+	}
+	
+	#footer_content .span2 li a:hover{
+		text-decoration: none;
+	}
+	
+	footer{
+		padding: 8px 0px 20px 0px;
+	}
+	
+/*	#footer_content .span2{
 		margin-left: 12px;
+		width: 30%;
+		margin-bottom: 20px;
+		display: inline-block;
+		
+	}
+	
+	.legal{
+		position: relative;
+		top: -21px;*/
 	}
 	
 }
@@ -2176,7 +2233,6 @@ input[type="submit"]:active {
 	}
 	
 	#footer_content .span2{
-		width: 40%;
 		display: inline-block;
 	}
 }
@@ -2189,10 +2245,20 @@ input[type="submit"]:active {
 	}
 	
 	#social ul li{
+		margin-right: 13px;
+	}
+	
+/*	#social ul li{
 		display: inline-block;
 		width: auto;
 		margin-right: 13px;
 	}
+	
+	
+	#footer_content .span2{
+		width: 29%;
+		
+	}*/
 }
 @media screen and (max-width: 979px){
 

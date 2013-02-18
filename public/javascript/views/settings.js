@@ -1,10 +1,10 @@
-$(document).ready(function(){
-	$("#accountPasswordForm").ready(function() {
+$("#accountPasswordForm").ready(function(){
+	$(this).ready(function() {
 
 		$("#currentPassword").focus();	
 
 
-		$(this).submit(function(e){
+		$("#accountPasswordForm").submit(function(e){
 			e.preventDefault();
 
 			var pass = $('#currentPassword').val().trim();
@@ -21,10 +21,80 @@ $(document).ready(function(){
 						type 	: 'POST',
 						data 	: {"currentPassword": pass, "NewPassword": newpass, "reNewPassword": repass},
 						url  	: '/user/edit/' + id,
-						beforeSubmit : function(formData, jqForm, options){				
-										if (false == validateSettings($(this))) {
-											return false;
-										}
+						beforeSubmit : function(){
+							
+							var currentVal = $("#currentPassword").val();
+							var newVal 	   = $('#newPassword').val();
+							var repeatVal   = $('#reNewPassword').val();
+
+							if ( currentVal == '' && newVal == '' && repeatVal == '') {
+							 	format = '<div class="alert alert-error fade in">';
+								format += '<strong>Hmmmm.</strong> You didnt enter anything for us to change';
+								format += '</div>';
+								
+								$('#currentPassword').removeClass("input-error").addClass('input-error');
+								$('#newPassword').removeClass("input-error").addClass('input-error');
+								$('#reNewPassword').removeClass("input-error").addClass('input-error');
+
+
+								$("#passwordChangeLabel").after(format);
+								return false;
+
+							} else if(currentVal == '') {
+								
+								format = '<div class="alert alert-error fade in">';
+								format += '<strong>Yikes.</strong> You need to enter your current password';
+								format += '</div>';
+								
+								$('#currentPassword').removeClass("input-error").addClass('input-error');
+								$('#newPassword').removeClass("input-error");
+								$('#reNewPassword').removeClass("input-error");
+
+								$("#passwordChangeLabel").after(format);
+								return false;
+
+							} else if( newVal == '' ) {
+
+								format = '<div class="alert alert-error fade in">';
+								format += '<strong>Uh Oh.</strong> We need to know what to make your neww password';
+								format += '</div>';
+								
+								$('#currentPassword').removeClass("input-error");
+								$('#newPassword').removeClass("input-error").addClass('input-error');
+								$('#reNewPassword').removeClass("input-error");
+
+								$("#passwordChangeLabel").after(format);
+
+								return false;
+							} else if( repeatVal == '' ) {
+
+								format = '<div class="alert alert-error fade in">';
+								format += '<strong>Whoops</strong> For security reason we need you to enter your new password again';
+								format += '</div>';
+								
+								$('#currentPassword').removeClass("input-error");
+								$('#newPassword').removeClass("input-error");
+								$('#reNewPassword').removeClass("input-error").addClass('input-error');
+
+								$("#passwordChangeLabel").after(format);
+
+								return false;
+							} else if (newVal != repeatVal){
+								
+								format = '<div class="alert alert-error fade in">';
+								format += '<strong>Bummer</strong> These passwords do not match';
+								format += '</div>';
+								
+								$('#currentPassword').removeClass("input-error");
+								$('#newPassword').removeClass("input-error").addClass('input-error');
+								$('#reNewPassword').removeClass("input-error").addClass('input-error');
+
+								$("#passwordChangeLabel").after(format);
+
+								return false;
+							}
+
+								return true;
 						},
 						success	: function(data, status, xhr){
 							console.log(data)
@@ -64,79 +134,59 @@ $(document).ready(function(){
 
 	});
 
-
-	validateSettings = function($form) {
-		$form.find(".alert").hide();
-
-		isValid = true;
-
-		var currentVal = $("#currentPassword").val();
-		var newVal 	   = $('#newPassword').val();
-		var repeatVal   = $('#reNewPassword').val();
-
-		if ( currentVal == '' && newVal == '' && repeatVal == '') {
-
-			format  = '<div class="alert alert-error fade in">';
-			format += '<strong>Hmmmm.</strong> You didnt enter anything for us to change';
-			format += '</div>';
-
-			$('#currentPassword').removeClass("input-error").addClass('input-error');
-			$('#newPassword').removeClass("input-error").addClass('input-error');
-			$('#reNewPassword').removeClass("input-error").addClass('input-error');
+})
 
 
-			$("#passwordChangeLabel").after(format);
-			isValid = false;
-
-		} else if(currentVal == '') {
-
-			format  = '<div class="alert alert-error fade in">';
-			format += '<strong>Yikes!</strong> You entered in a new password but not the current one';
-			format += '</div>';
 
 
-			$('#currentPassword').removeClass("input-error").addClass('input-error');
-			$('#newPassword').removeClass("input-error");
-			$('#reNewPassword').removeClass("input-error");
 
-			$("#passwordChangeLabel").after(format);
-			isValid = false;
 
-		} else if( newVal == '' ) {
+$("#deleteAcct").ready(function(){
+	
+	$("#typeDelete").focus();	
+	
+	$("#deleteAcct").submit(function() {
+		if (false == validateDelete($(this))) {
+			return false;
+		}  
+	});
+		
+});
 
-			format = '<div class="alert alert-error fade in">';
-			format += 'We need to know what to make your new password';
-			format += '</div>';
 
-			$('#currentPassword').removeClass("input-error");
-			$('#newPassword').removeClass("input-error").addClass('input-error');
-			$('#reNewPassword').removeClass("input-error");
-
-			$("#passwordChangeLabel").after(format);
-			isValid = false;
-		} else if( repeatVal == '' ) {
-
-			format = '<div class="alert alert-error fade in">';
-			format += 'For security reasons we need you to repeat your new password';
-			format += '</div>';
-
-			$('#currentPassword').removeClass("input-error");
-			$('#newPassword').removeClass("input-error");
-			$('#reNewPassword').removeClass("input-error").addClass('input-error');
-
-			$("#passwordChangeLabel").after(format);
-
-			isValid = false;
-		} 
-
-		return isValid;
-
+validateDelete = function(){
+	
+	isValid = true;
+	
+	var input = $("#typeDelete").val().trim().toUpperCase();
+	
+	$("#deleteAcct").find("div.alert").hide();
+	
+	if ( input == '' ){
+		format = '<div class="alert alert-error fade in">';
+		format += "<strong>Since this cannot be undone we need you to type 'DELETE' to confirm this action.</strong>";
+		format += '</div>';
+		
+		$('#typeDelete').removeClass("input-error").addClass('input-error');
+		
+		$("#typeDelete").before(format);
+		
+		isValid = false;
 	}
-
-
-
-
-
+	
+	else if ( input != 'DELETE' ){
+		format = '<div class="alert alert-error fade in">';
+		format += "<strong>Yikes, </strong>you did not enter the word 'DELETE'.";
+		format += '</div>';
+		
+		$('#typeDelete').removeClass("input-error").addClass('input-error');
+		
+		$("#typeDelete").before(format);
+		
+		isValid = false;
+	}
+	
+	return isValid;
 	
 }
-)
+
