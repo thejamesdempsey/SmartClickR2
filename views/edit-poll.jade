@@ -45,10 +45,10 @@ block content
 					.span12
 						section#edit_content.dropshadow
 							section#poll_info
-								fieldset
+								fieldset.overlay
 									label(id="pollNameLabel",for="pollName") Poll Title  (required)
 									input(type="text", id="pollName", name="pollName", class="", value='#{locals.pdata.PollName}')
-								fieldset
+								fieldset.overlay
 									label(for="pollDescription") Poll Description
 									textarea(id="pollDescription", name="pollDescription") #{locals.pdata.PollDescription}
 								hr
@@ -147,7 +147,7 @@ block content
 									input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
 								.clear
 			hr
-		include extra/footer-main
+		include extra/footer-logged
 			
 	script(src="/javascript/views/edit-poll.js")	
 	script(src="/jquery.ui.effect-blind.js")

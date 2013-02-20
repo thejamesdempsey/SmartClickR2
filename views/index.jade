@@ -35,8 +35,10 @@ block content
 								h3 Got a session code?
 
 								form#top-search.form-inline(method="GET", action="/poll")
-									input(type="search", placeholder="Enter it here", id="index-top-input")
-									button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+									fieldset
+										//label(class="inline", for="index-top-input", style="top: 89px !important; left:49px !important; width: auto !important;") Enter it here
+										input(type="search", id="index-top-input", placeholder="Enter it here")
+										button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 								hr
 							.span7.img-contain
 								img(src="http://placehold.it/600x400", class="visible-desktop visible-phone")
@@ -53,7 +55,8 @@ block content
 							h3 Have a session code?
 
 							form#bottom-search.form-inline(method="GET", action="/poll")
-								input(type="search", placeholder="Enter it here", id="index-bottom-input")
+								label(class="inline", for="index-bottom-input", style="top: 89px !important; left:49px !important; width: auto !important; ") Enter it here
+								input(type="search", id="index-bottom-input")
 								button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 
 					.clear

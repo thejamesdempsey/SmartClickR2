@@ -62,14 +62,14 @@ block content
 										p This will delete your account and all the polls associated with your account. This action cannot be undone
 
 										// Delete Account Modal //
-										div(id="deleteAcctConfirm", class="modal hide fade", tabindex="-1", role="dialog", aria-labellby="deleteAcctLabel", aria-hidden="true", style="text-align: left")
+										div(id="deleteAcctConfirm", class="modal hide fade", tabindex="-1", role="dialog", aria-labellby="deleteAcctLabel",data-backdrop="static", aria-hidden="true", style="text-align: left")
 											form(id="deleteAcct", method='post', action='/user/delete/#{locals.udata.User_ID}')
 												div(class="modal-header")
 													button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
 													h5(id="deleteConfirmLabel") Are you sure you want to delete your account?
 													p This will remove your account, all polls associated with your account and cannot be undone
 												div(class="modal-body")
-													p To confirm please type the word 'DELETE' here:
+													p To confirm, please type the word 'DELETE' here:
 													input(id="typeDelete", type="text")
 												div(class="modal-footer")
 													button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel

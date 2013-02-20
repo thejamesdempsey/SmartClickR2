@@ -5,17 +5,22 @@ html
 		meta(name='viewport', content='width=device-width')
 		link(rel='stylesheet', type='text/css', href='/css/main.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/help.css', media='screen')
+		link(rel='stylesheet', type='text/css', href='/css/jquery-ui-1.9.2.custom.min.css')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.css', media='screen')
 
-
 		// Add Jquery //
 		script(type='text/javascript', src='http://code.jquery.com/jquery-latest.min.js')
+		
+		// Add Foundation Library //
 		script(type='text/javascript', src='/bootstrap/bootstrap.min.js')
 
-		
+		script(type='text/javascript', src='/javascript/sessionSearch.js')
+
 		script(type="text/javascript", src='/less.js')
-		
+
+
+		script(type="text/javascript", src="http://malsup.github.com/jquery.form.js")
 		noscript
 			div(id="no-js", class="modal") 
 				div(class="modal-header")
@@ -25,5 +30,6 @@ html
 				div(class="modal-footer")
 					a(href="http://www.enable-javascript.com", target="_blank")  This article can tell you why Javascript is important and how to turn it on
 			div(class="modal-backdrop")
-	body
+	
+	body#help-body
 		block content

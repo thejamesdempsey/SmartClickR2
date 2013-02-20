@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
 validateUserSearch = function($form) {
-	$form.find(".alert").hide();
+	$('#index-session').find("div.alert").hide();
 
 	isValid = true;
 		
@@ -23,11 +23,18 @@ validateUserSearch = function($form) {
 	
 	if ( sessionCode == '' ) {	
 				
-		format  = '<div id="alert-bottom" class="alert alert-error fade in">';
+		format = '<div class="alert alert-error">';		
 		format += '<strong>No session code?</strong> We dont have anything to search.';
 		format += '</div>';
 		
-		$("#index-session").after(format);
+		err = 'Please enter a session code.';
+		
+		$("#index-search").addClass("error-border");
+		$("label[for='index-search']").text(err).addClass("error");
+		
+		
+		
+		// $("index-search").focus(format.hide());		
 		
 		isValid = false;
 	} 

@@ -1,5 +1,9 @@
+
+
 $(document).ready(function() {
 	getQuote();
+	
+	$("label.infield").inFieldLabels();
 });
 
 

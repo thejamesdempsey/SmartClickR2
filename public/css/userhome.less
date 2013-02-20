@@ -6,6 +6,8 @@
 @offwhite: #f0f0f0;
 @blue: #4c8ab0;
 
+@error:#b94a48;
+
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
@@ -47,6 +49,12 @@ body{
 	padding: 3px 2px 0px 2px !important
 }
 
+.alert{
+	float: right;
+	text-align: left;
+	width: 79%;
+}
+
 h2{
 	font-weight: 300 !important;
 }
@@ -55,9 +63,23 @@ h4{
 	color: #fff !important;
 }
 
+.error{
+	color:@error !important; 
+}
+
+label.inline.supported.empty.error.focus{
+	color: lighten(@error, 30%) !important;
+}
+
+.error-border{
+	border: 2px solid #b94a48 !important;
+}
+
 #search_polls{
 	padding: 8px;
 }
+
+
 
 #user_hello{
 	color: #fff;
@@ -97,6 +119,8 @@ h4{
 #user_search{
 	padding: 0;
 }
+
+
 #search_polls{
 	font-size: 16px;
 	float:left;
@@ -121,6 +145,21 @@ input[type="search"]{
 	height: 10px;
 }
 
+
+form p { position:relative }
+
+#search-container{
+	position: relative;
+	padding: 0;
+	
+}
+#index-session label  { 
+	position:absolute; 
+	top:10px; 
+	left:127px;
+	cursor: text;
+	pointer-events:none;
+}
 
 #alt-actions a{
 	background:#46bcd2;
@@ -397,6 +436,7 @@ article#no_polls h1{
 
 input#index-search{
 	padding: 8px;
+	font-size: 18px;
 }
 
 #index-search{
@@ -612,6 +652,7 @@ input#index-search{
 		text-align: center !important;
 	}
 
+
 	
 }
 
@@ -644,6 +685,15 @@ input#index-search{
 		margin-top: 0px !important;
 	}
 	
+	#index-session button.btn.btn-info, input#index-search{
+		float: left;
+	}
+	
+	#index-session input[type="search"]{
+		width: 60%;
+		float: left;
+	}
+	
 		
 
 }
@@ -670,9 +720,6 @@ input#index-search{
 }
 
 @media screen and (max-width: 670px){
-	#index-session input[type="search"]{
-		width: 60%;
-	}
 	
 	#index-session{
 		text-align: left;
@@ -706,7 +753,7 @@ input#index-search{
 	
 	#index-session input[type="search"]{
 		width: 60%;
-		text-align: center;
+		text-align: left;
 	}
 	
 	#create_button{
