@@ -1,3 +1,7 @@
+.navbar-fixed-top, .navbar-fixed-bottom{
+	z-index: 2000 !important;
+}
+
 body{
 	background: #eee url('/img/noise.png') !important;
 	
@@ -32,24 +36,24 @@ body{
 
 .overlay{
 	z-index: 1006;
-	border:solid 2px rgba(56, 66, 71, 0.75);
+	border:solid 2px #B2B0AC;
 }
-#close-circle{
+
+span.close-circle{
 	float: right;
 	position: relative;
 	top: -104px;
 	left: 27px;
 	background: #edeae3;
 	padding: 8px;
-	/*border: solid 2px rgba(56, 66, 71, 0.75);*/
 	border-radius: 50%;
 	width: 36px;
 	height: 36px;
 	display: block;
-	border:solid 2px rgba(56, 66, 71, 0.75);
+	border:solid 2px #B2B0AC;
 }
 
-#close-circle button.close{
+span.close-circle button.close{
 	position: absolute;
 	left: 8px;
 	top: 2px;
@@ -58,7 +62,7 @@ body{
 	z-index: 2000;
 }
 
-#close-bg{
+span.close-bg{
 	position: absolute;
 	background: #fff;
 	background: #edeae3;

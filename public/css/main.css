@@ -1518,24 +1518,24 @@ a.red:hover{
 /* Create Poll Page */
 .overlay{
 	z-index: 1006;
-	border:solid 2px rgba(56, 66, 71, 0.75);
+	border:solid 2px #B2B0AC;
 }
-#close-circle{
-	float: right;
+
+span.close-circle{
+	float: right !important;
 	position: relative;
 	top: -104px;
 	left: 27px;
 	background: #edeae3;
 	padding: 8px;
-	/*border: solid 2px rgba(56, 66, 71, 0.75);*/
 	border-radius: 50%;
 	width: 36px;
 	height: 36px;
 	display: block;
-	border:solid 2px rgba(56, 66, 71, 0.75);
+	border:solid 2px #B2B0AC;
 }
 
-#close-circle button.close{
+.close-circle button.close{
 	position: absolute;
 	left: 8px;
 	top: 2px;
@@ -1544,7 +1544,7 @@ a.red:hover{
 	z-index: 2000;
 }
 
-#close-bg{
+.close-bg{
 	position: absolute;
 	background: #fff;
 	background: #edeae3;

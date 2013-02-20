@@ -55,9 +55,12 @@ block content
 							section#question_container
 								each question, i in locals.qdata
 									if question.AnswerType == "MultipleChoice"
-										article(class='question_wrap clearfix', id='multipleChoice_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix overlay', id='multipleChoice_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											h3 Multiple Choice
+											span(class='close-circle')
+												button(type='button', class='close') &times;
+												span(class='close-bg')
 											textarea(class='textarea_small') #{question.Stem}
 											.top-pad
 											fieldset.span6
@@ -89,10 +92,13 @@ block content
 												label.radio Correct Answer
 													input(type='radio', name='correct_anwer')	
 									else if question.AnswerType == "TrueFalse"	
-										article(class='question_wrap clearfix', id='trueFalse_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix overlay', id='trueFalse_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											input(type='hidden', class='choice_id', value='#{question.Choices[0].Choice_ID}')
 											h3 True/False
+											span(class='close-circle')
+												button(type='button', class='close') &times;
+												span(class='close-bg')
 											textarea(class='textarea_small') #{question.Stem}	
 											.top-pad
 											fieldset.span4
@@ -114,16 +120,22 @@ block content
 													else
 														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 									else if question.AnswerType == "FreeResponse"
-										article(class='question_wrap clearfix', id='freeResponse_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix overlay', id='freeResponse_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											h3 Free Response
+											span(class='close-circle')
+												button(type='button', class='close') &times;
+												span(class='close-bg')
 											fieldset
 												textarea(class='fr_response', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 											hr
 									else if question.AnswerType == "Numeric"
-										article(class='question_wrap clearfix', id='numeric_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix overlay', id='numeric_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											h3 Numeric Free Response
+											span(class='close-circle')
+												button(type='button', class='close') &times;
+												span(class='close-bg')
 											fieldset
 												textarea(class='numeric', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 											hr

@@ -158,11 +158,11 @@ $(document).ready(function() {
 		var format = "<article class='question_wrap overlay' id='multipleChoice_question" + counter + "'>";
 		
 		format += "<h3>Multiple Choice</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
 		format += "</button>";
-		format += "<span id='close-bg'></span>"
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
 		format += "<div class='top-pad'>"
@@ -217,11 +217,11 @@ $(document).ready(function() {
 		var format = "<article class='question_wrap overlay' id='trueFalse_question" + counter + "'>";
 		
 		format += "<h3>True/False</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
-		format += "<span id='close-bg'></span>"
 		format += "</button>";
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
 		format += "<div class='top-pad'>"
@@ -258,11 +258,11 @@ $(document).ready(function() {
 		var format = "<article class='question_wrap overlay' id='freeResponse_question" + counter + "'>";
 		
 		format += "<h3>Free Response</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
-		format += "<span id='close-bg'></span>"
 		format += "</button>";
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-"+counter+"' cols='30' rows='5' placeholder='What would you like to ask?' />";
@@ -284,11 +284,11 @@ $(document).ready(function() {
 		var format = "<article class='question_wrap overlay' id='freeResponseNumeric_question" + counter + "'>";
 
 		format += "<h3>Numeric Free Response</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
 		format += "</button>";
-		format += "<span id='close-bg'></span>"
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-" + counter + "' cols='30' rows='5' placeholder='What would you like to ask?' />";

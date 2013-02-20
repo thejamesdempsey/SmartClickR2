@@ -2,24 +2,106 @@
 extends layout_help
 
 block content
-	// Header Content //
-	include extra/nav-main
+	body#signup-body
+	header(class="navbar navbar-inverse navbar-fixed-top")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/") 
+					| SmartClickR
+					span  Help
+				div(class="nav-collapse", style="")
+					ul(class="nav pull-right")
+						li
+							a(id="home", href="/") Home
 	#main-content
 		article#help_hero
 			.container
 				.span12
+					.top-pad.hidden-phone
 					h2 Help Center
 			hr
 		section#content_container
 			.container
 				.row-fluid
-					.backdrop.dropshadow				
-						section#help_content
-							div#content.pad
-								#sub-title
-									p We are working on creating a top notch help center so we can help you create surverys more quickly. Check back soon to see our progress. In the meantime you can contact us directly to have your questions answered
-									p Or you can check out this awesome youtube clip
-									iframe(width="560", height="315", src="http://www.youtube.com/embed/5_sfnQDr1-o", frameborder="0", allowfullscreen )
+					.backdrop.dropshadow
+						section#help-main
+							div#help_content.clearfix.help-pad
+								section#help-search
+									form.form-inline
+										fieldset.search-outer
+											label(class="inline", for="help-search-input", style="width: auto !important; top: 10px!important; left: 8px !important") Have a question? Ask it here
+											input(type="search", id="help-search-input")
+											button(type="submit", class="medium btn-info btn") Search
+								hr.line
+								section#help-started.clearfix
+									div#new-into.span8
+										h3 New to SmartClickR?
+										p Starting something new can be intimidating -- we understand. Thats why we've created this help center to guide you through the process of creating polls and getting feedback
+									div#new-sections.span4
+								hr.line
+								div#help-sub.clearfix
+									section#help-more.span9
+										ul.thumbnails
+											li#starting.span6
+												h4 Getting Started
+												ol
+													li
+														a(href="#") The Basics
+													li
+														a(href="#") Get to Know Your Home
+											hr.line.visible-phone
+											li#tips.span6
+												h4 Tricks & Tips
+												ol
+													li
+														a(href="#") The Basics
+													li
+														a(href="#") Get to know you Home
+											hr.line
+											li#types.span6
+												h4 Question Types
+												ol
+													li
+														a(href="#") The Basics
+													li
+														a(href="#") Get to know you Home
+											hr.line.visible-phone
+											li#presenting.span6
+												h4 Presentation
+												ol
+													li
+														a(href="#") The Basics
+													li
+														a(href="#") Get to know you Home
+											hr.line
+											li#responding.span6
+												h4 Responses
+												ol
+													li
+														a(href="#") The Basics
+													li
+														a(href="#") Get to know you Home
+											hr.line.visible-phone
+											li#account.span6
+												h4 My Account
+												ol
+													li
+														a(href="#") The Basics
+													li
+														a(href="#") Get to know you Home
+									section#help-side.span3.clearfix
+										p#help-contact If you have an issue or just a quick question, feel free to ask. We promise to get to your issue as soon as we can!
+										p#help-btn
+											button(class="large btn-success btn") Ask a Question
+										hr
+										p#help-tweets
+											h4 Follow Our Tweets
+											ul.tweet-list							
+									
 	// Footer Content //
 	footer
 		#footer_container.container

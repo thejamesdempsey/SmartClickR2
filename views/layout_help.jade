@@ -5,7 +5,7 @@ html
 		meta(name='viewport', content='width=device-width')
 		link(rel='stylesheet', type='text/css', href='/css/main.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/help.css', media='screen')
-		link(rel='stylesheet', type='text/css', href='/css/jquery-ui-1.9.2.custom.min.css')
+		link(rel='stylesheet', type='text/css', href='/css/inline-labels.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.css', media='screen')
 
@@ -15,11 +15,12 @@ html
 		// Add Foundation Library //
 		script(type='text/javascript', src='/bootstrap/bootstrap.min.js')
 
-		script(type='text/javascript', src='/javascript/sessionSearch.js')
-
 		script(type="text/javascript", src='/less.js')
 
-
+		script(src="/inline-labels.js", type="text/javascript", charset="utf-8")
+		script(src="/javascript/tweets.js")
+		//script(src="https://api.twitter.com/1/statuses/user_timeline/thejamesdempsey.json?callback=twitterCallback2&count=3", type="text/javascript")
+		
 		script(type="text/javascript", src="http://malsup.github.com/jquery.form.js")
 		noscript
 			div(id="no-js", class="modal") 
@@ -33,3 +34,4 @@ html
 	
 	body#help-body
 		block content
+		

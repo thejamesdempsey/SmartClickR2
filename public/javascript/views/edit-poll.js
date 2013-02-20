@@ -153,53 +153,53 @@ $(document).ready(function() {
 	$('#multipleChoiceBtn').click(function() {
 		//$('ol.poll-grid').hide("blind", "slow");
 		
-		var format = "<article class='question_wrap overlay' id='multipleChoice_question" + counter + "'>";
+		var format = "<article id='multipleChoice_question" + counter + "' class='question_wrap overlay'>";
 		
 		format += "<h3>Multiple Choice</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
 		format += "</button>";
-		format += "<span id='close-bg'></span>"
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
-		format += "<div class='top-pad'>"
-		format += "</div>"
+		format += "<div class='top-pad'>";
+		format += "</div>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>a)</span>";
-		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-1' placeholder='I am a possible answer'/>"
-		format += "<div class='clear'></div>"
-		format += "<label class='radio'>"
-		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
-		format += "</label>"
+		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-1' placeholder='I am a possible answer'/>";
+		format += "<div class='clear'></div>";
+		format += "<label class='radio'>";
+		format += "Correct Answer";
+		format += "<input type='radio' name='correct_answer' />";
+		format += "</label>";
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>b)</span>";
-		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-2' placeholder='I am another possible answer'/>"
-		format += "<div class='clear'></div>"
-		format += "<label class='radio'>"
-		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
-		format += "</label>"
+		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-2' placeholder='I am another possible answer'/>";
+		format += "<div class='clear'></div>";
+		format += "<label class='radio'>";
+		format += "Correct Answer";	
+		format += "<input type='radio' name='correct_answer' />";
+		format += "</label>";
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>c)</span>";
-		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-3' placeholder='Yet another possible answer'/>"
-		format += "<div class='clear'></div>"
-		format += "<label class='radio'>"
-		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-3' placeholder='Yet another possible answer'/>";
+		format += "<div class='clear'></div>";
+		format += "<label class='radio'>";
+		format += "Correct Answer";
+		format += "<input type='radio' name='correct_answer' />";
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
 		format += "<span>d)</span>";
-		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-4' placeholder='Im just like all the others...'/>"
-		format += "<div class='clear'></div>"
-		format += "<label class='radio'>"
-		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
-		format += "</label>"
+		format += "<input type='text' class='mc_response' name='question-"+counter+"_response-4' placeholder='Im just like all the others...'/>";
+		format += "<div class='clear'></div>";
+		format += "<label class='radio'>";
+		format += "Correct Answer";	
+		format += "<input type='radio' name='correct_answer' />";
+		format += "</label>";
 		format += "</fieldset>";
 		format += "<hr>";
 		
@@ -212,35 +212,35 @@ $(document).ready(function() {
 	$('#trueFalseBtn').click(function() {
 		//$('ol.poll-grid').hide("blind", "slow");
 		
-		var format = "<article class='question_wrap overlay' id='trueFalse_question" + counter + "'>";
+		var format = "<article id='trueFalse_question" + counter + "' class='question_wrap overlay' >";
 		
 		format += "<h3>True/False</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
 		format += "</button>";
-		format += "<span id='close-bg'></span>"
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<textarea class='textarea_small' placeholder='What would you like to ask?' />";
-		format += "<div class='top-pad'>"
-		format += "</div>"
+		format += "<div class='top-pad'>";
+		format += "</div>";
 		format += "<fieldset class='four columns'>";
-		format += "<label class='radio'>"
-		format += "True"	
-		format += "<input type='radio' name='correct_answer' />"
-		format += "</label>"
-		format += "</fieldset>"
-		format += "<fieldset class='four columns'>";
-		format += "<label class='radio'>"
-		format += "False"	
-		format += "<input type='radio' name='correct_answer' />"
-		format += "</label>"
+		format += "<label class='radio'>";
+		format += "True";	
+		format += "<input type='radio' name='correct_answer' />";
+		format += "</label>";
 		format += "</fieldset>";
 		format += "<fieldset class='four columns'>";
-		format += "<label class='radio'>"
-		format += "No correct answer"	
-		format += "<input type='radio' name='correct_answer' />"
-		format += "</label>"
+		format += "<label class='radio'>";
+		format += "False";	
+		format += "<input type='radio' name='correct_answer' />";
+		format += "</label>";
+		format += "</fieldset>";
+		format += "<fieldset class='four columns'>";
+		format += "<label class='radio'>";
+		format += "No correct answer";	
+		format += "<input type='radio' name='correct_answer' />";
+		format += "</label>";
 		format += "</fieldset>";
 		format += "<hr>";
 		
@@ -253,14 +253,14 @@ $(document).ready(function() {
 	$('#freeResponseBtn').click(function() {
 		//$('ol.poll-grid').hide("blind", "slow");
 		
-		var format = "<article class='question_wrap overlay' id='freeResponse_question" + counter + "'>";
+		var format = "<article id='freeResponse_question" + counter + "' class='question_wrap overlay'>";
 		
 		format += "<h3>Free Response</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
 		format += "</button>";
-		format += "<span id='close-bg'></span>"
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-"+counter+"' cols='30' rows='5' placeholder='What would you like to ask?' />";
@@ -279,14 +279,14 @@ $(document).ready(function() {
 	$('#freeResponseNumericBtn').click(function() {
 		//$('ol.poll-grid').hide("blind", "slow");
 		
-		var format = "<article class='question_wrap overlay' id='freeResponseNumeric_question" + counter + "'>";
+		var format = "<article id='freeResponseNumeric_question" + counter + "' class='question_wrap overlay''>";
 
 		format += "<h3>Numeric Free Response</h3>";
-		format += "<span id='close-circle'>";
+		format += "<span class='close-circle'>";
 		format += "<button type='button', class='close'>";
 		format += "&times";
 		format += "</button>";
-		format += "<span id='close-bg'></span>"
+		format += "<span class='close-bg'></span>";
 		format += '</span>';
 		format += "<fieldset>";
 		format += "<textarea class='fr_response' name='question-" + counter + "' cols='30' rows='5' placeholder='What would you like to ask?' />";
