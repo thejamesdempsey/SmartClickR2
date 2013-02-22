@@ -4,13 +4,17 @@ html
 		title= title
 		meta(name='viewport', content='width=device-width')
 		link(rel='stylesheet', type='text/css', href='/css/main.css', media='screen')
-		link(rel='stylesheet', type='text/css', href='/css/contact.css', media='screen')
+		link(rel='stylesheet', type='text/css', href='/css/legal.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.css', media='screen')
 
 
 		// Add Jquery //
 		script(type='text/javascript', src='http://code.jquery.com/jquery-latest.min.js')
+		script(type='text/javascript', src='/bootstrap/bootstrap.min.js')
+
+		
+		script(type="text/javascript", src='/less.js')
 		noscript
 			div(id="no-js", class="modal") 
 				div(class="modal-header")
@@ -21,5 +25,6 @@ html
 					a(href="http://www.enable-javascript.com", target="_blank")  This article can tell you why Javascript is important and how to turn it on
 			div(class="modal-backdrop")
 		
-	body#contact-body
-		block content
+	body
+	block content
+	

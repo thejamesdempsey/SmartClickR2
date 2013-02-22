@@ -1,6 +1,6 @@
  
  
-extends layout_blog
+extends layout_contact
 
 block content
 	// Header Content //
@@ -10,49 +10,70 @@ block content
 		article#user_hero
 			.container
 				.span12
-					h2 Contact Us
+					h2 Need to Get in Touch?
 			hr
 		section#content_container
 			.container
-				.row
+				.row-fluid
 					.span12					
-						section#user_content
+						section#user_content.clearfix
 							div#content.pad
 								#sub-title
-										p We are busy busy busy
+									h4
+										span.add-on
+											i(class="icon-envelope") 
+										| Say Hello! We'd love to hear from you
+									form#contact-us.span9
+										fieldset.field
+											span
+												label(for="yourName") Your Full Name (required)
+												input(type="text", id="yourName")
+											span
+												label(for="yourEmail") Your Email Address (required)
+												input(type="text", id="yourEmail")
+											span
+												label(for="topicSelect") Topic
+												select(id="topicSelect")
+													option(value="General") General Questions
+													option(value="Billing") Billing Issues
+													option(value="Feedback") Feedback and Suggestions 
+											span
+												label(for="yourSubject") Subject (required)
+												input(type="text", id="yourSubject")
+											span
+												label(for="yourMessage") Message (required)
+												textarea(id="yourMessage")
+											span.span5
+												h5 File Attachment
+												input(type="file")
+											span.span6.send-btn
+												button(type="submit", class="btn btn-info btn-large") Send your message
+									section#contact-side.span3
+										article#mail.field
+											h4 Snail Mail
+											p 
+												| SmartClickR 
+												br
+												| Attn: Brad Fisher
+												br
+												| 123 Fun Street
+												br
+												| Harrisonburg, VA, 22801
+											p
+												| P.S. We &hearts; baked goods.
+										article#facebook.field
+											h4 Facebook
+											p
+												| Stay up to date with all the latest news on features, customer testimonials and more.
+												a(href="#") Like Team SmartClickR &rarr;
+										article#twitter.field
+											h4 Twitter
+											p 
+												| Follow along with all our latest updates and the occasional retweet.
+												a(href="#") Follow @SmartClickR &rarr;
+
+											
 
 		.clear
 		// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms Of Service
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
+	include extra/footer-main

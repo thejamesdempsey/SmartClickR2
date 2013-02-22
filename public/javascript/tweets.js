@@ -1,6 +1,6 @@
 // Display Latest Tweet  
 $(document).ready(function(){  
-	$.getJSON("https://api.twitter.com/1/statuses/user_timeline/thejamesdempsey.json?count=3&include_rts=1&callback=?", function(data) {
+	$.getJSON("https://api.twitter.com/1/statuses/user_timeline/thejamesdempsey.json?count=2&include_rts=1&callback=?", function(data) {
 		for (var i=0; i<data.length; i++){
 		    var username = data[i].user.screen_name;
 		    var status = data[i].text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url) {

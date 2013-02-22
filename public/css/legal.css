@@ -1,0 +1,76 @@
+.tabs-left > .nav-tabs{
+	border: 0px;
+	min-height: 400px;
+	width: 180px;
+	border-right: 1px solid #d2d0ca !important;
+	
+}
+
+.tabs-left > .nav-tabs > li{
+	border-top: 1px solid #d2d0ca !important;
+	border-bottom: 1px solid #d2d0ca !important;
+}
+
+.tabs-left > .nav-tabs > li > a{
+	border-radius: 0px !important;
+	border-left: 0px !important;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover{
+	color: #4c8ab0 !important;
+	
+}
+.tabs-left > .nav-tabs > .active > a, .nav-tabs > .active > a:hover{
+	border-top: 0px !important;
+	border-bottom: 0px !important;
+}
+
+.arrow{
+	float: right;
+}
+
+hr.line{
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	visibility: visible;
+}
+
+
+ol{
+	margin-left: 0px !important;
+	
+}
+#terms li{
+	background:#edeae3;
+	padding: 10px 30px;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+#terms h3{
+
+	font-weight: 300;
+}
+
+#terms p{
+	font-size: 0.88rem;
+	font-weight: 400;
+}
+
+ol li{
+	list-style-type: decimal;
+}
+
+li ol{
+	counter-reset: item;
+	list-style-type: lower-roman;
+}
+
+@media screen and (min-width:767px){
+	#terms h3{
+		line-height: 20px;
+		margin-top: 0px;
+	}
+}

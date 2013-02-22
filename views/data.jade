@@ -18,43 +18,22 @@ block content
 						section#user_content
 							div#content.pad
 								#sub-title
-										p We are working on creating a center where we can show general data we have gathered. This will not violate your privacy but mearly show trends about usage of our service 
-
+									h3 Overview
+									p Accounts Created:
+									p Average Age of Users:
+									p Gender: 
+									hr.line
+									h3 Polls
+									p Total Polls Created
+									p Questions Created
+									hr.line
+									h3 Responses
+									p Total Responses
+									hr.line
+									h3 Polls
 		.clear
 	//end hero_content
 					.clear
 					
 	// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms Of Service
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
+	include extra/footer-main

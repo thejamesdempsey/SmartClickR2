@@ -28,7 +28,7 @@ hr.line{
 }
 
 .top-pad{
-	padding-top: 32px;
+	padding-top: 56px;
 }
 
 .help-pad{
@@ -46,6 +46,10 @@ hr.line{
 	border-radius: 6px;
 }
 
+#help-search label{
+	text-transform: uppercase;
+}
+
 #help-search input, #help-search button{
 	float: left;
 }
@@ -58,6 +62,7 @@ hr.line{
 
 #help-search .btn{
 	padding: 9px 12px;
+	text-transform: uppercase;
 }
 
 #help-started h3{
@@ -96,10 +101,11 @@ hr.line{
 #help-side{
 	padding-top: 10px;
 	font-size: 1.0rem;
+	padding: 8px;
 }
 
-#help-side p{
-	font-size: 1.0rem;	
+#help-side p, .username, .hashtag{
+	font-size: 0.9rem;	
 }
 
 .tweet-list li{
@@ -110,6 +116,10 @@ hr.line{
 	font-size: 0.8rem;
 }
 
+
+#help-btn a{
+	color: #fff;
+}
   #twitter_t      
               {
    width: 445px;
@@ -160,11 +170,11 @@ hr.line{
 
 @media screen and (min-width:767px){
 	#help-search button{
-		width:12%;
-		margin-left: 2%;
+		width:14%;
+		margin-left: 0.75%;
 	}
 	#help-search input{
-		width: 84%;
+		width: 83%;
 	}	
 	
 }
@@ -177,4 +187,22 @@ hr.line{
 	#help-search input{
 		width: 84%;
 	}
+}
+
+@media screen and (max-width: 767px){
+	#help-search button{
+		width:auto;
+		margin-top: 10px;
+		display: block;
+	}
+	
+	#help-search input{
+		width: 96%;
+		display: block;
+	}
+	
+	.help-pad{
+		padding: 16px;
+	}
+	
 }

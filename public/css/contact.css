@@ -1,0 +1,116 @@
+#contact-body{
+	background: #eee url('/img/noise.png');
+	
+}
+
+#contact-body h2{
+	color: #fff !important;
+}
+
+#user_hero{
+	padding-bottom: 50px;
+}
+
+#user_content{
+	top: -86px;
+}
+
+
+#legal{
+	color: #000;
+}
+.field{
+	background:#edeae3;
+	display: block;
+	padding: 12px;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.add-on{
+	margin: 0px 6px 0px 0px;
+	background:#edeae3;
+	padding: 4px 8px;
+	border-radius: 4px;
+
+}
+
+.add-on .icon-envelope{
+	margin-top: 3px !important;
+	background-repeat: repeat !important;
+	background-image:url("/img/glyphicons-halflings.png") !important;
+}
+
+#sub-title h4{
+	color: #000 !important;
+	font-weight: 300;
+	padding-bottom: 20px;
+}
+
+#contact-us{
+	margin-left: 0px;
+}
+
+#contact-us input, #contact-us textarea{
+	width: 100%;
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+#contact-us select{
+	display: block;
+}
+
+#contact-us input[type="file"]{
+	padding: 0px;
+}
+
+#contact-us .send-btn{
+	text-align: right;
+	padding:30px 0px 12px 12px;
+}
+
+
+#contact-us span{
+	display: block;
+	padding: 12px;
+}
+
+#contact-us input{
+	padding: 16px 6px;
+	
+}
+
+#contact-us textarea{
+	resize: none;
+	padding: 10px 8px;
+	height: 200px;
+}
+
+#contact-side article h4,#contact-us h5{
+	color: #555555 !important;
+	font-weight: 300 ;
+	padding-bottom: 0px;
+}
+
+#mail a, #facebook a, #twitter a{
+	display: block;
+	color:#4c8ab0 !important;
+	margin-top: 8px;
+}
+
+#contact-side p{
+	font-size: 0.8rem;
+}
+
+#contact-body #legal #copy,#contact-body #legal #kind {
+	display: block;
+	padding: 4px;
+}
+
+#contact-body #legal #copy a{
+	color: #555555;
+}
+

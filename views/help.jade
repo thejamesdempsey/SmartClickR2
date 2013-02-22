@@ -6,24 +6,27 @@ block content
 	header(class="navbar navbar-inverse navbar-fixed-top")
 		.navbar-inner
 			.container
-				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
-					span(class="icon-bar")
-					span(class="icon-bar")
-					span(class="icon-bar")
-				a(class="brand", href="/") 
-					| SmartClickR
-					span  Help
-				div(class="nav-collapse", style="")
-					ul(class="nav pull-right")
-						li
-							a(id="home", href="/") Home
+				.row-fluid
+				
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/") 
+						| SmartClickR
+						span  Help Center
+					div(class="nav-collapse", style="")
+						ul(class="nav pull-right")
+							li
+								a(id="home", href="/") Home
 	#main-content
 		article#help_hero
 			.container
-				.span12
-					.top-pad.hidden-phone
-					h2 Help Center
-			hr
+				.row-fluid
+					.span12
+						.top-pad.hidden-phone
+						h2 We're here for you.
+				hr
 		section#content_container
 			.container
 				.row-fluid
@@ -33,12 +36,13 @@ block content
 								section#help-search
 									form.form-inline
 										fieldset.search-outer
-											label(class="inline", for="help-search-input", style="width: auto !important; top: 10px!important; left: 8px !important") Have a question? Ask it here
+											label(class="inline hidden-phone", for="help-search-input", style="width: auto !important; top: 10px!important; left: 8px !important") Have a question? Ask it here
+											label(class="inline display-phone", for="help-search-input", style="width: auto !important; top: 10px!important; left: 8px !important") Have a question? 
 											input(type="search", id="help-search-input")
 											button(type="submit", class="medium btn-info btn") Search
 								hr.line
 								section#help-started.clearfix
-									div#new-into.span8
+									div#new-into.span12
 										h3 New to SmartClickR?
 										p Starting something new can be intimidating -- we understand. Thats why we've created this help center to guide you through the process of creating polls and getting feedback
 									div#new-sections.span4
@@ -50,92 +54,66 @@ block content
 												h4 Getting Started
 												ol
 													li
-														a(href="#") The Basics
+														a(href="#") The Basics of SmartClickR
 													li
-														a(href="#") Get to Know Your Home
+														a(href="#") Get to Know the Command Center
 											hr.line.visible-phone
 											li#tips.span6
 												h4 Tricks & Tips
 												ol
 													li
-														a(href="#") The Basics
+														a(href="#") Editing your Polls
 													li
-														a(href="#") Get to know you Home
+														a(href="#") Poll Creation Process
 											hr.line
 											li#types.span6
 												h4 Question Types
 												ol
 													li
-														a(href="#") The Basics
+														a(href="#") Multiple Choice
 													li
-														a(href="#") Get to know you Home
+														a(href="#") True/False
+													li
+														a(href="#") Free Response - Text
+													li
+														a(href="#") Free Response - Numeric
 											hr.line.visible-phone
 											li#presenting.span6
 												h4 Presentation
 												ol
 													li
-														a(href="#") The Basics
+														a(href="#") Get the Word Out
 													li
-														a(href="#") Get to know you Home
+														a(href="#") Collect Responses
+													li
+														a(href="#") Visualization Tools
 											hr.line
 											li#responding.span6
 												h4 Responses
 												ol
 													li
-														a(href="#") The Basics
+														a(href="#") Session Codes
 													li
-														a(href="#") Get to know you Home
+														a(href="#") Data Analyzation
 											hr.line.visible-phone
 											li#account.span6
 												h4 My Account
 												ol
 													li
-														a(href="#") The Basics
+														a(href="#") Password Changes
 													li
-														a(href="#") Get to know you Home
+														a(href="#") Billing Issues
 									section#help-side.span3.clearfix
 										p#help-contact If you have an issue or just a quick question, feel free to ask. We promise to get to your issue as soon as we can!
 										p#help-btn
-											button(class="large btn-success btn") Ask a Question
+											a(href="/contact",class="large btn-success btn") Ask a Question
 										hr
 										p#help-tweets
 											h4 Follow Our Tweets
 											ul.tweet-list							
 									
 	// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms Of Service
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
+	include extra/footer-logged
 
 
 
