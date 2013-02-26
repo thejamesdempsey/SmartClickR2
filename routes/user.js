@@ -1,5 +1,6 @@
 var AM = require('./modules/account-manager');
 var PM = require('./modules/poll-manager');
+var ED = require('./modules/email-dispatcher');
 var bcrypt = require('bcrypt');
 /*
  * GET users listing.
@@ -123,6 +124,41 @@ exports.updatePassword = function(request, response) {
 		}
 	});
 }
+
+
+// Password Reset // 
+
+exports.lostPassword =  function(request, response) {
+	AM.getEmail(request.param('email'), function(o){
+		console.log(o);
+		if (o) {
+			response.send('ok', 200);
+			ED.resetPasswordLink(o, function(e, m) {
+				if (!e) {
+					
+				} else {
+					response.send('email-server-error', 400);
+					for (k in e) console.log('error', k, e[k])
+				}
+			});
+		} else {
+			res.send('email-not-found', 400);
+		}
+	});
+}
+
+exports.resetPassword = function(request, response) {
+	var email = request //query for email
+	var passH = request //query for password hash
+	AM.validateLink(email, passH, function(e){
+		if( e != 'ok' ){
+			res.redirect('/');
+		} else {
+			response.render('/reset', {title: 'Reset your Password'});
+		}
+	});
+}
+
 
 // GET /logout //
 exports.logout = function(request, response) {

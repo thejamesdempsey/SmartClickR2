@@ -1,0 +1,12 @@
+div(id='resetPasswordModal', class="modal hide fade", tabindex="-1", role="dialog", aria-labelledby="resetConfirmLabel", aria-hidden="true", style="text-align: left")
+	div(class="modal-header")
+		button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+		h4(id="resetConfirmLabel") Lost your password?
+	form( method="post", action="/lost-password")#reset-password-form.well
+		div.modal-body
+			p Please enter the email address associate with your SmartClickR account
+			input(type="text", name="email-change", id='email-change')
+		div.modal-footer
+			button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel
+			button(formmethod='POST', formaction='', type='submit', class='btn btn-medium btn-success') Go &rarr;
+

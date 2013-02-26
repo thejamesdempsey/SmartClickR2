@@ -12,7 +12,9 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , lessMiddleware = require('less-middleware')
-  , less = require('less');
+  , less = require('less')
+  , emailjs = require("emailjs");
+
 
 var app = express();
 
@@ -54,12 +56,14 @@ app.get('/contact', routes.contact);
 app.get('/data', routes.data);
 app.get('/privacy', routes.privacy);
 app.get('/terms', routes.terms);
+app.get('/playground/email', routes.email);
 
 // user pages //
 app.get('/user/create', user.signup);
 app.post('/user/create', user.createUser);
 app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
+app.post('/lost-password', user.lostPassword);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.post('/user/edit/:User_ID', user.updatePassword);
@@ -86,7 +90,6 @@ app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
 app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID.json', question.responseData);
 app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.presentPollQuestion);
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
