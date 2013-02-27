@@ -3,6 +3,7 @@ var verticalBars = function(dataset, json_loc) {
     var w = 800;           //SVG object width in pixels
     var h = 600;            //SVG object height in pixels
     var vertPadding = 25;   //Vertical padding (for the bottom of the SVG object)
+    var socket = io.connect('http://localhost');    //Socket.IO connection
     
     //SVG element creation
     var svg = d3.select("#bar-display")
@@ -69,49 +70,57 @@ var verticalBars = function(dataset, json_loc) {
     
     // -------------------------------------------- UPDATE ------------------------------------------------
     //Upon clicking "p", UPDATE with new data from SCRdata.json
-    d3.select("#update")
-        .on("click", function() {
-            //Assume new data is in SCRdata.json
-            d3.json(json_loc, function(json) {
-                //console.log(json);
-                dataset = json;
+    function refresh() {
+        //Assume new data is in SCRdata.json
+        d3.json(json_loc, function(json) {
+            //console.log(json);
+            dataset = json;
+        });
+        
+        // * * * Assume the same number of data elements * * *
+        
+        //Update the yScale domain (since new elements could be larger/smaller)
+        yScale.domain([0, d3.max(dataset, function(d){
+            return d.Value;
+            })
+        ]);
+        
+        //Select all of the existing 'rect's & update them
+        svg.selectAll("rect")
+            .data(dataset)
+            .transition().duration(1000)
+            .attr("y", function(d){
+                return h - vertPadding - yScale(d.Value);
+            })
+            .attr("height", function(d) {
+                return yScale(d.Value) - vertPadding;
+            })
+            .attr("fill", function(d, i) {
+                //return "rgb(0, 0, " + (d.value * 10) + ")";
+                return color(i);
             });
             
-            // * * * Assume the same number of data elements * * *
-            
-            //Update the yScale domain (since new elements could be larger/smaller)
-            yScale.domain([0, d3.max(dataset, function(d){
-                return d.Value;
-                })
-            ]);
-            
-            //Select all of the existing 'rect's & update them
-            svg.selectAll("rect")
-                .data(dataset)
-                .transition().duration(1000)
-                .attr("y", function(d){
-                    return h - vertPadding - yScale(d.Value);
-                })
-                .attr("height", function(d) {
-                    return yScale(d.Value) - vertPadding;
-                })
-                .attr("fill", function(d, i) {
-                    //return "rgb(0, 0, " + (d.value * 10) + ")";
-                    return color(i);
-                });
-                
-            //Select all of the existing 'text's & update them
-            svg.selectAll("text")
-                .data(dataset)
-                .transition().delay(750).duration(1000)
-                .text(function(d) {
-                    return d.Content + ": " + d.Value;
-                })
-                .attr("x", function(d, i) {
-                    return xScale(i) + xScale.rangeBand() / 2;
-                })
-                .attr("y", function (d) {
-                    return h - (vertPadding * 0.5);
-                });
-        });
+        //Select all of the existing 'text's & update them
+        svg.selectAll("text")
+            .data(dataset)
+            .transition().delay(750).duration(1000)
+            .text(function(d) {
+                return d.Content + ": " + d.Value;
+            })
+            .attr("x", function(d, i) {
+                return xScale(i) + xScale.rangeBand() / 2;
+            })
+            .attr("y", function (d) {
+                return h - (vertPadding * 0.5);
+            });
+        }
+        
+        //Listen for socket.io event and trigger the D3 update function
+        socket.on('push-response', function(data) {
+        var qid = $("#questionID").val();
+    
+        if(data.questionID == qid) {
+            refresh();
+        }
+    });
 };

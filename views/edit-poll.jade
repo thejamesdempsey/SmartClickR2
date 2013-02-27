@@ -94,7 +94,8 @@ block content
 									else if question.AnswerType == "TrueFalse"	
 										article(class='question_wrap clearfix overlay', id='trueFalse_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
-											input(type='hidden', class='choice_id', value='#{question.Choices[0].Choice_ID}')
+											if question.Choices.length > 0
+												input(type='hidden', class='choice_id', value='#{question.Choices[0].Choice_ID}')
 											h3 True/False
 											span(class='close-circle')
 												button(type='button', class='close') &times;
@@ -115,7 +116,7 @@ block content
 														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 											fieldset.span4
 												label.radio No correct answer
-													if question.Choices.length > 0 && question.Choices[0].IsCorrectChoice == "N"
+													if question.Choices.length == 0
 														input(type='radio', name='correct_answer#{question.QuestionsOrder}', checked="checked")	
 													else
 														input(type='radio', name='correct_answer#{question.QuestionsOrder}')

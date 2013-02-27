@@ -1,7 +1,7 @@
 /*
 * SmartClickR Poll-Manager Module
 * Used for handling user accounts
-* Version: 0.0.1
+* Version: 1.0.1
 */
 
 

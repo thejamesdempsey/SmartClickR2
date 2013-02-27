@@ -3,6 +3,7 @@ var QM = require('./modules/question-manager');
 var CM = require('./modules/choice-manager');
 var FM = require('./modules/format-manager');
 
+
 // GET /user/:User_ID/poll/create //
 exports.getCreatePoll = function(request, response) {
 	if(request.session.user != null && request.session.user != undefined) {

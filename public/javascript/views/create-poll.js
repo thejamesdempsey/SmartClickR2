@@ -63,7 +63,6 @@ $(document).ready(function() {
 			stem = '';
 			count++;
 
-
 			//console.log(index + 1, $(this).children('h3').text());
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
@@ -99,7 +98,6 @@ $(document).ready(function() {
 				type.push('FR');
 				stem = $(this).children('fieldset').children('textarea').val();
 				question.push(stem);
-
 
 			} else {
 
@@ -173,7 +171,7 @@ $(document).ready(function() {
 		format += "<div class='clear'></div>"
 		format += "<label class='radio'>"
 		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "' />"
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
@@ -182,7 +180,7 @@ $(document).ready(function() {
 		format += "<div class='clear'></div>"
 		format += "<label class='radio'>"
 		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "' />"
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
@@ -191,7 +189,7 @@ $(document).ready(function() {
 		format += "<div class='clear'></div>"
 		format += "<label class='radio'>"
 		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "' />"
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<fieldset class='six columns'>";
@@ -200,7 +198,7 @@ $(document).ready(function() {
 		format += "<div class='clear'></div>"
 		format += "<label class='radio'>"
 		format += "Correct Answer"	
-		format += "<input type='radio' name='correct_answer' />"
+		format += "<input type='radio' name='correct_answer" + counter + "' />"
 		format += "</label>"
 		format += "</fieldset>";
 		format += "<hr>";

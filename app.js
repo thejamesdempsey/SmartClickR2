@@ -5,6 +5,7 @@
 **/
 
 var express = require('express')
+  , app = require('express')()
   , routes = require('./routes')
   , user = require('./routes/user')
   , poll = require('./routes/poll')
@@ -13,11 +14,8 @@ var express = require('express')
   , path = require('path')
   , lessMiddleware = require('less-middleware')
   , less = require('less')
-  , emailjs = require("emailjs");
-
-
-var app = express();
-
+  , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);
@@ -44,6 +42,8 @@ app.configure('development', function(){
 	  response.render('404.jade', {title: 'SmartClickR | This page got lost', layout:'404_layout'});	
   });
 });
+
+question.createSocket(io);
 
 // main pages //
 app.get('/', routes.index);
@@ -91,7 +91,8 @@ app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID.json', question.responseData);
 app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.presentPollQuestion);
 
-http.createServer(app).listen(app.get('port'), function(){
+
+server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
