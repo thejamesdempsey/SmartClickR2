@@ -58,7 +58,7 @@ $("#accountPasswordForm").ready(function(){
 							} else if( newVal == '' ) {
 
 								format = '<div class="alert alert-error fade in">';
-								format += '<strong>Uh Oh.</strong> We need to know what to make your neww password';
+								format += '<strong>Uh Oh.</strong> We need to know what to make your new password';
 								format += '</div>';
 								
 								$('#currentPassword').removeClass("input-error");
