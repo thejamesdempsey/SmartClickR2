@@ -127,20 +127,19 @@ exports.updatePassword = function(request, response) {
 
 
 // Password Reset // 
-
 exports.lostPassword =  function(request, response) {
-	AM.getEmail(request.param('email'), function(o){
+	AM.getUserFromEmail(request.param('email'), function(o){
 		console.log(o);
 		if (o) {
 			response.send('ok', 200);
-			ED.resetPasswordLink(o, function(e, m) {
-				if (!e) {
+			// ED.resetPasswordLink(o, function(e, m) {
+			// 	if (!e) {
 					
-				} else {
-					response.send('email-server-error', 400);
-					for (k in e) console.log('error', k, e[k])
-				}
-			});
+			// 	} else {
+			// 		response.send('email-server-error', 400);
+			// 		for (k in e) console.log('error', k, e[k])
+			// 	}
+			// });
 		} else {
 			res.send('email-not-found', 400);
 		}
