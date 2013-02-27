@@ -1,28 +1,23 @@
-$(document).ready(function() {
-
-	$("#email").focus();	
-	
+$(document).ready(function() {	
+	$('#email').focus()
 	$("#loginForm").submit(function(e) {
 		e.preventDefault();
-		$(this).find(".alert").hide();
+		$(this).find("div.alert").hide();
 		
 		
 		var email = $('#email').val().trim();
 		var pass = $('#password').val().trim();
 		var remember = $('#remember-me').val();
 		
-		console.log('Errrybody was Kung Fu fighting');
-		console.log(remember);
-		
-		
 		$(this).ajaxSubmit({
 			type 	: 'POST',
 			data 	: {"email": email, "password": pass, "remember-me": remember},
 			url  	: '/login',
 
-			beforeSubmit : function(formData, jqForm, options){				
+			beforeSubmit : function(formData, jqForm, options){	
 							if (false == validateLogin($(this))) {
 								return false;
+								
 							}
 			},
 		   	success : function(data, status, xhr){
@@ -45,11 +40,9 @@ $(document).ready(function() {
 
 });
 
-});
 
 
 validateLogin = function($form) {
-	$(this).find(".alert").hide();
 
 	isValid = true;
 		
@@ -57,7 +50,6 @@ validateLogin = function($form) {
 	var passwordVal = $('#password').val();
 	
 	if ( emailVal == '' && passwordVal == '') {
-		$(this).find(".alert").hide();
 		format  = '<div class="alert alert-error fade in">';
 		format += '<strong>No email or password?</strong> That&rsquo;s just silly.';
 		format += '</div>';
@@ -65,11 +57,13 @@ validateLogin = function($form) {
 		$('#email').removeClass("input-error").addClass('input-error');
 		$('#password').removeClass("input-error").addClass('input-error');
 		
-		$("#login-container h1").after(format);
+		$("#login-container h1").after(format, function(){
+			$(".alert").hide();
+		});
+		
 		isValid = false;
 		
 	} else if(emailVal == '') {
-		$(this).find(".alert").hide();
 		format  = '<div class="alert alert-error fade in">';
 		format += '<strong>Yikes!</strong> You entered a password but no email address';
 		format += '</div>';
@@ -81,7 +75,6 @@ validateLogin = function($form) {
 		isValid = false;
 		
 	} else if( passwordVal == '' ) {
-		$(this).find(".alert").hide();
 		
 		format = '<div class="alert alert-error fade in">';
 		format += 'Looks like you forgot your password, <strong>' + emailVal + '.</strong>';
@@ -102,7 +95,7 @@ validateLogin = function($form) {
 $(document).ready(function() {
 	$("#reset-password-form").submit(function(e) {
 		e.preventDefault();
-		$(this).find(".alert").hide();
+		$(this).find("#reset-password-form .alert").hide();
 		
 		
 		var email = $('#email-change').val().trim();
@@ -147,14 +140,11 @@ $(document).ready(function() {
 });
 
 validateEmail = function($form) {
-	$(this).find(".alert").hide();
-
 	isValid = true;
 		
 	var emailCheckVal = $("#email-change").val();
 	
 	if ( emailCheckVal == '' ) {
-		$(this).find(".alert").hide();
 		format  = '<div class="alert alert-error fade in">';
 		format += '<strong>No email?</strong> We need one to reset your password';
 		format += '</div>';
