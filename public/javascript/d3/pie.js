@@ -3,7 +3,8 @@ var pieChart = function(dataset, json_loc){
     var w = 350;
     var h = 350;
     var dur = 750;
-    
+    var socket = io.connect('http://localhost');
+
     //Dataset Total
     var total;
     
@@ -111,11 +112,17 @@ var pieChart = function(dataset, json_loc){
                     });
             pieLabel.text("Total: " + total);
         });
-        setTimeout(refresh, 1000);
     }
     
     refresh();
+
+    socket.on('push-response', function(data) {
+        var qid = $("#questionID").val();
     
+        if(data.questionID == qid) {
+            refresh();
+        }
+    });
     // Store the displayed angles in _current.
     // Then, interpolate from _current to the new angles.
     // During the transition, _current is updated in-place by d3.interpolate.

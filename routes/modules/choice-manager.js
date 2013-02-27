@@ -64,15 +64,6 @@ CM.createMCChoices = function(choiceData, callback) {
 	});
 }
 
-// Choices for Numeric //
-
-	/** If there was a correct answer(s) for Numeric **/
-
-// Choices for Free Response //
-
-	/** If there was a correct answer(s) for Free Response **/
-
-
 CM.getChoices = function(questionID, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ? ORDER BY ChoiceOrder', [questionID], function(err, results) {
 		if(err) {
@@ -131,7 +122,6 @@ CM.updateChoiceStatus = function(choiceData, callback) {
 	});
 }
 
-
 /****** Helper Methods ******/
 
 // Create a choice // 
@@ -173,4 +163,3 @@ CM.delete = function(questionID, callback) {
 		}
 	});
 }
-

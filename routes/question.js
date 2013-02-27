@@ -3,7 +3,7 @@ var CM = require('./modules/choice-manager');
 var PM = require('./modules/poll-manager');
 var FM = require('./modules/format-manager');
 var RM = require('./modules/response-manager');
-
+var io, socket;	
 // POST /user/:User_ID/poll/:Poll_ID/question/create //
 // Create poll //
 exports.postNewQuestion = function(request, response) {
@@ -58,7 +58,6 @@ exports.pollQuestion = function(request, response) {
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
 
-
 	FM.getQuestionSC(currentQID, sessionCode, function(questionData) {
 		
 		if(questionData == 'question-doesnt-exist') {
@@ -81,6 +80,10 @@ exports.postResponse = function(request, response) {
 
 	if(user) {
 		RM.createResponse({ Question_ID : currentQID, User_ID : user[0].User_ID, Content : content }, function(o) {
+			
+			//sending the message to pull!
+			io.sockets.emit('push-response', { message : 'push', questionID : currentQID});
+
 			if(nextQuestion == questionIDs.length) {
 				PM.getPoll(sessionCode, function(poll) {
 					response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
@@ -91,6 +94,8 @@ exports.postResponse = function(request, response) {
 		});
 	} else {
 		RM.createPublicResponse({ Question_ID : currentQID, Content : content }, function(o) {
+			io.sockets.emit('push-response', { message : 'push', questionID : currentQID});
+
 			if(nextQuestion == questionIDs.length) {
 				request.session.questionIDs = '';
 				PM.getPoll(sessionCode, function(poll) {
@@ -110,7 +115,6 @@ exports.responseData = function(request, response) {
 	var pollID = request.param('Poll_ID');
 
 	// send questionData in JSON format
-	//response.render('present.jade', {title: 'SmartClickR | Lets Present' });
 	FM.getResponseData(currentQID, function(result) {
 		response.json(result);
 	});
@@ -133,11 +137,13 @@ exports.presentPollQuestion = function(request, response) {
 	});
 }
 
+exports.createSocket = function(socketio) {
+	io = socketio;
+}
 
 var newQuestionHelper = function(types, questions, pollID, numb, count) {
 
 	var currentCount;
-
 	QM.newQuestion({ Poll_ID : pollID,
 				 AType   : types[numb],
 				 Order   : numb + 1 }, function(qid) {
