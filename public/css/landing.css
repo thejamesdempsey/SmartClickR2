@@ -10,6 +10,15 @@ body {
 .clear {
   clear: both;
 }
+.question-wrap h4 #question-number {
+  color: #000 !important;
+}
+.brand span {
+  display: inline;
+  font-size: 70%;
+  color: #0088cc;
+  padding-left: 4px;
+}
 #response-form label.radio.inline {
   width: 100%;
   margin-top: 16px;

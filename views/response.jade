@@ -19,12 +19,12 @@ block content
 									case locals.qdata[0].AnswerType
 										when "MultipleChoice"
 											for choice in locals.qdata[0].Choices
-												div.span12.no-margin
+												div#mc-container.span12.no-margin
 													label.radio.inline
 														input(type='radio', value='#{choice.Content}', name='response', class='mc_response')
 														| #{choice.ChoiceOrder}) #{choice.Content}
 										when "TrueFalse"
-											div.span7.no-margin
+											div#tf-container.span7.no-margin
 												label(class="radio", for="true")
 													input(id="true" ,type='radio', value='True', name='response', class='tf_response') 
 													| True
@@ -32,17 +32,19 @@ block content
 													input(id="false",type='radio', value='False', name='response', class='tf_response') 
 													| False
 										when "FreeResponse"
-											textarea(class='f_response span12',name='response',placeholder='Type in your response')#freeresponse
-											script 
-												$(".f_response").focus();
+											div#free-container
+												textarea(class='f_response span12', name='response', placeholder='Type in your response')#freeresponse
+												script 
+													$(".f_response").focus();
 										when "Numeric"
-											textarea(class='n_response span12',name='response',placeholder='Type in your response')#numericresponse
-											script
-												$(".n_response").focus();
+											div#num-container
+												textarea(class='n_response span12', name='response', placeholder='Type in your response')#numericresponse
+												script
+													$(".n_response").focus();
 									div#next.span12
 										input(type='submit', id='#{locals.qdata[0].AnswerType}_response', value='Next Question &rarr;', class="btn btn-large btn-info")
 										//span Question #{locals.qdata[0].QuestionsOrder} of #{locals.qdata[0].QuestionOrder.length-1});
 	script(src="/javascript/randomBackground.js")
-	//script(src="/javascript/views/response.js")
+	script(src="/javascript/views/response.js")
 	
 

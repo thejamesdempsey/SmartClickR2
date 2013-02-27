@@ -5,9 +5,16 @@ html
 		meta(name='viewport', content='width=device-width')
 		link(rel='stylesheet', type='text/css', href='/css/main.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/forms.css', media='screen')
+		link(rel='stylesheet', type='text/css', href='/css/inline-labels.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/jquery-ui-1.9.2.custom.min.css')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.css', media='screen')
+		
+		style
+			@media screen and (max-width: 320px){
+				#top-search label.inline.supported.empty{
+					display: none
+				}
 
 		// Add Jquery //
 		script(type='text/javascript', src='http://code.jquery.com/jquery-latest.min.js')
@@ -19,6 +26,8 @@ html
 		script(type='text/javascript', src='/javascript/sessionSearchBottom.js')
 		
 		script(type="text/javascript", src='/less.js')
+
+		script(src="/inline-labels.js", type="text/javascript", charset="utf-8")
 
 		
 		noscript
@@ -54,3 +63,4 @@ html
 					js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
+

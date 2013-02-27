@@ -1,58 +1,95 @@
-$(document).ready(function(){
-	$('#response-form').submit(function(){
+$('#response-form').ready(function(){
+
+	$(this).submit(function(){
 			if (false == validateResponse($(this))) {
 				return false;
 			}
 	});
 	
-	
 });
 
 
 validateResponse = function($form){
-	
+		
 	isValid = true;
+	
+	var numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
 
-//	var input = $('.mc_response').attr('checked');
+	emptyError = '<div class="alert alert-error fade in">';
+	emptyError += '<strong>No answer?</strong> That&rsquo;s just silly.';
+	emptyError += '</div>';
 	
-	//var text = $('textarea[name="response"]').val();
+	numError = '<div class="alert alert-error fade in">';
+	numError += '<strong>Whoops,</strong> You answer must be a number';
+	numError += '</div>';
 	
-	var mc = $('.mc_response:radio').is('checked');
-	console.log(mc);
-	var tf = $('.tf_response:radio').is('checked');
-	console.log(tf);
-	
-	/*if (text == '')	{
-		$form.find(".alert").hide();	
-		format  = '<div class="alert alert-error fade in">';
-		format += '<strong>No answer?</strong> That&rsquo;s just silly.';
-		format += '</div>';
-		
-		$("#response-form").before(format);
-		isValid = false;
+/*	for ( i = 0; i < required.length; i++ ){
+		var input = $(required[i]);
+		if( input.val() == ""){
+			$form.find(".alert").hide();	
+
+			$("#response-form").before(emptyError);
+			isValid = false;
+		} 
 	}*/
-	if ( mc == false) {
-		$form.find(".alert").hide();	
-		format  = '<div class="alert alert-error fade in">';
-		format += '<strong>No answer?</strong> That&rsquo;s just silly.';
-		format += '</div>';
+	
+	if($('#response-form').find('#mc-container').length == 1) {
+		var mc = $('input[name="response"]:checked').val();
+		console.log(mc);
 		
-		$("#response-form").before(format);
-		isValid = false;
+		if ( !mc) {
+			$form.find(".alert").hide();	
+			$("#response-form").before(emptyError);
+			isValid = false;
+		}
+			
+	} 
+	
+	else if($('#response-form').find('#tf-container').length == 1) {
+		var tf = $('input[name="response"]:checked').val();
+		console.log(tf);
 		
+		if ( !tf) {
+			$form.find(".alert").hide();	
+
+			$("#response-form").before(emptyError);
+			isValid = false;
+		} 	
+	} 
+	
+	if($('#response-form').find('#free-container').length == 1) {
+		var free =  $('.f_response').val().trim();
+		console.log(free);
+		
+		if (free == ""){
+			$form.find(".alert").hide();	
+
+			$("#response-form").before(emptyError);
+			isValid = false;
+
+		}	
 	}
 	
-	if ( tf == false) {
-		$form.find(".alert").hide();	
-		format  = '<div class="alert alert-error fade in">';
-		format += '<strong>No answer?</strong> That&rsquo;s just silly.';
-		format += '</div>';
+	if($('#response-form').find('#num-container').length == 1) {
+		var num = $('.n_response').val().trim();
+		console.log(num);
+		console.log(numberRegex.test(num));
 		
-		$("#response-form").before(format);
-		isValid = false;
-		
+		if (num == ""){
+			$form.find(".alert").hide();	
+
+			$("#response-form").before(emptyError);
+			isValid = false;
+
+		} else if ( numberRegex.test(num) == false){
+			$form.find("div.alert").hide();	
+
+			$("#response-form").before(numError);
+			isValid = false;
+		}	
 	}
+	
 	
 	return isValid;
-	
+		
 }

@@ -29,16 +29,16 @@ block content
 
 							.clear
 							p
-								a(id='needSignup', href='/user/create') Need to Signup?
-								//a(id='reset', href='#')   Forgot Your Password?	
+								a(id='needSignup', href='/user/create') Need to Signup? 
+								span.linebreak |
+								a(id='reset', href='#resetPasswordModal', data-toggle="modal") Forgot Your Password?	
 							hr
+		include modals/reset
+					
 		hr
 
-		//div(class="style2", id="uploading", style="width: 100%; display: none;") 
-		//	img (src="http://www.colletts.co.uk/submit/img/ajax-loader.gif", alt="Uploading - Please Wait")
-		//		Logging On
 
-	//script(src = "/javascript/form-validators/loginValidator.js")
+
 	script(src = "/javascript/views/login.js")
 	script(src="http://malsup.github.com/jquery.form.js")
 

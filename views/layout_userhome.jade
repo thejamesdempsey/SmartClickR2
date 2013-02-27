@@ -5,21 +5,69 @@ html
 		meta(name='viewport', content='width=device-width')
 		link(rel='stylesheet', type='text/css', href='/css/userhome.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/main.css', media='screen')
+		link(rel='stylesheet', type='text/css', href='/css/inline-labels.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap.css', media='screen')
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.css', media='screen')
-		link(rel='stylesheet', type='text/css', href='/css/jquery-ui-1.9.2.custom.min.css')
 		
+		style
+
+			.error{
+				color:#b94a48 !important; 
+			}
+
+			@media screen and (min-width: 1200px){
+				label.inline.supported.empty{
+					left: 128px !important;
+					font-size: 16px !important;
+
+				}
+			}
+			
+			@media screen and (max-width: 1199px){
+				label.inline.supported.empty{
+					left: 85px !important; 
+					font-size: 16px !important;
+
+				}
+			}
+
+			@media screen and (max-width: 979px){
+				label.inline.supported.empty{
+					left: 42px !important ;
+					font-size: 15px !important;
+				}
+			}
+
+			@media screen and (max-width: 767px){
+				label.inline.supported.empty{
+					left: 12px !important ;
+				}
+			}
+
+			
 
 		// Add Jquery //
 		script(type='text/javascript', src='http://code.jquery.com/jquery-latest.min.js')
+		script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.js')
 
+		script(type='text/javascript', src='/infieldlabel.min.js')
+		
 
 		script(type='text/javascript', src='/javascript/userSearch.js')
 
 		// Add Bootstrap Library //
 		script(type='text/javascript', src='/bootstrap/bootstrap.min.js')
 
+		script(src="/inline-labels.js", type="text/javascript", charset="utf-8")
+
 		// Add Less //
+
+
+		script
+			$(document).ready(function(){
+				$("#searchLabel").inFieldLabels();
+			});
+
 		script(type="text/javascript", src='/less.js')
 		noscript
 			div(id="no-js", class="modal") 

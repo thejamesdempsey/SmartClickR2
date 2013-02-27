@@ -1,6 +1,6 @@
  
  
-extends layout
+extends layout_legal
 
 block content
 	// Header Content //
@@ -9,7 +9,7 @@ block content
 		article#user_hero
 			.container
 				.span12
-					h2 Terms of Service
+					h2 Legal Documents
 			hr
 		section#content_container
 			.container
@@ -18,40 +18,68 @@ block content
 						section#user_content
 							div#content.pad
 								#sub-title
-										p Dont mess with us and we wont mess with you. Word
+									section.tabbable.tabs-left.hidden-phone
+										ul.nav.nav-tabs
+											li(class="active")
+												a(href="/terms") Terms of Service
+													span.arrow &rarr;
+											li
+												a(href="/privacy") Privacy
+										div.tab-content
+											div(id="terms", class="tab-pane active")
+												h3 Terms and conditions of use
+												hr.line
+												p Welcome to SmartClickR's Terms of Service. We've tried to keep things as clear as possible, but if you have any questions
+													| feel free to send us a message at 
+													a(href="mailto:") help[at]smartclickr[dot]com
+												p
+													|SmartClickR (“SmartClickR,” “we”, “our”, “us”, “SmartClickR.com”) is a audience
+													|response service that offers groups or individuals a medium for publishing polls and surveys owned and/or created by 
+													|them. For the purposes of this Agreement, "you," "your," "member," "user," "SmartClickR user" and words of a correlative meaning shall 
+													|refer to the user of SmartClickR.com and its related user sites. Unless explicitly stated otherwise, your use of the products 
+													|and services offered or provided by SmartClickR, including the addition of new properties, shall be governed by this 
+													|General Terms and Conditions Agreement (this "Agreement"). At our discretion, we may supplement this Agreement with posted rules
+													|and guidelines applicable to specific areas of SmartClickR.com, and your use of the products and services offered or provided by SmartClickR 
+													|is further governed by said rules and guidelines and all other SmartClickR policies. We may also offer or provide services from time to 
+													| time that are governed by the terms and conditions of the respective service providers, and you agree to be further bound by any rules that 
+													| are applicable to SmartClickR with respect to the service providers.
+												ol
+													li
+														strong Definitions. 
+														| For the purposes of this Agreement, the following is true:
+														ol 
+															li "Services" shall refer to any of the services offered through or provided by SmartClickR. Such may include, but is not limited to, SmartClickR Websites, SmartClickR plugins, SmartClickR software or apps, etc.
+															li "SmartClickR Account" shall refer to the account you create in our systems when you register for our Services and is the means through which you access, manage, and control the Services you subscribe to.
+															li "Registration Data" may include, but is not limited to: name, email address, and other information required for account creation.
+													li
+														strong Acceptance: 
+														| By using the Services, you agree, without limitation or qualification, to be bound by and to comply with this Agreement and any supplemental rules and guidelines we may post and/or that are applicable to SmartClickR or any Product or Service we offer. All such rules and guidelines are hereby incorporated by reference into this Agreement.
+									section.tabbable.visible-phone
+										ul.nav.nav-tabs
+											li(class="active")
+												a(href="/terms") Terms of Service
+											li
+												a(href="/privacy") Privacy
+										div.tab-content
+											div(id="terms", class="tab-pane active")
+												h3 Terms and conditions of use
+												hr.line
+												p Welcome to SmartClickR's Terms of Service. We've tried to keep things as clear as possible, but if you have any questions
+													| feel free to send us a message at 
+													a(href="mailto:") help[at]smartclickr[dot]com
+												p
+													|SmartClickR (“SmartClickR,” “we”, “our”, “us”, “SmartClickR.com”) is a audience
+													|response service that offers groups or individuals a medium for publishing polls and surveys owned and/or created by 
+													|them. For the purposes of this Agreement, "you," "your," "member," "user," "SmartClickR user" and words of a correlative meaning shall 
+													|refer to the user of SmartClickR.com and its related user sites. Unless explicitly stated otherwise, your use of the products 
+													|and services offered or provided by SmartClickR, including the addition of new properties, shall be governed by this 
+													|General Terms and Conditions Agreement (this "Agreement"). At our discretion, we may supplement this Agreement with posted rules
+													|and guidelines applicable to specific areas of SmartClickR.com, and your use of the products and services offered or provided by SmartClickR 
+													|is further governed by said rules and guidelines and all other SmartClickR policies. We may also offer or provide services from time to 
+													| time that are governed by the terms and conditions of the respective service providers, and you agree to be further bound by any rules that 
+													| are applicable to SmartClickR with respect to the service providers.
+
 
 		.clear
 		// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms Of Service
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
+	include extra/footer-main

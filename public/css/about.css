@@ -16,6 +16,14 @@ h2 {
 .thumb {
   text-align: center;
 }
+
+li.span3{
+	margin-left: 40px !important;
+}
+li.span3 h3, li.span3 p{
+	margin-left: 12px;
+}
+
 #about-team {
   margin-left: 0;
 }

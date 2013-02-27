@@ -1,0 +1,162 @@
+extends layout_email
+
+block content
+	center
+		table#bodyTable(align='center', border='0', cellpadding='0', cellspacing='0', height='100%', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0; background-color: #4c8ab0; height: 100% !important; width: 100% !important;')
+			tr
+				td#bodyCell(align='center', valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 20px; border-top: 0; height: 100% !important; width: 100% !important;')
+					table#templateContainer(border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border: 1px solid #BBBBBB;')
+						tr
+							td(align='center', valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+								table#templatePreheader(border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #F4F4F4; border-top: 0; border-bottom: 0;')
+									tr
+										td.preheaderContainer(valign='top', style='padding-top: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+											table.mcnTextBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnTextBlockOuter
+													tr
+														td.mcnTextBlockInner(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnTextContentContainer(align='right', border='0', cellpadding='0', cellspacing='0', width='197', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td.mcnTextContent(valign='top', style='padding-top: 9px; padding-right: 18px; padding-bottom: 9px; padding-left: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #808080; font-family: Helvetica; font-size: 10px; line-height: 150%; text-align: left;')
+						
+						tr
+							td(align='center', valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+								table#templateBody(border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #F4F4F4; border-top: 0; border-bottom: 0;')
+									tr
+										td.bodyContainer(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+											table.mcnTextBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnTextBlockOuter
+													tr
+														td.mcnTextBlockInner(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnTextContentContainer(align='left', border='0', cellpadding='0',cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td.mcnTextContent(valign='top', style='padding-top: 9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; font-family: Helvetica; font-size: 14px; line-height: 150%; text-align: left;')
+																			h1(style="text-align: center;")
+																				a(href="/", style="font-size: 36px; text-decoration: none") SmartClickR
+						tr
+							td(align='center', valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+								table#templateHeader(border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #F4F4F4; border-top: 0; border-bottom: 0;')
+									tr
+										td.headerContainer(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+											table.mcnTextBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnTextBlockOuter
+													tr
+														td.mcnTextBlockInner(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnTextContentContainer(align='left', border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td.mcnTextContent(valign='top', style='padding-top: 9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; font-family: Helvetica; font-size: 14px; line-height: 150%; text-align: center;')
+																			p Hey Jimmy, we got a request that you would like to change your password
+																			p Click the link below (or paste it in your browser) to get started:
+																			a(href="#") http://somelinktoresetyourpassword
+											table.mcnButtonBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnButtonBlockOuter
+													tr
+														td.mcnButtonBlockInner(style='padding-top: 0; padding-right: 18px; padding-bottom: 18px; padding-left: 18px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;', valign='top', align='center')
+															table.mcnButtonContentContainer(border='0', cellpadding='0', cellspacing='0', width='', style='border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background-color: #e95c41; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td.mcnButtonContent(align='center', valign='middle', style='color: #FFFFFF; font-family: Arial; font-size: 16px; padding: 15px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																			a.mcnButton(title='Reset your Password', href='http://', target='_self', style='font-weight: bold; letter-spacing: -0.5px; line-height: 100%; text-align: center; text-decoration: none; color: #FFFFFF; font-family: Arial; font-size: 16px; padding: 15px; word-wrap: break-word !important;') Reset your Password
+											table.mcnDividerBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnDividerBlockOuter
+													tr
+														td.mcnDividerBlockInner(style='padding: 18px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnDividerContent(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-top-width: 1px; border-top-style: solid; border-top-color: #999999; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td(style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																			span
+
+						tr
+							td(align='center', valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+								table#templateBody(border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #F4F4F4; border-top: 0; border-bottom: 0;')
+									tr
+										td.bodyContainer(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+											table.mcnTextBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnTextBlockOuter
+													tr
+														td.mcnTextBlockInner(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnTextContentContainer(align='left', border='0', cellpadding='0',cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td.mcnTextContent(valign='top', style='padding-top: 9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; font-family: Helvetica; font-size: 14px; line-height: 150%; text-align: left;')
+																			| Did you recieve this email by mistake?
+						tr
+							td(align='center', valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+								table#templateFooter(border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #F4F4F4; border-top: 0; border-bottom: 0;')
+									tr
+										td.footerContainer(valign='top', style='padding-bottom: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+											table.mcnShareBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnShareBlockOuter
+													tr
+														td.mcnShareBlockInner(valign='top', style='padding: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnShareContentContainer(width='100%', border='0', cellpadding='0', cellspacing='0', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td(align='left', style='padding-top: 9px; padding-left: 9px; padding-bottom: 0; padding-right: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																			table.mcnShareContent(border='0', cellpadding='0', cellspacing='0', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																				tbody
+																					tr
+																						td.mcnShareContentItemContainer(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																							table(align='left', border='0', cellpadding='0', cellspacing='0', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																								tbody
+																									tr
+																										td.mcnShareContentItemContainer(valign='top', style='padding-right: 10px; padding-bottom: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																											table.mcnShareContentItem(border='0', cellpadding='0', cellspacing='0', width='', style='border-collapse: separate; background-color: #FFFFFF; border: 1px solid #CCCCCC; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																												tbody
+																													tr
+																														td(align='left', valign='middle', style='padding-top: 5px; padding-right: 10px; padding-bottom: 5px; padding-left: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																															table(align='left', border='0', cellpadding='0', cellspacing='0', width='', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																tbody
+																																	tr
+																																		td.mcnShareIconContent(align='center', valign='middle', width='18', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																			a(href='http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fus6.campaign-archive1.com%2F%3Fu%3D9f77d9047bb18f930dbb36a31%26id%3Dbeadc674e9%26e%3D%5BUNIQID%5D&t=Forgot+your+Password%3F', target='_blank', style='word-wrap: break-word !important;')
+																																				img.(src='http://cdn-images.mailchimp.com/icons/social-block/color-facebook-128.png', style='display: block; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;', height='18', width='18')
+																																		td.mcnShareTextContent(align='left', valign='middle', style='padding-left: 5px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																			a(href='http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fus6.campaign-archive1.com%2F%3Fu%3D9f77d9047bb18f930dbb36a31%26id%3Dbeadc674e9%26e%3D%5BUNIQID%5D&t=Forgot+your+Password%3F', target='', style='color: #505050; font-family: Arial; font-size: 12px; text-decoration: none; font-weight: normal; line-height: 100%; text-align: center; word-wrap: break-word !important;') Share
+																							table(align='left', border='0', cellpadding='0', cellspacing='0', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																								tbody
+																									tr
+																										td.mcnShareContentItemContainer(valign='top', style='padding-right: 10px; padding-bottom: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																											table.mcnShareContentItem(border='0', cellpadding='0', cellspacing='0', width='', style='border-collapse: separate; background-color: #FFFFFF; border: 1px solid #CCCCCC; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																												tbody
+																													tr
+																														td(align='left', valign='middle', style='padding-top: 5px; padding-right: 10px; padding-bottom: 5px; padding-left: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																															table(align='left', border='0', cellpadding='0', cellspacing='0', width='', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																tbody
+																																	tr
+																																		td.mcnShareIconContent(align='center', valign='middle', width='18', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																			a(href='http://twitter.com/?status=Forgot+your+Password%3F: http%3A%2F%2Fus6.campaign-archive1.com%2F%3Fu%3D9f77d9047bb18f930dbb36a31%26id%3Dbeadc674e9%26e%3D%5BUNIQID%5D', target='_blank', style='word-wrap: break-word !important;')
+																																				img.(src='http://cdn-images.mailchimp.com/icons/social-block/color-twitter-128.png', style='display: block; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;', height='18', width='18')
+																																		td.mcnShareTextContent(align='left', valign='middle', style='padding-left: 5px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																			a(href='http://twitter.com/?status=Forgot+your+Password%3F: http%3A%2F%2Fus6.campaign-archive1.com%2F%3Fu%3D9f77d9047bb18f930dbb36a31%26id%3Dbeadc674e9%26e%3D%5BUNIQID%5D', target='', style='color: #505050; font-family: Arial; font-size: 12px; text-decoration: none; font-weight: normal; line-height: 100%; text-align: center; word-wrap: break-word !important;') Tweet
+																							table(align='left', border='0', cellpadding='0', cellspacing='0', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																								tbody
+																									tr
+																										td.mcnShareContentItemContainer(valign='top', style='padding-right: 0; padding-bottom: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																											table.mcnShareContentItem(border='0', cellpadding='0', cellspacing='0', width='', style='border-collapse: separate; background-color: #FFFFFF; border: 1px solid #CCCCCC; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																												tbody
+																													tr
+																														td(align='left', valign='middle', style='padding-top: 5px; padding-right: 10px; padding-bottom: 5px; padding-left: 9px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																															table(align='left', border='0', cellpadding='0', cellspacing='0', width='', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																tbody
+																																	tr
+																																		td.mcnShareIconContent(align='center', valign='middle', width='18', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																			a(href='https://plus.google.com/share?url=http%3A%2F%2Fus6.campaign-archive1.com%2F%3Fu%3D9f77d9047bb18f930dbb36a31%26id%3Dbeadc674e9%26e%3D%5BUNIQID%5D', target='_blank', style='word-wrap: break-word !important;')
+																																				img.(src='http://cdn-images.mailchimp.com/icons/social-block/color-googleplus-128.png', style='display: block; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;', height='18', width='18')
+																																		td.mcnShareTextContent(align='left', valign='middle', style='padding-left: 5px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																																			a(href='https://plus.google.com/share?url=http%3A%2F%2Fus6.campaign-archive1.com%2F%3Fu%3D9f77d9047bb18f930dbb36a31%26id%3Dbeadc674e9%26e%3D%5BUNIQID%5D', target='', style='color: #505050; font-family: Arial; font-size: 12px; text-decoration: none; font-weight: normal; line-height: 100%; text-align: center; word-wrap: break-word !important;') +1
+											table.mcnTextBlock(border='0', cellpadding='0', cellspacing='0', width='100%', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+												tbody.mcnTextBlockOuter
+													tr
+														td.mcnTextBlockInner(valign='top', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+															table.mcnTextContentContainer(align='left', border='0', cellpadding='0', cellspacing='0', width='600', style='border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;')
+																tbody
+																	tr
+																		td.mcnTextContent(valign='top', style='padding-top: 9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #808080; font-family: Helvetica; font-size: 10px; line-height: 150%; text-align: left;')
+																			em Copyright © 2013 JMU, All rights reserved.
+																			br
+																			a.utilityLink(href='http://thejamesdempsey.us6.list-manage.com/unsubscribe?u=9f77d9047bb18f930dbb36a31&id=7b78069723&e=d1eb0baec0&c=beadc674e9', style='color: #606060; font-weight: normal; text-decoration: underline; word-wrap: break-word !important;') unsubscribe from this list

@@ -17,7 +17,6 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
 
-
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);
   app.set('views', __dirname + '/views');
@@ -57,12 +56,14 @@ app.get('/contact', routes.contact);
 app.get('/data', routes.data);
 app.get('/privacy', routes.privacy);
 app.get('/terms', routes.terms);
+app.get('/playground/email', routes.email);
 
 // user pages //
 app.get('/user/create', user.signup);
 app.post('/user/create', user.createUser);
 app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
+app.post('/lost-password', user.lostPassword);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.post('/user/edit/:User_ID', user.updatePassword);

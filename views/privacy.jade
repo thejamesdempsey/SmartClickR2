@@ -1,34 +1,13 @@
- 
- 
-extends layout_blog
+extends layout_legal
 
 block content
 	// Header Content //
-	header(class="navbar navbar-inverse navbar-fixed-top")
-		.navbar-inner
-			.container
-				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
-					span(class="icon-bar")
-					span(class="icon-bar")
-					span(class="icon-bar")
-				a(class="brand", href="/") 
-					| SmartClickR
-					span  alpha
-				div(class="nav-collapse")
-					ul(class="nav pull-right")
-						li(class="active")
-							a(id="home", href="/") Home
-						li
-							a(id='features', href='/features') Features
-						li
-							a(id='signup', href='/user/create') Sign Up
-						li
-							a(id='log', href='/login') Log In
+	include extra/nav-main
 	#main-content
 		article#user_hero
 			.container
 				.span12
-					h2 Privacy
+					h2 Legal Documents
 			hr
 		section#content_container
 			.container
@@ -37,40 +16,17 @@ block content
 						section#user_content
 							div#content.pad
 								#sub-title
-										p We will (most likely) not take anything from you. Unless its a really good idea. Or even an average idea. We arent that creative	
+									section.tabbable.tabs-left
+										ul(class="nav nav-tabs")
+											li
+												a(href="/terms") Terms of Service
+											li(class="active")
+												a(href="/privacy") Privacy
+													span.arrow &rarr;
+										div.tab-content
 
+											div(id="privacy", class="tab-pane active")
+												h3 Concerning our privacy policy
 		.clear
 		// Footer Content //
-	footer
-		#footer_container.container
-			.row-fluid
-				#footer_content
-					div.span2
-						h5 Navigation
-						ul
-							li: a(href='/') Home
-							li: a(href='/features') Features
-							li: a(href='/help') Help Center
-							li: a(href='/samples') Sample Questions
-					div.span2
-						h5 Connect
-						ul
-							li: a(href='/about') About Us
-							li: a(href='/blog') Blog
-							li: a(href='/contact') Contact
-							li: a(href='/data') Data Center
-					div.span2
-						h5 Legal
-						ul
-							li: a(href='/privacy') Privacy
-							li: a(href='/terms') Terms Of Service
-					div#social.span6
-						h5 Share
-						ul
-							li: a(href='#') Facebook
-							li: a(href='#') Twitter
-			.clear
-		#legal
-			span
-				| ©
-				| SmartClickR Inc, All Rights Reserved
+	include extra/footer-main

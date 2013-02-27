@@ -1,5 +1,9 @@
+
+
 $(document).ready(function() {
 	getQuote();
+	
+	$("label.infield").inFieldLabels();
 });
 
 
@@ -23,6 +27,7 @@ function getQuote(){
 		quote[15] = "I think you could be a <a href='http://www.youtube.com/watch?v=lmDTSQtK20c' target='_blank'>part time model</a>";
 		quote[16] = "Talking animals? <a href='http://www.youtube.com/watch?v=f-Kt_kuYVtU' target='_blank'>That would be crazy</a>...";
 		quote[17] = "Oh the weather outside is frightful";
+		quote[18] = "Shake it, <a href='http://www.youtube.com/watch?v=4hpEnLtqUDg' target='_blank'>harlem style</a>";
 	
 	var randomChoice = Math.floor(Math.random() * quote.length);
 	$('#greeting').append(quote[randomChoice]);

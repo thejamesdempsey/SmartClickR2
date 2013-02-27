@@ -19,7 +19,7 @@ block content
 					span(class="icon-bar")
 				a(class="brand", href="/") 
 					| SmartClickR
-					span  alpha
+					span  Command Center
 				div(class="nav-collapse in collapse")
 					ul(class="nav pull-right")
 						li(class="active")
@@ -27,7 +27,7 @@ block content
 						li
 							a(id='account', href='/user/edit/#{locals.udata.User_ID}') Account
 						li
-							a(id='help', href='/help-center') Help Center
+							a(id='help', href='/help') Help Center
 						li
 							a(id='logout',href='/logout') Log Out
 	#main-content
@@ -52,8 +52,11 @@ block content
 						.clear
 					div#user_search.span6
 						form#index-session.form-inline(method="GET", action="/poll")
-							input(type="search", placeholder="Enter a Session Code", id="index-search")
-							button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+							fieldset#search-container
+								label(class="inline", for="index-search", style="width: auto !important; top:10px !important;") Enter a session code
+								input(type="search", id="index-search", autocomplete="off")
+								//input(type="search", id="index-search", placeholder="Enter a session code", autocomplete="off", class="visible-phone")
+								button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 					.span6
 					
 						
@@ -194,10 +197,8 @@ block content
 							//li: a(href='/about') About
 				.clear
 	else 
-		include extra/footer-logged
+		include extra/footer-alt
 				.clear
 		
 
-
-	
 			
