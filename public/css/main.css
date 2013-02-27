@@ -2,6 +2,85 @@
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+
+@media screen and (min-width: 1200px){
+	#construct{
+		height: 400px;
+		position: relative;
+		top: 4px;
+		right: -34px;
+	}	
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1199px){
+	#construct{
+		height: 266px;
+		position: relative;
+		top: 34px;
+		right: 0px !important;;
+		height: 332px !important;
+		
+	}
+	
+	#tag{
+		padding-bottom: 26px;
+	}
+	
+	#hero_content{
+		padding-top: 0px;
+	}
+}
+
+
+@media screen and (min-width: 980px) and (max-width : 1024px) and (orientation : landscape){
+	#construct{
+		height: 266px;
+		position: relative;
+		top: 37px;
+		right: 0px !important;;
+		width: 61% !important;
+		height: 332px !important;
+		
+	}
+	
+	#hero, #hero_content{
+		padding-top: 20px !important;
+	}	
+	
+	#tag{
+		padding-bottom: 20px;
+		width: 36.425532% !important;
+	}
+}
+
+@media screen and (min-width : 768px) and (max-width : 979px){
+	#construct{
+		height: 266px;
+		position: relative;
+		top: 102px;
+		right: 0px !important;;
+		height: 332px !important;
+		
+	}
+	
+	#hero, #hero_content{
+		padding-top: 0px !important;
+	}	
+	
+	#tag{
+		padding-bottom: 20px;
+	}
+}
+@media screen and (max-width: 767px){
+	#construct{
+		display: none;
+	}
+	
+	#hero{
+		margin-bottom: 60px;
+	}
+}
+
 .navbar-inverse .navbar-inner{
 	border-radius: 0 !important;
 	-moz-border-radius: 0 !important;
@@ -646,7 +725,6 @@ h2{
 }
 
 #hero_content{
-	margin-bottom: 46px;
 	padding-top: 34px;
 }
 

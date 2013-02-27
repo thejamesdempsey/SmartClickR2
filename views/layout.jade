@@ -26,6 +26,7 @@ html
 		script(type='text/javascript', src='/javascript/sessionSearchBottom.js')
 		
 		script(type="text/javascript", src='/less.js')
+		script(src="hisrc.js")
 
 		script(src="/inline-labels.js", type="text/javascript", charset="utf-8")
 
@@ -39,12 +40,14 @@ html
 				div(class="modal-footer")
 					a(href="http://www.enable-javascript.com", target="_blank")  This article can tell you why Javascript is important and how to turn it on
 			div(class="modal-backdrop")
-			// Add Fonts //
 
-
-	
 	body
 		block content
+		script
+			$(document).ready(function(){
+			$("#construct img").hisrc();
+			$("#construct img+img").hisrc({ useTransparentGif: true });
+			})
 		script
 			!function(d,s,id){
 				var js,fjs=d.getElementsByTagName(s)[0];
