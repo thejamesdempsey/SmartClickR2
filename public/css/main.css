@@ -2,6 +2,90 @@
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+.what{
+	display: inline;
+	font-size: 12px;
+}
+
+#explained p{
+	font-size: 1.15em;
+	margin-bottom: 18px;
+}
+
+#bg{
+	background-color: transparent !important;
+	background-image: url('/img/main.png') !important;
+	background-repeat: no-repeat !important;
+	background-position: 50% 0;
+	position: absolute;
+	height: 450px;
+	width: 100%;
+	top: 88px;
+}
+
+#tag{
+	z-index: 9999;
+	background: rgba(56,118,156,.9);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+#feature-container{
+	background: transparent !important;
+	position: relative;
+}
+
+#session-code{
+	margin-top: 22px;
+}
+
+@media screen and (max-width:1199px){
+	#bg{
+		background-color: transparent !important;
+		background-image: url('/img/main.png') !important;
+		background-repeat: no-repeat !important;
+		background-position: -2% 0;
+		position: absolute;
+		height: 450px;
+		width: 940px;
+		top: 77px;
+		right: 10.5%;
+		margin: 0 auto;
+	}
+}
+
+
+@media screen and (max-width: 1024px){
+	#bg{
+		background-color: transparent !important;
+		background-image: url('/img/main.png') !important;
+		background-repeat: no-repeat !important;
+		background-position: -6% 0;
+		position: absolute;
+		height: 450px;
+		width: 940px;
+		top: 90px;
+		right: 5%;
+		margin: 0 auto;
+	}
+	#tag.span5{
+		padding-bottom: 26px;
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 1023px){
+	#bg{
+		width: 100%;
+		right: 0%;
+	}
+	
+	#tag.span5{
+		height: 396px;
+		width: 100%;
+		margin-left: 0 !important;
+	}
+}
 
 #construct img{
 	max-width: 600px;
@@ -19,33 +103,17 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1199px){
-	#construct{
-		height: 266px;
-		position: relative;
-		top: 34px;
-		right: 0px !important;;
-		height: 332px !important;
-		
-	}
-	
-	#tag{
-		padding-bottom: 26px;
-	}
-	
-	#hero_content{
-		padding-top: 0px;
+	#hero{
+		padding: 0 !important;
 	}
 }
 
 
 @media screen and (min-width: 980px) and (max-width : 1024px) and (orientation : landscape){
 	#construct{
-		height: 266px;
 		position: relative;
 		top: 37px;
 		right: 0px !important;;
-		width: 61% !important;
-		height: 332px !important;
 		
 	}
 	
@@ -53,21 +121,10 @@
 		padding-top: 20px !important;
 	}	
 	
-	#tag{
-		padding-bottom: 20px;
-		width: 36.425532% !important;
-	}
 }
 
 @media screen and (min-width : 768px) and (max-width : 979px){
-	#construct{
-		height: 266px;
-		position: relative;
-		top: 102px;
-		right: 0px !important;;
-		height: 332px !important;
-		
-	}
+
 	
 	#hero, #hero_content{
 		padding-top: 0px !important;
@@ -84,6 +141,16 @@
 	
 	#hero{
 		margin-bottom: 60px;
+	}
+	
+	#tag.span5{
+		height: auto;
+	}
+}
+
+@media screen and (max-height: 480px){
+	#bg{
+		background-image: none !important;
 	}
 }
 
@@ -394,7 +461,7 @@ footer{
 
 #session-code{
 /*	background:rgba(76, 138, 176, 0.6);*/
-	background: rgba(56,118,156,.6);
+	background: rgba(56,118,156,.8);
 	border-radius: 10px;
 	position: relative;
 	padding: 20px 40px;
