@@ -2,6 +2,15 @@
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+
+
+.error{
+	color:#b94a48 !important; 
+}
+
+.error-border{
+	border: 2px solid #b94a48 !important;
+}
 .what{
 	display: inline;
 	font-size: 12px;
@@ -38,7 +47,6 @@
 #session-code{
 	margin-top: 22px;
 }
-
 @media screen and (max-width:1199px){
 	#bg{
 		background-color: transparent !important;
@@ -67,6 +75,7 @@
 		top: 90px;
 		right: 5%;
 		margin: 0 auto;
+		z-index: -1;
 	}
 	#tag.span5{
 		padding-bottom: 26px;
@@ -130,8 +139,10 @@
 		padding-top: 0px !important;
 	}	
 	
-	#tag{
-		padding-bottom: 20px;
+	#tag.span5{
+		height: 396px;
+		width: 100%;
+		margin-left: 0 !important;
 	}
 }
 @media screen and (max-width: 767px){
@@ -148,7 +159,7 @@
 	}
 }
 
-@media screen and (max-height: 480px){
+@media screen and (max-width: 480px){
 	#bg{
 		background-image: none !important;
 	}
