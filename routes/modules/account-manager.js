@@ -66,7 +66,6 @@ AM.manualLogin = function(email, pass, callback) {
 
 
 // record insertion, update & deletion methods //
-
 AM.signup = function(newData, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE email = ?', [newData.Email], function(error, results, fields) {				
 		if (error) {
@@ -204,7 +203,6 @@ AM.getUserID = function(email, callback) {
 
 
 // Methods used for Testing //
-
 AM.deleteAllRecords = function(id, callback) {
 	connection.query('DELETE FROM ' + TABLE, function(err, results) {
 		callback(results);

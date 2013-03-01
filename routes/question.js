@@ -70,6 +70,9 @@ exports.pollQuestion = function(request, response) {
 
 // POST /poll/:SessionCode/question/:Question_ID //
 exports.postResponse = function(request, response) {
+
+	// must figure out a way so that users can't double post
+	// redirect if the post has already been made....
 	questionIDs = request.session.questionIDs;
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
@@ -225,13 +228,20 @@ var updateQuestionHelper = function(qid, types, question, count) {
 	} else if (types[currentCount - 1] == 'TF') {
 
 		stem = question[0];
-
+		console.log(question);
 		QM.updateStem({ Stem : stem,
 		 				Question_ID : qid }, function(o) {
 			
-			CM.updateContent({ Content : question[1], Choice_ID : question[2][0]}, function(results) {
-				//update choice for true false
-			});
+			if(question.length == 2) {
+				CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
+						// create choices for TF
+				});
+
+			} else if(question.length == 3) {
+				CM.updateContent({ Content : question[1], Choice_ID : question[2][0]}, function(results) {
+					//update choice for true false
+				});
+			}
 		});				
 
 	} else if (types[currentCount - 1] == 'FR') {

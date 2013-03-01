@@ -73,7 +73,7 @@ var verticalBars = function(dataset, json_loc) {
     function refresh() {
         //Assume new data is in SCRdata.json
         d3.json(json_loc, function(json) {
-            //console.log(json);
+            console.log(json);
             dataset = json;
         });
         
@@ -114,13 +114,14 @@ var verticalBars = function(dataset, json_loc) {
                 return h - (vertPadding * 0.5);
             });
         }
-        
-        //Listen for socket.io event and trigger the D3 update function
-        socket.on('push-response', function(data) {
+    });
+    
+    refresh();
+    //Listen for socket.io event and trigger the D3 update function
+    socket.on('push-response', function(data) {
         var qid = $("#questionID").val();
     
         if(data.questionID == qid) {
             refresh();
         }
-    });
 };
