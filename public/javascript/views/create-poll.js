@@ -74,15 +74,16 @@ $(document).ready(function() {
 				$('.mc_response', this).each(function(index) {
 					
 					checked = $(this).siblings('label').children()[0].checked;
-					if(checked == true){
-						var o = [];
-						o.push($(this).val());
-						o.push('T');
-						mChoices.push(o);
+					// Used for creating answers for MC !!!!! need to complete!
+					// if(checked == true){
+					// 	var o = [];
+					// 	o.push($(this).val());
+					// 	o.push('T');
+					// 	mChoices.push(o);
 
-					} else {
+					// } else {
 						mChoices.push($(this).val());
-					}
+					//}
 				});
 				
 				mc.push(stem);
