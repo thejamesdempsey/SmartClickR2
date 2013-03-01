@@ -24,40 +24,46 @@ block content
 							a(id='signup', href='/user/create') Sign Up
 						li
 							a(id='log', href='/login') Log In
-
-	#feature-container
+	#bg
+	#feature-container.clearfix
 		.container
 			.row-fluid
 				.span12
 					#hero
-						#hero_content.clearfix
-							section#session-code.visible-phone
-								h3 Got a session code?
+						.bg-contain
+							#hero_content.clearfix
+								section#session-code.visible-phone
+									h3 Got a session code? 
+										span.what 
+											a(href="#explained", data-toggle="modal") What's this? 
 
-								form#top-search.form-inline(method="GET", action="/poll")
-									fieldset
-										//label(class="inline", for="index-top-input", style="top: 89px !important; left:49px !important; width: auto !important;") Enter it here
-										input(type="search", id="index-top-input", placeholder="Enter it here")
-										button(type="submit", class="btn btn-info", name="session") Find it &rarr;
-								hr
-							#construct.span7.img-contain
-								img(src="/img/smartclickr-main.png", data-1x="/img/smartclickr-mainx1.png", data-2x="/img/smartclickr-mainx2.png")
-							.span5#tag
-								h1 Audience participation made easy
-								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
-								span#main-create
-									a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
-							.clear
+									form#top-search.form-inline(method="GET", action="/poll")
+										fieldset
+											//label(class="inline", for="index-top-input", style="top: 89px !important; left:49px !important; width: auto !important;") Enter it here
+											input(type="search", id="index-top-input", placeholder="Enter it here")
+											button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+									hr
+								#construct.span7.img-contain
+									//img(src="/img/smartclickr-main.png", data-1x="/img/smartclickr-mainx1.png", data-2x="/img/smartclickr-mainx2.png")
+								.span5#tag
+									h1 Audience participation made easy
+									p Our goal is to allow you to build polls and tools for audience feedback in a simple, yet beautiful manner. SmartClickR provides real-time audience responses from any device with an internet connection. It's that easy.  
+									span#main-create
+										a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
+								.clear
 						//end hero_content
 						section#session-code.hidden-phone
-							h3 Have a session code?
+							h3 Have a session code? 
+								span.what 
+									a(href="#explained", data-toggle="modal") What's that mean?
 
 							form#bottom-search.form-inline(method="GET", action="/poll")
-								label(class="inline", for="index-bottom-input", style="top: 89px !important; left:49px !important; width: auto !important; ") Enter it here
+								label(class="inline", for="index-bottom-input", style="top: 93px !important; left:49px !important; width: auto !important; ") Enter it here
 								input(type="search", id="index-bottom-input")
 								button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 
 					.clear
 					//end section
 
+	include modals/session-explained
 	include extra/footer-main

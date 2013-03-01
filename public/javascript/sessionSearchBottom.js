@@ -27,7 +27,10 @@ validateSearchBottom = function($form) {
 		format += '<strong>No session code?</strong> We dont have anything to search.';
 		format += '</div>';
 		
-		$("#bottom-search input").before(format);
+		err = 'Please enter a session code.';
+		
+		$("#index-bottom-input").addClass("error-border");
+		$("label[for='index-bottom-input']").text(err).addClass("error");
 		
 		isValid = false;
 	} 
