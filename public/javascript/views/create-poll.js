@@ -332,8 +332,9 @@ $(document).ready(function() {
 
 			counter++;
 		}
-
 	});
+
+	//put a method to remove question. use jquery .remove()
 });
 
 

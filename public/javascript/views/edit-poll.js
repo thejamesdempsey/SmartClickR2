@@ -320,6 +320,12 @@ $(document).ready(function() {
 			counter++;
 		}
 	});
+
+
+	// add method to remove question
+	// use ajax to remove question IF question id is present
+
+	// if theres no question id, then we can remove without ajax
 });
 
 
