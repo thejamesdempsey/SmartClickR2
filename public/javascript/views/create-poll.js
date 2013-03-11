@@ -46,7 +46,6 @@ $(document).ready(function() {
 		
 		return isFilled;
 	});*/
-	
 		
 	$('#save_quitBtn').click(function() {
 		
@@ -219,6 +218,12 @@ $(document).ready(function() {
 		
 		$(format).appendTo(('#question_container')).fadeIn("blind", "slow");
 		$("#multipleChoice_question" + counter +" textarea").focus();
+
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 		//$("<article class='question_wrap' id='multipleChoice"+ counter+ "'><h3>Question "+ counter +"</h3><input type='text' placeholder='What would you like to ask?'><fieldset><label for='question-"+counter+"_response-1'>Answer 1</article><input type='text' name='question-"+counter+"_response-1'/></fieldset>").appendTo('#question_container');
 	});	
@@ -261,6 +266,11 @@ $(document).ready(function() {
 		$(format).appendTo(('#question_container')).fadeIn("blind");
 		$("#trueFalse_question" + counter +" textarea").focus();
 		
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 	});
 	
@@ -285,8 +295,14 @@ $(document).ready(function() {
 		format += "<hr>";
 		
 		$(format).hide().appendTo(('#question_container')).fadeIn("blind");
-		$("#freeResponse_question" + counter +" textarea").focus();
 		
+		$("#freeResponse_question" + counter +" textarea").focus();
+
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 	});
 	
@@ -313,6 +329,11 @@ $(document).ready(function() {
 		$(format).appendTo(('#question_container')).fadeIn("blind");
 		$("#freeResponseNumeric_question" + counter +" textarea").focus();
 		
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 	});
 	
@@ -333,8 +354,6 @@ $(document).ready(function() {
 			counter++;
 		}
 	});
-
-	//put a method to remove question. use jquery .remove()
 });
 
 

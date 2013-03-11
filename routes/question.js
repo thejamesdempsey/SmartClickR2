@@ -195,7 +195,7 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 
 		} else if (types[currentCount - 1] == 'N') {
 	
-			stem = question;
+			stem = question
 			QM.updateStem({ Stem : stem,
 							Question_ID : qid }, function(o) { 
 				//do nothing
