@@ -108,6 +108,19 @@ CM.updateContent = function(choiceData, callback) {
 	});
 }
 
+// Update MC Content //
+CM.updateMCContent = function(choiceData, callback) {
+	connection.query('UPDATE ' + TABLE + ' SET Content = ?, ChoiceOrder = ? WHERE Choice_ID = ?', [choiceData.Content, choiceData.Order, choiceData.Choice_ID], function(err, result) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(null);
+		}
+	});
+}
+
 // Update Correct //
 // isCorrect must be either 'Y' or 'N'
 CM.updateChoiceStatus = function(choiceData, callback) {

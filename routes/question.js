@@ -40,7 +40,7 @@ exports.postEditPoll = function(request, response) {
 			if(i < questionIDs.length) {
 
 				//update question helper
-				updateQuestionHelper(questionIDs[i], types, questions[i], count);
+				updateQuestionHelper(questionIDs[i], types, questions[i], i, count);
 
 			} else {
 				//types, question, pollID, numb, currentCount
@@ -164,8 +164,8 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 			
 			QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
 				for(var i = 0; i < choices.length; i++) {
-
-					CM.createMCChoices({ Question_ID : qid, Order : numb+1, Answer : answer, Content : choices[i] }, function(err, results) {
+					
+					CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
 						// create choices for MC
 					});
 				}
@@ -205,7 +205,7 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 }
 
 // need choice id
-var updateQuestionHelper = function(qid, types, question, count) {
+var updateQuestionHelper = function(qid, types, question, numb, count) {
 
 	var currentCount = count.shift();
 
@@ -219,7 +219,7 @@ var updateQuestionHelper = function(qid, types, question, count) {
 		QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
 			for(var i = 0; i < choices.length; i++) {
 
-				CM.updateContent({ Content : choices[i], Choice_ID : parseInt(cids[i])}, function(err, results) {
+				CM.updateMCContent({ Content : choices[i], Order : i+1, Choice_ID : parseInt(cids[i])}, function(err, results) {
 					// create choices for MC
 				});
 			}
