@@ -52,13 +52,14 @@ exports.getEditPoll = function(request, response) {
 // POST /user/:User_ID/poll/delete/:Poll_ID
 exports.deletePoll = function(request, response) {
 
-	console.log('Poll ID', request.params.Poll_ID);
-	console.log('User ID', request.params.User_ID);
-	PM.delete(request.params.Poll_ID, function(results) {
-
-		//must also delete all the corresponding questions and choices!!!
-		response.redirect('/user/' + request.params.User_ID);
-	});
+	if(request.session.user != null && request.session.user != undefined) {	
+		PM.delete(request.params.Poll_ID, function(results) {
+			//must also delete all the corresponding questions and choices!!!
+			response.redirect('/user/' + request.params.User_ID);
+		});
+	} else {
+		response.redirect('/');
+	}
 }
 
 // GET /poll/:SessionCode //

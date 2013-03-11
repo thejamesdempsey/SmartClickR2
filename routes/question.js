@@ -40,7 +40,7 @@ exports.postEditPoll = function(request, response) {
 			if(i < questionIDs.length) {
 
 				//update question helper
-				updateQuestionHelper(questionIDs[i], types, questions[i], count);
+				updateQuestionHelper(questionIDs[i], types, questions[i], i, count);
 
 			} else {
 				//types, question, pollID, numb, currentCount
@@ -70,6 +70,9 @@ exports.pollQuestion = function(request, response) {
 
 // POST /poll/:SessionCode/question/:Question_ID //
 exports.postResponse = function(request, response) {
+
+	// must figure out a way so that users can't double post
+	// redirect if the post has already been made....
 	questionIDs = request.session.questionIDs;
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
@@ -161,8 +164,8 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 			
 			QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
 				for(var i = 0; i < choices.length; i++) {
-
-					CM.createMCChoices({ Question_ID : qid, Order : numb+1, Answer : answer, Content : choices[i] }, function(err, results) {
+					
+					CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
 						// create choices for MC
 					});
 				}
@@ -192,7 +195,7 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 
 		} else if (types[currentCount - 1] == 'N') {
 	
-			stem = question;
+			stem = question
 			QM.updateStem({ Stem : stem,
 							Question_ID : qid }, function(o) { 
 				//do nothing
@@ -202,7 +205,7 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 }
 
 // need choice id
-var updateQuestionHelper = function(qid, types, question, count) {
+var updateQuestionHelper = function(qid, types, question, numb, count) {
 
 	var currentCount = count.shift();
 
@@ -216,7 +219,7 @@ var updateQuestionHelper = function(qid, types, question, count) {
 		QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
 			for(var i = 0; i < choices.length; i++) {
 
-				CM.updateContent({ Content : choices[i], Choice_ID : parseInt(cids[i])}, function(err, results) {
+				CM.updateMCContent({ Content : choices[i], Order : i+1, Choice_ID : parseInt(cids[i])}, function(err, results) {
 					// create choices for MC
 				});
 			}
@@ -225,13 +228,20 @@ var updateQuestionHelper = function(qid, types, question, count) {
 	} else if (types[currentCount - 1] == 'TF') {
 
 		stem = question[0];
-
+		console.log(question);
 		QM.updateStem({ Stem : stem,
 		 				Question_ID : qid }, function(o) {
 			
-			CM.updateContent({ Content : question[1], Choice_ID : question[2][0]}, function(results) {
-				//update choice for true false
-			});
+			if(question.length == 2) {
+				CM.createTFChoices({ Question_ID : qid, Answer : question[1] }, function(o) {
+						// create choices for TF
+				});
+
+			} else if(question.length == 3) {
+				CM.updateContent({ Content : question[1], Choice_ID : question[2][0]}, function(results) {
+					//update choice for true false
+				});
+			}
 		});				
 
 	} else if (types[currentCount - 1] == 'FR') {

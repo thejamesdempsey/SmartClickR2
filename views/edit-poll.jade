@@ -45,22 +45,19 @@ block content
 					.span12
 						section#edit_content.dropshadow
 							section#poll_info
-								fieldset.overlay
+								fieldset
 									label(id="pollNameLabel",for="pollName") Poll Title  (required)
 									input(type="text", id="pollName", name="pollName", class="", value='#{locals.pdata.PollName}')
-								fieldset.overlay
+								fieldset
 									label(for="pollDescription") Poll Description
 									textarea(id="pollDescription", name="pollDescription") #{locals.pdata.PollDescription}
 								hr
 							section#question_container
 								each question, i in locals.qdata
 									if question.AnswerType == "MultipleChoice"
-										article(class='question_wrap clearfix overlay', id='multipleChoice_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='multipleChoice_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											h3 Multiple Choice
-											span(class='close-circle')
-												button(type='button', class='close') &times;
-												span(class='close-bg')
 											textarea(class='textarea_small') #{question.Stem}
 											.top-pad
 											fieldset.span6
@@ -69,37 +66,34 @@ block content
 												input(type='text', class='mc_response', name='question-1_order#{question.QuestionsOrder}', value='#{question.Choices[0].Content}')
 												.clear
 												label.radio Correct Answer 
-													input(type='radio', name='correct_answer')
+													input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 											fieldset.span6
 												span b)
 												input(type='hidden', class='choice_id', value='#{question.Choices[1].Choice_ID}')
 												input(type='text', class='mc_response', name='question-2_order#{question.QuestionsOrder}', value='#{question.Choices[1].Content}')
 												.clear
 												label.radio Correct Answer
-													input(type='radio', name='correct_anwer')
+													input(type='radio', name='correct_anwer#{question.QuestionsOrder}')
 											fieldset.span6
 												span c)
 												input(type='hidden', class='choice_id', value='#{question.Choices[2].Choice_ID}')
 												input(type='text', class='mc_response', name='question-3_order#{question.QuestionsOrder}', value='#{question.Choices[2].Content}')
 												.clear
 												label.radio Correct Answer
-													input(type='radio', name='correct_anwer')
+													input(type='radio', name='correct_anwer#{question.QuestionsOrder}')
 											fieldset.span6
 												span d)
 												input(type='hidden', class='choice_id', value='#{question.Choices[3].Choice_ID}')
 												input(type='text', class='mc_response', name='question-3_order#{question.QuestionsOrder}', value='#{question.Choices[3].Content}')
 												.clear
 												label.radio Correct Answer
-													input(type='radio', name='correct_anwer')	
+													input(type='radio', name='correct_anwer#{question.QuestionsOrder}')	
 									else if question.AnswerType == "TrueFalse"	
-										article(class='question_wrap clearfix overlay', id='trueFalse_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='trueFalse_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											if question.Choices.length > 0
 												input(type='hidden', class='choice_id', value='#{question.Choices[0].Choice_ID}')
 											h3 True/False
-											span(class='close-circle')
-												button(type='button', class='close') &times;
-												span(class='close-bg')
 											textarea(class='textarea_small') #{question.Stem}	
 											.top-pad
 											fieldset.span4
@@ -121,22 +115,16 @@ block content
 													else
 														input(type='radio', name='correct_answer#{question.QuestionsOrder}')
 									else if question.AnswerType == "FreeResponse"
-										article(class='question_wrap clearfix overlay', id='freeResponse_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='freeResponse_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											h3 Free Response
-											span(class='close-circle')
-												button(type='button', class='close') &times;
-												span(class='close-bg')
 											fieldset
 												textarea(class='fr_response', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 											hr
 									else if question.AnswerType == "Numeric"
-										article(class='question_wrap clearfix overlay', id='numeric_question#{question.QuestionsOrder}')
+										article(class='question_wrap clearfix', id='numeric_question#{question.QuestionsOrder}')
 											input(type='hidden', value='#{question.Question_ID}').questionID
 											h3 Numeric Free Response
-											span(class='close-circle')
-												button(type='button', class='close') &times;
-												span(class='close-bg')
 											fieldset
 												textarea(class='numeric', name='question-#{question.QuestionsOrder}', cols='30', rows='5') #{question.Stem}
 											hr
@@ -160,7 +148,7 @@ block content
 									input(type="submit", id="save_quitBtn", class="btn btn-mediun btn-info", value='Save and Quit', onsubmit="Saving...") 
 								.clear
 			hr
-		include extra/footer-logged
+		include extra/footer-main
 			
 	script(src="/javascript/views/edit-poll.js")	
 	script(src="/jquery.ui.effect-blind.js")

@@ -71,7 +71,7 @@ $(document).ready(function() {
 						cids.push($(this).parent().children('[type=hidden]').val());
 					});
 				}
-				stem = $(this).children('textarea').val();
+				stem = $(this).children('textarea').val().trim();
 				
 				$('.mc_response', this).each(function(index) {
 					mChoices.push($(this).val());
@@ -91,12 +91,13 @@ $(document).ready(function() {
 				var tf = [];
 				cids = [];
 				type.push('TF');
-				stem = $(this).children('textarea').val(); 
+				stem = $(this).children('textarea').val().trim(); 
 				
 				if($(this).find('.questionID').length == 1) {
 					qids.push($(this).children('.questionID').val());
 					//issue! find out the value!!!
-					cids.push($('.choice_id', this).val());
+					if($('.choice_id', this).length > 0)
+						cids.push($('.choice_id', this).val());
 				}
 				
 				tf.push(stem);
@@ -113,7 +114,7 @@ $(document).ready(function() {
 			} else if ($(this).children('h3').text() == 'Free Response') {
 				
 				type.push('FR');
-				stem = $(this).children('fieldset').children('textarea').val();
+				stem = $(this).children('fieldset').children('textarea').val().trim();
 				question.push(stem);
 				
 				if($(this).find('.questionID').length == 1) {
@@ -123,7 +124,7 @@ $(document).ready(function() {
 			} else {
 
 				type.push('N');
-				stem = $(this).children('fieldset').children('textarea').val();
+				stem = $(this).children('fieldset').children('textarea').val().trim();
 				question.push(stem);
 
 				if($(this).find('.questionID').length == 1) {
@@ -319,6 +320,12 @@ $(document).ready(function() {
 			counter++;
 		}
 	});
+
+
+	// add method to remove question
+	// use ajax to remove question IF question id is present
+
+	// if theres no question id, then we can remove without ajax
 });
 
 

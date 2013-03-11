@@ -3,7 +3,7 @@ var pieChart = function(dataset, json_loc){
     var w = 350;
     var h = 350;
     var dur = 750;
-    var socket = io.connect('http://localhost');
+    var socket = io.connect(config.Server);
 
     //Dataset Total
     var total;

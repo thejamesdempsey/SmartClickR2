@@ -73,7 +73,7 @@ block content
 							input(id="typeDelete", type="text")
 						div(class="modal-footer")
 							button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel
-							button(id="deleteAcctBtn", formmethod='POST', formaction='user/ ', type='submit', class='btn btn-medium btn-danger') Delete
+							button(id="deleteAcctBtn", formmethod='POST', formaction='/user/delete/#{locals.udata.User_ID}', type='submit', class='btn btn-medium btn-danger') Delete
 
 	script(src="/javascript/views/settings.js")
 	script(src="http://malsup.github.com/jquery.form.js")

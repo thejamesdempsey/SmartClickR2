@@ -66,7 +66,6 @@ AM.manualLogin = function(email, pass, callback) {
 
 
 // record insertion, update & deletion methods //
-
 AM.signup = function(newData, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE email = ?', [newData.Email], function(error, results, fields) {				
 		if (error) {
@@ -181,6 +180,13 @@ AM.getEmail = function(email, callback) {
 	});
 }
 
+AM.getUserFromEmail = function(email, callback) {
+	connection.query('SELECT * FROM ' + TABLE + ' WHERE Email = ?', [email], function(err, results) {
+		if (results.length === 1)
+			callback(results[0]);
+	});
+}
+
 AM.getUser = function(userID, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE User_ID = ?', [userID], function(err, results) {
 		if(results.length === 1)
@@ -197,7 +203,6 @@ AM.getUserID = function(email, callback) {
 
 
 // Methods used for Testing //
-
 AM.deleteAllRecords = function(id, callback) {
 	connection.query('DELETE FROM ' + TABLE, function(err, results) {
 		callback(results);

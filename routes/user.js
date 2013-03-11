@@ -2,9 +2,7 @@ var AM = require('./modules/account-manager');
 var PM = require('./modules/poll-manager');
 var ED = require('./modules/email-dispatcher');
 var bcrypt = require('bcrypt');
-/*
- * GET users listing.
- */
+
 
 // GET /user/create //
 exports.signup = function(request, response) {
@@ -83,9 +81,14 @@ exports.getHome = function(request, response) {
 
 // GET /user/edit/:User_ID //
 exports.getAccount = function(request, response) {
-	var user = request.session.user[0];
-	console.log(user);
-	response.render('account.jade', { title: 'SmartClick | Account', locals: { udata : user }});
+	
+	if(request.session.user != null && request.session.user != undefined) {
+		var user = request.session.user[0];
+		response.render('account.jade', { title: 'SmartClick | Account', locals: { udata : user }});
+	} else {
+		response.redirect('/');
+	}
+	
 }
 
 // POST /user/:User_ID/account //
@@ -106,12 +109,10 @@ exports.updatePassword = function(request, response) {
 				AM.setpasword(user.Email, request.param('reNewPassword'), function(out) {
 					console.log(out);
 					AM.getUser(user.User_ID, function(o) {
-						
 						request.session.user = o;
 						request.session.user.save;
 						response.cookie('pass', out.Password, { maxAge: 2592000000});
 						response.send({res	: 'success'}, 200);
-		
 					});
 				});
 			} else {
@@ -127,9 +128,8 @@ exports.updatePassword = function(request, response) {
 
 
 // Password Reset // 
-
 exports.lostPassword =  function(request, response) {
-	AM.getEmail(request.param('email'), function(o){
+	AM.getUserFromEmail(request.param('email'), function(o){
 		console.log(o);
 		if (o) {
 			response.send('ok', 200);
