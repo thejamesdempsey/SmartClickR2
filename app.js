@@ -57,6 +57,7 @@ app.get('/data', routes.data);
 app.get('/privacy', routes.privacy);
 app.get('/terms', routes.terms);
 app.get('/playground/email', routes.email);
+app.get('/lostpassword', routes.lostPassword);
 
 // user pages //
 app.get('/user/create', user.signup);

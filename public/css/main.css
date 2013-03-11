@@ -29,7 +29,7 @@
 	position: absolute;
 	height: 450px;
 	width: 100%;
-	top: 88px;
+	top: 81px;
 }
 
 #tag{
@@ -56,7 +56,7 @@
 		position: absolute;
 		height: 450px;
 		width: 940px;
-		top: 77px;
+		top: 108px;
 		right: 10.5%;
 		margin: 0 auto;
 	}
@@ -72,7 +72,7 @@
 		position: absolute;
 		height: 450px;
 		width: 940px;
-		top: 90px;
+		top: 72px;
 		right: 5%;
 		margin: 0 auto;
 		z-index: -1;
@@ -87,6 +87,7 @@
 	#bg{
 		width: 100%;
 		right: 0%;
+		top: 85px;
 	}
 	
 	#tag.span5{

@@ -1,0 +1,37 @@
+extends layout_lostpassword
+block content
+	body
+		header(class="navbar navbar-inverse navbar-fixed-top")
+			.navbar-inner
+				.container
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="brand", href="/") 
+						| SmartClickR
+						span  alpha
+					div(class="nav-collapse", style="")
+						ul(class="nav pull-right")
+							li
+								a(id='signup', href='/user/create') Sign Up
+							li
+								a(id='log', href='/login') Log In
+		.top-pad.hidden-phone
+		#hero.clearfix
+			.container
+				.row-fluid
+					.span8.offset2
+						#reset-container.padder.clearfix
+							h1.title Forgot your password?
+							hr.line
+							#explain.span5
+								p Please provide the email address that you used when you signed up for your SmartClickR account.
+								p We will send you an email that will allow you to reset your password 
+							form(id='reset-password', class='span7', method='POST', action='/reset-password')
+								fieldset
+									div(class='above-below clearfix')
+										label(for='email', class='form-text') Your Email Address
+										input(id='email', type='text', name='email', title='Email Address', tabindex='1', autocomplete='off')
+										button(id='reset-submit', class='btn btn-success btn-medium', type='submit', tabindex='3') Send verification email
+	script(src="/javascript/views/reset-pass.js")

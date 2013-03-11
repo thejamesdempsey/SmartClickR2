@@ -65,6 +65,10 @@ exports.terms = function(request, response) {
 	response.render('terms.jade', { title: 'SmartClickR | Terms of Service', layout: 'terms_layout' });
 }
 
+exports.lostPassword = function(request, response) {
+	response.render('pass_lost.jade', { title: 'SmartClickR | Reset Your Password', layout: 'layout_reset'});
+}
+
 exports.email = function(request, response) {
 	response.render('email.jade', { title: 'SmartClickR | Emails', layout: 'email_layout' });
 }

@@ -1,0 +1,100 @@
+.title{
+	font-size: 1.8rem;
+	font-weight: 300;
+	margin-top: 0px;
+	color: #000;
+}
+
+.top-pad{
+	padding-top: 60px;
+}
+
+.padder{
+	padding: 30px;
+	/*border-radius: 12px;*/
+}
+
+.line{
+	visibility: visible;
+	border-bottom: 1px solid #BDBDBD;
+	margin: 14px 0;
+}
+
+.input-error{
+	border: 2px solid #b94a48 !important;
+}
+
+#reset-container .alert-success a{
+	color: #ed5d3b;
+	border-bottom: 1px solid #468847;
+}
+
+#email.input-error:focus{
+	outline: none !important;
+	border-color: transparent;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	
+}
+
+.input-success{
+	border: 2px solid #9c6 !important;
+}
+
+#reset-password div.alert{
+	margin-bottom: 6px;
+}
+
+.alert{
+	border-radius: 0 !important;	
+	
+}
+
+
+
+#explain{
+	margin-left: 0px;
+}
+
+#explain p{
+	color: #000;
+	margin-bottom: 0px;
+	font-size: 14px;
+	padding: 6px 0 0 0;
+}
+
+#reset-password{
+	border: 1px solid #E4E4E4;
+	background-color: #F5F5F5;
+	padding: 16px;
+}
+
+#email{
+	padding: 16px 6px;
+	border-radius: 0;
+	width: 100%;
+}
+
+#reset-wrap{
+	background: #edeae3;
+	/*border-radius: 12px;*/
+	padding: 6px;
+}
+
+#reset-container{
+	background: #fff;
+	box-shadow:0 4px 5px #555;
+}
+
+@media screen and (max-width: 767px){
+	#reset-password{
+		margin-top: 12px;
+	}
+}
+
+@media screen and (max-width: 480px){
+	#reset-submit{
+		width: 100%;
+	}
+}
+
