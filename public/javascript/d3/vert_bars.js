@@ -3,7 +3,7 @@ var verticalBars = function(dataset, json_loc) {
     var w = 800;           //SVG object width in pixels
     var h = 600;            //SVG object height in pixels
     var vertPadding = 25;   //Vertical padding (for the bottom of the SVG object)
-    var socket = io.connect('http://localhost');    //Socket.IO connection
+    var socket = io.connect(config.Server);    //Socket.IO connection
     
     //SVG element creation
     var svg = d3.select("#bar-display")
