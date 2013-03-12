@@ -64,7 +64,7 @@ app.get('/user/create', user.signup);
 app.post('/user/create', user.createUser);
 app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
-app.post('/lostpassword', user.lostPassword);
+app.post('/lostpassword', user.postLostPassword);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.post('/user/edit/:User_ID', user.updatePassword);

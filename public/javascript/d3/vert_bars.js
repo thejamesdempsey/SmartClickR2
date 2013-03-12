@@ -7,7 +7,7 @@ var verticalBars = function(dataset, json_loc) {
     
     //SVG element creation
     var svg = d3.select("#bar-display")
-        .append("svg")
+        .append("svg:svg")
         .attr("width", w)
         .attr("height", h);
         
@@ -67,7 +67,7 @@ var verticalBars = function(dataset, json_loc) {
         .attr("font-size", "16px")
         .attr("fill", "black")
         .attr("text-anchor", "middle");
-    
+
     // -------------------------------------------- UPDATE ------------------------------------------------
     //Upon clicking "p", UPDATE with new data from SCRdata.json
     function refresh() {
@@ -113,15 +113,24 @@ var verticalBars = function(dataset, json_loc) {
             .attr("y", function (d) {
                 return h - (vertPadding * 0.5);
             });
-        }
-    });
-    
+    }
     refresh();
+
+
     //Listen for socket.io event and trigger the D3 update function
     socket.on('push-response', function(data) {
         var qid = $("#questionID").val();
-    
+
         if(data.questionID == qid) {
             refresh();
         }
-};
+    }
+
+};   
+
+
+
+
+
+
+
