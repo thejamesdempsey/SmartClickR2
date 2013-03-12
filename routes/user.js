@@ -133,20 +133,21 @@ exports.updatePassword = function(request, response) {
 //}
 
 exports.postLostPassword =  function(request, response) {
-	AM.getUserFromEmail(request.param('email'), function(o){
+	
+	AM.getUserFromEmail(request.param('email'), function(err, o){
 		console.log(o);
 		if (o) {
 			response.send('ok', 200);
-			ED.resetPasswordLink(o, function(e, m) {
-				if (!e) {
+			// ED.resetPasswordLink(o, function(e, m) {
+			// 	if (!e) {
 					
-				} else {
-					response.send('email-server-error', 400);
-					for (k in e) console.log('error', k, e[k])
-				}
-			});
+			// 	} else {
+			// 		response.send('email-server-error', 400);
+			// 		for (k in e) console.log('error', k, e[k])
+			// 	}
+			// });
 		} else {
-			res.send('email-not-found', 400);
+			response.send('email-not-found', 400);
 		}
 	});
 }

@@ -183,7 +183,9 @@ AM.getEmail = function(email, callback) {
 AM.getUserFromEmail = function(email, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Email = ?', [email], function(err, results) {
 		if (results.length === 1)
-			callback(results[0]);
+			callback(null, results[0]);
+		else
+			callback(null);
 	});
 }
 
