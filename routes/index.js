@@ -69,7 +69,7 @@ exports.terms = function(request, response) {
 }
 
 exports.lostPassword = function(request, response) {
-	response.render('pass_lost.jade', { title: 'SmartClickr | Reset Your Password', layout: 'layout_reset'});
+	response.render('pass_lost.jade', { title: 'SmartClickr | Forgot your Password?', layout: 'layout_reset'});
 }
 
 exports.email = function(request, response) {
