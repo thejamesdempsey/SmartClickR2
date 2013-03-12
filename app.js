@@ -64,11 +64,12 @@ app.get('/user/create', user.signup);
 app.post('/user/create', user.createUser);
 app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
-app.post('/lost-password', user.lostPassword);
+app.post('/lostpassword', user.lostPassword);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.post('/user/edit/:User_ID', user.updatePassword);
 app.post('/user/delete/:User_ID', user.delete);
+app.get('/good-bye', user.getFeedback);
 app.get('/logout', user.logout);
 
 // poll pages //

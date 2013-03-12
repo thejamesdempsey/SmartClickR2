@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 
 // GET /user/create //
 exports.signup = function(request, response) {
-	response.render('signup.jade', { title: 'SmartClickR | Join Now' });
+	response.render('signup.jade', { title: 'SmartClickr | Join Now' });
 	console.log(request.protocol);
 };
 
@@ -32,7 +32,7 @@ exports.createUser = function(request, response) {
 
 // GET /login //
 exports.getLogin = function(request, response) {
-	response.render('login.jade', { title: 'SmartClickR | Login', layout:'layout_login.jade'});
+	response.render('login.jade', { title: 'SmartClickr | Login', layout:'layout_login.jade'});
 	console.log(request.protocol);
 }
 
@@ -71,7 +71,7 @@ exports.getHome = function(request, response) {
 				var formatDate = date[1] + " " + date[2] + ", " + date[3];
 				polls[i].CreateDate = formatDate;
 			}
-			response.render('userhome.jade', { title: 'SmartClickR | Home', locals: {udata: user, pdata: polls}, layout: 'layout_userhome.jade' });
+			response.render('userhome.jade', { title: 'SmartClickr | Home', locals: {udata: user, pdata: polls}, layout: 'layout_userhome.jade' });
 		});
 	} else {
 		response.redirect('/');
@@ -84,7 +84,7 @@ exports.getAccount = function(request, response) {
 	
 	if(request.session.user != null && request.session.user != undefined) {
 		var user = request.session.user[0];
-		response.render('account.jade', { title: 'SmartClick | Account', locals: { udata : user }});
+		response.render('account.jade', { title: 'SmartClickr | Account', locals: { udata : user }});
 	} else {
 		response.redirect('/');
 	}
@@ -128,7 +128,11 @@ exports.updatePassword = function(request, response) {
 
 
 // Password Reset // 
-exports.lostPassword =  function(request, response) {
+//exports.getLostPassword = function(request, response){
+	
+//}
+
+exports.postLostPassword =  function(request, response) {
 	AM.getUserFromEmail(request.param('email'), function(o){
 		console.log(o);
 		if (o) {
@@ -146,6 +150,8 @@ exports.lostPassword =  function(request, response) {
 		}
 	});
 }
+
+
 
 exports.resetPassword = function(request, response) {
 	var email = request //query for email
@@ -179,6 +185,16 @@ exports.delete = function(request, response) {
 		request.session.destroy();
 		response.clearCookie('email');
 		response.clearCookie('pass');
-		response.redirect('/');
+		response.redirect('/good-bye');
 	});
 }
+
+exports.getFeedback = function(request, response) {
+	response.render('feedback.jade', { title: 'SmartClickr | Account Deleted' });
+}
+
+
+
+
+
+

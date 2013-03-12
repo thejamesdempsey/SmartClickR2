@@ -29,6 +29,7 @@ $(document).ready(function() {
 			$('#pollNameLabel').after(format);
 			isValid = false;
 		}
+		
 			
 		return isValid;
 		
@@ -126,7 +127,7 @@ $(document).ready(function() {
 			url:"/user/" + userID + "/poll/" + pollID + "/question/create",
 			data: {"questionType": type, "questions": question},
 			success: function() {
-				//window.location.href = '/';
+				window.location.href = '/';
 			}
 		});
 

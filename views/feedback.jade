@@ -1,0 +1,107 @@
+
+extends layout_feedback
+
+block content
+
+	//header(class="navbar navbar-fixed-top")	
+	header(class="navbar navbar-inverse navbar-fixed-top")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/") 
+					| SmartClickr
+					span  alpha
+				div(class="nav-collapse", style="")
+					ul(class="nav pull-right")
+						li
+							a(id="home", href="/") Home
+						li
+							a(id='features', href='/features') Features
+						li
+							a(id='signup', href='/user/create') Sign Up
+						li
+							a(id='log', href='/login') Log In
+	#feedback-hero
+		.container
+			.row-fluid
+				.span10.offset1
+					.top-pad.visible-desktop
+					h1.title Account Deleted
+			.clear.dropshadow
+	section#feedback-container.container
+		.row-fluid
+			.span10.offset1
+				.backdrop
+					#feedback-content
+						h3 We're sorry to see you go
+						p 
+							| We truly appreciate you taking the time to try out SmartClickr. Your account, and all content, has been deleted; though, at any time, we'll welcome you back with open arms.
+							br
+							br
+							strong - The SmartClickr Team
+						
+						#feedback-survey
+							h3 SmartClickr Feedback Survey
+							p If you'd give us 30 seconds, we'd love to know why you are leaving. Help us help you by filling out this anonymous survey.
+							hr.line
+							form
+								fieldset#question1
+									legend.clearfix Why did you delete you SmartClickr account?
+									div
+										span
+											input(id="tooExpensive", type="checkbox", tabindex="1", class="checkbox", value="Too expensive")
+											label(class="choice", for="tooExpensive") Too expensive
+										span
+											input(id="notEnoughQuestions", type="checkbox", tabindex="2", class="checkbox", value="Not enough question types")
+											label(class="choice", for="notEnoughQuestions") Not enough question types
+										span
+											input(id="tooConfusing", type="checkbox", tabindex="3", class="checkbox", value="Too confusing")
+											label(class="choice", for="tooConfusing") Too confusing
+										span
+											input(id="notEnoughGraphs", type="checkbox", tabindex="4", class="checkbox", value="Not enough graph types")
+											label(class="choice", for="notEnoughGraphs") Not enough graph types
+										span
+											input(id="betterAlternative", type="checkbox", tabindex="5", class="checkbox", value="Found a better alternative")
+											label(class="choice", for="betterAlternative") Found a better alternative
+								fieldset#question2
+									legend.clearfix How long did you have your SmartClickr account?
+									div
+										span
+											input(id="oneWeek", name="timePeriod", type="radio", tabindex="6", class="radio", value="One Week")
+											label(class="choice", for="oneWeek") 1 week
+										span
+											input(id="twoThreeWeeks", name="timePeriod", type="radio", tabindex="7", class="radio", value="Two to Three Weeks")
+											label(class="choice", for="twoThreeWeeks") 2 - 3 weeks
+										span
+											input(id="fourSixWeeks", name="timePeriod", type="radio", tabindex="8", class="radio", value="Four to Six Weeks")
+											label(class="choice", for="fourSixWeeks") 4 - 6 weeks
+										span
+											input(id="sixPlusWeeks", name="timePeriod", type="radio", tabindex="9", class="radio", value="More than Six Weeks")
+											label(class="choice", for="sixPlusWeeks") 6+ weeks
+								fieldset#question3
+									legend.clearfix What would get you to come back to SmartClickr?
+									div
+										span
+											input(id="lowerPrice", type="checkbox", tabindex="10", class="checkbox", value="Lower Price")
+											label(class="choice", for="lowerPrice") Lower Price
+										span
+											input(id="simpleCommand", type="checkbox", tabindex="11", class="checkbox", value="More simple command center")
+											label(class="choice", for="simpleCommand")	More simple command center
+										span
+											input(id="moreCustOptions", type="checkbox", tabindex="12", class="checkbox", value="More customization options")
+											label(class="choice", for="moreCustOptions") More customization options
+										span
+											input(id="moreQuestionTypes", type="checkbox", tabindex="13", class="checkbox", value="More question types")
+											label(class="choice", for="moreQuestionTypes") More question types
+										span
+											input(id="morePresentationOptions", type="checkbox", tabindex="14", class="checkbox", value="More presentation options")
+											label(class="choice", for="morePresentationOptions") More presentation options
+								fieldset#question4
+									legend.clearfix Anything else you wish us to know?
+									div
+										textarea(spellcheck="true", rows="10", cols="50", tabindex="15")
+								fieldset
+									button(type="submit", class="btn btn-medium btn-info") All done!

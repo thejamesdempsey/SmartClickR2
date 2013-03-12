@@ -5,7 +5,7 @@ exports.index = function(request, response) {
 	console.log('User cookie', request.cookies.email);
 	console.log('Pass cookie', request.cookies.pass);
 	if (request.cookies.email == undefined || request.cookies.pass == undefined) {
-		response.render('index.jade', { title: 'SmartClickR | Welcome' });
+		response.render('index.jade', { title: 'SmartClickr | Welcome' });
 	} else {
 		AM.autoLogin(request.cookies.email, request.cookies.pass, function(err, results) {
 			if (results != null) {
@@ -20,65 +20,65 @@ exports.index = function(request, response) {
 
 // GET /features //
 exports.features = function(request, response) {
-	response.render('features.jade', { title: 'SmartClickR | Polling and Presentation Features', layout: 'features_layout' });
+	response.render('features.jade', { title: 'SmartClickr | Polling and Presentation Features', layout: 'features_layout' });
 }
 
 // GET /help-center //
 exports.help = function(request, response) {
 	if(request.session.user != null && request.session.user != undefined)
-		response.render('help.jade', { title: 'SmartClickR | Help Center', layout: 'help-center_layout' });
+		response.render('help.jade', { title: 'SmartClickr | Help Center', layout: 'help-center_layout' });
 	else
 		response.redirect('/');
 }
 
 // GET /samples //
 exports.samples = function(request, response) {
-	response.render('samples.jade', { title: 'SmartClickR | Sample Questions', layout: 'samples_layout' });
+	response.render('samples.jade', { title: 'SmartClickr | Sample Questions', layout: 'samples_layout' });
 }
 
 // GET /about-us //
 exports.about = function(request, response) {
-	response.render('about.jade', { title: 'SmartClickR | About', layout: 'about_layout' });
+	response.render('about.jade', { title: 'SmartClickr | About', layout: 'about_layout' });
 }
 
 
 // GET /about-us //
 exports.blog = function(request, response) {
-	response.render('blog.jade', { title: 'SmartClickR | Blog', layout: 'blog_layout' });
+	response.render('blog.jade', { title: 'SmartClickr | Blog', layout: 'blog_layout' });
 }
 
 
 // GET /data-center //
 exports.contact = function(request, response) {
-	response.render('contact.jade', { title: 'SmartClickR | Contact Us', layout: 'contact_layout' });
+	response.render('contact.jade', { title: 'SmartClickr | Contact Us', layout: 'contact_layout' });
 }
 
 // GET /contact //
 exports.data = function(request, response) {
-	response.render('data.jade', { title: 'SmartClickR | Data Center', layout: 'data_layout' });
+	response.render('data.jade', { title: 'SmartClickr | Data Center', layout: 'data_layout' });
 }
 
 // GET /privacy //
 exports.privacy = function(request, response) {
-	response.render('privacy.jade', { title: 'SmartClickR | Privacy', layout: 'privacy_layout' });
+	response.render('privacy.jade', { title: 'SmartClickr | Privacy', layout: 'privacy_layout' });
 }
 
 // GET /terms //
 exports.terms = function(request, response) {
-	response.render('terms.jade', { title: 'SmartClickR | Terms of Service', layout: 'terms_layout' });
+	response.render('terms.jade', { title: 'SmartClickr | Terms of Service', layout: 'terms_layout' });
 }
 
 exports.lostPassword = function(request, response) {
-	response.render('pass_lost.jade', { title: 'SmartClickR | Reset Your Password', layout: 'layout_reset'});
+	response.render('pass_lost.jade', { title: 'SmartClickr | Reset Your Password', layout: 'layout_reset'});
 }
 
 exports.email = function(request, response) {
-	response.render('email.jade', { title: 'SmartClickR | Emails', layout: 'email_layout' });
+	response.render('email.jade', { title: 'SmartClickr | Emails', layout: 'email_layout' });
 }
 
 
 exports.problemo = function(request, response) { 
- 	response.render('404.jade', {title: 'SmartClickR | This page got lost', layout:'404_layout'}); 
+ 	response.render('404.jade', {title: 'SmartClickr | This page got lost', layout:'404_layout'}); 
 }
 
 

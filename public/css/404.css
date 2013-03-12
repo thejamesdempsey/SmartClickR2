@@ -2,8 +2,15 @@
 	padding: 23.5px !important;
 	border-radius: 6px;	
 	background: #fff !important;
-	top:-56px !important;
 	position: relative;
+}
+
+.top-pad{
+	padding-top: 45px;
+}
+
+#hero{
+	margin-bottom: 20px;
 }
 
 

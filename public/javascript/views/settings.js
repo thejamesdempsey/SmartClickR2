@@ -1,12 +1,9 @@
-
-
-$("#accountPasswordForm").ready(function(){
-	$(this).ready(function() {
+	$("#accountPasswordForm").ready(function() {
 
 		$("#currentPassword").focus();	
 
 
-		$("#accountPasswordForm").submit(function(e){
+		$(this).submit(function(e){
 			e.preventDefault();
 
 			var pass = $('#currentPassword').val().trim();
@@ -126,69 +123,13 @@ $("#accountPasswordForm").ready(function(){
 									$("#accountPasswordForm").resetForm();
 
 									$("#passwordChangeLabel").after(format);
-						}					
-								//format  = '<div class="alert alert-error fade in">';
-							//	format += '<strong>Yikes!</strong> You entered a password but no email address';
-							//	format += '</div>';				
+						}								
 				});
 		return false;	
 		});
 
 	});
 
-})
 
 
-
-
-
-
-$("#deleteAcct").ready(function(){
-	
-	$("#typeDelete").focus();	
-	
-	$("#deleteAcct").submit(function() {
-		if (false == validateDelete($(this))) {
-			return false;
-		}  
-	});
-		
-});
-
-
-validateDelete = function(){
-	
-	isValid = true;
-	
-	var input = $("#typeDelete").val().trim().toUpperCase();
-	
-	$("#deleteAcct").find("div.alert").hide();
-	
-	if ( input == '' ){
-		format = '<div class="alert alert-error fade in">';
-		format += "<strong>Since this cannot be undone we need you to type 'DELETE' to confirm this action.</strong>";
-		format += '</div>';
-		
-		$('#typeDelete').removeClass("input-error").addClass('input-error');
-		
-		$("#typeDelete").before(format);
-		
-		isValid = false;
-	}
-	
-	else if ( input != 'DELETE' ){
-		format = '<div class="alert alert-error fade in">';
-		format += "<strong>Yikes, </strong>you did not enter the word 'DELETE'.";
-		format += '</div>';
-		
-		$('#typeDelete').removeClass("input-error").addClass('input-error');
-		
-		$("#typeDelete").before(format);
-		
-		isValid = false;
-	}
-	
-	return isValid;
-	
-}
 

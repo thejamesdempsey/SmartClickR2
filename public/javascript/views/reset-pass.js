@@ -2,7 +2,7 @@ $("#reset-password").ready(function() {
 	$('#email').focus();
 	$(this).submit(function(e) {
 		e.preventDefault();
-		$(this).find("#reset-password .alert").hide();
+		$(this).find(".alert").hide();
 
 
 		var email = $('#email').val().trim();
@@ -10,7 +10,7 @@ $("#reset-password").ready(function() {
 		$(this).ajaxSubmit({
 			type 	: 'POST',
 			data 	: {"email": email},
-			url  	: '/reset-password',
+			url  	: '/lostPassword',
 
 			beforeSubmit : function(formData, jqForm, options){				
 							if (false == validateEmail($(this))) {

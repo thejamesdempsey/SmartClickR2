@@ -10,17 +10,17 @@ block content
 					span(class="icon-bar")
 					span(class="icon-bar")
 					span(class="icon-bar")
-				a(class="brand", href="/") SmartClickR
+				a(class="brand", href="/") SmartClickr
 				div(class="nav-collapse")
 					ul(class="nav pull-right")
 						li(class="active")
 							a(id="home", href="/") Return Home
-
-	#hero
+	.top-pad.hidden-phone
+	#hero.clearfix
 		.container
 			.row-fluid
 				.span8.offset2
-					h1.title Whoops, this page got lost
+					h1.title This page got lost
 			.clear.dropshadow
 	section#error-container.container.clearfix
 		.row-fluid
@@ -32,9 +32,9 @@ block content
 							p Otherwise, someone on our team is to blame for this error. Rest assured that the proper amount of blame and humiliation has been dealt to them. 
 							p.error-actions
 								span
-									button(href="#", class="button btn-info btn-large") Contact
+									a(href="/contact", class="btn btn-info btn-large") Contact
 								span
-									button(href="#", class="button btn-info btn-large") Home
+									a(href="/", class="btn btn-info btn-large") Home
 							p.visible-desktop In the meantime, you can play snake to release any anger you may be feeling
 								canvas(id="canvas", width="375", height="375", class="visible-desktop offset2")
 	
