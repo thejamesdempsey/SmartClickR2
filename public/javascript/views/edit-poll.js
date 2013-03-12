@@ -206,6 +206,12 @@ $(document).ready(function() {
 		
 		$(format).appendTo(('#question_container')).fadeIn("blind", "slow");
 		$("#multipleChoice_question" + counter +" textarea").focus();
+		
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 		//$("<article class='question_wrap' id='multipleChoice"+ counter+ "'><h3>Question "+ counter +"</h3><input type='text' placeholder='What would you like to ask?'><fieldset><label for='question-"+counter+"_response-1'>Answer 1</article><input type='text' name='question-"+counter+"_response-1'/></fieldset>").appendTo('#question_container');
 	});	
@@ -247,6 +253,11 @@ $(document).ready(function() {
 		
 		$(format).appendTo(('#question_container')).fadeIn("blind");
 		$("#trueFalse_question" + counter +" textarea").focus();
+
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
 		
 		counter++;
 	});
@@ -273,7 +284,12 @@ $(document).ready(function() {
 		
 		$(format).hide().appendTo(('#question_container')).fadeIn("blind");
 		$("#freeResponse_question" + counter +" textarea").focus();
-		
+
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 	});
 	
@@ -300,6 +316,11 @@ $(document).ready(function() {
 		$(format).appendTo(('#question_container')).fadeIn("blind");
 		$("#freeResponseNumeric_question" + counter +" textarea").focus();
 		
+		$('button.close').on('click', function() {
+			counter--;
+			$(this).parents('.question_wrap').remove();
+		});
+
 		counter++;
 	});
 	
@@ -321,7 +342,19 @@ $(document).ready(function() {
 		}
 	});
 
-
+	$('button.close', this).click(function() {
+		var questionID = $(this).parents('.question_wrap').children('input.questionID').val();
+		var userID = $('#userId').val();
+		var pollID = $('#pollId').val();
+		var currentQuestion = $(this).parents('.question_wrap');
+		$.ajax({
+			type:"POST",
+			url:"/user/" + userID + "/poll/" + pollID + "/question/delete/" + questionID,
+			success: function() {
+				currentQuestion.remove();
+			}
+		});
+	});
 	// add method to remove question
 	// use ajax to remove question IF question id is present
 

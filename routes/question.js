@@ -12,12 +12,14 @@ exports.postNewQuestion = function(request, response) {
 	var types = request.param('questionType');
 	var count = [];
 
-	for(var i = 0; i < types.length; i++) {
+	if(types != undefined && types.length > 0) {
+		for(var i = 0; i < types.length; i++) {
 
-		count.push(i + 1);
+			count.push(i + 1);
 
-		//types, questions, pollID, numb, count
-		newQuestionHelper(types, questions, request.param('Poll_ID'), i, count);
+			//types, questions, pollID, numb, count
+			newQuestionHelper(types, questions, request.param('Poll_ID'), i, count);
+		}
 	}
 	response.send(200);
 }
@@ -31,25 +33,31 @@ exports.postEditPoll = function(request, response) {
 	var count = [];
 
 	PM.updatePollData({pollName: pollData[1], pollDescription: pollData[2], pollID : pollData[0]}, function(nothing) {
+		if(types != undefined && types.length > 0) {
+			for(var i = 0; i < types.length; i++) {		
+				count.push(i + 1);
+	
+				if(questionIDs != undefined && i < questionIDs.length) {
+					//update question helper
+					updateQuestionHelper(questionIDs[i], types, questions[i], i, count);
 
-
-		for(var i = 0; i < types.length; i++) {
-			
-			count.push(i + 1);
-			
-			if(i < questionIDs.length) {
-
-				//update question helper
-				updateQuestionHelper(questionIDs[i], types, questions[i], i, count);
-
-			} else {
-				//types, question, pollID, numb, currentCount
-				newQuestionHelper(types, questions, request.param('Poll_ID'), i, count);
+				} else {
+					//types, question, pollID, numb, currentCount
+					newQuestionHelper(types, questions, request.param('Poll_ID'), i, count);
+				}
 			}
 		}
 		response.send(200);
 	});
 
+}
+
+// POST /user/:User_ID/poll/:Poll_ID/question/delete/:Question_ID //
+exports.deleteQuestion = function(request, response) {
+	var questionID = request.param('Question_ID');
+	QM.delete(questionID, function(o) {
+		response.send(200);
+	});
 }
 
 // GET /poll/:SessionCode/question/:Question_ID //
@@ -238,7 +246,7 @@ var updateQuestionHelper = function(qid, types, question, numb, count) {
 				});
 
 			} else if(question.length == 3) {
-				CM.updateContent({ Content : question[1], Choice_ID : question[2][0]}, function(results) {
+				CM.updateTFContent({ Answer : question[1], Choice_ID : question[2][0]}, function() {
 					//update choice for true false
 				});
 			}
