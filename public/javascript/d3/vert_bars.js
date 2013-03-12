@@ -114,19 +114,21 @@ var verticalBars = function(dataset, json_loc) {
                 return h - (vertPadding * 0.5);
             });
     }
+    
     refresh();
-
 
     //Listen for socket.io event and trigger the D3 update function
     socket.on('push-response', function(data) {
+        
         var qid = $("#questionID").val();
 
         if(data.questionID == qid) {
+            console.log('pussh!!');
             refresh();
         }
-    }
-
-};   
+    });
+};
+   
 
 
 
