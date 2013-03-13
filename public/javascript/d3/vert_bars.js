@@ -73,9 +73,8 @@ var verticalBars = function(dataset, json_loc) {
     function refresh() {
         //Assume new data is in SCRdata.json
         d3.json(json_loc, function(json) {
-            //console.log(json);
             dataset = json;
-            console.log(dataset);
+            //console.log(dataset);
                
             // * * * Assume the same number of data elements * * *
             
@@ -124,7 +123,6 @@ var verticalBars = function(dataset, json_loc) {
         var qid = $("#questionID").val();
 
         if(data.questionID == qid) {
-            console.log('pussh!!');
             refresh();
         }
     });

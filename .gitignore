@@ -1,2 +1,4 @@
 routes/modules/my-info-config.js
+routes/modules/email-settings.js
 public/javascript/d3/info-config.js
+

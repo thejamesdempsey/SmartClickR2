@@ -80,6 +80,7 @@ exports.postResponse = function(request, response) {
 
 	// must figure out a way so that users can't double post
 	// redirect if the post has already been made....
+	var respondIDs = request.session.respondIDs;
 	questionIDs = request.session.questionIDs;
 	currentQID = request.param('Question_ID');
 	sessionCode = request.param('SessionCode');
@@ -88,33 +89,46 @@ exports.postResponse = function(request, response) {
 	var user = request.session.user;
 	var nextQuestion = questionIDs.indexOf(currentQID) + 1;
 
+	// need to prevent double post!
+
 	if(user) {
-		RM.createResponse({ Question_ID : currentQID, User_ID : user[0].User_ID, Content : content }, function(o) {
-			
-			//sending the message to pull!
-			io.sockets.emit('push-response', { message : 'push', questionID : currentQID});
-
-			if(nextQuestion == questionIDs.length) {
-				PM.getPoll(sessionCode, function(poll) {
-					response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
-				});
-			} else {
-				response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
-			}
-		});
+		if(respondIDs.indexOf(currentQID) == -1) {
+			RM.createResponse({ Question_ID : currentQID, User_ID : user[0].User_ID, Content : content }, function(o) {
+				
+				//sending the message to pull!
+				io.sockets.emit('push-response', { message : 'push', questionID : currentQID});
+				if(nextQuestion == questionIDs.length) {
+					PM.getPoll(sessionCode, function(poll) {
+						response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
+					});
+				} else {
+					request.session.respondIDs.push(currentQID);
+					request.session.respondIDs.save;
+					response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
+				}
+			});
+		} else {
+			response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
+		}
 	} else {
-		RM.createPublicResponse({ Question_ID : currentQID, Content : content }, function(o) {
-			io.sockets.emit('push-response', { message : 'push', questionID : currentQID});
+		if(respondIDs.indexOf(currentQID) == -1) {
+			RM.createPublicResponse({ Question_ID : currentQID, Content : content }, function(o) {
+				io.sockets.emit('push-response', { message : 'push', questionID : currentQID});
 
-			if(nextQuestion == questionIDs.length) {
-				request.session.questionIDs = '';
-				PM.getPoll(sessionCode, function(poll) {
-					response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
-				});
-			} else {
-				response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
-			}
-		});
+				if(nextQuestion == questionIDs.length) {
+					request.session.questionIDs = '';
+					PM.getPoll(sessionCode, function(poll) {
+						response.render('final.jade', { title: 'SmartClickR | Poll Completed', locals: { pdata : poll }});
+					});
+				} else {
+					request.session.respondIDs.push(currentQID);
+					request.session.respondIDs.save;
+					response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
+				}
+			});
+		} else {
+			response.redirect('/poll/' + sessionCode + '/question/' + questionIDs[nextQuestion]);
+		}
 	}
 }
 

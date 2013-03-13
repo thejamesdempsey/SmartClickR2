@@ -153,7 +153,6 @@ exports.postLostPassword =  function(request, response) {
 }
 
 
-
 exports.resetPassword = function(request, response) {
 	var email = request //query for email
 	var passH = request //query for password hash
