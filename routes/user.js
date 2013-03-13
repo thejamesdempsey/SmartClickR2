@@ -153,8 +153,12 @@ exports.postLostPassword =  function(request, response) {
 }
 
 
+<<<<<<< HEAD
 
 exports.postResetPassword = function(request, response) {
+=======
+exports.resetPassword = function(request, response) {
+>>>>>>> f9a319a1a44d31fa426af8bbe06d4a98bb371e62
 	var email = request //query for email
 	var passH = request //query for password hash
 	AM.validateLink(email, passH, function(e){

@@ -74,6 +74,7 @@ exports.getPollQuestions = function(request, response) {
 				FM.arrayQID(qids, function(questionIDs) {
 					//should determine if i should use cookie
 					request.session.questionIDs = questionIDs;
+					request.session.respondIDs = [];
 					PM.pollLanding(sessionCode, function(pollData) {
 						console.log(pollData);
 						response.render('landing.jade', { title: 'SmartClickR | Starting Poll', locals: { QuestionIDs : questionIDs, pdata : pollData , session : sessionCode }});
@@ -81,7 +82,7 @@ exports.getPollQuestions = function(request, response) {
 				});
 			});
 		} else {
-				response.render('poll-not-found.jade', {title:'SmartClickR | Poll Not Found'});
+			response.render('poll-not-found.jade', {title:'SmartClickR | Poll Not Found'});
 		}
 	});
 }

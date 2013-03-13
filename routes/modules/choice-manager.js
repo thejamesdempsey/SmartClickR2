@@ -108,6 +108,27 @@ CM.updateContent = function(choiceData, callback) {
 	});
 }
 
+CM.updateTFContent = function(choiceData, callback) {
+
+	if(choiceData.Answer == 'True') {
+		content = 'True'
+		answer = 'T';
+	} else if(choiceData.Answer == 'False') {
+		answer = 'F';
+		content = 'False';
+	} 
+
+	connection.query('UPDATE ' + TABLE + ' SET Content = ?, IsCorrectChoice = ? WHERE Choice_ID = ?', [content, answer, choiceData.Choice_ID], function(err, result) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection is closed');
+		} else {
+			callback(null);
+		}
+	});
+}
+
 // Update MC Content //
 CM.updateMCContent = function(choiceData, callback) {
 	connection.query('UPDATE ' + TABLE + ' SET Content = ?, ChoiceOrder = ? WHERE Choice_ID = ?', [choiceData.Content, choiceData.Order, choiceData.Choice_ID], function(err, result) {
