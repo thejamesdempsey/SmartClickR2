@@ -72,6 +72,14 @@ exports.lostPassword = function(request, response) {
 	response.render('pass_lost.jade', { title: 'SmartClickr | Forgot your Password?', layout: 'layout_reset'});
 }
 
+exports.resetPassword = function(request, response) {
+	response.render('pass_reset.jade', {title: 'SmartClickr | Reset your Password', layout: 'layout_reset'});
+}
+
+exports.gettingStarted = function(request, response) {
+	response.render('guide.jade', {title: 'Getting Started with SmartClickr', layout: 'layout_guide'});
+}
+
 exports.email = function(request, response) {
 	response.render('email.jade', { title: 'SmartClickr | Emails', layout: 'email_layout' });
 }

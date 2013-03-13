@@ -43,6 +43,7 @@
 
 #reset-password div.alert{
 	margin-bottom: 6px;
+	border-radius: 0;	
 }
 
 .alert{
@@ -84,6 +85,55 @@
 #reset-container{
 	background: #fff;
 	box-shadow:0 4px 5px #555;
+}
+
+
+.logo{
+	font-size: 1.8rem;
+	font-weight: 300;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #fff;
+}
+
+#change-password p{
+	color: #f0f0f0;
+	margin-bottom: 1.5em;
+	font-size: 13px;
+	padding: 0px 0 0 0;
+}
+
+#change-password label{
+	color: #f0f0f0;
+	font-size: 15px;
+}
+
+#change-password input[type="password"]{
+	width: 100%;
+	padding: 16px;
+	background-color: #fbfbfb;
+	border: 1px solid #ccc;
+	font-size: 1.1em;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	line-height: 20px;
+}
+
+#change-password input[type="submit"]{
+	height: 45px;
+	min-width: 140px;
+	font-weight: normal;
+	margin: 15px 0 10px 0;
+	background-color: #ed5d3d;
+	font-size: 16px;
+	border: 1px solid #5e5e5e;
+	color: #fff;
+	display: inline-block;
+	padding: 12px 26px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
 
 @media screen and (max-width: 767px){

@@ -138,14 +138,14 @@ exports.postLostPassword =  function(request, response) {
 		console.log(o);
 		if (o) {
 			response.send('ok', 200);
-			// ED.resetPasswordLink(o, function(e, m) {
-			// 	if (!e) {
+			ED.resetPasswordLink(o, function(e, m) {
+			 	if (!e) {
 					
-			// 	} else {
-			// 		response.send('email-server-error', 400);
-			// 		for (k in e) console.log('error', k, e[k])
-			// 	}
-			// });
+			} else {
+			 		response.send('email-server-error', 400);
+			 		for (k in e) console.log('error', k, e[k])
+			 	}
+		 	});
 		} else {
 			response.send('email-not-found', 400);
 		}
@@ -154,14 +154,14 @@ exports.postLostPassword =  function(request, response) {
 
 
 
-exports.resetPassword = function(request, response) {
+exports.postResetPassword = function(request, response) {
 	var email = request //query for email
 	var passH = request //query for password hash
 	AM.validateLink(email, passH, function(e){
 		if( e != 'ok' ){
 			res.redirect('/');
 		} else {
-			response.render('/reset', {title: 'Reset your Password'});
+			response.render('/reset-password', {title: 'Reset your Password'});
 		}
 	});
 }

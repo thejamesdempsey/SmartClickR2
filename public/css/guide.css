@@ -1,0 +1,179 @@
+
+
+.sticky{
+	position: fixed;
+	z-index: 1030;
+	box-shadow: 0 2px 5px #b4b4b4;
+	margin-bottom:0;
+	overflow:visible;
+}
+
+.active{
+	background: #0088cc;
+	color: #fff !important;
+}
+
+.nav-pills > li > a.active:hover{
+	background: #0088cc;
+	color: #fff !important;
+}
+
+.nav-pills > li > a{
+	margin-left: 5px;
+	color: #555;
+}
+
+.sub-wrap{
+	padding-top: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 55px;
+}
+
+.sub-wrap h3{
+	font-weight: 300;
+}
+
+
+#main-content{
+	display: block;
+	padding-bottom: 150px;
+	min-height: 100%;
+	position: relative;
+}
+
+#welcome{
+	padding-top: 60px;
+	padding-bottom: 75px;
+}
+
+#guide-sub .sub-wrap:nth-of-type(even){
+	background:#F8F8F8;
+}
+
+#guide-sub .sub-wrap:last-of-type{
+	padding-bottom: 90px;
+}
+
+#guide-body{
+	background: #eee url('/img/noise.png');
+	height: 100%;
+}
+
+#guide-hero{
+	background: #72c1b0;
+	padding-top: 36px;
+	padding-bottom: 22px;
+	border-bottom: 1px solid #fff;
+}
+
+#content_container .backdrop{
+	padding: 0px !important;
+}
+
+#guide-hero h2{
+	font-size: 3rem;
+	color: #fff;
+}
+
+#guide-title{
+	background-color: #F0F0F0;
+	border-radius: 12px 12px 0px 0px;
+	padding: 12px;
+}
+
+#guide-title h2{
+	margin: 0px;
+	
+}
+
+#nav-container{
+	max-width: 1171px;
+	width: 100%;
+	background-color: #e8e6e6;
+	border-bottom: 1px solid #919191;
+	
+}
+
+#guide-nav{
+	padding: 12px;
+	width: 100%;
+}
+
+#guide-nav .nav{
+	margin-bottom: 0px;
+}
+
+#guide-sub{
+}
+
+.username, .hashtag{
+	color:#4c8ab0 !important;
+}
+
+
+hr.line{
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	visibility: visible;
+}
+.backdrop{
+	top: -48px !important;
+}
+
+.top-pad{
+	padding-top: 56px;
+}
+
+.help-pad{
+	padding: 40px;
+}
+
+#help-main{
+	background: #fff;
+	border-radius: 12px;
+}
+
+
+#guide-sub{
+	background-color: #fff;
+}
+
+footer{
+	position:absolute;
+	bottom:0;
+	z-index: 10;
+	clear: both;
+}
+
+.clearfix:after{
+	content:".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+@media screen and (max-width: 1199px){
+	#nav-container{
+		max-width: 940px;
+	}
+}
+
+@media screen and (max-width: 979px){
+	#nav-container{
+		max-width: 724px;
+	}
+}
+
+@media screen and (max-width: 767px){
+	#nav-container{
+		max-width: 100%;
+	}
+}
+
+@media screen and (min-width:980px){
+	.right{
+		float: right !important;
+	}
+}

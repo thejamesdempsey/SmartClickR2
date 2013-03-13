@@ -57,14 +57,17 @@ app.get('/data', routes.data);
 app.get('/privacy', routes.privacy);
 app.get('/terms', routes.terms);
 app.get('/playground/email', routes.email);
-app.get('/lostpassword', routes.lostPassword);
+app.get('/getting-started-with-smartclickr', routes.gettingStarted);
 
 // user pages //
 app.get('/user/create', user.signup);
 app.post('/user/create', user.createUser);
 app.get('/login', user.getLogin);
 app.post('/login', user.postLogin);
+app.get('/lostpassword', routes.lostPassword);
 app.post('/lostpassword', user.postLostPassword);
+app.get('/reset-password', routes.resetPassword);
+app.post('/reset-password', user.postResetPassword);
 app.get('/user/:User_ID', user.getHome);
 app.get('/user/edit/:User_ID', user.getAccount);
 app.post('/user/edit/:User_ID', user.updatePassword);

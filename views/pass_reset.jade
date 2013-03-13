@@ -1,0 +1,21 @@
+extends layout_lostpassword
+block content
+	body
+		.top-pad.hidden-phone
+		#hero.clearfix
+			.container
+				.row-fluid
+					.span6.offset3
+						.reset-container.padder.clearfix
+							h1.logo SmartClickr
+							form(id='change-password', method='POST', action='/reset-password')
+								fieldset.clearfix
+									p#guidelines At least 6 characters with letters and numbers
+									label(for='newPassword', class='form-text') New Password
+									input(id='newPassword', type='password', name='newPassword', title='New Password', tabindex='1', autocomplete='off')
+									label(for='confirmNewPassword', class='form-text') Confirm New Password
+									input(id='confirmNewPassword', type='password', name='confirmNewPassword', title='Confirm New Password', tabindex='2', autocomplete='off')
+									input(id='reset-submit', class='', type='submit', tabindex='3', value="Reset Password")
+	script(src="/javascript/views/reset-pass.js")
+
+
