@@ -73,48 +73,49 @@ var verticalBars = function(dataset, json_loc) {
     function refresh() {
         //Assume new data is in SCRdata.json
         d3.json(json_loc, function(json) {
-            console.log(json);
+            //console.log(json);
             dataset = json;
-        });
-        
-        // * * * Assume the same number of data elements * * *
-        
-        //Update the yScale domain (since new elements could be larger/smaller)
-        yScale.domain([0, d3.max(dataset, function(d){
-            return d.Value;
-            })
-        ]);
-        
-        //Select all of the existing 'rect's & update them
-        svg.selectAll("rect")
-            .data(dataset)
-            .transition().duration(1000)
-            .attr("y", function(d){
-                return h - vertPadding - yScale(d.Value);
-            })
-            .attr("height", function(d) {
-                return yScale(d.Value) - vertPadding;
-            })
-            .attr("fill", function(d, i) {
-                //return "rgb(0, 0, " + (d.value * 10) + ")";
-                return color(i);
-            });
+            console.log(dataset);
+               
+            // * * * Assume the same number of data elements * * *
             
-        //Select all of the existing 'text's & update them
-        svg.selectAll("text")
-            .data(dataset)
-            .transition().delay(750).duration(1000)
-            .text(function(d) {
-                return d.Content + ": " + d.Value;
-            })
-            .attr("x", function(d, i) {
-                return xScale(i) + xScale.rangeBand() / 2;
-            })
-            .attr("y", function (d) {
-                return h - (vertPadding * 0.5);
-            });
-    }
-    
+            //Update the yScale domain (since new elements could be larger/smaller)
+            yScale.domain([0, d3.max(dataset, function(d){
+                return d.Value;
+                })
+            ]);
+            
+            //Select all of the existing 'rect's & update them
+            svg.selectAll("rect")
+                .data(dataset)
+                .transition().duration(1000)
+                .attr("y", function(d){
+                    return h - vertPadding - yScale(d.Value);
+                })
+                .attr("height", function(d) {
+                    return yScale(d.Value) - vertPadding;
+                })
+                .attr("fill", function(d, i) {
+                    //return "rgb(0, 0, " + (d.value * 10) + ")";
+                    return color(i);
+                });
+
+            //Select all of the existing 'text's & update them
+            svg.selectAll("text")
+                .data(dataset)
+                .transition().delay(750).duration(1000)
+                .text(function(d) {
+                    return d.Content + ": " + d.Value;
+                })
+                .attr("x", function(d, i) {
+                    return xScale(i) + xScale.rangeBand() / 2;
+                })
+                .attr("y", function (d) {
+                    return h - (vertPadding * 0.5);
+                });
+        });
+    };
+
     refresh();
 
     //Listen for socket.io event and trigger the D3 update function

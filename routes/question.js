@@ -14,7 +14,6 @@ exports.postNewQuestion = function(request, response) {
 
 	if(types != undefined && types.length > 0) {
 		for(var i = 0; i < types.length; i++) {
-
 			count.push(i + 1);
 
 			//types, questions, pollID, numb, count
