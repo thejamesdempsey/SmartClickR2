@@ -32,65 +32,60 @@ block content
 		hr
 	section#content_container
 		.container
-			.row
+			.row-fluid
 				.span12					
 					section#user_content
 						div#content.pad
 							#sub-title
-								h3 The folks behind SmartClickr
-								p#blurb We are a team of 4 humans who go to school at James Madison University in Virginia. We are on a mission to make the world a better place by creating a service that makes real time audience interation easy and afforable 
-								ul#about-team.clearfix
-									li.span5
-										.thumb
-											img(src="http://placehold.it/400x250")
+								h3.hidden-phone The folks behind this thing called SmartClickr
+								h3.visible-phone The folks behind SmartClickr
+
+							p#blurb We are a team of 4 humans who go to school at James Madison University in Virginia. We are on a mission to make the world a better place by creating a service that makes real time audience interation easy and afforable 
+							hr.line
+							ul#about-team.clearfix
+								li.span3
+									a.thumb.brad
+										img(src="img/about/brad-fischer.jpg")
+									.team-text
 										h3 Brad Fischer
-										p Lead Server Engineer and Product Manager
+										p Server Engineer
 										p
 											a(href="#")@bradfisher
-									li.span5
-										.thumb
-											img(src="http://placehold.it/400x250")
+								li.span3
+									a.thumb.billy
+										img(src="img/about/billy-godfrey.jpg")
+									.team-text
 										h3 Billy Godfrey
-										p Lead Infrastructure Engineer
+										p Infrastructure Engineer
 										p 
 											a(href="#")@billygodfrey
-									li.span5
-										.thumb
-											img(src="http://placehold.it/400x250")
+								li.span3
+									a.thumb.daniel
+										img(src="img/about/daniel-to.jpg")
+									.team-text
 										h3 Daniel To
-										p Lead Programmer/Server-Side Developer
+										p Server-Side Developer
 										p
 											a(href="#")@danielto
-									li.span5
-										.thumb
-											img(src="http://placehold.it/400x250")
+								li.span3
+									a.thumb.jimmy
+										img(src="img/about/jimmy-dempsey.jpg")
+									.team-text
 										h3 Jimmy Dempsey
-										p Lead Front-End Developer
+										p Front-End Developer
 										p
 											a(href="#")@thejamesdempsey
-									hr.line
-									li.span3 
-										.thumb
-											img(src="http://placehold.it/200x200")
-										h3 Morgan Benton
-										p Project Advisor
-										p
-											a(href="#")@morganbenton
-									li.span3
-										.thumb
-											img(src="http://placehold.it/200x200")
-										h3 Nicole Radziwill
-										p Project Advisor
-										p
-											a(href="#")@nicoleradziwill
-									li.span3
-										.thumb
-											img(src="http://placehold.it/200x200")
-										h3 Emil Salib
-										p Project Advisor
-										p
-											a(href="#")@morganbenton
-						
+							hr.line
+							#advisors
+								h4 Faculty Advisors
+								ul.nav.nav-pills
+									li 
+										a Dr Morgan Benton
+									li 
+										a Dr Nicole Radziwill
+									li
+										a Dr Emil Salib
+							
 
 	include extra/footer-main
 	

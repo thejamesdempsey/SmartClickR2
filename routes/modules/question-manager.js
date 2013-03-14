@@ -12,11 +12,11 @@ var PM = require('./poll-manager');
 var mysql = require('mysql');
 
 // DB Credentials //
-var HOST = 'localhost';
+var HOST = MC.host;
 var PORT = 3306;
 var MYSQL_USER = MC.user;
 var MYSQL_PASS = MC.pass;
-var DATABASE = 'SmartClickR';
+var DATABASE = MC.db;
 var TABLE = 'Questions';
 var TABLE2 = 'Choices';
 

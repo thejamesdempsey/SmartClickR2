@@ -13,11 +13,11 @@ var CM = require('./choice-manager');
 var RM = require('./response-manager');
 
 // DB Credentials //
-var HOST = 'localhost';
+var HOST = MC.host;
 var PORT = 3306;
 var MYSQL_USER = MC.user;
 var MYSQL_PASS = MC.pass;
-var DATABASE = 'SmartClickR';
+var DATABASE = MC.db;
 var POLLS = 'Polls';
 var QUESTIONS = 'Questions';
 var RESPONSES = 'Responses';

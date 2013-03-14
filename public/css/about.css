@@ -4,31 +4,52 @@ h2 {
   font-size: 3.0rem !important;
   padding: 20px 0;
 }
+hr.line {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  visibility: visible;
+}
 #sub-title h3 {
   font-size: 1.5rem;
   font-weight: 300;
 }
-#sub-title p {
+#blurb {
   line-height: 21px;
-  margin-bottom: 20px;
-  font-size: 1.0rem;
+  margin-bottom: 40px;
+  font-size: 1.06rem;
 }
-.thumb {
+a.thumb {
   text-align: center;
+  width: 210px;
+  height: 140px;
+  border: 1px solid #ccc;
+  display: block;
+  overflow: hidden;
+  background-position: 0px -152px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
 }
-
-li.span3{
-	margin-left: 40px !important;
+.team-text {
+  margin: 0 auto;
 }
-li.span3 h3, li.span3 p{
-	margin-left: 12px;
-}
-
 #about-team {
-  margin-left: 0;
+  margin-top: 30px;
 }
 #about-team li {
   padding: 0 0 20px 0;
+  margin-left: 0px !important;
+}
+.brad {
+  background-image: url('/img/about/brad-fischer.jpg');
+}
+.billy {
+  background-image: url('/img/about/billy-godfrey.jpg');
+}
+.daniel {
+  background-image: url('/img/about/daniel-to.jpg');
+}
+.jimmy {
+  background-image: url('/img/about/jimmy-dempsey.jpg');
 }
 #about-team li img {
   border: solid 2px #e1de7 !important;
@@ -47,14 +68,77 @@ li.span3 h3, li.span3 p{
   font-weight: bold !important;
   color: #999999 !important;
   line-height: 21px !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 4px !important;
 }
 #about-team p a {
   color: #4c8ab0 ;
 }
+#advisors h4 {
+  color: #34373e !important;
+  font-size: 1.2rem;
+  font-weight: 300 !important;
+}
 @media screen and (min-width: 1200px) {
-  #about-team li h3,
-  #about-team li p {
-    margin-left: 34px !important;
+  .team-text h3,
+  .team-text p {
+    margin-left: 18px;
+  }
+}
+@media screen and (min-width: 650px) {
+  #advisors ul {
+    position: relative;
+    top: -35px;
+    left: 162px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  #about-team li.span3 {
+    width: 48.717948717948715% !important;
+  }
+  .team-text h3,
+  .team-text p {
+    margin-left: 98px;
+  }
+}
+@media screen and (min-width: 769px) {
+  a.thumb:hover img {
+    display: none;
+  }
+}
+@media screen and (max-width: 979px) {
+  .team-text h3,
+  .team-text p {
+    margin-left: 48px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #about-team li.span3 {
+    width: 48.717948717948715% !important;
+    float: left;
+  }
+  .team-text h3,
+  .team-text p {
+    margin-left: 0px;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 480px) {
+  #sub-title h3 {
+    font-size: 1.4rem;
+  }
+  #about-team li h3 {
+    font-size: 1.0rem;
+  }
+  a.thumb {
+    width: 120px;
+    height: 80px;
+  }
+  #about-team p {
+    font-size: 0.86rem !important;
+    font-weight: bold !important;
+  }
+  #about-team li.span3 {
+    width: 48.717948717948715% !important;
+    float: left;
   }
 }

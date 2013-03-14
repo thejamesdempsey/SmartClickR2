@@ -25,10 +25,8 @@ exports.features = function(request, response) {
 
 // GET /help-center //
 exports.help = function(request, response) {
-	if(request.session.user != null && request.session.user != undefined)
-		response.render('help.jade', { title: 'SmartClickr | Help Center', layout: 'help-center_layout' });
-	else
-		response.redirect('/');
+	response.render('help.jade', { title: 'SmartClickr | Help Center', layout: 'help-center_layout' });
+
 }
 
 // GET /samples //
