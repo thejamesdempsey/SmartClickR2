@@ -23,13 +23,38 @@
 
 #bg{
 	background-color: transparent !important;
-	background-image: url('/img/main.png') !important;
+	background-image: url('/img/screens.png') !important;
 	background-repeat: no-repeat !important;
-	background-position: 50% 0;
+	background-position: 44% 0;
 	position: absolute;
 	height: 450px;
 	width: 100%;
-	top: 81px;
+	top: -20px;
+}
+
+#banded{
+	height: 400px;
+}
+
+
+#content{
+	background: #fff;
+	border-radius: 12px;
+	padding: 30px;
+	position: relative;
+	top: -25px;
+
+}
+
+#mission h3{
+	color: #374248 !important;
+	font-weight: 300;
+	text-align: center;
+}
+
+#mission p{
+	color: #374248 !important;
+	margin-top: 32px;
 }
 
 #tag{
@@ -39,56 +64,105 @@
 	border-radius: 10px;
 }
 
+.feature{
+	background: #fff;
+	padding: 80px 0px 90px 0px;
+}
+
+
+.feature h1{
+	color: #374248;
+	font-weight: 200;
+	font-size: 38px;
+	line-height: 48px;
+	float: left;
+	display: inline-block;
+	
+}
+
+#main-create{
+	float: right;
+	display: inline-block;
+	background: #e95c41 !important;
+	color: #fff;	
+	border: 1px solid #5e5e5e;
+	box-shadow: none;
+	font-weight: 400;
+	font-size: 18px;
+	background-image:-webkit-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#e95c41), to(#d93e2a)) !important;
+	background-image:-moz-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-ms-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-o-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:linear-gradient(to bottom, #e95c41,#d93e2a) !important;
+	min-width:218px;
+	float: right;
+	position: relative;
+	top: 20px;
+	left: -84px;
+	padding: 22px 28px;
+}
 #feature-container{
 	background: transparent !important;
 	position: relative;
+}
+
+#mobile{
+	padding-left: 40px;
+}
+
+
+
+#mobile h4{
+	color: #fff !important;
+	font-weight: 300;
+	font-size: 21px;
+}
+
+#mobile p{
+	font-size: 18px;
 }
 
 #session-code{
 	margin-top: 22px;
 }
 @media screen and (max-width:1199px){
-	#bg{
-		background-color: transparent !important;
-		background-image: url('/img/main.png') !important;
-		background-repeat: no-repeat !important;
-		background-position: -2% 0;
-		position: absolute;
-		height: 450px;
-		width: 940px;
-		top: 108px;
-		right: 10.5%;
-		margin: 0 auto;
+	#mobile{
+		padding-left: 70px;
+		width: 315px;
+	}
+	
+	#mission h3{
+		font-size: 22.5px;
 	}
 }
 
 
 @media screen and (max-width: 1024px){
-	#bg{
-		background-color: transparent !important;
-		background-image: url('/img/main.png') !important;
-		background-repeat: no-repeat !important;
-		background-position: -6% 0;
-		position: absolute;
-		height: 450px;
-		width: 940px;
-		top: 72px;
-		right: 5%;
-		margin: 0 auto;
-		z-index: -1;
-	}
+
 	#tag.span5{
 		padding-bottom: 26px;
 		height: auto;
 	}
+	
+	.feature h1{
+		text-align: center;
+		width: 100%;
+		display: block;
+	}
+	
+	
+	.btn-contain{
+		text-align: center;
+	}
+	#main-create{
+		float: none;
+		margin-left:164px;
+	}
 }
 
 @media screen and (max-width: 1023px){
-	#bg{
-		width: 100%;
-		right: 0%;
-		top: 85px;
-	}
+
 	
 	#tag.span5{
 		height: 396px;
@@ -130,6 +204,7 @@
 		padding-top: 20px !important;
 	}	
 	
+	
 }
 
 @media screen and (min-width : 768px) and (max-width : 979px){
@@ -144,8 +219,14 @@
 		width: 100%;
 		margin-left: 0 !important;
 	}
+	
+	#mobile{
+		margin-top: -10px;
+		width: 290px;
+		padding-left: 0px;
+	}
 }
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
 	#construct{
 		display: none;
 	}
@@ -157,12 +238,17 @@
 	#tag.span5{
 		height: auto;
 	}
+	
+	
+	#mobile{
+		margin-top: -10px;
+		width: 290px;
+		padding-left: 0px;
+	}
 }
 
-@media screen and (max-width: 480px){
-	#bg{
-		background-image: none !important;
-	}
+@media screen and (max-width: 767px){
+
 }
 
 .navbar-inverse .navbar-inner{
@@ -465,10 +551,27 @@ canvas{
 
 footer{
 	padding: 20px 0px;
-	margin-top: -44px;
+	margin-top: 20px;
 	min-height: 190px;
 }
 
+
+hr.line{
+	visibility: visible !important;
+}
+#content #session-code.hidden-phone{
+	position: relative;
+	padding: 20px 40px;
+	margin-bottom: 70px;
+	background: #edeae3;
+	margin-left: 92px;
+}
+
+#content #session-code.hidden-phone h3{
+	font-weight: 300;
+	color: #374248 !important;
+	
+}
 
 #session-code{
 /*	background:rgba(76, 138, 176, 0.6);*/
@@ -480,7 +583,7 @@ footer{
 }
 
 #session-code input[type="search"]{
-	width: 60%;
+	width: 72%;
 	font-size: 18px;
 	padding: 8px;
 }
@@ -801,6 +904,10 @@ nav li a {
 
 /* Feature Styling */
 
+
+#hero-home{
+	padding: 0px 0 0 0;
+}
 #hero{
 	padding: 40px 0 0 0;
 }
@@ -819,6 +926,16 @@ h2{
 }
 
 #hero p{
+	font-style: normal;
+	font-size: 16px;
+	font-weight: normal;
+	margin-bottom: 40px;
+	padding: 24px 0 0 0;
+	color:#fff;
+}
+
+
+#hero-home p{
 	font-style: normal;
 	font-size: 16px;
 	font-weight: normal;
@@ -1266,7 +1383,8 @@ input#email:focus, input#password:focus{
 	margin: 3px 0.5ex;
 	padding: 5px;
 	border-radius: 4px;
-	font-size: 2.1rem;
+	font-size: 1.1rem;
+	-webkit-appearence: checkbox;
 }
 
 #title{
@@ -2504,6 +2622,19 @@ input[type="submit"]:active {
 	
 	#social ul li{
 		margin-right: 13px;
+	}
+	
+	#main-create{
+		margin-left: 128px;
+	}
+	
+	#bg, #banded{
+		height: 0px;
+	}
+	
+	#feature-container .container{
+		padding-left: 0px !important;
+		padding-right: 0px !important;
 	}
 	
 /*	#social ul li{

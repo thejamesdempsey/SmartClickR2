@@ -4,7 +4,7 @@ extends layout
 block content
 
 	//header(class="navbar navbar-fixed-top")	
-	header(class="navbar navbar-inverse navbar-fixed-top")
+	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
 		.navbar-inner
 			.container
 				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
@@ -24,35 +24,48 @@ block content
 							a(id='signup', href='/user/create') Sign Up
 						li
 							a(id='log', href='/login') Log In
-	#bg
-	#feature-container.clearfix
+	section#session-code.visible-phone
+		h3 Got a session code? 
+			span.what 
+				a(href="#explained", data-toggle="modal") What's this? 
+
+		form#top-search.form-inline(method="GET", action="/poll")
+			fieldset
+				//label(class="inline", for="index-top-input", style="top: 89px !important; left:49px !important; width: auto !important;") Enter it here
+				input(type="search", id="index-top-input", placeholder="Enter it here")
+				button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+		hr
+	.feature.clearfix
+		.container
+			h1 Hi, I'm SmartClickr: A better way to
+				br
+				| ask questions and construct polls
+			.btn-contain.clearfix
+				a(id="main-create",class='btn  btn-large', href='user/create') Create an Account
+	#feature-container.clearfix	
+		#bg	
 		.container
 			.row-fluid
 				.span12
-					#hero
-						.bg-contain
-							#hero_content.clearfix
-								section#session-code.visible-phone
-									h3 Got a session code? 
-										span.what 
-											a(href="#explained", data-toggle="modal") What's this? 
-
-									form#top-search.form-inline(method="GET", action="/poll")
-										fieldset
-											//label(class="inline", for="index-top-input", style="top: 89px !important; left:49px !important; width: auto !important;") Enter it here
-											input(type="search", id="index-top-input", placeholder="Enter it here")
-											button(type="submit", class="btn btn-info", name="session") Find it &rarr;
-									hr
-								#construct.span7.img-contain
-									//img(src="/img/smartclickr-main.png", data-1x="/img/smartclickr-mainx1.png", data-2x="/img/smartclickr-mainx2.png")
-								.span5#tag
-									h1 Audience participation made easy
-									p Our goal is to allow you to build polls and tools for audience feedback in a simple, yet beautiful manner. SmartClickR provides real-time audience responses from any device with an internet connection. It's that easy.  
-									span#main-create
-										a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
-								.clear
-						//end hero_content
-						section#session-code.hidden-phone
+					#banded
+						#banded-content.clearfix
+							article#mobile.span3.offset7.hidden-phone.clearfix
+								h4 100% mobile
+								p Your polls will look good on any screen of any size. Simple
+								//img(src="/img/smartclickr-main.png", data-1x="/img/smartclickr-mainx1.png", data-2x="/img/smartclickr-mainx2.png")
+							//.span5#tag
+							//	h1 Audience participation made easy
+							//	p Our goal is to allow you to build polls and tools for audience feedback in a simple, yet beautiful manner. SmartClickR provides real-time audience responses from any device with an internet connection. It's that easy.  
+							//	span#main-create
+							//		a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
+							//.clear
+					//end hero_content
+					#content.clearfix
+						article#mission.clearfix
+							h3 We are on a mission to enhance communication between speakers and their audience. 
+							p Our goal is to allow you to build polls and questions for audience feedback in a simple, yet elegant manner. SmartClickr provides real-time audience responses from any device with an internet connection. It's that easy
+						hr.line	
+						section#session-code.span10.offset1.hidden-phone.clearfix
 							h3 Have a session code? 
 								span.what 
 									a(href="#explained", data-toggle="modal") What's that mean?

@@ -346,6 +346,13 @@ input#email:focus, input#password:focus{
 	border: 1px solid #5e5e5e;
 	color: #fff;
 	display: inline-block;
+	-webkit-appearance: button;
+	background-image:-webkit-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#e95c41), to(#d93e2a)) !important;
+	background-image:-moz-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-ms-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-o-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:linear-gradient(to bottom, #e95c41,#d93e2a) !important;
 }
 
 #loginForm p{
@@ -390,7 +397,8 @@ input[type=checkbox]{
 	background: transparent !important;
 	border: 0;
 	width: 16px !important;
-	font-size: 18px;
+	font-size: 1.1em;
+	-webkit-appearance: checkbox;
 }
 input[type="submit"] {
 	margin: 0;
@@ -4459,8 +4467,8 @@ button.close {
 }
 @media (max-width: 767px) {
   body {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 2px;
+    padding-right: 2px;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom,
@@ -5373,4 +5381,11 @@ button.close {
     height: auto !important;
     overflow: visible !important;
   }
+}
+
+
+@media screen and (max-width:480px){
+	#login-container h1{
+		font: 100 3.6em "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;
+	}
 }

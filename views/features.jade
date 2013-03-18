@@ -22,57 +22,54 @@ block content
 						li
 							a(id='log', href='/login') Log In
 
-
+	#top
 	#hero
 		.container
 			.row-fluid
 				h1.page-title Features
-			.clear.dropshadow
-				
-		// End Header-Container //
 	#features-content.container
-		#features-container.span12.dropshadow
-			section.top-matter
-				header.top-content
-					h1.sub-title.span4 Overview
-					a(id='',class='signup btn-medium btn-success btn span3', href='/user/create') Signup Today
-					.clear
-				nav.nav-pills
-					ul#feature-pills.nav.nav-pills
-						li: a(id='', class='pill', href='#') Feature 1
-						li: a(id='', class='pill', href='#') Feature 2
-						li: a(id='', class='pill', href='#') Feature 3
-						li: a(id='', class='pill', href='#') Feature 4
-					.clear
-				.clear
-			section.overview-banner.page-overview
-				div.brief
-					header
-						h1 A Better Way to Ask Questions and Create Polls
-					section.sub-text
-						p Facilitate audience participation with ease and amaze audiences
-						p Take a quick tour of our features
-				div.feature-descriptions
-					section#features_usage.section-pad
-							h1.four.columns Audience Interaction
-						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-							| qui officia deserunt mollit anim id est laborum.
+		.container
+			.row-fluid
+				.backdrop.dropshadow
 
-					section#features_questions.section-pad
-						h1.four.columns Available Questions:
-						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-							| qui officia deserunt mollit anim id est laborum.
+					section.overview-banner.page-overview
+						div.brief
+							header
+								h2 Meet SmartClickr: A Better Way
+									br 
+									|  to Ask Questions and Create Polls
+							section.sub-text
+								p 
+									a(href="#features_usage") Take a tour of our features
+									.signup-btn-container
+										a(class='signup btn', href='/user/create') Signup Today
+					section.feature-descriptions.clearfix
+						section#features_usage.section-pad.clearfix
+							.spead.span8
+								header.topmatter
+									h3 Audience Interaction
+								article.deck
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+										| qui officia deserunt mollit anim id est laborum.
 
-						section#features_classroom.section-pad
-							h1.four.columns In Your Classroom:
+						section#features_questions.section-pad.clearfix
+							.spead.span8
+								header.topmatter
+									h3 Questions:
+								article.deck
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+										| qui officia deserunt mollit anim id est laborum.
+
+						section#features_classroom.section-pad.clearfix
+							h3.span4 In Your Classroom:
 							p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
 								| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
 								| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
@@ -80,7 +77,7 @@ block content
 								| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
 								| qui officia deserunt mollit anim id est laborum.
 
-						section#features_conferences.section-pad
+						section#features_conferences.section-pad.clearfix
 							h1.four.columns At Your Conference:
 							p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
 								| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
@@ -89,14 +86,14 @@ block content
 								| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
 								| qui officia deserunt mollit anim id est laborum.
 
-					section#features_mobile.section-pad
-						h1.four.columns The Mobile Advantage:
-						p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-							| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-							| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-							| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-							| qui officia deserunt mollit anim id est laborum.
-			.clear
+						section#features_mobile.section-pad.clearfix
+							h1.four.columns The Mobile Advantage:
+							p.eight.columns Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+								| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+								| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+								| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+								| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+								| qui officia deserunt mollit anim id est laborum.
+				.clear
 	include extra/footer-main
 
