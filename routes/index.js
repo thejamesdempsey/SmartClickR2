@@ -5,7 +5,7 @@ exports.index = function(request, response) {
 	console.log('User cookie', request.cookies.email);
 	console.log('Pass cookie', request.cookies.pass);
 	if (request.cookies.email == undefined || request.cookies.pass == undefined) {
-		response.render('index.jade', { title: 'SmartClickr | Welcome' });
+		response.render('index.jade', { title: 'Better Audience Interaction - SmartClickr' });
 	} else {
 		AM.autoLogin(request.cookies.email, request.cookies.pass, function(err, results) {
 			if (results != null) {

@@ -19,7 +19,7 @@ block content
 						li(class="active")
 							a(id="home", href="/") Home
 						li
-							a(id='features', href='/features') Features
+							a(id='features', href='#tour-top') Features
 						li
 							a(id='signup', href='/user/create') Sign Up
 						li
@@ -37,46 +37,73 @@ block content
 		hr
 	.feature.clearfix
 		.container
-			h1 Hi, I'm SmartClickr: A better way to
-				br
-				| ask questions and construct polls
-			.btn-contain.clearfix
-				a(id="main-create",class='btn  btn-large', href='user/create') Create an Account
-	#feature-container.clearfix	
-		#bg	
+			.row-fluid
+				h1 Hi, I'm SmartClickr: A better way to ask
+					br
+					|  questions and create polls
+				ul.btn-contain.clearfix
+					li.create-wrap.span6
+						a(id="top-create",class='btn  btn-large', href='user/create') Create an Account
+					li.tour-wrap.span6
+						a(id="top-tour",class='btn  btn-large', href='#tour-top') Take a Tour
+	.headband.clearfix.hidden-phone
 		.container
 			.row-fluid
-				.span12
-					#banded
-						#banded-content.clearfix
-							article#mobile.span3.offset7.hidden-phone.clearfix
-								h4 100% mobile
-								p Your polls will look good on any screen of any size. Simple
-								//img(src="/img/smartclickr-main.png", data-1x="/img/smartclickr-mainx1.png", data-2x="/img/smartclickr-mainx2.png")
-							//.span5#tag
-							//	h1 Audience participation made easy
-							//	p Our goal is to allow you to build polls and tools for audience feedback in a simple, yet beautiful manner. SmartClickR provides real-time audience responses from any device with an internet connection. It's that easy.  
-							//	span#main-create
-							//		a(id="main-create",class='btn btn-success btn-large', href='user/create') Create an Account
-							//.clear
-					//end hero_content
-					#content.clearfix
-						article#mission.clearfix
-							h3 We are on a mission to enhance communication between speakers and their audience. 
-							p Our goal is to allow you to build polls and questions for audience feedback in a simple, yet elegant manner. SmartClickr provides real-time audience responses from any device with an internet connection. It's that easy
-						hr.line	
-						section#session-code.span10.offset1.hidden-phone.clearfix
-							h3 Have a session code? 
-								span.what 
-									a(href="#explained", data-toggle="modal") What's that mean?
-
-							form#bottom-search.form-inline(method="GET", action="/poll")
-								label(class="inline", for="index-bottom-input", style="top: 93px !important; left:49px !important; width: auto !important; ") Enter it here
-								input(type="search", id="index-bottom-input")
-								button(type="submit", class="btn btn-info", name="session") Find it &rarr;
-
-					.clear
-					//end section
+				section#session-code.clearfix
+					h3 Have a session code? 
+						span.what 
+							a(href="#explained", data-toggle="modal") What's that mean?
+					form#bottom-search.form-inline(method="GET", action="/poll")
+						label(class="inline", for="index-bottom-input", style="top: 70px !important; left:120px !important; width: auto !important; ") Enter it here
+						input(type="search", id="index-bottom-input")
+						button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+	#tour-top
+	.main
+		.container
+			.row-fluid
+				.shell
+					.content.clearfix
+						article.banded.clearfix
+							section
+								h1 All-In-One Polling Platform
+								p The ability to present and respond are all inculded in one site. No extra software or equipment required.
+								ul.thumbnails.span10.offset1
+									li.span3
+										h2.icon.command Easy to use command center
+										p Manage Polls easily with your Command Center
+									li.span3
+										h2.icon.unlimited Create unlimited polls
+										p Create as many polls as you need. No restrictions.
+									li.span3
+										h2.icon.devices Collect from many devices
+										p Responses from any mobile device or computer
+									li.span3
+										h2.icon.track Track your responses
+										p Gather results and track the responses
+						article.banded.align-left.comm.clearfix
+							section
+								h1 Enhanced Audience Communication
+								p With presentations, audience involvement is vital — We provide a means for you to encourage this in a simple, yet elegant manner.
+								img(src='/img/home-icons/communication.png', class="screens hidden-phone")
+						article.banded.align-left.clearfix
+							section
+								h1 Connect Socially
+								p We have made it easy to get the word out about your polls. All you need to do is post the link and let the responses come in.
+						article.banded.clearfix
+							section
+								h1 Real-Time Results
+								p Smartclickr is fast. It is built using server-side javascript to offer lightning quick speeds. The second a response is given, you can see it.
+						article.banded.align-left.mobile.clearfix
+							section.clearfix
+								header.span4
+									h1 Built for Mobile
+									p The entire site is mobile friendly. This means you can create and edit polls or manage your account on the fly. 
+								.span8
+									img(src='/img/home-icons/screens.png', class="screens mobile-img hidden-phone")
+						article.banded.clearfix
+							section
+								h1 Beautiful Presentation
+								p We dont believe in boring graphics. Keep your audience invested with fantastic presentation tools.
 
 	include modals/session-explained
 	include extra/footer-main
