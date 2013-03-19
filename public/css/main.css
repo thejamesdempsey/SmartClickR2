@@ -673,7 +673,8 @@ ul.thumbnails li p{
 
 }
 
-@media screen and (max-width: 320px){
+
+@media screen and (max-width: 469px){
 	li.create-wrap.span6, li.tour-wrap.span6{
 		display: block !important;
 		width: 100% !important;
@@ -684,6 +685,14 @@ ul.thumbnails li p{
 		margin-left: 0px;
 		margin-top: 12px;
 	}
+	
+	.btn-contain{
+		padding-top: 8px;
+	}	
+}
+
+@media screen and (max-width: 320px){
+
 	
 	.icon{
 		width: 118px;
