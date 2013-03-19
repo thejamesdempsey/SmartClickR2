@@ -2,7 +2,7 @@
 extends layout
 
 block content
-
+	#page-top
 	//header(class="navbar navbar-fixed-top")	
 	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
 		.navbar-inner
@@ -26,8 +26,7 @@ block content
 							a(id='log', href='/login') Log In
 	section#session-code.visible-phone
 		h3 Got a session code? 
-			span.what 
-				a(href="#explained", data-toggle="modal") What's this? 
+
 
 		form#top-search.form-inline(method="GET", action="/poll")
 			fieldset
@@ -38,9 +37,10 @@ block content
 	.feature.clearfix
 		.container
 			.row-fluid
-				h1 Hi, I'm SmartClickr: A better way to ask
+				h1.hidden-phone Hi, I'm SmartClickr: A better way to ask
 					br
 					|  questions and create polls
+				h1.visible-phone Meet SmartClickr
 				ul.btn-contain.clearfix
 					li.create-wrap.span6
 						a(id="top-create",class='btn  btn-large', href='user/create') Create an Account
@@ -85,10 +85,35 @@ block content
 								h1 Enhanced Audience Communication
 								p With presentations, audience involvement is vital — We provide a means for you to encourage this in a simple, yet elegant manner.
 								img(src='/img/home-icons/communication.png', class="screens hidden-phone")
-						article.banded.align-left.clearfix
+						article.banded.align-right.clearfix
 							section
 								h1 Connect Socially
 								p We have made it easy to get the word out about your polls. All you need to do is post the link and let the responses come in.
+								.socials.span7.hidden-phone
+									.offset1
+										ul.thumbnails
+											li.span3
+												p.logo.logo-facebook Integrate on your Facebook
+											li.span3
+												p.logo.logo-twitter Integrate on your Twitter
+											li.span3
+												p.logo.logo-googleplus Integrate on your Google Plus
+											li.span3
+												p.logo.logo-pinterest Integrate on your Pinterest
+										ul.thumbnails
+											li.span3
+												p.logo.logo-wordpress Blog about it on wordpress
+											li.span3
+												p.logo.logo-blogger Integrate on your Blogger
+											li.span3
+												p.logo.logo-reddit Integrate on Reddit 
+											li.span3
+												p.logo.logo-tumblr Integrate through your Tumblr
+								.details.span5.hidden-phone
+									h2 Post, Blog, Share
+									p SmartClickr allows you to notify audience however you see fit, whether that be in person or online. 
+									hr.line
+									p Tweet it, post it on Facebook, or blog about your poll. Just do what you do.
 						article.banded.clearfix
 							section
 								h1 Real-Time Results
@@ -102,8 +127,23 @@ block content
 									img(src='/img/home-icons/screens.png', class="screens mobile-img hidden-phone")
 						article.banded.clearfix
 							section
-								h1 Beautiful Presentation
-								p We dont believe in boring graphics. Keep your audience invested with fantastic presentation tools.
+								h1 Overview
+								ul.highlights	
+									li Polling with personality
+									li All pages mobile friendly
+									li No aditional software, hardware or costs
 
+								ul.highlights
+								ul.highlights
+							.return-top.hidden-desktop
+								.circle
+									a(href="#page-top", class="hidden-desktop") &uarr; Top 
+								
+	#to-top
+		.arrow-up.visible-desktop
+			a(href="#page-top") &uarr; Top 
+									
 	include modals/session-explained
 	include extra/footer-main
+
+	script(src="/javascript/scroll.js")
