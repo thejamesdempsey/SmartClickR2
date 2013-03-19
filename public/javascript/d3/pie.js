@@ -29,6 +29,7 @@ var pieChart = function(dataset, json_loc){
     //Create SVG element
     var svg = d3.select("#pie-display")
                 .append("svg:svg")
+				.attr("id", "pie-chart")
                 .attr("width", w)
                 .attr("height", h);
                 //.append("g")

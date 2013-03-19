@@ -71,17 +71,9 @@ block content
 			pieChart(json, dataPath);
 			verticalBars(json, dataPath);
 		});
-	script
-		$(document).load(function(){
-			var width = $('body').width();
 
-			if (width < '768px'){
-				$('#tabber').removeClass('tabs-left');
-			} else{
-				$('#tabber').addClass('tabs-left');
+	script(src='/javascript/d3/resize.js')
 
-			}
-		});
 
 
 
