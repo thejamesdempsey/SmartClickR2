@@ -146,7 +146,6 @@ label.radio {
   margin-top: 20px;
 }
 #graph-display ul {
-  min-height: 400px;
   padding-bottom: 20px;
   margin-bottom: 0px !important;
   background: #fff;
@@ -156,7 +155,7 @@ label.radio {
   background: #edeae3;
   min-height: 400px;
   border-radius: 0px 8px 8px 8px;
-  border: solid 1px #555555 !important;
+  border: solid 1px #ddd !important;
 }
 .tabs-left > .nav-tabs {
   margin-right: 0px !important;
@@ -189,6 +188,12 @@ label.radio {
 .alert {
   margin-bottom: 0px;
   margin-top: 16px;
+}
+#tabber .nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  position: relative;
+  top: 1px;
+  border-color: #ddd #ddd transparent #ddd;
 }
 @media screen and (min-width: 768px) {
   .present-content h2,
@@ -225,13 +230,53 @@ label.radio {
     min-height: 10px;
     padding-bottom: 0px;
   }
-  .nav-tabs > .active > a,
-  .nav-tabs > .active > a:hover {
-    border-color: #555555 !important;
-    border-bottom: 0px;
-  }
   #hero {
     margin-top: -20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  #graph-display ul {
+    padding-bottom: 20px;
+    margin-bottom: 0px !important;
+    background: #fff;
+    position: relative;
+    top: -1px;
+  }
+  #tabber > .nav-tabs {
+    border-bottom: transparent;
+  }
+  #tabber > .nav-tabs > li,
+  #tabber > .nav-tabs > li {
+    float: none;
+  }
+  #tabber > .nav-tabs .active > a,
+  #tabber > .nav-tabs .active > a:hover {
+    position: relative;
+    left: 1px;
+    border-color: #ddd #ddd #ddd transparent;
+  }
+  #tabber > .nav-tabs > li > a {
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+  }
+  #tabber > .nav-tabs {
+    float: left;
+  }
+  #tabber > .nav-tabs > li > a {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+    z-index: 50;
+  }
+  #tabber > .nav-tabs > li > a:hover {
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  }
+  #tabber > .nav-tabs .active > a,
+  #tabber > .nav-tabs .active > a:hover {
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
   }
 }
 @media screen and (max-width: 320px) {

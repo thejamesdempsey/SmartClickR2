@@ -41,22 +41,14 @@
 	margin-bottom: 18px;
 }
 
-#bg{
-	background-color: transparent !important;
-	background-image: url('/img/main.png') !important;
-	background-repeat: no-repeat !important;
-	background-position: 44% 0;
-	position: absolute;
-	height: 450px;
-	width: 100%;
-	top: -16px;
-}
 
 #banded{
 	height: 423px;
 }
 
-
+#present-actions{
+	margin-bottom: 40px;
+}
 
 
 .banded h2{
@@ -498,7 +490,14 @@ ul.thumbnails li p{
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1199px){
-	#hero{
+	.banded.align-left.mobile section h1::after{
+		content: '';
+		height: 2px;
+		background-color: #222;
+		display: block;
+		position: relative;
+		bottom: -18px;
+		width: 200px;
 	}
 }
 
@@ -705,6 +704,12 @@ ul.thumbnails li p{
 	
 	.btn-contain{
 		margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 200px){
+	body{
+		width: 100%;
 	}
 }
 

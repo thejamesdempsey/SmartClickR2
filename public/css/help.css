@@ -205,4 +205,19 @@ hr.line{
 		padding: 16px;
 	}
 	
+	#help-more .thumbnails li{
+		width: 100% !important;
+	}
+	
+	#help-more .thumbnails li ol li{
+		width: 48.93617021276595% !important;
+	}
+	
+	#help-more .thumbnails li ol li a{
+		display: inline-block;
+		width: 80%;
+	}
+	
+	
+	
 }
