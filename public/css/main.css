@@ -395,7 +395,8 @@ ul.thumbnails li p{
 .return-top{
 	text-align: center;
 	width: 100%;
-	margin: 24px 0px;
+	margin: 10px 0px 20px;
+	height: 80px;
 }
 
 .circle{
@@ -408,9 +409,33 @@ ul.thumbnails li p{
 
 .return-top a{
 	color: #fff !important;
-	position: absolute;
 	font-size: 18px;
-	padding: 30px 24px;
+	position: relative;
+}
+
+.return-top a:hover{
+	text-decoration: none;
+}
+
+.up-arrow{
+	position: absolute;
+	top: 16%;
+	left: 36%;
+	font-size: 3.0rem;
+}
+
+.up-text{
+	position: absolute;
+	top: 22%;
+	left: 29%;
+}
+
+.return-top a:hover .up-text{
+	display: none;
+}
+
+.return-top a:hover .up-arrow{
+	display: block;
 }
 
 
