@@ -103,6 +103,8 @@ app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.p
 app.get('/playground', routes.playground);
 app.get('/playground/email', routes.email);
 app.get('/playground/test1', routes.playground_hometest1);
+app.get('/playground/test2', routes.playground_hometest2);
+
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

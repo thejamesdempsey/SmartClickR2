@@ -112,6 +112,10 @@ exports.playground_hometest1 = function(request, response) {
 	response.render('playground-hometest1.jade', {title: 'Playground - SmartClickr'});
 }
 
+exports.playground_hometest2 = function(request, response) {
+	response.render('playground-hometest2.jade', {title: 'Playground - SmartClickr'});
+}
+
 exports.problemo = function(request, response) { 
  	response.render('404.jade', {title: 'This page got lost - SmartClickr', layout:'404_layout'}); 
 }

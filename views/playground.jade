@@ -1,5 +1,5 @@
 
-extends layout
+extends layout_playground
 
 block content
 	#page-top
@@ -13,14 +13,30 @@ block content
 					span(class="icon-bar")
 				a(class="brand", href="/") 
 					| SmartClickr
-					span  alpha
 				div(class="nav-collapse", style="")
 					ul(class="nav pull-right")
 						li(class="active")
-							a(id="home", href="/") Home
-						li
-							a(id='features', href='#tour-top') Features
-						li
-							a(id='signup', href='/user/create') Sign Up
-						li
-							a(id='log', href='/login') Log In
+							a(href="/playground") Playground
+
+
+	.feature.clearfix
+		.container
+			.row-fluid
+			h3 Home Page Mockups
+			ul.nav.nav-pills
+				li 
+					a(href='/playground/test1') Mockup 1
+				li
+					a(href='/playground/test2') Mockup 2
+			h3 Email Templates
+			ul.nav.nav-pills
+				li 
+					a(href='/playground/email') Email Newsletter Test
+			ul.nav.nav-pills
+				li
+
+
+
+
+
+

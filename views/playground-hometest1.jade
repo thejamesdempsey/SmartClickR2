@@ -1,5 +1,5 @@
 
-extends layout
+extends layout_playground
 
 block content
 	#page-top
@@ -13,14 +13,72 @@ block content
 					span(class="icon-bar")
 				a(class="brand", href="/") 
 					| SmartClickr
-					span  alpha
 				div(class="nav-collapse", style="")
 					ul(class="nav pull-right")
 						li(class="active")
-							a(id="home", href="/") Home
+							a(href="/playground") Playground
 						li
-							a(id='features', href='#tour-top') Features
+							a(href='/playground/test1') Mockup 1
 						li
-							a(id='signup', href='/user/create') Sign Up
-						li
-							a(id='log', href='/login') Log In
+							a(href='/playground/test2') Mockup 2
+
+	section#session-code.visible-phone
+		h3 Got a session code? 
+
+
+		form#top-search.form-inline(method="GET", action="/poll")
+			fieldset
+				//label(class="inline", for="index-top-input", style="top: 89px !important; left:49px !important; width: auto !important;") Enter it here
+				input(type="search", id="index-top-input", placeholder="Enter it here")
+				button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+		hr
+	.feature.clearfix
+		.container
+			.row-fluid
+				h1.hidden-phone Hi, I'm SmartClickr: A better way to ask
+					br
+					|  questions and create polls
+				h1.visible-phone Hi, I'm SmartClickr
+				ul.btn-contain.clearfix
+					li.create-wrap.span6
+						a(id="top-create",class='btn  btn-large', href='user/create') Create an Account
+					li.tour-wrap.span6
+						a(id="top-tour",class='btn  btn-large', href='#tour-top') Take a Tour
+	.headband.clearfix.hidden-phone
+		.container
+			.row-fluid
+				section#session-code.clearfix
+					h3 Have a session code? 
+						span.what 
+							a(href="#explained", data-toggle="modal") What's that mean?
+					form#bottom-search.form-inline(method="GET", action="/poll")
+						label(class="inline", for="index-bottom-input", style="top: 10px !important; left:113px; width: auto !important; ") Enter it here
+						input(type="search", id="index-bottom-input")
+						button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+	#tour-top
+	.main
+		.container
+			.row-fluid
+				.shell
+					.content.clearfix
+						article.banded.clearfix
+							section
+								h1 All-In-One Polling Platform
+								p The ability to present and respond are all included in one site. No extra software or equipment required.
+								ul.thumbnails.span10.offset1
+									li.span3
+										h2.icon.command Easy to use command center
+										p Manage Polls easily with your Command Center
+									li.span3
+										h2.icon.unlimited Create unlimited polls
+										p Create as many polls as you need. No restrictions.
+									li.span3
+										h2.icon.devices Collect from many devices
+										p Responses from any web-enabled device
+									li.span3
+										h2.icon.track Track your responses
+										p Gather results and track the responses
+	include modals/session-explained
+	include extra/footer-main
+
+	script(src="/javascript/scroll.js")
