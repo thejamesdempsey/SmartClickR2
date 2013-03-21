@@ -1,0 +1,26 @@
+
+extends layout
+
+block content
+	#page-top
+	//header(class="navbar navbar-fixed-top")	
+	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/") 
+					| SmartClickr
+					span  alpha
+				div(class="nav-collapse", style="")
+					ul(class="nav pull-right")
+						li(class="active")
+							a(id="home", href="/") Home
+						li
+							a(id='features', href='#tour-top') Features
+						li
+							a(id='signup', href='/user/create') Sign Up
+						li
+							a(id='log', href='/login') Log In

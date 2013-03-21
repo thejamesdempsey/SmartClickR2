@@ -72,6 +72,8 @@ a.thumb {
 }
 #about-team p a {
   color: #4c8ab0 ;
+  display: block;
+  margin-top: 5px;
 }
 #advisors h4 {
   color: #34373e !important;

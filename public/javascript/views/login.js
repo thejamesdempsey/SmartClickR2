@@ -20,17 +20,25 @@ $(document).ready(function(){
 									return false;
 
 								}
+								else{
+									format = '<div class="alert alert-info fade in">';
+									format += '<span class="process"> Processing...'
+									format += '</div>'
+									$("#login-container h1").after(format);
+								}
 				},
 			   	success : function(data, status, xhr){
 							$('#email').removeClass("input-error").addClass('input-success');
 							$('#password').removeClass("input-error").addClass('input-success');
+							$("#login-container h1").after(format);
+							$('.alert-info').hide();
 							if(status == "success") window.location.href = '/user/' + data.res;
 				},
 				error	: function(e){
 							format  = '<div class="alert alert-error fade in">';
 							format += '<strong>Uhh Ohh, </strong> your email address or password is incorrect';
 							format += '</div>';
-
+							$('.alert-info').hide();
 							$('#email').removeClass("input-error").addClass('input-error');
 							$('#password').removeClass("input-error").addClass('input-error');
 							$("#login-container h1").after(format);

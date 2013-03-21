@@ -37,7 +37,7 @@ block content
 										span.add-on
 											i(class="icon-envelope") 
 										| Say Hello! We'd love to hear from you
-									form#contact-us.span9
+									form(id='contact-us', class='span9', action='/contact')
 										fieldset.field
 											span
 												label(for="yourName") Your Full Name (required)
@@ -46,20 +46,11 @@ block content
 												label(for="yourEmail") Your Email Address (required)
 												input(type="text", id="yourEmail")
 											span
-												label(for="topicSelect") Topic
-												select(id="topicSelect")
-													option(value="General") General Questions
-													option(value="Billing") Billing Issues
-													option(value="Feedback") Feedback and Suggestions 
-											span
 												label(for="yourSubject") Subject (required)
 												input(type="text", id="yourSubject")
 											span
 												label(for="yourMessage") Message (required)
 												textarea(id="yourMessage")
-											span.span5
-												h5 File Attachment
-												input(type="file")
 											span.span6.send-btn
 												button(type="submit", class="btn btn-info btn-large") Send your message
 									section#contact-side.span3
@@ -84,10 +75,14 @@ block content
 											h4 Twitter
 											p 
 												| Follow along with all our latest updates and the occasional retweet.
-												a(href="#") Follow @SmartClickR &rarr;
+												a(href="https://twitter.com/smartclickr") Follow @SmartClickR &rarr;
 
 											
 
 		.clear
 		// Footer Content //
 	include extra/footer-main
+
+	script(src="/javascript/views/contact.js")
+	script(src="/jquery.login.min.js")
+

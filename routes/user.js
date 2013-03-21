@@ -13,21 +13,21 @@ exports.signup = function(request, response) {
 // POST /user/create //
 exports.createUser = function(request, response) {
 	AM.signup({
-		FirstName	: request.param('firstname'),
-		LastName	: request.param('lastname'),
-		Email		: request.param('email'),
-		Password	: request.param('password')
-	}, function(err, o) {
-		if(err) {
-			console.log(err);
-			response.set('Content-Type', 'text/html');
-			response.send(err, 400);
-		} else {
-			// need to send out user confirmaiton email at this point
-			response.send('okay', 200);
-			response.redirect('/login');
-		}
-	});
+			FirstName	: request.param('firstname'),
+			LastName	: request.param('lastname'),
+			Email		: request.param('email'),
+			Password	: request.param('password')
+		}, function(err, o) {
+			if(err) {
+				console.log(err);
+				response.set('Content-Type', 'text/html');
+				response.send(err, 400);
+			} else {
+				// need to send out user confirmaiton email at this point
+				response.send('okay', 200);
+				response.redirect('/login');
+			}
+		});
 }
 
 // GET /login //

@@ -891,6 +891,11 @@ input[type="submit"]:active {
     margin-top: 20px;
   }
 }
+.process {
+  background: url('/img/ajax-loader.gif') no-repeat;
+  display: inline-block !important;
+  padding: 0px 22px 4px 22px !important;
+}
 a {
   text-decoration: none !important;
 }

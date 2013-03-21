@@ -53,10 +53,10 @@ app.get('/samples', routes.samples);
 app.get('/about', routes.about);
 app.get('/blog', routes.blog);
 app.get('/contact', routes.contact);
+app.post('/contact', routes.postContact);
 app.get('/data', routes.data);
 app.get('/privacy', routes.privacy);
 app.get('/terms', routes.terms);
-app.get('/playground/email', routes.email);
 app.get('/getting-started-with-smartclickr', routes.gettingStarted);
 
 // user pages //
@@ -97,6 +97,12 @@ app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 app.get('/user/:User_ID/poll/:Poll_ID/question/:Question_ID.json', question.responseData);
 app.get('/user/:User_ID/poll/:Poll_ID/question/present/:Question_ID', question.presentPollQuestion);
 
+
+// The Playground //
+
+app.get('/playground', routes.playground);
+app.get('/playground/email', routes.email);
+app.get('/playground/test1', routes.playground_hometest1);
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
