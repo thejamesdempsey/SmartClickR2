@@ -68,6 +68,10 @@ li ol{
 	list-style-type: lower-roman;
 }
 
+.fb-like{
+	margin-top: 12px;
+}
+
 @media screen and (min-width:767px){
 	#terms h3{
 		line-height: 20px;

@@ -1,24 +1,32 @@
 // Footer Content //
 
 //block content
+
+// Twitter Tweet Button
 script
 	!function(d,s,id){
 		var js,fjs=d.getElementsByTagName(s)[0];
 		if(!d.getElementById(id)){js=d.createElement(s);
-		js.id=id;
-		js.src="//platform.twitter.com/widgets.js";
-	fjs.parentNode.insertBefore(js,fjs);
-	}}(document,"script","twitter-wjs");
+			js.id=id;
+			js.src="//platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js,fjs);
+		}
+	}(document,"script","twitter-wjs");
 
-//div(id="fb-root")
-//script
-//	(function(d, s, id) {
-//		var js, fjs = d.getElementsByTagName(s)[0];
-//			if (d.getElementById(id)) return;
-//			js = d.createElement(s); js.id = id;
-//			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-//			fjs.parentNode.insertBefore(js, fjs);
-//		}(document, 'script', 'facebook-jssdk'));
+// Facebook Like Button
+div(id="fb-root")
+script
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+// Google Plus Button
+script(type="text/javascript", src="https://apis.google.com/js/plusone.js")
+
 footer
 	#footer_container.container
 		.row-fluid
@@ -43,20 +51,12 @@ footer
 				div#social.span6.clearfix
 					h5 We're Social
 					ul.clearfix 
-					//	li.span3: a(class="fb-like", data-href="http:/smartclickr.com", data-send="false",data-layout="button_count", data-width="450", data-show-faces="false") 
-						li.span3: iframe(allowtransparancy="true", frameborder="0", scrolling="no",src="https://platform.twitter.com/widgets/tweet_button.html",style="width:76px; height:20px;")
-										a(href="https://twitter.com/share", class="twitter-share-button", data-via="smartclickr") Tweet It
-						li.span3: a(class="g-plusone", data-size="medium")
-						script
-							(function() {
-								var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-								po.src = 'https://apis.google.com/js/plusone.js';
-								var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-							})();
+						li(class="fb-like span3", data-href="http://www.smartclickr.com", data-send="false", data-layout="button_count", data-width="100", data-show-faces="false", data-font="arial")
+						li.span3: a(href="https://twitter.com/share", class="twitter-share-button", data-url="http://smartclickr.com", data-text="SmartClickr -- A better way to ask questions and create polls", data-via="smartclickr") Tweet It
+						li(class='span3', style='margin-left: 10px; margin-right: 0px'): a(class="g-plusone span3", data-size="medium", data-annotation="inline", data-width="120", data-href="http://smartclickr.com", style='align:right;')
+
 		.clear
 #legal
-	//currentTime = new Date
-	//i= currentTime.getFullYear()
 
 	span#kind
 		| Handcrafted with

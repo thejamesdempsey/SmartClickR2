@@ -125,6 +125,10 @@
 	margin: 0 auto;
 }
 
+.fb-like{
+	margin-top: 12px;
+}
+
 @media screen and (max-width: 767px){
 	#contact-us .send-btn{
 		text-align: center;

@@ -34,6 +34,7 @@ a.thumb {
 }
 #about-team {
   margin-top: 30px;
+  margin-left: 0px;
 }
 #about-team li {
   padding: 0 0 20px 0;
@@ -79,6 +80,9 @@ a.thumb {
   color: #34373e !important;
   font-size: 1.2rem;
   font-weight: 300 !important;
+}
+.fb-like {
+  margin-top: 12px;
 }
 @media screen and (min-width: 1200px) {
   .team-text h3,

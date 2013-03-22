@@ -1,0 +1,59 @@
+.title{
+	text-align: left !important;
+}
+
+.title .name{
+	color: #4c8ab0;
+	font-size: 1.8rem;
+}
+
+.title .location{
+	color: #374248;
+	font-size: 1.8rem;
+}
+
+.feature{
+	padding: 66px 0px 44px 0px !important;
+}
+
+footer{
+	position: relative !important;
+	top: -8px !important;
+	margin-top: 0px !important;
+}
+
+.banded ul.thumbnails{
+	margin-bottom: 68px !important;
+}
+
+
+.shell{
+	margin-top: 0px;
+	top: -20px;
+}
+
+.wrapper{
+	background: #fff;
+	border-radius: 5px;
+	padding: 0px;
+}
+
+.banded{
+	padding: 34px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.banded h3{
+	font-weight: 300;
+	margin: 0 0 20px 0;
+}
+
+
+
+
+
+@media screen and (max-width: 979px){
+	.feature{
+		padding: 24px 0px 44px 0px !important;
+	}
+}
