@@ -4,7 +4,7 @@ extends layout_playground
 block content
 	#page-top
 	//header(class="navbar navbar-fixed-top")	
-	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
+	div(class="navbar navbar-inverse navbar-fixed-top clearfix")
 		.navbar-inner
 			.container
 				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
@@ -15,16 +15,16 @@ block content
 					| SmartClickr
 				div(class="nav-collapse", style="")
 					ul(class="nav pull-right")
-						li(class="active")
-							a(href="/playground") Playground
 						li
+							a(href="/playground") Playground
+						li(class="active")
 							a(href='/playground/test1') Mockup 1
 						li
 							a(href='/playground/test2') Mockup 2
 						li
 							a(href='/features') Features
 
-	section#session-code.visible-phone
+	section#session-code.headband.visible-phone
 		h3 Got a session code? 
 
 
@@ -64,7 +64,7 @@ block content
 				.shell
 					.content.clearfix
 						article.banded.clearfix
-							section
+							section.main-list.clearfix
 								h1 All-In-One Polling Platform
 								p The ability to present and respond are all included in one site. No extra software or equipment required.
 								ul.thumbnails.span10.offset1
@@ -80,6 +80,15 @@ block content
 									li.span3
 										h2.icon.track Track your responses
 										p Gather results and track the responses
+						article.banded.clearfix
+							section.bottom-actions.clearfix
+								ul.send-to-features.span10.offset1
+									li.span4
+										a(id="to-features",class='btn-green btn-huge', href='/features') see all features &rarr;
+									li.span4
+										a(id="to-features",class='btn-info btn-huge', href='/features') see all features &rarr;
+									li.span4
+										a(id="to-features",class='btn-red btn-huge', href='/features') see all features &rarr;
 	include modals/session-explained
 	include extra/footer-main
 

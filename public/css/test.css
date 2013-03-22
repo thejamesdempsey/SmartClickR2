@@ -1,3 +1,15 @@
+
+
+#page-top nav{
+	padding: 0px !important;
+}
+
+
+.jumbotron{
+	position: relative;
+	top: 41px;
+}
+
 .title{
 	text-align: left !important;
 }
@@ -47,6 +59,97 @@ footer{
 	font-weight: 300;
 	margin: 0 0 20px 0;
 }
+
+.banded section{
+	padding: 60px 50px 0px 50px !important;
+}
+
+.banded .main-list ul.thumbnails{
+	margin-bottom: 32px !important;
+}
+
+.send-to-features{
+	list-style: none;
+	margin-bottom: 0px;
+}
+
+.send-to-features > li{
+	float: left;
+	margin-left: 10px;
+}
+
+.send-to-features > li > a{
+	display: inline-block;
+	color: #fff;
+}
+
+.banded section.bottom-actions{
+	padding: 10px 50px !important;
+}
+
+#to-features:hover{
+	text-decoration: none;
+}
+
+.btn-green{
+	background-color: #72c1b0;
+	border: 1px solid #558f83;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: #fff;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	
+}
+
+.btn-green:hover{
+	border: 1px solid #558f83;
+	color: #fff;
+}
+
+.btn-huge{
+	padding: 20px 42px;
+	text-transform: capitalize;
+	border-radius: 6px;
+		-webkit-border-radius: 6px;
+		--moz-border-radius: 6px;
+	font-size: 18px;	
+}
+
+.btn-red{
+	background-color: #e95c41;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: #fff;
+	border: 1px solid #5e5e5e;
+	background-repeat: repeat-x;
+	background-image:-webkit-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#e95c41), to(#d93e2a)) !important;
+	background-image:-moz-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-ms-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:-o-linear-gradient(top, #e95c41, #d93e2a) !important;
+	background-image:linear-gradient(to bottom, #e95c41, #d93e2a) !important;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	
+}
+
+.btn-red:hover{
+	color: #fff;
+	border: 1px solid #5e5e5e;
+}
+
+.btn-blue{
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #49afcd;
+	background-repeat: repeat-x;
+	background-image:-moz-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+	background-image:-webkit-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image:-o-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image:-ms-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image:linear-gradient(to bottom, #5bc0de, #2f96b4);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border: 1px solid #5e5e5e;
+	
+}
+
 
 
 

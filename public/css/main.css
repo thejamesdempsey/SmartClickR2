@@ -1060,10 +1060,6 @@ hr {
 #feature-sidebar {
   padding-top: 20px;
 }
-nav a {
-  font-family: Veranda, sans-serif;
-  font-size: 1.4em;
-}
 a:link,
 a:visited {
   color: #a1a3a8;
