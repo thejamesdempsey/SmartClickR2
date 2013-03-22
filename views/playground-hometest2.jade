@@ -1,13 +1,12 @@
 
 extends layout_playground
 
-body(id='main-page', data-spy='scroll')
 block content
 	header(id='page-top')
 		nav(class="navbar navbar-inverse navbar-fixed-top")
 			div(class='navbar-inner')
 				div(class='container')
-					button(type='button', class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
@@ -22,8 +21,8 @@ block content
 							li(class='active')
 								a(href='/playground/test2') Mockup 2
 
-		section(id='session-code-phone', class='headband clearfix visible-phone')
-			.container-fluid
+		section(id='session-code', class='headband clearfix visible-phone')
+			.container
 				.row-fluid
 					h3 Have a session code? 
 					form#top-search.form-inline(method="GET", action="/poll")
@@ -32,28 +31,26 @@ block content
 							input(type="search", id="index-top-input", placeholder="Enter it here")
 							button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 
-		section(class='jumbotron clearfix')
-			.container-fluid
+		section(class='jumbotron feature clearfix')
+			.container
 				.row-fluid
-					h1(class='title hidden-phone') Hi, I'm SmartClickr: A better way to ask
-						br
-						|  questions and create polls
-					h1(class='title visible-phone') Hi, I'm SmartClickr
-					ul.btn-contain.clearfix
-						li.create-wrap.span6
-							a(id="top-create",class='btn  btn-large', href='user/create') Create an Account
-						li.tour-wrap.span6
-							a(id="top-tour",class='btn  btn-large', href='#tour-top') Take a Tour
+					h1(class='title') Hi, I'm SmartClickr
+					p An elegant, real-time, audience interaction system that gives you a better way to ask questions and create polls
+						ul.btn-contain.clearfix
+							li.create-wrap.span6
+								a(id="top-create",class='btn  btn-large', href='user/create') Create an Account
+							li.tour-wrap.span6
+								a(id="top-tour",class='btn  btn-large', href='#tour-top') Take a Tour
 
-		section(id='session-code-main', class='headband clearfix hidden-phone')
-			.container-fluid
+		section(id='session-code', class='headband clearfix hidden-phone')
+			.container
 				.row-fluid
-			h3 Have a session code? 
-				span.what 
-					a(href="#explained", data-toggle="modal") What's that mean?
-			form#bottom-search.form-inline(method="GET", action="/poll")
-				fieldset
-					legend(class='ninja') Enter a session code
-					label(class="inline", for="index-bottom-input", style="top: 10px !important; left:113px; width: auto !important; ") Enter it here
-					input(type="search", id="index-bottom-input")
-					button(type="submit", class="btn btn-info", name="session") Find it &rarr;
+					h3 Have a session code? 
+						span.what 
+							a(href="#explained", data-toggle="modal") What's that mean?
+					form#bottom-search.form-inline(method="GET", action="/poll")
+						fieldset
+							legend(class='ninja') Enter a session code
+							label(class="inline", for="index-bottom-input", style="top: 10px !important; left:113px; width: auto !important; ") Enter it here
+							input(type="search", id="index-bottom-input")
+							button(type="submit", class="btn btn-info", name="session") Find it &rarr;
