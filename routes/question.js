@@ -238,12 +238,18 @@ var updateQuestionHelper = function(qid, types, question, numb, count) {
 		stem = question[0];
 		
 		QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
-			for(var i = 0; i < choices.length; i++) {
+			var contents = [];
 
+			for(var i = 0; i < choices.length; i++) {
+				contents.push(choices[i]);
 				CM.updateMCContent({ Content : choices[i], Order : i+1, Choice_ID : parseInt(cids[i])}, function(err, results) {
 					// create choices for MC
 				});
 			}
+
+			RM.deleteExtraResponses(qid, {A: contents[0], B: contents[1], C: contents[2], D: contents[3]}, function(o) {
+				// delete the responses that don't belong!
+			});
 		});
 
 	} else if (types[currentCount - 1] == 'TF') {

@@ -18,7 +18,7 @@ var pieChart = function(dataset, json_loc){
 	var donut = d3.layout.pie()
                         //Get just the "Values" from the JSON
                         .value(function(d){
-                            total = (total + d.Value);  //Calculate the total number of responses
+                            total = (total + parseInt(d.Value));  //Calculate the total number of responses
                             return d.Value;
                         })
                         .sort(null);    //Preserve original order.  Default sort is descending.
