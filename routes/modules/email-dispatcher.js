@@ -25,7 +25,7 @@ ED.resetPasswordLink = function(user, callback) {
 	var message = {
 		text: 	"You forgot your password, but have no fear. We are brewing a new one for you. \r\n \r\n Click the link below to reset your password for your SmartClickr account: \r\n " + link + "\r\n \r\n Toodles, \r\n \r\n Your Friends at SmartClickr",	
 		from		: "SmartClickr Support <" + ES.sender + ">",
-		to			: "<"+user.Email+">",
+		to			: "<" + user.Email + ">",
 		subject		: 'SmartClickR Reset Password',
 		//attachment	: ED.resetPasswordEmail(user)
 	};
@@ -59,4 +59,21 @@ ED.confirmAccountEmail = function(o) {
 	var html = "";
 	
 	return [{data:html, alternative: true}];
+}
+
+ED.contactEmail = function(info, callback) {
+	console.log(info.email);
+	var message = {
+		text		:  info.message,	
+		from		:  info.name + " <" + info.email + ">",
+		to			:  "<support@smartclickr.com>",
+		subject		:  info.subject 
+	};
+	
+	ED.server.send(message, function(err, message) {
+		console.log(err || message); 
+		console.log(info.name, info.email, info.subject, info.message)
+		callback(err, message);
+	});
+	
 }

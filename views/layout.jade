@@ -11,6 +11,23 @@ html
 		link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.css', media='screen')
 		
 		style
+			@media screen and (max-width: 1200px){
+				.headband #session-code label.inline{
+					left: 110px !important;
+				}
+			}
+
+			@media screen and (max-width: 1199px){
+				.headband #session-code label.inline{
+					left: 78px !important;
+				}
+			}
+
+			@media screen and (max-width: 979px){
+				.headband #session-code label.inline{
+					left: 47px !important;
+				}
+			}
 			@media screen and (max-width: 320px){
 				#top-search label.inline.supported.empty{
 					display: none
@@ -70,9 +87,9 @@ html
 		script
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) return;
-					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-					fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'facebook-jssdk'));
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
 

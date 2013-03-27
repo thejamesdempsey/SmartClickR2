@@ -1,4 +1,5 @@
 var AM = require('./modules/account-manager');
+var ED = require('./modules/email-dispatcher');
 
 // GET /index //
 exports.index = function(request, response) {
@@ -20,58 +21,78 @@ exports.index = function(request, response) {
 
 // GET /features //
 exports.features = function(request, response) {
-	response.render('features.jade', { title: 'SmartClickr | Polling and Presentation Features', layout: 'features_layout' });
+	response.render('features.jade', { title: 'Polling and Presentation Features - SmartClickr', layout: 'features_layout' });
 }
 
 // GET /help-center //
 exports.help = function(request, response) {
-	response.render('help.jade', { title: 'SmartClickr | Help Center', layout: 'help-center_layout' });
+	response.render('help.jade', { title: 'Help Center - SmartClickr', layout: 'help-center_layout' });
 
 }
 
 // GET /samples //
 exports.samples = function(request, response) {
-	response.render('samples.jade', { title: 'SmartClickr | Sample Questions', layout: 'samples_layout' });
+	response.render('samples.jade', { title: 'Sample Questions - SmartClickr', layout: 'samples_layout' });
 }
 
 // GET /about-us //
 exports.about = function(request, response) {
-	response.render('about.jade', { title: 'SmartClickr | About', layout: 'about_layout' });
+	response.render('about.jade', { title: 'About - SmartClickr', layout: 'about_layout' });
 }
 
 
 // GET /about-us //
 exports.blog = function(request, response) {
-	response.render('blog.jade', { title: 'SmartClickr | Blog', layout: 'blog_layout' });
+	response.render('blog.jade', { title: 'Blog - SmartClickr', layout: 'blog_layout' });
 }
 
 
 // GET /data-center //
 exports.contact = function(request, response) {
-	response.render('contact.jade', { title: 'SmartClickr | Contact Us', layout: 'contact_layout' });
+	response.render('contact.jade', { title: 'Contact Us - SmartClickr', layout: 'contact_layout' });
+}
+
+
+exports.postContact =  function(request, response) {
+	console.log(request.param('name'));
+	console.log(request.param('email'));
+	console.log(request.param('subject'));
+	ED.contactEmail({
+		name		: request.param('name'),
+		email		: request.param('email'),
+		subject		: request.param('subject'),
+		message		: request.param('message')		
+		}, function(err, o) {
+			if(err) {
+				console.log(err);
+				response.send('email-server-error', 400);				
+			} else {				
+				response.send('okay', 200);
+			}
+		});
 }
 
 // GET /contact //
 exports.data = function(request, response) {
-	response.render('data.jade', { title: 'SmartClickr | Data Center', layout: 'data_layout' });
+	response.render('data.jade', { title: 'Data Center - SmartClickr', layout: 'data_layout' });
 }
 
 // GET /privacy //
 exports.privacy = function(request, response) {
-	response.render('privacy.jade', { title: 'SmartClickr | Privacy', layout: 'privacy_layout' });
+	response.render('privacy.jade', { title: 'Privacy - SmartClickr', layout: 'privacy_layout' });
 }
 
 // GET /terms //
 exports.terms = function(request, response) {
-	response.render('terms.jade', { title: 'SmartClickr | Terms of Service', layout: 'terms_layout' });
+	response.render('terms.jade', { title: 'Terms of Service - SmartClickr', layout: 'terms_layout' });
 }
 
 exports.lostPassword = function(request, response) {
-	response.render('pass_lost.jade', { title: 'SmartClickr | Forgot your Password?', layout: 'layout_reset'});
+	response.render('pass_lost.jade', { title: 'Forgot your Password? - SmartClickr', layout: 'layout_reset'});
 }
 
 exports.resetPassword = function(request, response) {
-	response.render('pass_reset.jade', {title: 'SmartClickr | Reset your Password', layout: 'layout_reset'});
+	response.render('pass_reset.jade', {title: 'Reset your Password - SmartClickr', layout: 'layout_reset'});
 }
 
 exports.gettingStarted = function(request, response) {
@@ -83,8 +104,20 @@ exports.email = function(request, response) {
 }
 
 
+exports.playground = function(request, response) {
+	response.render('playground.jade', {title: 'Playground - Smartclickr'});
+}
+
+exports.playground_hometest1 = function(request, response) {
+	response.render('playground-hometest1.jade', {title: 'Playground - SmartClickr'});
+}
+
+exports.playground_hometest2 = function(request, response) {
+	response.render('playground-hometest2.jade', {title: 'Playground - SmartClickr'});
+}
+
 exports.problemo = function(request, response) { 
- 	response.render('404.jade', {title: 'SmartClickr | This page got lost', layout:'404_layout'}); 
+ 	response.render('404.jade', {title: 'This page got lost - SmartClickr', layout:'404_layout'}); 
 }
 
 

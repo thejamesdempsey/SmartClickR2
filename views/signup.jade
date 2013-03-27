@@ -17,7 +17,7 @@ block content
 						li
 							a(id="home", href="/") Home
 						li
-							a(id='features', href='/features') Features
+							a(id='features', href='/#tour-top') Features
 						li.active
 							a(id='signup', href='/user/create') Sign Up
 						li
@@ -52,16 +52,16 @@ block content
 									input(id='password', type='password', name='password', class='input-block-level span9', title='Password',  autocomplete='off')
 									.clear
 							span12.no_pad
-								fieldset.check.span7
-									label(id='termsLabel')
-										input#termsCheckBox(name='checkTerms',type='checkbox',checked='checked')
-										| I agree to the
-										a(href='#')  Terms of Service
-								fieldset#action-btn.form-action.span5
-									input(id='signup_submit',type='submit',value='Create My Account', class="btn btn-large")
-								hr
+								#bottom-actions
+									fieldset.check.span7
+										label(id='termsLabel')
+											input#termsCheckBox(name='checkTerms',type='checkbox',checked='checked')
+											| I agree to the
+											a(href='#')  Terms of Service
+									fieldset#action-btn.form-action.span5
+										input(id='signup_submit',type='submit',value='Create My Account', class="btn btn-large")
+									hr
 
-	//script(src="/javascript/form-validators/validateSignup.js")
 	script(src="/javascript/views/signup.js")
-	script(src="http://malsup.github.com/jquery.form.js")
+	script(src="/jquery.login.min.js")
 	

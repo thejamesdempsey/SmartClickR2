@@ -40,7 +40,7 @@ block content
 				h1.hidden-phone Hi, I'm SmartClickr: A better way to ask
 					br
 					|  questions and create polls
-				h1.visible-phone Meet SmartClickr
+				h1.visible-phone Hi, I'm SmartClickr
 				ul.btn-contain.clearfix
 					li.create-wrap.span6
 						a(id="top-create",class='btn  btn-large', href='user/create') Create an Account
@@ -54,7 +54,7 @@ block content
 						span.what 
 							a(href="#explained", data-toggle="modal") What's that mean?
 					form#bottom-search.form-inline(method="GET", action="/poll")
-						label(class="inline", for="index-bottom-input", style="top: 70px !important; left:120px !important; width: auto !important; ") Enter it here
+						label(class="inline", for="index-bottom-input", style="top: 10px !important; left:113px; width: auto !important; ") Enter it here
 						input(type="search", id="index-bottom-input")
 						button(type="submit", class="btn btn-info", name="session") Find it &rarr;
 	#tour-top
@@ -66,7 +66,7 @@ block content
 						article.banded.clearfix
 							section
 								h1 All-In-One Polling Platform
-								p The ability to present and respond are all inculded in one site. No extra software or equipment required.
+								p The ability to present and respond are all included in one site. No extra software or equipment required.
 								ul.thumbnails.span10.offset1
 									li.span3
 										h2.icon.command Easy to use command center
@@ -76,7 +76,7 @@ block content
 										p Create as many polls as you need. No restrictions.
 									li.span3
 										h2.icon.devices Collect from many devices
-										p Responses from any mobile device or computer
+										p Responses from any web-enabled device
 									li.span3
 										h2.icon.track Track your responses
 										p Gather results and track the responses
@@ -131,17 +131,15 @@ block content
 								ul.highlights	
 									li Polling with personality
 									li All pages mobile friendly
-									li No aditional software, hardware or costs
+									li No additional software, hardware or costs
 
 								ul.highlights
 								ul.highlights
-							.return-top.hidden-desktop
-								.circle
-									a(href="#page-top", class="hidden-desktop") Top 
-								
-	#to-top
-		.arrow-up.visible-desktop
-			a(href="#page-top") &uarr; Top 
+							.return-top
+								//.circle
+								a(href="#page-top", class="circle") 
+									span.up-arrow &uarr;
+
 									
 	include modals/session-explained
 	include extra/footer-main

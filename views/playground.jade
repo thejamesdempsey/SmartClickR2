@@ -1,0 +1,53 @@
+
+extends layout_playground
+
+block content
+	#page-top
+	//header(class="navbar navbar-fixed-top")	
+	header(class="navbar navbar-inverse navbar-fixed-top clearfix")
+		.navbar-inner
+			.container
+				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="brand", href="/") 
+					| SmartClickr
+				div(class="nav-collapse", style="")
+					ul(class="nav pull-right")
+						li(class="active")
+							a(href="/playground") Playground
+
+	.container-fluid
+	.feature.clearfix
+		.container
+			.row-fluid
+			h1.title
+				span.name SmartClickr / 
+				span.location The Playground
+
+	.main-content
+		.container
+			.row-fluid
+				.shell.clearfix
+					.wrapper
+						article.banded.clearfix
+							h3 Home Page Mockups
+							ul.nav.nav-pills
+								li 
+									a(href='/playground/test1') Mockup 1
+								li
+									a(href='/playground/test2') Mockup 2
+						article.banded.clearfix
+							h3 Email Templates
+							ul.nav.nav-pills
+								li 
+									a(href='/playground/email') Email Newsletter Test
+							ul.nav.nav-pills
+								li
+
+
+
+
+
+
