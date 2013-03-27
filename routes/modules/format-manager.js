@@ -39,6 +39,7 @@ module.exports = FM;
 // Get and format all questions and choices from a poll //
 // used for the edit page //
 FM.getQuestions = function(pollID, callback) {
+
 	QM.getQuestions(pollID, function(questions) {
 		var size = [];
 		for(var i = 0; i < questions.length; i++) {
@@ -48,9 +49,10 @@ FM.getQuestions = function(pollID, callback) {
 			});		
 		}
 
+		// should be done in a callback!
 		setTimeout(function() {
 			callback(questions);
-		}, 8);
+		}, 12);
 	});
 }
 
@@ -59,11 +61,12 @@ FM.getQuestionSC = function(questionID, sessionCode, callback) {
 
 		CM.getChoices(questionID, function(choices) {
 			question[0]["Choices"] = choices;
+			callback(question);
 		});
 		
-		setTimeout(function() {
-			callback(question);
-		}, 5);
+		// setTimeout(function() {
+		// 	callback(question);
+		// }, 5);
 	});
 }
 
@@ -72,11 +75,12 @@ FM.getQuestionPID = function(questionID, pollID, callback) {
 
 		CM.getChoices(questionID, function(choices) {
 			question[0]["Choices"] = choices;
+			callback(question);
 		});
 		
-		setTimeout(function() {
-			callback(question);
-		}, 5);
+		// setTimeout(function() {
+		// 	callback(question);
+		// }, 5);
 	});
 }
 

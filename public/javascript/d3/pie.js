@@ -122,6 +122,7 @@ var pieChart = function(dataset, json_loc){
     
         if(data.questionID == qid) {
             refresh();
+            refresh();
         }
     });
     // Store the displayed angles in _current.
