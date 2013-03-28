@@ -107,10 +107,7 @@ app.get('/getting-started-with-smartclickr', routes.gettingStarted);
 	app.post('/user/:User_ID/poll/create', poll.postCreatePoll);
 	
 	// Edit a poll //
-	app.alias('/user/:User_ID/poll/edit/:Poll_ID', '/edit', 301);
-	app.get('/edit', poll.getEditPoll);
-	
-	//app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
+	app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
 	app.post('/user/:User_ID/poll/edit/:Poll_ID', question.postEditPoll);
 	//app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
 	

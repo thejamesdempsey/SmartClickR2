@@ -160,21 +160,9 @@ block content
 									br
 									a(id="guide", href="/getting-started-with-smartclickr") getting started guide
 						else
-							article#no_polls.clearfix
-								article#three-steps.hidden-phone
-									h2 Get going with three simple steps
-									ul#steps.clearfix
-										li.span4 
-											img(src="http://placehold.it/200x200")
-											a(id="create-step", href="/user/#{locals.udata.User_ID}/poll/create", class="steps-link btn btn-info btn-large") Create a Poll
-										li.span4 
-											img(src="http://placehold.it/200x200")
-											a(id="questions-toggle", href="#", class="steps-link btn btn-large disabled") Add Questions
-										li.span4 
-											img(src="http://placehold.it/200x200")
-											a(id="responses-toggle", href="#", class="steps-link btn btn-large disabled") Collect Responses
-								h2.visible-phone You have no polls for us to display 
-								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="btn btn-info btn-large visible-phone") Start Your First Poll
+							article(id='no_polls', class='clearfix')
+								h2 You have no polls for us to display 
+								a(href="/user/#{locals.udata.User_ID}/poll/create", id="sub_create", class="btn btn-info btn-large") Start Your First Poll
 								span.visible-phone 
 									h2 or read our 
 									//br
@@ -184,7 +172,7 @@ block content
 									a(id="guide", href="/getting-started-with-smartclickr") getting started guide
 					
 	// Footer Content //
-	if locals.pdata.length == 1
+	if locals.pdata.length < 2 
 		footer#logged-in-one
 			#footer_container.container
 				.row-fluid
