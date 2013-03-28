@@ -70,6 +70,7 @@ QM.getQuestions = function(pollId, callback) {
 			connection.destroy();
 			console.log('Connection is closed');
 		} else {
+			console.log('Questions! ', results);
 			callback(results);
 		}
 	});

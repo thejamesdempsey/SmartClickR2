@@ -35,6 +35,7 @@ exports.getEditPoll = function(request, response) {
 	if(request.session.user != null && request.session.user != undefined) {
 		var user = request.session.user[0];
 		FM.getQuestions(request.param('Poll_ID'), function(results) {
+			console.log('Poll ID!!', request.param('Poll_ID'));
 			var questions = results;
 
 			PM.getPollFromID(request.param('Poll_ID'), function(result) {

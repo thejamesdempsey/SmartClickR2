@@ -36,7 +36,7 @@ module.exports = AM;
 
 AM.autoLogin = function(email, hashPass, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Email = ?', [email], function(error, results){
-		if (results.length === 1) {
+		if (results != undefined && results.length === 1) {
 			results[0].Password === hashPass ? callback(null, results) : callback(null);
 		} else {
 			callback(null);

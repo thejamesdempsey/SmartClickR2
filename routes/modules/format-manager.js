@@ -39,6 +39,7 @@ module.exports = FM;
 // Get and format all questions and choices from a poll //
 // used for the edit page //
 FM.getQuestions = function(pollID, callback) {
+
 	QM.getQuestions(pollID, function(questions) {
 		var size = [];
 		for(var i = 0; i < questions.length; i++) {
@@ -48,9 +49,10 @@ FM.getQuestions = function(pollID, callback) {
 			});		
 		}
 
+		// should be done in a callback!
 		setTimeout(function() {
 			callback(questions);
-		}, 8);
+		}, 12);
 	});
 }
 
@@ -59,11 +61,12 @@ FM.getQuestionSC = function(questionID, sessionCode, callback) {
 
 		CM.getChoices(questionID, function(choices) {
 			question[0]["Choices"] = choices;
+			callback(question);
 		});
 		
-		setTimeout(function() {
-			callback(question);
-		}, 5);
+		// setTimeout(function() {
+		// 	callback(question);
+		// }, 5);
 	});
 }
 
@@ -72,11 +75,12 @@ FM.getQuestionPID = function(questionID, pollID, callback) {
 
 		CM.getChoices(questionID, function(choices) {
 			question[0]["Choices"] = choices;
+			callback(question);
 		});
 		
-		setTimeout(function() {
-			callback(question);
-		}, 5);
+		// setTimeout(function() {
+		// 	callback(question);
+		// }, 5);
 	});
 }
 
@@ -102,20 +106,20 @@ FM.getResponseData = function(questionID, callback) {
 }
 
 FM.getMCdata = function(questionID, callback) {
-	connection.query('SELECT Content FROM Choices WHERE Question_ID = ?', [questionID], function(err, results) {
-		var size = [];
-		if(results.length > 0) {
-			for(var i = 0; i < results.length; i++) {
-				size.push(i);
-				RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
-					results[size.shift()]["Value"] = parseInt(o.count);
-				});
-			}
+	connection.query("SELECT DISTINCT Content, Count(*) AS 'Value' FROM Responses WHERE Question_ID = ? GROUP BY Content", [questionID], function(err, results) {
+		// var size = [];
+		// if(results.length > 0) {
+		// 	for(var i = 0; i < results.length; i++) {
+		// 		size.push(i);
+		// 		RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
+		// 			results[size.shift()]["Value"] = parseInt(o.count);
+		// 		});
+		// 	}
 			
-			setTimeout(function() {
-				callback(results);
-			}, 8);
-		}
+		// 	setTimeout(function() {
+		// 		callback(results);
+		// 	}, 8);
+		callback(results);
 	});
 }
 
@@ -140,20 +144,8 @@ FM.getTFdata = function(questionID, callback) {
 }
 
 FM.getFRNdata = function(questionID, callback) {
-	connection.query('SELECT DISTINCT Content FROM ' + RESPONSES + ' WHERE Question_ID = ?', [questionID], function(err, results) {
-		var size = [];
-		if(results.length > 0) {
-			for(var i = 0; i < results.length; i++) {
-				size.push(i);
-				RM.getContentCount({ Question_ID : questionID, Content : results[i].Content }, function(o) {
-					results[size.shift()]["Value"] = parseInt(o.count);
-				});
-			}
-		}
-
-		setTimeout(function() {
-			callback(results);
-		}, 15);
+	connection.query("SELECT DISTINCT Content, Count(*) AS 'Value' FROM Responses WHERE Question_ID = ? GROUP BY Content", [questionID], function(err, results) {
+		callback(results);
 	});
 }
 

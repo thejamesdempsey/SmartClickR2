@@ -108,6 +108,11 @@ app.get('/getting-started-with-smartclickr', routes.gettingStarted);
 	
 	// Edit a poll //
 	app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
+<<<<<<< HEAD
+=======
+	
+	//app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
+>>>>>>> f203ad1d6a3a7453285104950e1a69e8799d80d7
 	app.post('/user/:User_ID/poll/edit/:Poll_ID', question.postEditPoll);
 	//app.get('/user/:User_ID/poll/edit/:Poll_ID', poll.getEditPoll);
 	

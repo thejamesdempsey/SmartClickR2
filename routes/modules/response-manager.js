@@ -70,6 +70,18 @@ RM.updateResponse = function(data, callback) {
 	});
 }
 
+RM.deleteExtraResponses = function(questionID, content, callback) {
+	connection.query('DELETE FROM ' + TABLE + ' WHERE Content not in (?, ?, ?, ?) and Question_ID = ?', [content.A, content.B, content.C, content.D, questionID], function(err, results) {
+		if(err) {
+			console.log('Error: ', err);
+			connection.destroy();
+			console.log('Connection closed');
+		} else {
+			callback(null);
+		}
+	});
+}
+
 // Get All Responses for Question //
 RM.getResponses = function(questionID, callback) {
 	connection.query('SELECT * FROM ' + TABLE + ' WHERE Question_ID = ?', [questionID], function(err, results) {
