@@ -52,7 +52,7 @@ FM.getQuestions = function(pollID, callback) {
 		// should be done in a callback!
 		setTimeout(function() {
 			callback(questions);
-		}, 12);
+		}, 50);
 	});
 }
 
