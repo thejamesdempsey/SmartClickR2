@@ -69,9 +69,9 @@ block content
 						p This will remove your account, all polls associated with your account and cannot be undone
 					div(class="modal-footer")
 						button(class="btn", data-dismiss="modal", aria-hidden="true") Cancel
-						button(id="deleteAcctBtn", type="submit", formmethod="POST", formaction="/user/delete/#{locals.udata.User_ID}", class='btn btn-medium btn-danger', onclick='console.log("/user/delete/#{locals.udata.User_ID}")') Delete
+						button(id="deleteAcctBtn", type="submit", formmethod="POST", formaction="/user/delete/#{locals.udata.User_ID}", class='btn btn-medium btn-danger') Delete
 
-	script(src="/javascript/views/settings.min.js")
+	script(src="/javascript/views/settings.js")
 	script(src="/jquery.login.min.js")
 
 

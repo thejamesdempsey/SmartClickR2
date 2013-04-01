@@ -185,7 +185,6 @@ var newQuestionHelper = function(types, questions, pollID, numb, count) {
 			
 			QM.updateStem({ Stem : stem, Question_ID : qid }, function(o) {
 				for(var i = 0; i < choices.length; i++) {
-					
 					CM.createMCChoices({ Question_ID : qid, Order : i+1, Answer : answer, Content : choices[i] }, function(err, results) {
 						// create choices for MC
 					});

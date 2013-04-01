@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var counter = 1;
+	var empty = null;
 	var sesionCode = '';
 	$('#save_quitBtn').hide();
 	$('#addQuestion').hide();
@@ -68,6 +69,7 @@ $(document).ready(function() {
 				
 				var mc = [];
 				var checked = '';
+				var choice = '';
 				mChoices = [];
 				type.push('MC');
 				stem = $(this).children('textarea').val().trim();
@@ -82,7 +84,12 @@ $(document).ready(function() {
 					// 	mChoices.push(o);
 
 					// } else {
-						mChoices.push($(this).val());
+					choice = $(this).val();
+					//if choice is empty assign it as empty (null)
+					if(choice === '')
+						choice = empty;
+					
+					mChoices.push(choice);
 					//}
 				});
 				

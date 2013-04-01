@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var counter = parseInt($('#counter').val());
 	var sesionCode = '';
+	var empty = null;
 	//$('#save_quitBtn').hide();
 	//$('#addQuestion').hide();
 	$("#pollName").focus();
@@ -60,6 +61,7 @@ $(document).ready(function() {
 			if($(this).children('h3').text() == 'Multiple Choice') {
 				
 				var mc = [];
+				var choice = '';
 				cids = [];
 				mChoices = [];
 				type.push('MC');
@@ -74,9 +76,11 @@ $(document).ready(function() {
 				stem = $(this).children('textarea').val().trim();
 				
 				$('.mc_response', this).each(function(index) {
-					mChoices.push($(this).val());
+					choice = $(this).val();
+					if(choice === '')
+						choice = empty;
+					mChoices.push(choice);
 				});
-
 
 				mc.push(stem);
 				mc.push(mChoices);
