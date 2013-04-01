@@ -158,6 +158,30 @@ textarea {
   vertical-align: top;
 }
 
+
+nav{
+	padding: 0px !important;
+}
+
+.navbar-inner li{
+	line-height: 22px;
+}
+
+.btn-navbar{
+	background-image: none !important;
+	background-color: #374248;
+}
+
+.navbar-inverse .nav-collapse .nav > li > a:hover{
+	background-color: #33393D !important;
+	
+	
+}
+
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus{
+	background-color: #33393D !important;
+}
+
 @media print {
   * {
     color: #000 !important;

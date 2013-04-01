@@ -1,7 +1,6 @@
 extends layout_features
 block content
-
-	header(class="navbar navbar-inverse navbar-fixed-top")
+	header(id='page-top', class="navbar navbar-inverse navbar-fixed-top")
 		.navbar-inner
 			.container
 				a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
@@ -34,75 +33,102 @@ block content
 
 					section.overview-banner.page-overview
 						div.brief
-							header
-								h2 Meet SmartClickr: A Better Way
-									br 
-									|  to Ask Questions and Create Polls
-							section.sub-text
-								p 
-									a(href="#features_usage") Take a tour of our features
-									.signup-btn-container
-										a(class='signup btn', href='/user/create') Signup Today
-					section.feature-descriptions.clearfix
-						section#features_usage.section-pad.clearfix
-							.spead.span8
-								header.topmatter
-									h3 Audience Interaction
-								article.deck
-									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-										| qui officia deserunt mollit anim id est laborum.
+							#sub-nav.clearfix
+								section#features-brief.clearfix
+									h4 Features Overview
+										br 
+									p.signup-btn-container
+											a(class='signup btn-red medium', href='/user/create') Signup Today
+								section#nav-container
+									#guide-nav
+										ul.nav.nav-pills
+											li 
+												a(href='#communication') Communication 
+											li 
+												a(href='#connect') Connect Socially
+											li 
+												a(href='#real-time') Real Time
+											li
+												a(href='#mobile-built') Mobile
+											li
+												a(href='#overview') Summary
+												
+					section#tour-top
+					.main
+						.container
+							.row-fluid
+								.content.clearfix
+									article#intro.banded.clearfix
+										section
+											h1 audience response made easy
+											article
+												p Creating polls and asking questions doesnt have to give you a headache. 
+												p It can be an engaging and a delightful experience for both you and your audience. 
+												p.start-up 
+													a(href="#start-tour") Take a tour of our features 
+													| to see what makes SmartClickr special.
+									#start-tour			
+									article#communication.banded.align-left.comm.clearfix
+										section
+											h1 Enhanced Audience Communication
+											p With presentations, audience involvement is vital — We provide a means for you to encourage this in a simple, yet elegant manner.
+											img(src='/img/home-icons/communication.png', class="screens hidden-phone")
+									article#connect.banded.align-right.clearfix
+										section
+											h1 Connect Socially
+											p We have made it easy to get the word out about your polls. All you need to do is post the link and let the responses come in.
+											.socials.span7.hidden-phone
+												.offset1
+													ul.thumbnails
+														li.span3
+															p.logo.logo-facebook Integrate on your Facebook
+														li.span3
+															p.logo.logo-twitter Integrate on your Twitter
+														li.span3
+															p.logo.logo-googleplus Integrate on your Google Plus
+														li.span3
+															p.logo.logo-pinterest Integrate on your Pinterest
+													ul.thumbnails
+														li.span3
+															p.logo.logo-wordpress Blog about it on wordpress
+														li.span3
+															p.logo.logo-blogger Integrate on your Blogger
+														li.span3
+															p.logo.logo-reddit Integrate on Reddit 
+														li.span3
+															p.logo.logo-tumblr Integrate through your Tumblr
+											.details.span5.hidden-phone
+												h2 Post, Blog, Share
+												p SmartClickr allows you to notify audience however you see fit, whether that be in person or online. 
+												hr.line
+												p Tweet it, post it on Facebook, or blog about your poll. Just do what you do.
+									article#real-time.banded.clearfix
+										section
+											h1 Real-Time Results
+											p Smartclickr is fast. It is built using server-side javascript to offer lightning quick speeds. The second a response is given, you can see it.
+									article#mobile-built.banded.align-left.mobile.clearfix
+										section.clearfix
+											header.span4
+												h1 Built for Mobile
+												p The entire site is mobile friendly. This means you can create and edit polls or manage your account on the fly. 
+											.span8
+												img(src='/img/home-icons/screens.png', class="screens mobile-img hidden-phone")
+									article#overview.banded.clearfix
+										section
+											h1 Overview
+											ul.highlights	
+												li Polling with personality
+												li All pages mobile friendly
+												li No additional software, hardware or costs
 
-						section#features_questions.section-pad.clearfix
-							.spead.span8
-								header.topmatter
-									h3 Questions:
-								article.deck
-									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-										| qui officia deserunt mollit anim id est laborum.
+											ul.highlights
+											ul.highlights
 
-						section#features_classroom.section-pad.clearfix
-							.spead.span8
-								header.topmatter
-									h3 In Your Classroom:
-								article.deck
-									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-										| qui officia deserunt mollit anim id est laborum.
 
-						section#features_conferences.section-pad.clearfix
-							.spead.span8
-								header.topmatter
-									h3 At Your Conference:
-								article.deck
-									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-										| qui officia deserunt mollit anim id est laborum.
 
-						section#features_mobile.section-pad.clearfix
-							.spead.span8
-								header.topmatter
-									h3 The Mobile Advantage:
-								article.deck
-									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										| eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-										| veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-										| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-										| fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-										| qui officia deserunt mollit anim id est laborum.
-					.clear
+	include modals/session-explained
 	include extra/footer-main
 
+	script(src="/javascript/sticky.js")
+	script(src="/javascript/waypoints.min.js")
+	script(src="/javascript/scrollTo.min.js")

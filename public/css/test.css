@@ -11,8 +11,7 @@
 	background-image: none;
 }
 
-#page-top .nav > a:hover{
-	/*background-color: #33393D;*/
+#page-top .navbar-inverse .nav-collapse .nav > li > a:hover{
 	background-color: #33393D !important;
 	
 	
@@ -122,7 +121,6 @@ footer{
 }
 
 .send-to-features > li{
-	float: left;
 	margin-left: 10px;
 }
 
@@ -221,6 +219,33 @@ footer{
 	top: 0px;
 }
 
+#main-page footer{
+	background: #33393D !important;
+	top: 0px !important;
+	margin-top: 10px !important;
+}
+
+#footer_content a{
+	color: #eee !important;
+}
+
+#main-page #legal span{
+	color: #3f4b51;
+	margin-bottom: 15px;
+}
+
+#main-page #copy{
+	display: block;
+}
+
+
+
+#main-page #copy a{
+	color: #33393D;
+	margin-left: 7px;
+	margin-right: 5px;
+}
+
 @media screen and (max-width: 1199px){
 	#session-code h3{
 		margin-left: 76px !important;
@@ -229,7 +254,7 @@ footer{
 
 @media screen and (max-width: 979px){
 	.feature{
-		padding: 24px 0px 72px 0px !important;
+		padding: 24px 0px 138px 0px !important;
 	}
 	
 	#session-code{
@@ -238,6 +263,23 @@ footer{
 	
 	#session-code h3{
 		margin-left: 46px !important;
+	}
+}
+
+@media screen and (max-width: 500px){
+	.feature{
+		padding: 24px 0px 48px 0px !important;
+	}
+	
+	.banded section.bottom-actions{
+		padding: 10px 18px !important;
+	}
+	
+	.banded section{
+		padding: 33px 0px 0px 0px !important;
+	}
+	.banded ul.thumbnails{
+		margin-bottom: 14px !important;
 	}
 }
 
@@ -262,6 +304,13 @@ footer{
 		font-size: 28px;	
 	}
 }
+
+@media screen and (max-width: 767px){
+	#session-code h3{
+		margin-left: 0px !important;
+	} 
+}
+
 
 
 @media screen and (min-width: 980px){

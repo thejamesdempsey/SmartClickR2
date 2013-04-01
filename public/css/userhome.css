@@ -1164,7 +1164,7 @@ body {
   padding: 0;
   margin: 0 auto;
   font-size: 62.5%;
-  background: #eeeeee url('/img/noise.png');
+  background: #eeeeee url('/img/noise.png') !important;
   min-width: 0;
 }
 .navbar-inner,
@@ -1173,7 +1173,6 @@ body {
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
   -o-border-radius: 0 !important;
-  background: #1b1b1b url('/img/bg.png');
 }
 .navbar {
   margin-bottom: 0px !important;
@@ -1425,7 +1424,13 @@ a.red:hover {
 }
 #no_polls {
   text-align: center;
-  padding-bottom: 80px;
+  padding: 0px;
+}
+@media screen and (min-width: 768px) {
+  #no_polls {
+    text-align: center;
+    padding: 60px 0px 80px;
+  }
 }
 article#no_polls h1 {
   font-size: 3.4em;
@@ -1592,9 +1597,6 @@ input#index-search {
   min-height: 140px;
   margin-top: -55px;
   padding: 22px 0 20px 0 !important;
-}
-#no_polls {
-  padding-bottom: 26px !important;
 }
 #poll-links a {
   color: #e95c41;

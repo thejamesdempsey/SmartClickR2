@@ -2278,7 +2278,6 @@ ol.poll-grid li:nth-child(4sn) {
 /* Wrapped around .top-bar to make it fixed at the top */
 .fixed {
   width: 100%;
-  left: 0;
   position: fixed;
   top: 0;
   z-index: 99;
