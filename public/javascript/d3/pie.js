@@ -5,6 +5,7 @@ var pieChart = function(dataset, json_loc){
     var ir = 45;
     var textOffset = 14;
     var tweenDuration = 250;
+    var socket = io.connect(config.Server);
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
     var lines, valueLabels, nameLabels;
@@ -47,7 +48,7 @@ var pieChart = function(dataset, json_loc){
     // CREATE VIS & GROUPS ////////////////////////////////////
     ///////////////////////////////////////////////////////////
     
-    var vis = d3.select("body").append("svg:svg")
+    var vis = d3.select("#pie-display").append("svg:svg")
       .attr("width", w)
       .attr("height", h);
     
