@@ -246,6 +246,11 @@ footer{
 	margin-right: 5px;
 }
 
+
+#social ul li{
+	padding: 12px 12px 12px 0px !important;
+}
+
 @media screen and (max-width: 1199px){
 	#session-code h3{
 		margin-left: 76px !important;
