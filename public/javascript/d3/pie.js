@@ -5,7 +5,8 @@ var pieChart = function(dataset, json_loc){
     var ir = 45;
     var textOffset = 14;
     var tweenDuration = 250;
-    var socket = io.connect(config.Server);
+    var socket = io.connect(config.Server);    //Socket.IO connection
+
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
     var lines, valueLabels, nameLabels;
@@ -48,7 +49,7 @@ var pieChart = function(dataset, json_loc){
     // CREATE VIS & GROUPS ////////////////////////////////////
     ///////////////////////////////////////////////////////////
     
-    var vis = d3.select("#pie-display").append("svg:svg")
+    var vis = d3.select("body").append("svg:svg")
       .attr("width", w)
       .attr("height", h);
     
@@ -104,23 +105,23 @@ var pieChart = function(dataset, json_loc){
         
     //---------------------------------- UPDATE ------------------------------------------------
     function refresh() {
+	    //Assume new data is in SCRdata.json
+	    d3.json(json_loc, function(json) {
+	        console.log("JSON is:");
+	        console.log(json);
+	        dataset = json;
+	        update(dataset);
+	    });
+	});
 
-        d3.json(json_loc, function(json) {
-            console.log("JSON is:");
-            console.log(json);
-            dataset = json;
-            update(dataset);
-        });
-
-	    
 	    // to run each time data is generated
 	    function update(Newdataset) {
-	          
+
 	      streakerDataAdded = Newdataset;  //Bind the passed-in data "dataset" to the already-created "streakerDataAdded"
-	    
+
 	      oldPieData = filteredPieData;
 	      pieData = donut(streakerDataAdded);
-	    
+
 	      var totalOctets = 0;
 	      filteredPieData = pieData.filter(filterData);
 	      function filterData(element, index, array) {
@@ -129,17 +130,17 @@ var pieChart = function(dataset, json_loc){
 	        totalOctets += element.value;
 	        return (element.value > 0);
 	      }
-	    
+
 	      if(filteredPieData.length > 0 && oldPieData.length > 0){
-	    
+
 	        //REMOVE PLACEHOLDER CIRCLE
 	        arc_group.selectAll("circle").remove();
-	    
+
 	        totalValue.text(function(){
 	          var kb = totalOctets;
 	          return kb.toFixed(1);
 	        });
-	    
+
 	        //DRAW ARC PATHS
 	        paths = arc_group.selectAll("path").data(filteredPieData);
 	        paths.enter().append("svg:path")
@@ -158,7 +159,7 @@ var pieChart = function(dataset, json_loc){
 	            .duration(tweenDuration)
 	            .attrTween("d", removePieTween)
 	          .remove();
-	    
+
 	        //DRAW TICK MARK LINES FOR LABELS
 	        lines = label_group.selectAll("line").data(filteredPieData);
 	        lines.enter().append("svg:line")
@@ -176,7 +177,7 @@ var pieChart = function(dataset, json_loc){
 	            return "rotate(" + (d.startAngle+d.endAngle)/2 * (180/Math.PI) + ")";
 	          });
 	        lines.exit().remove();
-	    
+
 	        //DRAW LABELS WITH PERCENTAGE VALUES
 	        valueLabels = label_group.selectAll("text.value").data(filteredPieData)
 	          .attr("dy", function(d){
@@ -197,7 +198,7 @@ var pieChart = function(dataset, json_loc){
 	            var percentage = (d.value/totalOctets)*100;
 	            return percentage.toFixed(1) + "%";
 	          });
-	    
+
 	        valueLabels.enter().append("svg:text")
 	          .attr("class", "value")
 	          .attr("transform", function(d) {
@@ -220,12 +221,12 @@ var pieChart = function(dataset, json_loc){
 	            var percentage = (d.value/totalOctets)*100;
 	            return percentage.toFixed(1) + "%";
 	          });
-	    
+
 	        valueLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
-	    
+
 	        valueLabels.exit().remove();
-	    
-	    
+
+
 	        //DRAW LABELS WITH ENTITY NAMES
 	        nameLabels = label_group.selectAll("text.units").data(filteredPieData)
 	          .attr("dy", function(d){
@@ -244,7 +245,7 @@ var pieChart = function(dataset, json_loc){
 	          }).text(function(d){
 	            return d.name;
 	          });
-	    
+
 	        nameLabels.enter().append("svg:text")
 	          .attr("class", "units")
 	          .attr("transform", function(d) {
@@ -266,9 +267,9 @@ var pieChart = function(dataset, json_loc){
 	          }).text(function(d){
 	            return d.name;
 	          });
-	    
+
 	        nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
-	    
+
 	        nameLabels.exit().remove();
 	      }  
 	    }
