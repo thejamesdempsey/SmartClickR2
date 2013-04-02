@@ -105,14 +105,16 @@ var pieChart = function(dataset, json_loc){
         
     //---------------------------------- UPDATE ------------------------------------------------
     function refresh() {
-	    //Assume new data is in SCRdata.json
-	    d3.json(json_loc, function(json) {
-	        console.log("JSON is:");
-	        console.log(json);
-	        dataset = json;
-	        update(dataset);
-	    });
-	});
+        d3.select("#update")
+        .on("click", function() {
+            //Assume new data is in SCRdata.json
+            d3.json(json_loc, function(json) {
+                console.log("JSON is:");
+                console.log(json);
+                dataset = json;
+                update(dataset);
+            });
+        });
 
 	    // to run each time data is generated
 	    function update(Newdataset) {
@@ -281,7 +283,6 @@ var pieChart = function(dataset, json_loc){
         var qid = $("#questionID").val();
     
         if(data.questionID == qid) {
-            refresh();
             refresh();
         }
     });
