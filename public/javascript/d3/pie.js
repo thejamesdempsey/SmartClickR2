@@ -5,6 +5,7 @@ var pieChart = function(dataset, json_loc){
     var ir = 45;
     var textOffset = 14;
     var tweenDuration = 250;
+    var socket = io.connect(config.Server);
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
     var lines, valueLabels, nameLabels;
@@ -47,7 +48,7 @@ var pieChart = function(dataset, json_loc){
     // CREATE VIS & GROUPS ////////////////////////////////////
     ///////////////////////////////////////////////////////////
     
-    var vis = d3.select("body").append("svg:svg")
+    var vis = d3.select("#pie-display").append("svg:svg")
       .attr("width", w)
       .attr("height", h);
     
@@ -103,16 +104,14 @@ var pieChart = function(dataset, json_loc){
         
     //---------------------------------- UPDATE ------------------------------------------------
     function refresh() {
-        d3.select("#update")
-        .on("click", function() {
-            //Assume new data is in SCRdata.json
-            d3.json(json_loc, function(json) {
-                console.log("JSON is:");
-                console.log(json);
-                dataset = json;
-                update(dataset);
-            });
+
+        d3.json(json_loc, function(json) {
+            console.log("JSON is:");
+            console.log(json);
+            dataset = json;
+            update(dataset);
         });
+
 	    
 	    // to run each time data is generated
 	    function update(Newdataset) {
