@@ -15,7 +15,7 @@ var pieChart = function(dataset, json_loc){
     
     //D3 helper function to populate pie slice parameters from array data
     var donut = d3.layout.pie().value(function(d){
-      return d.Value;   //Changed "d.octetTotalCount" to "d.Value"
+      return parseInt(d.Value);   //Changed "d.octetTotalCount" to "d.Value"
     })
     .sort(null);
     
@@ -104,16 +104,15 @@ var pieChart = function(dataset, json_loc){
         
     //---------------------------------- UPDATE ------------------------------------------------
     function refresh() {
-        d3.select("#update")
-        .on("click", function() {
-            //Assume new data is in SCRdata.json
-            d3.json(json_loc, function(json) {
-                console.log("JSON is:");
-                console.log(json);
-                dataset = json;
-                update(dataset);
-            });
+
+        //Assume new data is in SCRdata.json
+        d3.json(json_loc, function(json) {
+            console.log("JSON is:");
+            console.log(json);
+            dataset = json;
+            update(dataset);
         });
+
 
 	    // to run each time data is generated
 	    function update(Newdataset) {
@@ -127,7 +126,7 @@ var pieChart = function(dataset, json_loc){
 	      filteredPieData = pieData.filter(filterData);
 	      function filterData(element, index, array) {
 	        element.name = streakerDataAdded[index].Content;
-	        element.value = streakerDataAdded[index].Value;
+	        element.value = parseInt(streakerDataAdded[index].Value);
 	        totalOctets += element.value;
 	        return (element.value > 0);
 	      }
