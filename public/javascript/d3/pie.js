@@ -1,118 +1,278 @@
 var pieChart = function(dataset, json_loc){
-    //Width and height
-    var w = 350;
-    var h = 350;
-    var dur = 750;
-    var socket = io.connect(config.Server);
-
-    //Dataset Total
-    var total;
+    var w = 450;
+    var h = 300;
+    var r = 100;
+    var ir = 45;
+    var textOffset = 14;
+    var tweenDuration = 250;
     
-    //Arc Dimensions
-	var outerRadius = w / 2;
-	var innerRadius = 50;
-	var arc = d3.svg.arc()
-                    .innerRadius(innerRadius)
-                    .outerRadius(outerRadius);
-
-	var donut = d3.layout.pie()
-                        //Get just the "Values" from the JSON
-                        .value(function(d){
-                            total = (total + parseInt(d.Value));  //Calculate the total number of responses
-                            return d.Value;
-                        })
-                        .sort(null);    //Preserve original order.  Default sort is descending.
-
-	//Easy colors accessible via a 10-step ordinal scale
-	var color = d3.scale.category10();
-
-    //Create SVG element
-    var svg = d3.select("#pie-display")
-                .append("svg:svg")
-				.attr("id", "pie-chart")
-                .attr("width", w)
-                .attr("height", h);
-                //.append("g")
+    //OBJECTS TO BE POPULATED WITH DATA LATER
+    var lines, valueLabels, nameLabels;
+    var pieData = [];    
+    var oldPieData = [];
+    var filteredPieData = [];
     
-    var arc_grp = svg.append("svg:g")
-                    .attr("class", "arcGrp")
-                    .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
-
-    var label_group = svg.append("svg:g")
-                        .attr("class", "lblGroup")
-                        .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
-
-    // Group for Center Text
-    var center_group = svg.append("svg:g")
-                        .attr("class", "ctrGroup")
-                        .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
-
-    // Center Label
-    var pieLabel = center_group.append("svg:text")
-                                .attr("dy", ".35em")
-                                .attr("class", "chartLabel")
-                                .attr("text-anchor", "middle")
-                                .text("Total: " + total);
-
-    // Draw Arc Paths
-    var arcs = arc_grp.selectAll("path")
-                    .data(donut(dataset));
-    arcs.enter().append("svg:path")
-                .attr("stroke", "white")
-                .attr("stroke-width", 1.5)
-                .attr("fill", function(d,i) {
-                    return color(i);
-                })
-                .attr("d", arc)
-                .each(function(d) {
-                    this._current = d;
-                });
-
-    // Draw Slice Labels
-    var sliceLabel = label_group.selectAll("text")
-                                .data(donut(dataset));
-    sliceLabel.enter().append("svg:text")
-                    .attr("class", "arcLabel")
-                    .attr("transform", function(d) {
-                        return "translate(" + arc.centroid(d) + ")";
-                    })
-                    .attr("text-anchor", "middle")
-                    .text(function(d, i){
-                        var sliceText;
-                        sliceText = dataset[i].Content + ": " + dataset[i].Value;
-                        return sliceText;
-                    });
+    //D3 helper function to populate pie slice parameters from array data
+    var donut = d3.layout.pie().value(function(d){
+      return d.Value;   //Changed "d.octetTotalCount" to "d.Value"
+    })
+    .sort(null);
+    
+    //D3 helper function to create colors from an ordinal scale
+    var color = d3.scale.category20();
+    
+    //D3 helper function to draw arcs, populates parameter "d" in path object
+    var arc = d3.svg.arc()
+      .startAngle(function(d){ return d.startAngle; })
+      .endAngle(function(d){ return d.endAngle; })
+      .innerRadius(ir)
+      .outerRadius(r);
+    
+    ///////////////////////////////////////////////////////////
+    // GENERATE FAKE DATA /////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    
+    var arrayRange = 100000; //range of potential values for each item
+    var arraySize;
+    var streakerDataAdded;
+    
+    function fillArray() {
+      return {
+        port: "port",
+        octetTotalCount: Math.ceil(Math.random()*(arrayRange))
+      };
+    }
+    
+    ///////////////////////////////////////////////////////////
+    // CREATE VIS & GROUPS ////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    
+    var vis = d3.select("body").append("svg:svg")
+      .attr("width", w)
+      .attr("height", h);
+    
+    //GROUP FOR ARCS/PATHS
+    var arc_group = vis.append("svg:g")
+      .attr("class", "arc")
+      .attr("transform", "translate(" + (w/2) + "," + (h/2) + ")");
+    
+    //GROUP FOR LABELS
+    var label_group = vis.append("svg:g")
+      .attr("class", "label_group")
+      .attr("transform", "translate(" + (w/2) + "," + (h/2) + ")");
+    
+    //GROUP FOR CENTER TEXT  
+    var center_group = vis.append("svg:g")
+      .attr("class", "center_group")
+      .attr("transform", "translate(" + (w/2) + "," + (h/2) + ")");
+    
+    //PLACEHOLDER GRAY CIRCLE
+    var paths = arc_group.append("svg:circle")
+        .attr("fill", "#EFEFEF")
+        .attr("r", r);
+    
+    ///////////////////////////////////////////////////////////
+    // CENTER TEXT ////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    
+    //WHITE CIRCLE BEHIND LABELS
+    var whiteCircle = center_group.append("svg:circle")
+      .attr("fill", "white")
+      .attr("r", ir);
+    
+    // "TOTAL" LABEL
+    var totalLabel = center_group.append("svg:text")
+      .attr("class", "label")
+      .attr("dy", -15)
+      .attr("text-anchor", "middle") // text-align: right
+      .text("Responses:");
+    
+    //TOTAL TRAFFIC VALUE
+    var totalValue = center_group.append("svg:text")
+      .attr("class", "total")
+      .attr("dy", 7)
+      .attr("text-anchor", "middle") // text-align: right
+      .text("Waiting...");
+    
+    //UNITS LABEL
+    var totalUnits = center_group.append("svg:text")
+      .attr("class", "units")
+      .attr("dy", 21)
+      .attr("text-anchor", "middle") // text-align: right
+      .text("");
         
     //---------------------------------- UPDATE ------------------------------------------------
     function refresh() {
-        //Get JSON file (and hopefully new data)
-        d3.json(json_loc, function(json) {
-            dataset = json;
-            total = 0;
-            
-            //Only update the data once, then pass the result to redraw the arcs, and redraw the labels
-            var newData = donut(dataset);    //Update the data
-            
-            //New Arcs:
-            arcs.data(newData);
-            arcs.transition().duration(dur).attrTween("d", arcTween);       //Redraw the arcs
-            
-            //New Labels:
-            sliceLabel.data(newData);
-            sliceLabel.transition().duration(dur)
-                    .attr("transform", function(d) {
-                        return "translate(" + arc.centroid(d) + ")";
-                    })
-                    .style("fill-opacity", function(d) {
-                        return d.value===0 ? 1e-6 : 1;
-                    })
-                    .text(function(d, i){
-                        var sliceText;
-                        sliceText = dataset[i].Content + ": " + dataset[i].Value;
-                        return sliceText;
-                    });
-            pieLabel.text("Total: " + total);
+        d3.select("#update")
+        .on("click", function() {
+            //Assume new data is in SCRdata.json
+            d3.json(json_loc, function(json) {
+                console.log("JSON is:");
+                console.log(json);
+                dataset = json;
+                update(dataset);
+            });
         });
+	    
+	    // to run each time data is generated
+	    function update(Newdataset) {
+	          
+	      streakerDataAdded = Newdataset;  //Bind the passed-in data "dataset" to the already-created "streakerDataAdded"
+	    
+	      oldPieData = filteredPieData;
+	      pieData = donut(streakerDataAdded);
+	    
+	      var totalOctets = 0;
+	      filteredPieData = pieData.filter(filterData);
+	      function filterData(element, index, array) {
+	        element.name = streakerDataAdded[index].Content;
+	        element.value = streakerDataAdded[index].Value;
+	        totalOctets += element.value;
+	        return (element.value > 0);
+	      }
+	    
+	      if(filteredPieData.length > 0 && oldPieData.length > 0){
+	    
+	        //REMOVE PLACEHOLDER CIRCLE
+	        arc_group.selectAll("circle").remove();
+	    
+	        totalValue.text(function(){
+	          var kb = totalOctets;
+	          return kb.toFixed(1);
+	        });
+	    
+	        //DRAW ARC PATHS
+	        paths = arc_group.selectAll("path").data(filteredPieData);
+	        paths.enter().append("svg:path")
+	          .attr("stroke", "white")
+	          .attr("stroke-width", 0.5)
+	          .attr("fill", function(d, i) { return color(i); })
+	          .transition()
+	            .duration(tweenDuration)
+	            .attrTween("d", pieTween);
+	        paths
+	          .transition()
+	            .duration(tweenDuration)
+	            .attrTween("d", pieTween);
+	        paths.exit()
+	          .transition()
+	            .duration(tweenDuration)
+	            .attrTween("d", removePieTween)
+	          .remove();
+	    
+	        //DRAW TICK MARK LINES FOR LABELS
+	        lines = label_group.selectAll("line").data(filteredPieData);
+	        lines.enter().append("svg:line")
+	          .attr("x1", 0)
+	          .attr("x2", 0)
+	          .attr("y1", -r-3)
+	          .attr("y2", -r-8)
+	          .attr("stroke", "gray")
+	          .attr("transform", function(d) {
+	            return "rotate(" + (d.startAngle+d.endAngle)/2 * (180/Math.PI) + ")";
+	          });
+	        lines.transition()
+	          .duration(tweenDuration)
+	          .attr("transform", function(d) {
+	            return "rotate(" + (d.startAngle+d.endAngle)/2 * (180/Math.PI) + ")";
+	          });
+	        lines.exit().remove();
+	    
+	        //DRAW LABELS WITH PERCENTAGE VALUES
+	        valueLabels = label_group.selectAll("text.value").data(filteredPieData)
+	          .attr("dy", function(d){
+	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
+	              return 5;
+	            } else {
+	              return -7;
+	            }
+	          })
+	          .attr("text-anchor", function(d){
+	            if ( (d.startAngle+d.endAngle)/2 < Math.PI ){
+	              return "beginning";
+	            } else {
+	              return "end";
+	            }
+	          })
+	          .text(function(d){
+	            var percentage = (d.value/totalOctets)*100;
+	            return percentage.toFixed(1) + "%";
+	          });
+	    
+	        valueLabels.enter().append("svg:text")
+	          .attr("class", "value")
+	          .attr("transform", function(d) {
+	            return "translate(" + Math.cos(((d.startAngle+d.endAngle - Math.PI)/2)) * (r+textOffset) + "," + Math.sin((d.startAngle+d.endAngle - Math.PI)/2) * (r+textOffset) + ")";
+	          })
+	          .attr("dy", function(d){
+	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
+	              return 5;
+	            } else {
+	              return -7;
+	            }
+	          })
+	          .attr("text-anchor", function(d){
+	            if ( (d.startAngle+d.endAngle)/2 < Math.PI ){
+	              return "beginning";
+	            } else {
+	              return "end";
+	            }
+	          }).text(function(d){
+	            var percentage = (d.value/totalOctets)*100;
+	            return percentage.toFixed(1) + "%";
+	          });
+	    
+	        valueLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
+	    
+	        valueLabels.exit().remove();
+	    
+	    
+	        //DRAW LABELS WITH ENTITY NAMES
+	        nameLabels = label_group.selectAll("text.units").data(filteredPieData)
+	          .attr("dy", function(d){
+	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
+	              return 17;
+	            } else {
+	              return 5;
+	            }
+	          })
+	          .attr("text-anchor", function(d){
+	            if ((d.startAngle+d.endAngle)/2 < Math.PI ) {
+	              return "beginning";
+	            } else {
+	              return "end";
+	            }
+	          }).text(function(d){
+	            return d.name;
+	          });
+	    
+	        nameLabels.enter().append("svg:text")
+	          .attr("class", "units")
+	          .attr("transform", function(d) {
+	            return "translate(" + Math.cos(((d.startAngle+d.endAngle - Math.PI)/2)) * (r+textOffset) + "," + Math.sin((d.startAngle+d.endAngle - Math.PI)/2) * (r+textOffset) + ")";
+	          })
+	          .attr("dy", function(d){
+	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
+	              return 17;
+	            } else {
+	              return 5;
+	            }
+	          })
+	          .attr("text-anchor", function(d){
+	            if ((d.startAngle+d.endAngle)/2 < Math.PI ) {
+	              return "beginning";
+	            } else {
+	              return "end";
+	            }
+	          }).text(function(d){
+	            return d.name;
+	          });
+	    
+	        nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
+	    
+	        nameLabels.exit().remove();
+	      }  
+	    }
     }
     
     refresh();
@@ -125,14 +285,61 @@ var pieChart = function(dataset, json_loc){
             refresh();
         }
     });
-    // Store the displayed angles in _current.
-    // Then, interpolate from _current to the new angles.
-    // During the transition, _current is updated in-place by d3.interpolate.
-    function arcTween(a) {
-        var i = d3.interpolate(this._current, a);
-        this._current = i(0);
-        return function(t) {
-            return arc(i(t));
-        };
+    ///////////////////////////////////////////////////////////
+    // FUNCTIONS //////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    
+    // Interpolate the arcs in data space.
+    function pieTween(d, i) {
+      var s0;
+      var e0;
+      if(oldPieData[i]){
+        s0 = oldPieData[i].startAngle;
+        e0 = oldPieData[i].endAngle;
+      } else if (!(oldPieData[i]) && oldPieData[i-1]) {
+        s0 = oldPieData[i-1].endAngle;
+        e0 = oldPieData[i-1].endAngle;
+      } else if(!(oldPieData[i-1]) && oldPieData.length > 0){
+        s0 = oldPieData[oldPieData.length-1].endAngle;
+        e0 = oldPieData[oldPieData.length-1].endAngle;
+      } else {
+        s0 = 0;
+        e0 = 0;
+      }
+      var i = d3.interpolate({startAngle: s0, endAngle: e0}, {startAngle: d.startAngle, endAngle: d.endAngle});
+      return function(t) {
+        var b = i(t);
+        return arc(b);
+      };
+    }
+    
+    function removePieTween(d, i) {
+      s0 = 2 * Math.PI;
+      e0 = 2 * Math.PI;
+      var i = d3.interpolate({startAngle: d.startAngle, endAngle: d.endAngle}, {startAngle: s0, endAngle: e0});
+      return function(t) {
+        var b = i(t);
+        return arc(b);
+      };
+    }
+    
+    function textTween(d, i) {
+      var a;
+      if(oldPieData[i]){
+        a = (oldPieData[i].startAngle + oldPieData[i].endAngle - Math.PI)/2;
+      } else if (!(oldPieData[i]) && oldPieData[i-1]) {
+        a = (oldPieData[i-1].startAngle + oldPieData[i-1].endAngle - Math.PI)/2;
+      } else if(!(oldPieData[i-1]) && oldPieData.length > 0) {
+        a = (oldPieData[oldPieData.length-1].startAngle + oldPieData[oldPieData.length-1].endAngle - Math.PI)/2;
+      } else {
+        a = 0;
+      }
+      var b = (d.startAngle + d.endAngle - Math.PI)/2;
+    
+      var fn = d3.interpolateNumber(a, b);
+      return function(t) {
+        var val = fn(t);
+        return "translate(" + Math.cos(val) * (r+textOffset) + "," + Math.sin(val) * (r+textOffset) + ")";
+      };
     }
 };
