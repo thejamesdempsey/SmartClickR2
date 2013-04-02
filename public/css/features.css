@@ -347,6 +347,9 @@ footer {
   margin-top: 0px;
   top: -20px;
 }
+#social ul li {
+  padding: 12px 12px 12px 0px !important;
+}
 .wrapper {
   background: #fff;
   border-radius: 5px;

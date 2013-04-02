@@ -6,7 +6,6 @@ var pieChart = function(dataset, json_loc){
     var textOffset = 14;
     var tweenDuration = 250;
     var socket = io.connect(config.Server);    //Socket.IO connection
-
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
     var lines, valueLabels, nameLabels;

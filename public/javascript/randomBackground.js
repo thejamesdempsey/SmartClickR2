@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 function getBackground(){
 	var colors = new Array();
-		// blues //
 		colors[0]  = "#2aa0b5";
 		colors[1]  = "#45bcd2";
 		colors[2]  = "#B1E1ED";
