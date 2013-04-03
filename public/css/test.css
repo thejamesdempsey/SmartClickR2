@@ -272,6 +272,16 @@ footer{
 }
 
 @media screen and (max-width: 500px){
+	
+	.jumbotron p{
+		width: 90%;
+		margin: 0 auto;
+		padding-bottom: 20px;
+	}
+	
+	.banded{
+		padding: 12px !important;
+	}
 	.feature{
 		padding: 24px 0px 48px 0px !important;
 	}
@@ -285,6 +295,27 @@ footer{
 	}
 	.banded ul.thumbnails{
 		margin-bottom: 14px !important;
+	}
+	
+	.send-to-features > li{
+		margin-left: 6px;
+	}
+	
+	.btn-huge{
+		padding: 20px 32px;
+	}
+	
+	#main-page #kind{
+		line-height: 14px !important;
+	}
+	
+	#main-page #copy{
+		margin-top: 26px !important;
+		line-height: 10px !important;
+	}
+	
+	#session-code.visible-phone{
+		padding: 20px 14px 1px 14px;
 	}
 }
 
