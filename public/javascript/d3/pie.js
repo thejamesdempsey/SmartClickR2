@@ -1,10 +1,10 @@
 var pieChart = function(dataset, json_loc){
     var w = 450;
-    var h = 300;
+    var h = 450;
     var r = 100;
     var ir = 45;
     var textOffset = 14;
-    var tweenDuration = 250;
+    var tweenDuration = 750;
     var socket = io.connect(config.Server);    //Socket.IO connection
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
@@ -86,23 +86,28 @@ var pieChart = function(dataset, json_loc){
       .attr("class", "label")
       .attr("dy", -15)
       .attr("text-anchor", "middle") // text-align: right
-      .text("Responses:");
+      .text("Responses:")
+      .attr("font-size", "16px");
     
     //TOTAL TRAFFIC VALUE
     var totalValue = center_group.append("svg:text")
       .attr("class", "total")
       .attr("dy", 7)
       .attr("text-anchor", "middle") // text-align: right
-      .text("Waiting...");
+      .text("Waiting...")
+      .attr("font-size", "16px");
     
     //UNITS LABEL
     var totalUnits = center_group.append("svg:text")
       .attr("class", "units")
       .attr("dy", 21)
       .attr("text-anchor", "middle") // text-align: right
-      .text("");
+      .text("")
+      .attr("font-size", "16px");
         
     //---------------------------------- UPDATE ------------------------------------------------
+    refresh();
+    
     function refresh() {
 
         //Assume new data is in SCRdata.json
