@@ -1,10 +1,14 @@
 var pieChart = function(dataset, json_loc){
-    var w = 450;
-    var h = 450;
-    var r = 100;
-    var ir = 45;
+    var w = 800;	//SVG width
+    var h = 500;	//SVG height
+    var r = 200;	//Outer radius
+    var ir = 80;	//Inner radius
     var textOffset = 14;
     var tweenDuration = 750;
+    var ValueFS = "18px";   //Value-label font-size
+    var TextFS = "18px";    //Text-label font-size
+    var CtrTxtFS = "26px";  //Center text-label font-size
+    var CtrCntFS = "26px";  //Center Count text-label font-size
     var socket = io.connect(config.Server);    //Socket.IO connection
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
@@ -86,7 +90,7 @@ var pieChart = function(dataset, json_loc){
       .attr("class", "label")
       .attr("dy", -15)
       .attr("text-anchor", "middle") // text-align: right
-      .attr("font-size", "16px")
+      .attr("font-size", CtrTxtFS)
       .text("Responses:");
     
     //TOTAL TRAFFIC VALUE
@@ -94,7 +98,7 @@ var pieChart = function(dataset, json_loc){
       .attr("class", "total")
       .attr("dy", 7)
       .attr("text-anchor", "middle") // text-align: right
-      .attr("font-size", "16px")
+      .attr("font-size", CtrCntFS)
       .text("Waiting...");
     
     //UNITS LABEL
@@ -102,7 +106,7 @@ var pieChart = function(dataset, json_loc){
       .attr("class", "units")
       .attr("dy", 21)
       .attr("text-anchor", "middle") // text-align: right
-      .attr("font-size", "16px")
+      .attr("font-size", "24px")
       .text("");
         
     //---------------------------------- UPDATE ------------------------------------------------
@@ -211,9 +215,9 @@ var pieChart = function(dataset, json_loc){
 	          })
 	          .attr("dy", function(d){
 	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	              return 5;
+	              return 10;	//Original Value: 5
 	            } else {
-	              return -7;
+	              return -10;	//Original Value: -7
 	            }
 	          })
 	          .attr("text-anchor", function(d){
@@ -225,7 +229,8 @@ var pieChart = function(dataset, json_loc){
 	          }).text(function(d){
 	            var percentage = (d.value/totalOctets)*100;
 	            return percentage.toFixed(1) + "%";
-	          });
+	          })
+	            .attr("font-size", ValueFS);	//Change percentage-label font-size
 
 	        valueLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
 
@@ -258,9 +263,9 @@ var pieChart = function(dataset, json_loc){
 	          })
 	          .attr("dy", function(d){
 	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	              return 17;
+	              return 28;	//Original Value: 17
 	            } else {
-	              return 5;
+	              return 7;		//Original Value: 5
 	            }
 	          })
 	          .attr("text-anchor", function(d){
@@ -271,7 +276,8 @@ var pieChart = function(dataset, json_loc){
 	            }
 	          }).text(function(d){
 	            return d.name;
-	          });
+	          })
+	            .attr("font-size", TextFS);		//Change font-size of each slice's text labels
 
 	        nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
 
