@@ -27,7 +27,8 @@ block content
 			.row-fluid					
 				#hero_content_present.present-content
 					#content-main
-						h3 Question ##{locals.qdata[0].QuestionsOrder}
+						h2 Session Code: #{locals.sessionCode}
+						h3 Question #{locals.qdata[0].QuestionsOrder}
 						h2 #{locals.qdata[0].Stem}
 						input(type='hidden', id='questionID', value='#{locals.qdata[0].Question_ID}')
 						article#graph-display.clearfix

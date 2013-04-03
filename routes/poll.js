@@ -96,6 +96,7 @@ exports.presentLandingPage = function(request, response) {
 		var user = request.session.user;
 
 		PM.getPollFromID(pollID, function(result) {
+			request.session.SessionCode = result[0].SessionCode;
 			if(result != 'poll-not-found') {
 				QM.getPollQuestionsPID(pollID, function(qids) {
 					FM.arrayQID(qids, function(questionIDs) {
@@ -117,6 +118,7 @@ exports.presentLandingPage = function(request, response) {
 exports.presentFinal = function(request, response) {
 	pollID = request.param('Poll_ID');
 	request.session.questionIDs = '';
+	request.session.SessionCode = '';
 
 	console.log(pollID);
 	PM.getPollFromID(pollID, function(poll) {
