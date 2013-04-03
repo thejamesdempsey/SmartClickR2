@@ -139,9 +139,7 @@ app.get('/getting-started-with-smartclickr', routes.gettingStarted);
 // POLL PRESENT PAGES //
 
 	app.get('/user/:User_ID/poll/:Poll_ID?', poll.presentLandingPage);
-	
-	app.alias('/user/:User_ID/poll/:Poll_ID/present/final', '/thats-all-folks', 301);
-	app.get('/thats-all-folks', poll.presentFinal);
+	app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 	// app.get('/user/:User_ID/poll/:Poll_ID/present/final', poll.presentFinal);
 	
 	
