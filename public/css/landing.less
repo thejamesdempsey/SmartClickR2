@@ -68,21 +68,23 @@ body{
 
 #actions{
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 50px;
 }
 
 
 #poll-name{
 	color: #000;
-	font-size:2.6rem;
+	font-size:2.4rem;
 	font-weight: 300;
-	padding-bottom: 12px;
+	padding-bottom: 0px;
+	line-height: 52px;
 }
 
 #poll-desc{
-	color: #fff;
-	font-size: 1.0rem;
+	color: #000;
+	font-size: 1.125rem;
 	padding-top: 8px;
+	margin-bottom: 28px;
 }
 
 #next{
@@ -139,6 +141,24 @@ label.radio{
 
 #session-code{
 	position: relative;
+
+}
+
+#sessionCode{
+	font-size: 2.8rem;
+	font-weight: 300;
+	border-bottom: 2px solid #eee;
+	padding-bottom: 12px;	
+	line-height: 52px;
+}
+
+#landing-page #poll-name{
+	color: #000;
+	font-size:2.4rem;
+	font-weight: 300;
+	padding-bottom: 0px;
+	line-height: 52px;
+	padding-top: 22px;
 }
 
 #session-code input[type="text"]{
@@ -239,6 +259,23 @@ label.radio{
 	position: relative;
 	top: 1px;
 	border-color: #ddd #ddd transparent #ddd;
+}
+
+	
+.present-titles{
+	margin-left: 0px;
+	
+}
+
+.code{
+	text-align: left;
+}
+
+
+@media screen and (min-width: 1200px){
+	.row-fluid .offset4:first-child{
+		margin-left:37.188034% !important;
+	}
 }
 
 @media screen and(min-width:768px){
@@ -346,6 +383,16 @@ label.radio{
 	  border-color: #ddd transparent #ddd #ddd;
 	  *border-right-color: #ffffff;
 	}
+	
+	.present-titles{
+		margin-left: 100px;
+	}
+	
+	.code{
+		text-align: right;
+		padding-right: 10px;
+	}
+	
 }
 
 
