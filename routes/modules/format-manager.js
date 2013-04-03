@@ -52,7 +52,7 @@ FM.getQuestions = function(pollID, callback) {
 		// should be done in a callback!
 		setTimeout(function() {
 			callback(questions);
-		}, 50);
+		}, 80);
 	});
 }
 
@@ -63,10 +63,6 @@ FM.getQuestionSC = function(questionID, sessionCode, callback) {
 			question[0]["Choices"] = choices;
 			callback(question);
 		});
-		
-		// setTimeout(function() {
-		// 	callback(question);
-		// }, 5);
 	});
 }
 
@@ -77,10 +73,6 @@ FM.getQuestionPID = function(questionID, pollID, callback) {
 			question[0]["Choices"] = choices;
 			callback(question);
 		});
-		
-		// setTimeout(function() {
-		// 	callback(question);
-		// }, 5);
 	});
 }
 
