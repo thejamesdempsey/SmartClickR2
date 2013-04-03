@@ -86,24 +86,24 @@ var pieChart = function(dataset, json_loc){
       .attr("class", "label")
       .attr("dy", -15)
       .attr("text-anchor", "middle") // text-align: right
-      .text("Responses:")
-      .attr("font-size", "16px");
+      .attr("font-size", "16px")
+      .text("Responses:");
     
     //TOTAL TRAFFIC VALUE
     var totalValue = center_group.append("svg:text")
       .attr("class", "total")
       .attr("dy", 7)
       .attr("text-anchor", "middle") // text-align: right
-      .text("Waiting...")
-      .attr("font-size", "16px");
+      .attr("font-size", "16px")
+      .text("Waiting...");
     
     //UNITS LABEL
     var totalUnits = center_group.append("svg:text")
       .attr("class", "units")
       .attr("dy", 21)
       .attr("text-anchor", "middle") // text-align: right
-      .text("")
-      .attr("font-size", "16px");
+      .attr("font-size", "16px")
+      .text("");
         
     //---------------------------------- UPDATE ------------------------------------------------
     refresh();
