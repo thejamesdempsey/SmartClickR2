@@ -150,13 +150,14 @@ exports.presentPollQuestion = function(request, response) {
 	var questionIDs = request.session.questionIDs;
 	var userID = request.param('User_ID');
 	var pollID = request.param('Poll_ID');
+	var sessionCode = request.session.SessionCode;
 
 	FM.getQuestionPID(currentQID, pollID, function(questionData) {
 
 		if(questionData == 'question-doesnt-exist') {
 			response.redirect('/');
 		} else {
-			response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID, currentQID : currentQID.toString(), QuestionIDs : questionIDs}});
+			response.render('present.jade', { title: 'SmartClickR | Present Data', locals : { qdata : questionData, udata : userID, pdata : pollID, currentQID : currentQID.toString(), sessionCode : sessionCode, QuestionIDs : questionIDs}});
 		}
 	});
 }
