@@ -24,10 +24,11 @@ block content
 		#landing-container
 			.container		
 				.row-fluid					
-					#hero_content.span6.offset3
-						h3#poll-name #{locals.pdata[0].PollName}
-						p#poll-desc #{locals.pdata[0].PollDescription}
+					#hero_content.span8.offset2
 						h3#sessionCode Session Code: #{locals.pdata[0].SessionCode}
+
+						h3#poll-name #{locals.pdata[0].PollName}
+						p#poll-desc.clearfix #{locals.pdata[0].PollDescription}
 						p#actions
 							a(id='starting-question', href='/user/#{locals.udata[0].User_ID}/poll/#{locals.pdata[0].Poll_ID}/question/present/#{locals.QuestionIDs[0]}', class="btn btn-success btn-large") Let's Go  &rarr;
 						
