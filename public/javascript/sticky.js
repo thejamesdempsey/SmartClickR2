@@ -16,6 +16,8 @@ $(document).ready(function() {
                 $('#sub-nav').addClass('fixed', 2000).css('top','0').css('z-index', '20').css('box-shadow', '0 2px 5px #b4b4b4');
  				$('#page-top').removeClass('navbar-fixed-top', 2000);
 				$('#features-brief').css('border-radius', '0px');
+				$('#back-top').css('display', 'block');
+				
 				
 				
 				} else {
@@ -24,7 +26,9 @@ $(document).ready(function() {
             //remove the “fixed” class, and the padding-top
                 $('#sub-nav').removeClass('fixed', 2000).css('top','80px').css('box-shadow', '0px');
  				$('#page-top').addClass('navbar-fixed-top');
-				$('#features-brief').css('border-radius', '12px')
+				$('#features-brief').css('border-radius', '12px');
+				$('#back-top').css('display', 'none');
+				
 				
 
                }
@@ -34,6 +38,7 @@ $(document).ready(function() {
 	                .css('padding-top','0');
 					$('#mobile-built').css('padding-top', '34px');
 					$('.banded').css('padding-top', '34px');
+					$('#back-top').css('display', 'none');
 				}
         });
 

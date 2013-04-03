@@ -1,7 +1,7 @@
 var verticalBars = function(dataset, json_loc) {
     //SVG dimensions
-    var w = 800;           //SVG object width in pixels
-    var h = 600;            //SVG object height in pixels
+    var w = 900;           //SVG object width in pixels
+    var h = 500;            //SVG object height in pixels
     var vertPadding = 25;   //Vertical padding (for the bottom of the SVG object)
     var socket = io.connect(config.Server);    //Socket.IO connection
     
