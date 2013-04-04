@@ -4,9 +4,9 @@ var pieChart = function(dataset, json_loc){
     var r = 200;	//Outer radius
     var ir = 80;	//Inner radius
     var textOffset = 14;
-    var tweenDuration = 750;
-    var ValueFS = "18px";   //Value-label font-size
-    var TextFS = "18px";    //Text-label font-size
+    var tweenDuration = 750;	//Number of milliseconds for transition to take place
+    var ValueFS = "20px";   //Value-label font-size
+    var TextFS = "20px";    //Text-label font-size
     var CtrTxtFS = "26px";  //Center text-label font-size
     var CtrCntFS = "26px";  //Center Count text-label font-size
     var socket = io.connect(config.Server);    //Socket.IO connection
@@ -88,7 +88,7 @@ var pieChart = function(dataset, json_loc){
     // "TOTAL" LABEL
     var totalLabel = center_group.append("svg:text")
       .attr("class", "label")
-      .attr("dy", -15)
+      .attr("dy", -20)	//Original Value: -15
       .attr("text-anchor", "middle") // text-align: right
       .attr("font-size", CtrTxtFS)
       .text("Responses:");
@@ -96,7 +96,7 @@ var pieChart = function(dataset, json_loc){
     //TOTAL TRAFFIC VALUE
     var totalValue = center_group.append("svg:text")
       .attr("class", "total")
-      .attr("dy", 7)
+      .attr("dy", 17)	//Original Value: -7
       .attr("text-anchor", "middle") // text-align: right
       .attr("font-size", CtrCntFS)
       .text("Waiting...");
