@@ -147,7 +147,7 @@ var pieChart = function(dataset, json_loc){
 
 	        totalValue.text(function(){
 	          var kb = totalOctets;
-	          return kb.toFixed(1);
+	          return kb.toFixed(0);	//Controls number of decimal points to display
 	        });
 
 	        //DRAW ARC PATHS
