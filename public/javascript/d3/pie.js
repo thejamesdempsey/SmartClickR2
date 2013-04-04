@@ -7,8 +7,8 @@ var pieChart = function(dataset, json_loc){
     var tweenDuration = 750;	//Number of milliseconds for transition to take place
     var ValueFS = "18px";   //Value-label font-size
     var TextFS = "18px";    //Text-label font-size
-    var CtrTxtFS = "26px";  //Center text-label font-size
-    var CtrCntFS = "26px";  //Center Count text-label font-size
+    var CtrTxtFS = "25px";  //Center text-label font-size
+    var CtrCntFS = "35px";  //Center Count text-label font-size
     var socket = io.connect(config.Server);    //Socket.IO connection
     
     //OBJECTS TO BE POPULATED WITH DATA LATER
@@ -82,20 +82,20 @@ var pieChart = function(dataset, json_loc){
     
     //WHITE CIRCLE BEHIND LABELS
     var whiteCircle = center_group.append("svg:circle")
-      .attr("fill", "white")
+      .attr("fill", "#EFEFEF")
       .attr("r", ir);
     
     // "Responses" LABEL
-    var responsesLabel = center_group.append("svg:text")
-      .attr("class", "label")
+    var responsesText = center_group.append("svg:text")
+      .attr("class", "textLabel")
       .attr("dy", 0)	//Original Value: -15
       .attr("text-anchor", "middle") // text-align: right
       .attr("font-size", CtrTxtFS)
       .text("Responses:");
       
     // "Total" LABEL
-    var totalLabel = center_group.appen("svg:text")
-      .attr("class", "label")
+    var totalText = center_group.append("svg:text")
+      .attr("class", "textLabel")
       .attr("dy", -35)
       .attr("text-anchor", "middle")
       .text("Total")
