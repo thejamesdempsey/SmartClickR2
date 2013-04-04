@@ -5,8 +5,8 @@ var pieChart = function(dataset, json_loc){
     var ir = 80;	//Inner radius
     var textOffset = 14;
     var tweenDuration = 750;	//Number of milliseconds for transition to take place
-    var ValueFS = "20px";   //Value-label font-size
-    var TextFS = "20px";    //Text-label font-size
+    var ValueFS = "18px";   //Value-label font-size
+    var TextFS = "18px";    //Text-label font-size
     var CtrTxtFS = "26px";  //Center text-label font-size
     var CtrCntFS = "26px";  //Center Count text-label font-size
     var socket = io.connect(config.Server);    //Socket.IO connection
@@ -85,18 +85,26 @@ var pieChart = function(dataset, json_loc){
       .attr("fill", "white")
       .attr("r", ir);
     
-    // "TOTAL" LABEL
-    var totalLabel = center_group.append("svg:text")
+    // "Responses" LABEL
+    var responsesLabel = center_group.append("svg:text")
       .attr("class", "label")
-      .attr("dy", -20)	//Original Value: -15
+      .attr("dy", 0)	//Original Value: -15
       .attr("text-anchor", "middle") // text-align: right
       .attr("font-size", CtrTxtFS)
       .text("Responses:");
+      
+    // "Total" LABEL
+    var totalLabel = center_group.appen("svg:text")
+      .attr("class", "label")
+      .attr("dy", -35)
+      .attr("text-anchor", "middle")
+      .text("Total")
+      .attr("font-size", CtrTxtFS);
     
     //TOTAL TRAFFIC VALUE
     var totalValue = center_group.append("svg:text")
       .attr("class", "total")
-      .attr("dy", 17)	//Original Value: -7
+      .attr("dy", 35)	//Original Value: -7
       .attr("text-anchor", "middle") // text-align: right
       .attr("font-size", CtrCntFS)
       .text("Waiting...");
@@ -175,7 +183,7 @@ var pieChart = function(dataset, json_loc){
 	          .attr("x1", 0)
 	          .attr("x2", 0)
 	          .attr("y1", -r-3)
-	          .attr("y2", -r-8)
+	          .attr("y2", -r-15)	//Original VAlue: -8
 	          .attr("stroke", "gray")
 	          .attr("transform", function(d) {
 	            return "rotate(" + (d.startAngle+d.endAngle)/2 * (180/Math.PI) + ")";
@@ -191,9 +199,10 @@ var pieChart = function(dataset, json_loc){
 	        valueLabels = label_group.selectAll("text.value").data(filteredPieData)
 	          .attr("dy", function(d){
 	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	              return 5;
+	              return 15;	//Original Value: 5
 	            } else {
-	              return -7;
+	            	//Labels on the top 1/2 of the circle
+	              return -20;	//Original Value: -7
 	            }
 	          })
 	          .attr("text-anchor", function(d){
@@ -215,9 +224,10 @@ var pieChart = function(dataset, json_loc){
 	          })
 	          .attr("dy", function(d){
 	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	              return 10;	//Original Value: 5
+	              return 15;	//Original Value: 5
 	            } else {
-	              return -10;	//Original Value: -7
+	            	//Labels on the top 1/2 of the circle
+	              return -20;	//Original Value: -7
 	            }
 	          })
 	          .attr("text-anchor", function(d){
@@ -241,9 +251,10 @@ var pieChart = function(dataset, json_loc){
 	        nameLabels = label_group.selectAll("text.units").data(filteredPieData)
 	          .attr("dy", function(d){
 	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	              return 17;
+	              return 32;	//Original Value: 17
 	            } else {
-	              return 5;
+	            	//Label on top 1/2 of circle
+	              return -3;	//Original Value: 5
 	            }
 	          })
 	          .attr("text-anchor", function(d){
@@ -263,9 +274,10 @@ var pieChart = function(dataset, json_loc){
 	          })
 	          .attr("dy", function(d){
 	            if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	              return 28;	//Original Value: 17
+	              return 32;	//Original Value: 17
 	            } else {
-	              return 7;		//Original Value: 5
+	            	//Label on the top 1/2 of circle
+	              return -3;	//Original Value: 5
 	            }
 	          })
 	          .attr("text-anchor", function(d){
