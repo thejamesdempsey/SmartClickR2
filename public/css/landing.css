@@ -262,6 +262,10 @@ label.radio {
   #hero {
     margin-top: -20px;
   }
+  #starting-question.btn.btn-success {
+    text-align: center;
+    padding: 16px 44px;
+  }
 }
 @media screen and (min-width: 768px) {
   #graph-display ul {
