@@ -39,7 +39,7 @@ block content
 										br 
 									p.signup-btn-container
 											a(class='signup btn-red medium', href='/user/create') Signup Today
-								section#nav-container
+								section#nav-container.mini-ninja
 									#guide-nav
 										ul.nav.nav-pills
 											li 
@@ -52,8 +52,10 @@ block content
 												a(href='#mobile-built') Mobile
 											li
 												a(href='#overview') Summary
-											li#back-top.pull-right
-												a(href="#page-top") Return to the Top
+											li#back-top.pull-right.hidden-phone
+												a(href="#page-top", class="btn") 
+													span &uarr; 
+													| Back to Top
 												
 					section#tour-top
 					.main

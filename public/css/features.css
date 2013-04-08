@@ -83,6 +83,17 @@ h2 {
   font-weight: 200;
   margin-top: 14px;
 }
+#back-top a:hover,
+#back-top a:active {
+  color: #333333;
+  background-color: #e6e6e6 !important;
+  *background-color: #d9d9d9 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+#back-top a span {
+  padding-right: 4px;
+  font-size: 18px;
+}
 /* Navigation */
 .nav {
   margin-left: 1px !important;
@@ -119,7 +130,8 @@ h2 {
 #hero h1 {
   color: #fff;
   margin-bottom: 20px;
-  font: 100 5.2em "museo-sans", "Lato", sans-serif;
+  font-weight: 100;
+  font-size: 4rem;
 }
 #hero p {
   font-style: normal;
@@ -153,6 +165,9 @@ h2 {
   #features-page .fixed {
     position: static !important;
     display: none;
+  }
+  #features-page .backdrop {
+    top: -112px !important;
   }
 }
 /* Main Content Styling */
@@ -191,7 +206,7 @@ h2 {
   color: #fff !important;
 }
 #features-page .backdrop {
-  top: -68px;
+  top: -48px;
 }
 .medium {
   padding: 8px 26px;
@@ -356,7 +371,7 @@ footer {
   padding: 0px;
 }
 .banded {
-  padding: 34px 34px 34px 34px;
+  padding: 34px 34px 34px 34px !important;
   border-bottom: 1px solid #e4e4e4;
 }
 .banded h3 {
@@ -364,7 +379,7 @@ footer {
   margin: 0 0 20px 0;
 }
 .banded section {
-  padding: 34px 50px 0px 50px !important;
+  padding: 34px 50px 28px 50px !important;
 }
 .banded .main-list ul.thumbnails {
   margin-bottom: 32px !important;
@@ -505,6 +520,9 @@ footer {
   .banded ul.thumbnails {
     margin-bottom: 14px !important;
   }
+  .mini-ninja {
+    display: none;
+  }
 }
 @media screen and (min-width: 500px) {
   .jumbotron h1 {
@@ -529,6 +547,10 @@ footer {
   .main .container {
     padding-right: 0px !important;
     padding-left: 0px !important;
+  }
+  .banded {
+    padding: 0px 28px 34px 28px !important;
+    border-bottom: 1px solid #e4e4e4;
   }
 }
 @media screen and (min-width: 980px) {
@@ -556,5 +578,14 @@ footer {
     background-position: center;
     background: url('/img/main.png') no-repeat center;
     opacity: .4;
+  }
+}
+@media screen and (max-width: 400px) {
+  .signup-btn-container {
+    float: left;
+    padding-top: 22px;
+  }
+  .medium {
+    padding: 10px 74px;
   }
 }
