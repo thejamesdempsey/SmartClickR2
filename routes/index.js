@@ -116,6 +116,10 @@ exports.playground_hometest2 = function(request, response) {
 	response.render('playground-hometest2.jade', {title: 'Playground - SmartClickr'});
 }
 
+exports.google_verify = function(request, response){
+	response.render('google40e4f1647f3d7fab.html');
+}
+
 exports.problemo = function(request, response) { 
  	response.render('404.jade', {title: 'This page got lost - SmartClickr', layout:'404_layout'}); 
 }
