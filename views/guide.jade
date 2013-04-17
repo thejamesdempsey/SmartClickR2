@@ -4,7 +4,7 @@ block content
 	body#guide-body
 		header(id="page-top", class="navbar navbar-inverse ")
 			.navbar-inner
-				.container-fluid
+				.container
 					.row-fluid
 						a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
 							span(class="icon-bar")
@@ -31,8 +31,8 @@ block content
 						.backdrop.dropshadow
 							section#guide-main.clearfix.guide-pad
 								article#guide-title
-									h3 Getting Started with SmartClickr
-									//h4.visible-phone Getting Started
+									h3.hidden-phone Getting Started with SmartClickr
+									h3.visible-phone Getting Started
 								article#guide-sub.span9
 									section#welcome.sub-wrap.clearfix
 										h3 Welcome to SmartClickr
@@ -48,7 +48,7 @@ block content
 											li Present to an audience
 										h4 Prefer to read this offline? 
 										p Download as a 
-											a PDF
+											a(href="#") PDF
 											| .
 									section#commandcenter.sub-wrap.clearfix
 										h3 Your Command Center

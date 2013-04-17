@@ -273,11 +273,19 @@ margin-right: 5px;
 	}
 	
 	#guide-title h3{
-		margin: 0 5px;
+		margin: 0 10px;
 	}
 	#guide-sub{
 		margin: 0 auto;
 		margin-bottom: 60px;
+	}
+	
+	#guide-sub .sub-wrap{
+		padding: 15px 20px;
+	}
+	
+	.sub-wrap h3{
+		font-size: 23.5px;
 	}
 }
 

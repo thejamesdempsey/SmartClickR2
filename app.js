@@ -60,7 +60,8 @@ app.post('/contact', routes.postContact);
 app.get('/data', routes.data);
 app.get('/privacy', routes.privacy);
 app.get('/terms', routes.terms);
-app.get('/getting-started-with-smartclickr', routes.gettingStarted);
+app.get('/resources', routes.resources);
+app.get('/resources/getting-started-with-smartclickr', routes.gettingStarted);
 
 // USER PAGES //
 

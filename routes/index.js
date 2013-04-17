@@ -95,6 +95,10 @@ exports.resetPassword = function(request, response) {
 	response.render('pass_reset.jade', {title: 'Reset your Password - SmartClickr', layout: 'layout_reset'});
 }
 
+exports.resources = function(request, response) {
+	response.render('guide.jade', {title: 'Getting Started with SmartClickr', layout: 'layout_guide'});
+}
+
 exports.gettingStarted = function(request, response) {
 	response.render('guide.jade', {title: 'Getting Started with SmartClickr', layout: 'layout_guide'});
 }
