@@ -53,8 +53,7 @@
   border-radius: 0 !important;
 }
 #bottom-actions {
-  border-top: 1px solid #D2D0CA;
-  border-bottom: 1px solid #D2D0CA;
+  border-top: 1px solid #eee;
   padding: 20px 0px;
 }
 #signup_submit {
@@ -68,16 +67,12 @@
   color: #789a44;
   text-transform: capitolize;
 }
-@media and (max-width: 600px) {
-  #action-btn,
-  .promo {
-    display: block;
-    text-align: left;
-  }
+.check {
+  margin-top: 22px;
+  text-align: left;
 }
 #action-btn {
-  text-align: center;
-  margin-top: 24px;
+  text-align: right;
 }
 #signup-container {
   padding: 0 !important;
@@ -126,6 +121,13 @@ input.form-text {
     margin: 0 0 -2px 0 !important;
   }
 }
+@media and (max-width: 600px) {
+  #action-btn,
+  .promo {
+    display: block;
+    text-align: left;
+  }
+}
 @media screen and (max-width: 767px) {
   .title {
     margin-top: 0px;
@@ -135,5 +137,15 @@ input.form-text {
   }
   #signup-body #hero {
     padding: 34px 0 84px 0 !important;
+  }
+  #action-btn {
+    text-align: center;
+  }
+  .check {
+    margin-top: 0px !important;
+    margin-left: 8px;
+  }
+  #termsLabel {
+    margin: 8px 0 0 0px !important;
   }
 }
