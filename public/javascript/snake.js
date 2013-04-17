@@ -166,8 +166,6 @@
         c.fillStyle = '#fff';
         c.fillRect(0, 0, width*pixelsize, height*pixelsize);
         c.fillStyle = '#4c8ab0';
-		c.strokeRect(0, 0, width, height);
-
         drawFood();
         drawSnake();
 		c.fillStyle = '#3f4b51';
