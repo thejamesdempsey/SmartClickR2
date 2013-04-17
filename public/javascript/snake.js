@@ -1,179 +1,222 @@
-$(document).keydown(function(e) {
+(function ($) {
+    var canvas = document.getElementById('c'),
+        c = canvas.getContext('2d'),
+        height, width, pixelsize, rate,
+        dir, newdir, snake = [], food = [], score,
+        gstarted = false, gpaused = false;
+    
+
+	window.addEventListener("keydown", function(e) {
+	    // space and arrow keys
+	    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+	        e.preventDefault();
+	    }
+	}, false);
 	
-	var ar=new Array(33,34,35,36,37,38,39,40);
-	
-     var key = e.which;
-      //console.log(key);
-      //if(key==35 || key == 36 || key == 37 || key == 39)
-      if($.inArray(key,ar) > -1) {
-          e.preventDefault();
-          return false;
-      }
-      return true;
-});
+    function setup(h, w, ps, r) {
+        height = h;
+        width = w;
+        pixelsize = ps;
+        rate = r;
+        canvas.height = h*ps;
+        canvas.width = w*ps;
+        $(document).keydown(function (e) {
+            switch(e.which) {
+                case 38:
+                    if(dir != 2) {
+                        newdir = 0;
+                    }
+                    break;
+                case 39:
+                    if(dir != 3) {
+                        newdir = 1;
+                    }
+                    break;
+                case 40:
+                    if(dir != 0) {
+                        newdir = 2;
+                    }
+                    break;
+                case 37:
+                    if(dir != 1) {
+                        newdir = 3;
+                    }
+                    break;
+                case 32:
+                    if(!gstarted) {
+                        startGame();
+                    }
+                    else {
+                        togglePause();
+                    }
+                    break;
+            }
+        });
+        showIntro();
+    }
+    
+    function showIntro() {
+        c.fillStyle = '#fff';
+        c.fillRect(0, 0, width*pixelsize, height*pixelsize);
+        c.fillStyle = '#3f4b51';
+        c.font = '30px sans-serif';
+        c.textAlign = 'center';
+        c.fillText('Snake', width/2*pixelsize, height/4*pixelsize, width*pixelsize);
+        c.font = '16px sans-serif';
+        c.fillStyle = '#f07057';
 
+        c.fillText('Arrows = change direction.', width/2*pixelsize, height/2.5*pixelsize);
+        c.fillText('Space = start/pause.', width/2*pixelsize, height/2*pixelsize);
+    }
+    
+    function startGame() {
+        var x = Math.floor(width/2), y = Math.floor(height/2);
+        genFood();
+        snake = [
+            [x, y],
+            [--x, y],
+            [--x, y],
+            [--x, y]
+        ];
+        dir = 1;
+        newdir = 1;
+        score = 0;
+        gstarted = true;
+        gpaused = false;
+        frame();
+    }
+    
+    function endGame() {
+        gstarted = false;
+        c.fillStyle = '#fff';
+        c.fillRect(0, 0, width*pixelsize, height*pixelsize);
+        c.fillStyle = '#3f4b51';
+        c.font = '26px sans-serif';
+        c.textAlign = 'center';
+        c.fillText('Game Over',  width/2*pixelsize, height/4*pixelsize);
+        c.fillStyle = '#3f4b51';
+        c.font = '16px sans-serif';
+        c.fillStyle = '#f07057';
+        c.fillText('Your Score: ' + score, width/2*pixelsize, height/3*pixelsize);
+        c.font = '22px sans-serif';
+        c.fillStyle = '#3f4b51';
 
-$(document).ready(function(){
-	
-	//Canvas stuff
-	var canvas = $("#canvas")[0];
-	var ctx = canvas.getContext("2d");
-	var w = $("#canvas").width();
-	var h = $("#canvas").height();
+        c.fillText('High Scores', width/2*pixelsize, height/2.2*pixelsize);
+        c.font = '16px sans-serif';
+        c.fillStyle = '#f07057';
 
-	//Lets save the cell width in a variable for easy control
-	var cw = 10;
-	var d;
-	var food;
-	var score;
+        c.fillText('Billy: 800', width/2*pixelsize, height/1.9*pixelsize);
+        c.fillText('Daniel: 510', width/2*pixelsize, height/1.7*pixelsize);
 
-	//Lets create the snake now
-	var snake_array; //an array of cells to make up the snake
+        c.fillStyle = '#3f4b51';
 
-	function init()
-	{
-		d = "right"; //default direction
-		create_snake();
-		create_food(); //Now we can see the food particle
-		//finally lets display the score
-		score = 0;
+        c.fillText('Press the spacebar to play again.', width/2*pixelsize, height/1.3*pixelsize);
+    }
+    
+    function togglePause() {
+        if(!gpaused) {
+            gpaused = true;
+	        c.fillStyle = 'rgba(0,0,0,0.8)';
+	        c.fillRect(0, 0, width*pixelsize, height*pixelsize);
+            c.fillStyle = '#fff';
+            c.font = '20px sans-serif';
+            c.textAlign = 'center';
+            c.fillText('Paused', width/2*pixelsize, height/2*pixelsize);
+	        c.font = '16px sans-serif';
+	        c.fillText('Score: ' + score, width/2*pixelsize, height/1.7*pixelsize);
+        }
+        else {
+            gpaused = false;
+            frame();
+        }
+    }
+    
+    function frame() {
+        if(!gstarted || gpaused) {
+            return;
+        }
+        var x = snake[0][0], y = snake[0][1];
+        switch(newdir) {
+            case 0:
+                y--;
+                break;
+            case 1:
+                x++;
+                break;
+            case 2:
+                y++;
+                break;
+            case 3:
+                x--;
+                break;
+        }
+        if(testCollision(x, y)) {
+            endGame();
+            return;
+        }
+        snake.unshift([x, y]);
+        if(x == food[0] && y == food[1]) {
+            score++;
+            genFood();
+        }
+        else {
+            snake.pop();
+        }
+        dir = newdir;
+        c.fillStyle = '#fff';
+        c.fillRect(0, 0, width*pixelsize, height*pixelsize);
+        c.fillStyle = '#4c8ab0';
+		c.strokeRect(0, 0, width, height);
 
-		//Lets move the snake now using a timer which will trigger the paint function
-		//every 60ms
-		if(typeof game_loop != "undefined") clearInterval(game_loop);
-		game_loop = setInterval(paint, 60);
-	}
-	init();
-
-	function create_snake()
-	{
-		var length = 5; //Length of the snake
-		snake_array = []; //Empty array to start with
-		for(var i = length-1; i>=0; i--)
-		{
-			//This will create a horizontal snake starting from the top left
-			snake_array.push({x: i, y:0});
-		}
-	}
-
-	//Lets create the food now
-	function create_food()
-	{
-		food = {
-			x: Math.round(Math.random()*(w-cw)/cw), 
-			y: Math.round(Math.random()*(h-cw)/cw), 
-		};
-		//This will create a cell with x/y between 0-44
-		//Because there are 45(450/10) positions accross the rows and columns
-	}
-
-	//Lets paint the snake now
-	function paint()
-	{
-		//To avoid the snake trail we need to paint the BG on every frame
-		//Lets paint the canvas now
-		ctx.fillStyle = "white";
-		ctx.fillRect(0, 0, w, h);
-		ctx.strokeStyle = "black";
-		ctx.strokeRect(0, 0, w, h);
-
-		//The movement code for the snake to come here.
-		//The logic is simple
-		//Pop out the tail cell and place it infront of the head cell
-		var nx = snake_array[0].x;
-		var ny = snake_array[0].y;
-		//These were the position of the head cell.
-		//We will increment it to get the new head position
-		//Lets add proper direction based movement now
-		if(d == "right") nx++;
-		else if(d == "left") nx--;
-		else if(d == "up") ny--;
-		else if(d == "down") ny++;
-
-		//Lets add the game over clauses now
-		//This will restart the game if the snake hits the wall
-		//Lets add the code for body collision
-		//Now if the head of the snake bumps into its body, the game will restart
-		if(nx == -1 || nx == w/cw || ny == -1 || ny == h/cw || check_collision(nx, ny, snake_array))
-		{
-			//restart game
-			init();
-			//Lets organize the code a bit now.
-			return;
-		}
-
-		//Lets write the code to make the snake eat the food
-		//The logic is simple
-		//If the new head position matches with that of the food,
-		//Create a new head instead of moving the tail
-		if(nx == food.x && ny == food.y)
-		{
-			var tail = {x: nx, y: ny};
-			score++;
-			//Create new food
-			create_food();
-		}
-		else
-		{
-			var tail = snake_array.pop(); //pops out the last cell
-			tail.x = nx; tail.y = ny;
-		}
-		//The snake can now eat the food.
-
-		snake_array.unshift(tail); //puts back the tail as the first cell
-
-		for(var i = 0; i < snake_array.length; i++)
-		{
-			var c = snake_array[i];
-			//Lets paint 10px wide cells
-			paint_cell(c.x, c.y);
-		}
-
-		//Lets paint the food
-		paint_cell(food.x, food.y);
-		//Lets paint the score
-		var score_text = "Score: " + score;
-		ctx.fillText(score_text, 5, h-5);
-	}
-
-	//Lets first create a generic function to paint cells
-	function paint_cell(x, y)
-	{
-		ctx.fillStyle = "blue";
-		ctx.fillRect(x*cw, y*cw, cw, cw);
-		ctx.strokeStyle = "white";
-		ctx.strokeRect(x*cw, y*cw, cw, cw);
-	}
-
-	function check_collision(x, y, array)
-	{
-		//This function will check if the provided x/y coordinates exist
-		//in an array of cells or not
-		for(var i = 0; i < array.length; i++)
-		{
-			if(array[i].x == x && array[i].y == y)
-			 return true;
-		}
-		return false;
-	}
-
-	//Lets add the keyboard controls now
-	$(document).keydown(function(e){
-		var key = e.which;
-		//We will add another clause to prevent reverse gear
-		if(key == "37" && d != "right") d = "left";
-		else if(key == "38" && d != "down") d = "up";
-		else if(key == "39" && d != "left") d = "right";
-		else if(key == "40" && d != "up") d = "down";
-		//The snake is now keyboard controllable
-	})
-
-
-
-
-
-
-
-})
-
-
+        drawFood();
+        drawSnake();
+		c.fillStyle = '#3f4b51';
+		c.textAlign = 'right';
+        c.font = '16px sans-serif';
+        c.fillText('Score: ' + score, width/5.6*pixelsize, height/1.01*pixelsize);
+        
+        setTimeout(frame, rate);
+    }
+    
+    function genFood() {
+        var x, y;
+        do {
+            x = Math.floor(Math.random()*(width-1));
+            y = Math.floor(Math.random()*(height-1));
+        } while(testCollision(x, y));
+        food = [x, y];
+    }
+    
+    function drawFood() {
+        c.beginPath();
+        c.arc((food[0]*pixelsize)+pixelsize/2, (food[1]*pixelsize)+pixelsize/2, pixelsize/2, 0, Math.PI*2, false);
+        c.fill();
+    }
+    
+    function drawSnake() {
+        var i, l, x, y;
+        for(i = 0, l = snake.length; i < l; i++) {
+            x = snake[i][0];
+            y = snake[i][1];
+            c.fillRect(x*pixelsize, y*pixelsize, pixelsize, pixelsize);
+        }
+    }
+    
+    function testCollision(x, y) {
+        var i, l;
+        if(x < 0 || x > width-1) {
+            return true;
+        }
+        if(y < 0 || y > height-1) {
+            return true;
+        }
+        for(i = 0, l = snake.length; i < l; i++) {
+            if(x == snake[i][0] && y == snake[i][1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    setup(35, 35, 10, 80);
+}(jQuery));

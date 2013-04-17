@@ -41,6 +41,8 @@ p.error-actions a{
 }
 
 canvas{
-	padding-top: 20px;
-	padding-left: 36px;
+	margin: 0 auto 26px;
+	border: 2px solid #3f4b51;
+	
 }
+
