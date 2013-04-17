@@ -1,10 +1,10 @@
 extends layout_guide
 
 block content
-	body#signup-body
+	body#guide-body
 		header(id="page-top", class="navbar navbar-inverse ")
 			.navbar-inner
-				.container
+				.container-fluid
 					.row-fluid
 						a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
 							span(class="icon-bar")
@@ -31,17 +31,65 @@ block content
 						.backdrop.dropshadow
 							section#guide-main.clearfix.guide-pad
 								article#guide-title
-									h4 Getting Started with SmartClickr
+									h3 Getting Started with SmartClickr
 									//h4.visible-phone Getting Started
-								section#nav-container
+								article#guide-sub.span9
+									section#welcome.sub-wrap.clearfix
+										h3 Welcome to SmartClickr
+										p SmartClickr is an all-in-one system that helps to increase audience participation and interaction. This guide will help you get your first poll up and running. We’ll also offer tips for managing your questions, viewing your graphs, and making sure your polls get into the right hands.
+										p As for our system requirements, all you need is a modern browser. Internet Explorer 7 or higher works, but for a faster experience we recommend Firefox 3.5 or higher, Safari, or Chrome.
+										p In this guide, you will learn how to:
+										ol
+											li Navigate your Command Center
+											li Create Your First Poll
+											li Choose the best question types
+											li Edit your poll
+											li Distribute your questions
+											li Present to an audience
+										h4 Prefer to read this offline? 
+										p Download as a 
+											a PDF
+											| .
+									section#commandcenter.sub-wrap.clearfix
+										h3 Your Command Center
+										p The Connand Center is your home here at SmartClickr. It holds all the resources you need to get started including the create, edit, delete, start buttons as well as the urls needed to destribute your polls. Plus, it is friendly and will give you random, sometimes sassy greetings. 
+
+									section#creating.sub-wrap.clearfix
+										h3 Creating a Poll
+										p To create a poll all you need to do is click on the create a poll button. You will then be taken to a page that allows you to enter the name for your poll. This is required because it allows us a way to make each poll unique. Plus we dont want you to get all your awesome polls confused. 
+									section#qtypes.sub-wrap.clearfix
+										h3 Question Types
+										p Currently we have four different quesiton types:
+										ol 
+											li True/False
+											li Multiple Choice
+											li Free Response
+											li Free Response Numeric
+
+									section#editing.sub-wrap.clearfix
+										h3 Editing your Poll
+										p We understand that there will be times where you need to edit your polls after they have been created. All you need to do is click the edit button. This will take you to the edit page, which will allow you to add, delete, or change existing quesitons. 
+									section#distribution.sub-wrap.clearfix
+										h3 Distribution of your Poll
+										p The easiest way to distrubte your poll is to just give out shown for the poll on the command center page. You can do this via email, facebook, twitter, or any other social network. Your participants will be taken right to the response page allowing them to cruise through your poll. 
+
+									section#presentation.sub-wrap.clearfix
+										h3 Presentation
+										p If you wish to present your poll live, we have made this very easy for you to accomplish. Simply click the "Start" button for the poll on the command center page. If you are using a projector your audience will see the session code at the top of the page. They just need to navigate to smartclickr.com and type in this code. You can get started at any time because the session codes are at the top of each individual quesiton. 
+										p We currently have two types of graphs for presentation purposes:
+										ol 
+											li Pie Charts
+											li Bar Graphs
+								section#nav-container.span3.hidden-phone
 									article#guide-nav
-										ul.nav.nav-pills	
+										h4 Table of Contents
+										ol#navigation.nav
 											li
 												a(href="#welcome") Welcome
 											li
 												a(href="#commandcenter") Command Center
 											li
-												a(href="#creating") Creation
+												a( href="#creating") Creation
 											li
 												a(href="#qtypes") Question Types
 											li
@@ -50,44 +98,14 @@ block content
 												a(href="#distribution") Distribution
 											li
 												a(href="#presentation") Presentation
-											li#back-top.hidden-phone.right
-												a(href="#page-top", class="btn") 
-													span &uarr; 
-													| Back to Top
-												
-								article#guide-sub
-									section#welcome.sub-wrap.clearfix
-										h3 Welcome to SmartClickr
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-									section#commandcenter.sub-wrap.clearfix
-										h3 Your Command Center
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-									section#creating.sub-wrap.clearfix
-										h3 Creating a Poll
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-									section#qtypes.sub-wrap.clearfix
-										h3 Question Types
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-									section#editing.sub-wrap.clearfix
-										h3 Editing your Poll
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-									section#distribution.sub-wrap.clearfix
-										h3 Distribution of your Poll
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-									section#presentation.sub-wrap.clearfix
-										h3 Presentation
-										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					
 		.clearfix
 	include extra/footer-main
-	
+	script(src="/javascript/hoverflow.min.js")
 	script(src="/javascript/sticky-nav.js")
+
 								
-									
+									:
 
 
 

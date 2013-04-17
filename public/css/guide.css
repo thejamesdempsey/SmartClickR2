@@ -3,17 +3,50 @@ a.active {
 	background: #4c8ab0 !important;
 }
 
+#guide-body .backdrop, #guide-body #guide-nav{
+	background: #F0F0F0;
+}
+
+#guide-body .backdrop{
+	border-radius: 12px 12px 0px 0px;
+}
+
 #guide-body .fixed{
 	margin-right: auto;
 	margin-left: auto;
-	width: 1170px;
 	position: fixed !important;
+	float: right;
 	
 }
 
-#guide-title h4{
+#navigation{
+	padding-left: 24px;
+}
+
+#navigation li a{
+	color: #0088cc !important;
+}
+
+#navigation li a:hover{
+	color:#3f4b51 !important;
+}
+
+
+#navigation li{
+	list-style: decimal;
+}
+
+#guide-title h3, #guide-body h4{
 	color: #333 !important;
 	font-weight: 300;
+}
+
+#guide-title h3{
+	margin: 0px 20px;
+}
+
+#guide-body p{
+	font-size: 1rem;
 }
 
 .sticky{
@@ -61,12 +94,8 @@ a.active {
 	padding-bottom: 75px;
 }
 
-#guide-sub .sub-wrap:nth-of-type(even){
-	background:#F8F8F8;
-}
-
-#guide-sub .sub-wrap:last-of-type{
-	padding-bottom: 90px;
+#guide-sub, #nav-container{
+	margin-left:0;
 }
 
 #guide-body{
@@ -95,7 +124,7 @@ a.active {
 #guide-title{
 	background-color: #F0F0F0;
 	border-radius: 12px 12px 0px 0px;
-	padding: 12px;
+	padding-top: 12px;
 }
 
 #guide-title h2{
@@ -104,15 +133,11 @@ a.active {
 }
 
 #nav-container{
-	max-width: 1171px;
-	width: 100%;
-	background-color: #e8e6e6;
-	border-bottom: 1px solid #919191;
 	
 }
 
 #guide-nav{
-	padding: 12px;
+	padding: 1px 0px 0px 12px;
 	width: 100%;
 }
 
@@ -121,6 +146,8 @@ a.active {
 }
 
 #guide-sub{
+	margin-left: 20px;
+	margin-bottom: 60px;
 }
 
 .username, .hashtag{
@@ -150,9 +177,32 @@ hr.line{
 	border-radius: 12px;
 }
 
+#welcome ol li{
+	list-style: disc;
+}
 
-#guide-sub{
+#qtypes ol li, #presentation ol li{
+	list-style: decimal;
+}
+
+
+#guide-sub .sub-wrap{
 	background-color: #fff;
+	box-shadow: inset 0 0 0 1px #c6c3c3;
+	-webkit-box-shadow: inset 0 0 0 1px #c6c3c3;
+	-moz-box-shadow: inset 0 0 0 1px #c6c3c3;
+	-o-box-shadow: inset 0 0 0 1px #c6c3c3;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-o-border-radius: 12px;
+	padding: 15px;
+	margin: 15px 0;
+	
+}
+
+#welcome ol{
+	list-style: ;
 }
 
 footer{
@@ -216,6 +266,18 @@ margin-right: 5px;
 @media screen and (max-width: 767px){
 	#nav-container{
 		max-width: 100%;
+	}
+	
+	#guide-main{
+		padding: 10px;
+	}
+	
+	#guide-title h3{
+		margin: 0 5px;
+	}
+	#guide-sub{
+		margin: 0 auto;
+		margin-bottom: 60px;
 	}
 }
 
