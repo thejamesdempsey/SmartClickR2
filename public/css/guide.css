@@ -1,4 +1,20 @@
+a.active {
+	color: #fff !important;
+	background: #4c8ab0 !important;
+}
 
+#guide-body .fixed{
+	margin-right: auto;
+	margin-left: auto;
+	width: 1170px;
+	position: fixed !important;
+	
+}
+
+#guide-title h4{
+	color: #333 !important;
+	font-weight: 300;
+}
 
 .sticky{
 	position: fixed;
@@ -37,8 +53,6 @@
 
 #main-content{
 	display: block;
-	padding-bottom: 150px;
-	min-height: 100%;
 	position: relative;
 }
 
@@ -71,9 +85,11 @@
 	padding: 0px !important;
 }
 
-#guide-hero h2{
-	font-size: 3rem;
+#guide-hero h1{
+	font-size: 4rem;
 	color: #fff;
+	font-weight: 100;
+	margin-bottom: 20px;
 }
 
 #guide-title{
@@ -140,10 +156,13 @@ hr.line{
 }
 
 footer{
-	position:absolute;
+	position: relative;
 	bottom:0;
 	z-index: 10;
 	clear: both;
+	top: -68px !important;
+	min-height: 224px;
+	
 }
 
 .clearfix:after{
@@ -152,6 +171,34 @@ footer{
 	height: 0;
 	clear: both;
 	visibility: hidden;
+}
+
+
+#guide-body #legal{
+	top: -40px !important;
+	position: relative;
+	padding-bottom: 0px !important;
+}
+
+#legal span{
+	color:#3f4b51 !important;
+	margin-bottom: 15px;
+}
+
+#legal #copy{
+	display: block;
+}
+
+#guide-body #copy a {
+color: 
+#33393D;
+margin-left: 7px;
+margin-right: 5px;
+}
+
+
+#guide-body #social ul li{
+	padding: 12px 12px 12px 0px;
 }
 
 @media screen and (max-width: 1199px){

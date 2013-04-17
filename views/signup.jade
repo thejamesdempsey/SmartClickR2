@@ -34,6 +34,11 @@ block content
 			.row-fluid
 				.span8.offset2
 					section#signup-content
+						ul.nav.nav-pills
+							li.active
+								a(id="individuals", href="#") Individuals
+							li
+								a(id="orgs",href="#") Organizations
 						form(id='signupForm', method='post', action='/user/create')
 							fieldset
 								span.field
@@ -52,16 +57,19 @@ block content
 									input(id='password', type='password', name='password', class='input-block-level span9', title='Password',  autocomplete='off')
 									.clear
 							span12.no_pad
-								#bottom-actions
+								#bottom-actions.clearfix
 									fieldset.check.span7
 										label(id='termsLabel')
 											input#termsCheckBox(name='checkTerms',type='checkbox',checked='checked')
 											| I agree to the
 											a(href='#')  Terms of Service
-									fieldset#action-btn.form-action.span5
+									fieldset.promo.span5
+										a(id="havePromo", class="btn btn-info") Have a promo code?
+								#signup-confirm
+									fieldset#action-btn.form-action.span12 
 										input(id='signup_submit',type='submit',value='Create My Account', class="btn btn-large")
 									hr
-
+									
 	script(src="/javascript/views/signup.js")
 	script(src="/jquery.login.min.js")
 	

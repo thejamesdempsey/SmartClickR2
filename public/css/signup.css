@@ -52,17 +52,32 @@
   margin: 4px 0px !important;
   border-radius: 0 !important;
 }
-.check {
-  margin-top: 12px;
+#bottom-actions {
+  border-top: 1px solid #D2D0CA;
+  border-bottom: 1px solid #D2D0CA;
+  padding: 20px 0px;
+}
+#signup_submit {
+  padding: 20px 40px;
+}
+.promo {
+  text-align: right;
+}
+#havePromo {
+  background: #deedc3;
+  color: #789a44;
+  text-transform: capitolize;
 }
 @media and (max-width: 600px) {
-  #action-btn {
+  #action-btn,
+  .promo {
     display: block;
     text-align: left;
   }
 }
 #action-btn {
-  text-align: right;
+  text-align: center;
+  margin-top: 24px;
 }
 #signup-container {
   padding: 0 !important;

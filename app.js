@@ -154,9 +154,6 @@ app.get('/playground/email', routes.email);
 app.get('/playground/test1', routes.playground_hometest1);
 app.get('/playground/test2', routes.playground_hometest2);
 
-app.get('google40e4f1647f3d7fab', routes.google_verify);
-
-
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

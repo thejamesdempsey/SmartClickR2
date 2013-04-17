@@ -2,7 +2,7 @@ extends layout_guide
 
 block content
 	body#signup-body
-		header(class="navbar navbar-inverse ")
+		header(id="page-top", class="navbar navbar-inverse ")
 			.navbar-inner
 				.container
 					.row-fluid
@@ -23,7 +23,7 @@ block content
 					.row-fluid
 						.span12
 							.top-pad.hidden-phone
-							h2 Resources
+							h1 Resources
 					hr
 			section#content_container.clearfix
 				.container
@@ -31,8 +31,8 @@ block content
 						.backdrop.dropshadow
 							section#guide-main.clearfix.guide-pad
 								article#guide-title
-									h2.hidden-phone Getting Started with SmartClickr
-									h2.visible-phone Getting Started
+									h4 Getting Started with SmartClickr
+									//h4.visible-phone Getting Started
 								section#nav-container
 									article#guide-nav
 										ul.nav.nav-pills	
@@ -50,8 +50,10 @@ block content
 												a(href="#distribution") Distribution
 											li
 												a(href="#presentation") Presentation
-											li.visible-desktop.right
-												a(id="top", href="#main-content") Top
+											li#back-top.hidden-phone.right
+												a(href="#page-top", class="btn") 
+													span &uarr; 
+													| Back to Top
 												
 								article#guide-sub
 									section#welcome.sub-wrap.clearfix
@@ -80,6 +82,9 @@ block content
 									section#presentation.sub-wrap.clearfix
 										h3 Presentation
 										p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		.clearfix
+	include extra/footer-main
+	
 	script(src="/javascript/sticky-nav.js")
 								
 									

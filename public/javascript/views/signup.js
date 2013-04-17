@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	
+});
+
 $("#signupForm").ready(function() {
 
 	$("#firstName").focus();	
